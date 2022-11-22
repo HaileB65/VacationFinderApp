@@ -1,4 +1,4 @@
-package Capstone.Project.NewMVCProject;
+package Capstone.Project.NewMVCProject.models;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

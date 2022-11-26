@@ -15,11 +15,12 @@ public class HomeController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String showHomePage(Model model){
         List<User> usersTable = userService.getAllUsers();
         model.addAttribute("usersTable", usersTable);
 
         return "home";
     }
+
 }

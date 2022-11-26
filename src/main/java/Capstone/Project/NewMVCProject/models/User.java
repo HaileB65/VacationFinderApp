@@ -1,13 +1,15 @@
 package Capstone.Project.NewMVCProject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +18,7 @@ import java.util.Collections;
 @Data
 @NoArgsConstructor
 @Table(name= "Users")
-public class User implements UserDetails {
+public class User { //implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -38,40 +40,44 @@ public class User implements UserDetails {
     @CreationTimestamp
     private Timestamp timestamp;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
-        return Collections.singletonList(authority);
-    }
+    @Transient
+    @JsonIgnore
+    private URI locationURI;
 
-    @Override
-    public String getUsername(){
-        return username;
-    }
-
-    @Override
-    public String getPassword(){
-        return password;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+//        return Collections.singletonList(authority);
+//    }
+//
+//    @Override
+//    public String getUsername(){
+//        return username;
+//    }
+//
+//    @Override
+//    public String getPassword(){
+//        return password;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 
 }

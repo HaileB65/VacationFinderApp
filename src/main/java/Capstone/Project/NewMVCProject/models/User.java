@@ -1,6 +1,7 @@
 package Capstone.Project.NewMVCProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.Collections;
 @Data
 @NoArgsConstructor
 @Table(name= "Users")
+@AllArgsConstructor
 @Builder
 public class User { //implements UserDetails
     @Id

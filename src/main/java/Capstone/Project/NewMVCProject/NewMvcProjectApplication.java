@@ -2,12 +2,16 @@ package Capstone.Project.NewMVCProject;
 
 import Capstone.Project.NewMVCProject.models.User;
 import Capstone.Project.NewMVCProject.models.UserRole;
+import Capstone.Project.NewMVCProject.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class NewMvcProjectApplication implements CommandLineRunner {
+	@Autowired
+	UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(NewMvcProjectApplication.class, args);
@@ -15,8 +19,8 @@ public class NewMvcProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User.builder()
-				.id(1L)
+		User user = User.builder()
+				.id(0L)
 				.firstName("Alex")
 				.lastName("Walker")
 				.email("alexwalker@yahoo.com")
@@ -24,9 +28,12 @@ public class NewMvcProjectApplication implements CommandLineRunner {
 				.username("walker")
 				.password("fiaioio")
 				.userRole(UserRole.USER)
-				.locked(false)
 				.enabled(true)
+				.locked(false)
 				.build();
+
+		userService.createNewUser(user);
+
 
 	}
 }

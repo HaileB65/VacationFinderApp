@@ -1,6 +1,7 @@
 package Capstone.Project.NewMVCProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,6 +19,7 @@ import java.util.Collections;
 @Data
 @NoArgsConstructor
 @Table(name= "Users")
+@Builder
 public class User { //implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

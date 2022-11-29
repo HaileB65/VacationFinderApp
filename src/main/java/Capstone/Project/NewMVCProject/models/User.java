@@ -37,7 +37,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     UserRole userRole;
 
+    @Builder.Default
     boolean locked = false;
+
+    @Builder.Default
     boolean enabled = true;
 
     @Column(name = "timestamp")

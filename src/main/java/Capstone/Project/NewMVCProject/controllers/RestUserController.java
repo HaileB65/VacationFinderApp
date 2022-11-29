@@ -1,6 +1,8 @@
 package Capstone.Project.NewMVCProject.controllers;
 
 import Capstone.Project.NewMVCProject.models.User;
+import Capstone.Project.NewMVCProject.models.apiUser;
+import Capstone.Project.NewMVCProject.services.CodingNomadsAPIService;
 import Capstone.Project.NewMVCProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,10 @@ public class RestUserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CodingNomadsAPIService codingNomadsAPIService;
+
 
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
@@ -36,5 +42,10 @@ public class RestUserController {
                 return ResponseEntity.badRequest().body(e.getMessage());
             }
         }
+
+    @GetMapping("/CNAPI")
+    public List<apiUser> getCNAPIUsers() {
+        return codingNomadsAPIService.getAllUsers();
+    }
 
     }

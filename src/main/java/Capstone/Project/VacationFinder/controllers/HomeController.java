@@ -1,7 +1,9 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.Scenery;
+import Capstone.Project.VacationFinder.models.Destination;
+import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,20 +20,33 @@ public class HomeController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    DestinationService destinationService;
+
     @GetMapping("/")
+    public String showWelcomePage(Model model){
+        return "welcome";
+    }
+    @GetMapping("/home")
     public String showHomePage(Model model){
-        Scenery scenery = new Scenery();
-        model.addAttribute("scenery", scenery);
+        List<User> usersTable = userService.getAllUsers();
+        model.addAttribute("usersTable", usersTable);
+
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
 
         return "home";
     }
 
-    @GetMapping("/filled-out-questionnaire")
-    public String showFilledOutQuestionnairePage(@ModelAttribute("scenery") Scenery scenery, Model model){
-        System.out.println("scenery = " + scenery.getSelected());
-        model.addAttribute("scenery", scenery);
+    @PostMapping("/resultsPage")
+    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model){
+        model.addAttribute("questionnaire", questionnaire);
 
-        return "filled-out-questionnaire";
+//        List<Destination> destinationsTable = destinationService.getDestinationWhereMinimumBudgetGreaterThan(questionnaire.getHolidayBudget());
+        List<Destination> destinationsTable = destinationService.getAllDestinations();
+        model.addAttribute("destinationsTable",destinationsTable);
+
+        return "results-page";
     }
 
 

@@ -5,56 +5,35 @@
     <title>Home Page</title>
 </head>
 <body>
+
+<a align="left" th:href="@{/users}">View Users</a>
+<br>
+<a align="left" th:href="@{/destinations}">View Destinations</a>
+
 <div align="center">
 
     <h1>Vacation Spot Finder</h1>
 
-    <form action="filled-out-questionnaire.html" th:object="${scenery}">
+    <form action="#" th:action="@{/resultsPage}" th:object="${questionnaire}"
+          method="post">
         <table border="0" cellpadding="10">
             <tr>
-                <td>
-                    <label for="scenery">Choose a scenery:</label>
-
-                    <select id="scenery" name="scenery">
-                        <option value="Beach">Beach</option>
-                        <option value="Snowy Mountain Range">Snowy Mountain Range</option>
-                        <option value="Sparkling Lakes">Sparkling Lakes</option>
-                        <option value="Waterfalls">Waterfalls</option>
-                    </select>
-                </td>
-                <td>
-                    <label for="timeOfYear">Choose a time of year:</label>
-
-                    <select id="timeOfYear" name="timeOfYear">
-                        <option value="Fall">Fall</option>
-                        <option value="Winter">Winter</option>
-                        <option value="Spring">Spring</option>
-                        <option value="Summer">Summer</option>
-                    </select>
+                <th>Favorite Scenery</th>
+                <th>Weather</th>
+                <th>Preferred Activity</th>
+                <th>Holiday Budget</th>
+            </tr>
+            <tr>
+                <td><input type="text" th:field="*{favoriteScenery}" required/>
+                <td><input type="text" th:field="*{weather}" required/>
+                <td><input type="text" th:field="*{preferredActivity}" required/>
+                <td><input type="number" th:field="*{holidayBudget}" required/>
                 </td>
             </tr>
         </table>
         <br><br>
         <input type="submit" value="Submit">
     </form>
-
-    <h5>Users Table</h5>
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>phone</th>
-        </tr>
-        <tr th:each="user : ${usersTable}">
-            <td th:text="${user.id}">User ID</td>
-            <td th:text="${user.firstName}">First Name</td>
-            <td th:text="${user.lastName}">Last Name</td>
-            <td th:text="${user.email}">Email</td>
-            <td th:text="${user.phone}">Phone</td>
-        </tr>
-    </table>
 
 </div>
 </body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Destination Page</title>
+</head>
+<body>
+<div align="center">
+
+    <a align="left" th:href="@{/home}">Home Page</a>
+
+<h1>Destinations</h1>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Destination ID</th>
+            <th>Name</th>
+            <th>Scenery</th>
+            <th>Weather</th>
+            <th>Activity 1</th>
+            <th>Activity 2</th>
+            <th>Activity 3</th>
+            <th>Minimum Budget</th>
+        </tr>
+        <tr th:each="destination : ${destinationsTable}">
+            <td th:text="${destination.id}">Destination ID</td>
+            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.scenery}">Scenery</td>
+            <td th:text="${destination.weather}">Weather</td>
+            <td th:text="${destination.activity1}">Activity 1</td>
+            <td th:text="${destination.activity2}">Activity 2</td>
+            <td th:text="${destination.activity3}">Activity 3</td>
+            <td th:text="${destination.minimumBudget}">Minimum Budget</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:method="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
@@ -7,7 +7,36 @@
 <body>
 <div align="center">
 
-<h1>Home Page</h1>
+    <h1>Vacation Spot Finder</h1>
+
+    <form action="filled-out-questionnaire.html" method:GET th:object="${scenery}">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>
+                    <label for="scenery">Choose a scenery:</label>
+
+                    <select id="scenery" name="scenery">
+                        <option value="Beach">Beach</option>
+                        <option value="Snowy Mountain Range">Snowy Mountain Range</option>
+                        <option value="Sparkling Lakes">Sparkling Lakes</option>
+                        <option value="Waterfalls">Waterfalls</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="timeOfYear">Choose a time of year:</label>
+
+                    <select id="timeOfYear" name="timeOfYear">
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 
     <h5>Users Table</h5>
     <table border="1" cellpadding="10">

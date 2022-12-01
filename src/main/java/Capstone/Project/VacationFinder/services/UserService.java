@@ -1,7 +1,7 @@
-package Capstone.Project.NewMVCProject.services;
+package Capstone.Project.VacationFinder.services;
 
-import Capstone.Project.NewMVCProject.models.User;
-import Capstone.Project.NewMVCProject.repositories.UserRepository;
+import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

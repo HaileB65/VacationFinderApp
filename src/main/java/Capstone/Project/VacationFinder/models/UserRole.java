@@ -1,4 +1,4 @@
-package Capstone.Project.NewMVCProject.models;
+package Capstone.Project.VacationFinder.models;
 
 public enum UserRole {
     GUEST,

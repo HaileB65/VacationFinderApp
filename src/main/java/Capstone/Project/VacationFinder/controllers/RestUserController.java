@@ -1,14 +1,12 @@
-package Capstone.Project.NewMVCProject.controllers;
+package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.NewMVCProject.models.User;
-import Capstone.Project.NewMVCProject.models.apiUser;
-import Capstone.Project.NewMVCProject.services.CodingNomadsAPIService;
-import Capstone.Project.NewMVCProject.services.UserService;
+import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.models.apiUser;
+import Capstone.Project.VacationFinder.services.CodingNomadsAPIService;
+import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,9 +1,9 @@
-package Capstone.Project.NewMVCProject;
+package Capstone.Project.VacationFinder;
 
-import Capstone.Project.NewMVCProject.models.User;
-import Capstone.Project.NewMVCProject.models.UserRole;
-import Capstone.Project.NewMVCProject.repositories.UserRepository;
-import Capstone.Project.NewMVCProject.services.UserService;
+import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.models.UserRole;
+import Capstone.Project.VacationFinder.repositories.UserRepository;
+import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class NewMvcProjectApplication implements CommandLineRunner {
+public class VacationFinderApplication implements CommandLineRunner {
 	@Autowired
 	UserService userService;
 
@@ -22,7 +22,7 @@ public class NewMvcProjectApplication implements CommandLineRunner {
 	PasswordEncoder passwordEncoder;
 
 	public static void main(String[] args) {
-		SpringApplication.run(NewMvcProjectApplication.class, args);
+		SpringApplication.run(VacationFinderApplication.class, args);
 	}
 
 	@Override

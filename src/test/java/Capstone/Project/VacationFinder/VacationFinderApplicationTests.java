@@ -1,10 +1,10 @@
-package Capstone.Project.NewMVCProject;
+package Capstone.Project.VacationFinder;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NewMvcProjectApplicationTests {
+class VacationFinderApplicationTests {
 
 	@Test
 	void contextLoads() {

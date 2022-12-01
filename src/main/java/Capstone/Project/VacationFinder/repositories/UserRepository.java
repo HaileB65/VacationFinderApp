@@ -1,6 +1,6 @@
-package Capstone.Project.NewMVCProject.repositories;
+package Capstone.Project.VacationFinder.repositories;
 
-import Capstone.Project.NewMVCProject.models.User;
+import Capstone.Project.VacationFinder.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

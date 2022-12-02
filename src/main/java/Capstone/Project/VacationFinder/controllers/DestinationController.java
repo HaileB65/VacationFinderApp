@@ -1,7 +1,7 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.Destination;
-import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,18 @@ public class DestinationController {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
-        return "destinations-page";
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
+
+        return "destinations";
+    }
+
+    @GetMapping("/vacationSpotFinder")
+    public String showVacationSpotFinderPage(Model model){
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
+
+        return "vacation-spot-finder";
     }
 
     @GetMapping("/newDestination")
@@ -36,6 +47,17 @@ public class DestinationController {
     public String saveDestination(@ModelAttribute("newDestination")Destination destination){
         destinationService.createNewDestination(destination);
         return "redirect:/destinations";
+    }
+
+    @PostMapping("/resultsPage")
+    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model){
+        model.addAttribute("questionnaire", questionnaire);
+
+//        List<Destination> destinationsTable = destinationService.getDestinationWhereMinimumBudgetGreaterThan(questionnaire.getHolidayBudget());
+        List<Destination> destinationsTable = destinationService.getAllDestinations();
+        model.addAttribute("destinationsTable",destinationsTable);
+
+        return "results-page";
     }
 
 }

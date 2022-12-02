@@ -32,21 +32,7 @@ public class HomeController {
         List<User> usersTable = userService.getAllUsers();
         model.addAttribute("usersTable", usersTable);
 
-        Questionnaire questionnaire = new Questionnaire();
-        model.addAttribute("questionnaire", questionnaire);
-
         return "home";
-    }
-
-    @PostMapping("/resultsPage")
-    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model){
-        model.addAttribute("questionnaire", questionnaire);
-
-//        List<Destination> destinationsTable = destinationService.getDestinationWhereMinimumBudgetGreaterThan(questionnaire.getHolidayBudget());
-        List<Destination> destinationsTable = destinationService.getAllDestinations();
-        model.addAttribute("destinationsTable",destinationsTable);
-
-        return "results-page";
     }
 
 

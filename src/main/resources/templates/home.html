@@ -5,35 +5,17 @@
     <title>Home Page</title>
 </head>
 <body>
+<h1 align="center">Vacation Planner</h1>
 
-<a align="left" th:href="@{/users}">View Users</a>
+<a align="left" th:href="@{/users}">Users</a>
 <br>
-<a align="left" th:href="@{/destinations}">View Destinations</a>
+<a align="left" th:href="@{/destinations}">Destinations</a>
+<br>
+<a align="left" th:href="@{/vacationSpotFinder}">Vacation Spot Finder</a>
+<br>
+<a align="left" th:href="@{/budget}">Holiday Budget</a>
 
 <div align="center">
-
-    <h1>Vacation Spot Finder</h1>
-
-    <form action="#" th:action="@{/resultsPage}" th:object="${questionnaire}"
-          method="post">
-        <table border="0" cellpadding="10">
-            <tr>
-                <th>Favorite Scenery</th>
-                <th>Weather</th>
-                <th>Preferred Activity</th>
-                <th>Holiday Budget</th>
-            </tr>
-            <tr>
-                <td><input type="text" th:field="*{favoriteScenery}" required/>
-                <td><input type="text" th:field="*{weather}" required/>
-                <td><input type="text" th:field="*{preferredActivity}" required/>
-                <td><input type="number" th:field="*{holidayBudget}" required/>
-                </td>
-            </tr>
-        </table>
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
 
 </div>
 </body>

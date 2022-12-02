@@ -7,28 +7,11 @@
 </head>
 <body>
 
+<h1 align="center">Possible Vacation Spots</h1>
+<br>
 <a align="left" th:href="@{/home}">Home Page</a>
 
 <div align="center">
-
-  <h1>Destinations</h1>
-
-    <table border="0" cellpadding="10">
-        <tr>
-            <th>Selected Scenery</th>
-            <th>Selected Time of Year</th>
-            <th>Selected Preferred Activity</th>
-            <th>Selected Holiday Budget</th>
-        </tr>
-        <tr>
-            <td th:text="${questionnaire.favoriteScenery}">Chosen Scenery</td>
-            <td th:text="${questionnaire.weather}">Chosen Scenery</td>
-            <td th:text="${questionnaire.preferredActivity}">Chosen Scenery</td>
-            <td th:text="${questionnaire.holidayBudget}">Chosen Scenery</td>
-        </tr>
-    </table>
-
-    <br><br>
     <table border="1" cellpadding="10">
         <tr>
             <th>Destination ID</th>
@@ -51,8 +34,24 @@
             <td th:text="${destination.minimumBudget}">Minimum Budget</td>
         </tr>
     </table>
+
+    <br><br>
+
+    <table border="0" cellpadding="10">
+        <tr>
+            <th>Selected Scenery</th>
+            <th>Selected Time of Year</th>
+            <th>Selected Preferred Activity</th>
+            <th>Selected Holiday Budget</th>
+        </tr>
+        <tr>
+            <td th:text="${questionnaire.favoriteScenery}">Chosen Scenery</td>
+            <td th:text="${questionnaire.weather}">Chosen Scenery</td>
+            <td th:text="${questionnaire.preferredActivity}">Chosen Scenery</td>
+            <td th:text="${questionnaire.holidayBudget}">Chosen Scenery</td>
+        </tr>
+    </table>
+
 </div>
-
-
 </body>
 </html>

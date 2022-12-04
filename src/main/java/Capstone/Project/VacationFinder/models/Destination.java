@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 
@@ -27,7 +28,7 @@ public class Destination {
     String activity1;
     String activity2;
     String activity3;
-    int minimumBudget;
+    BigDecimal minimumBudget;
 
     @Column(name = "timestamp")
     @CreationTimestamp

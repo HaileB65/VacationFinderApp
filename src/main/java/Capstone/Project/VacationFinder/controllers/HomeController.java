@@ -32,7 +32,22 @@ public class HomeController {
         List<User> usersTable = userService.getAllUsers();
         model.addAttribute("usersTable", usersTable);
 
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
+
         return "home";
+    }
+
+    @PostMapping("/resultsPage")
+    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model){
+        model.addAttribute("questionnaire", questionnaire);
+
+//        List<Destination> destinationsTable = destinationService.getDestinationByScenery(questionnaire.getFavoriteScenery());
+//        List<Destination> destinationsTable = destinationService.getDestinationByMinimumBudgetLessThan(questionnaire.getBudget());
+        List<Destination> destinationsTable = destinationService.getDestinationBySceneryAndMinimumBudgetLessThan(questionnaire.getFavoriteScenery(), questionnaire.getBudget());
+        model.addAttribute("destinationsTable",destinationsTable);
+
+        return "results-page";
     }
 
 

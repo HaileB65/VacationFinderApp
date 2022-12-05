@@ -7,8 +7,6 @@
 <body>
 <h1 align="center">Users</h1>
 <br>
-<a align="left" th:href="@{/home}">Home page</a>
-
 <div align="center">
     <table border="1" cellpadding="10">
         <tr>
@@ -26,7 +24,9 @@
             <td th:text="${user.phone}">Phone</td>
         </tr>
     </table>
-
+    <br>
+    <a align="left" th:href="@{/newUser}">Create User</a>
+    <a align="left" th:href="@{/home}">Home page</a>
 </div>
 </body>
 </html>

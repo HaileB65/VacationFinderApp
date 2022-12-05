@@ -23,11 +23,6 @@ public class HomeController {
     @Autowired
     DestinationService destinationService;
 
-    @GetMapping("/")
-    public String showWelcomePage(Model model) {
-        return "welcome";
-    }
-
     @GetMapping("/home")
     public String showHomePage(Model model) {
         List<User> usersTable = userService.getAllUsers();

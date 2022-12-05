@@ -5,7 +5,9 @@ import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/users")
-    public String showHomePage(Model model){
+    public String showHomePage(Model model) {
         List<User> usersTable = userService.getAllUsers();
         model.addAttribute("usersTable", usersTable);
 
@@ -24,13 +26,13 @@ public class UserController {
     }
 
     @GetMapping("/newUser")
-    public String createNewUser(Model model){
+    public String createNewUser(Model model) {
         model.addAttribute("newUser", new User());
         return "new-user";
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("newUser")User newUser){
+    public String saveUser(@ModelAttribute("newUser") User newUser) {
         userService.createNewUser(newUser);
         return "redirect:/users";
     }

@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Create New Destination</title>
 </head>
 <body>
 <div align="center">
     <h1>Create New Destination</h1>
     <br/>
-    <form action="#" th:action="@{/saveDestination}" th:object="${newDestination}" method="post">
+    <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
 
         <table border="0" cellpadding="10">
             <tr>
                 <td>Name:</td>
-                <td><input type="text" th:field="*{name}" required/></td>
+                <td><input required th:field="*{name}" type="text"/></td>
             </tr>
             <tr>
                 <td>Scenery:</td>
-                <td><input type="text" th:field="*{scenery}" required/></td>
+                <td><input required th:field="*{scenery}" type="text"/></td>
             </tr>
             <tr>
                 <td>Weather:</td>
-                <td><input type="text" th:field="*{weather}" required></td>
+                <td><input required th:field="*{weather}" type="text"></td>
             </tr>
             <tr>
                 <td>Activity 1:</td>
-                <td><input type="text" th:field="*{activity1}" required></td>
+                <td><input required th:field="*{activity1}" type="text"></td>
             </tr>
             <tr>
                 <td>Activity 2:</td>
-                <td><input type="text" th:field="*{activity2}" required></td>
+                <td><input required th:field="*{activity2}" type="text"></td>
             </tr>
             <tr>
                 <td>Activity 3:</td>
-                <td><input type="text" th:field="*{activity3}" required></td>
+                <td><input required th:field="*{activity3}" type="text"></td>
             </tr>
             <tr>
                 <td>Minimum Budget:</td>
-                <td><input type="number" autocomplete="off" th:field="*{minimumBudget}" min="10" max="10000"/></td>
+                <td><input autocomplete="off" max="10000" min="10" th:field="*{minimumBudget}" type="number"/></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">Save</button> </td>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
             </tr>
         </table>
     </form>

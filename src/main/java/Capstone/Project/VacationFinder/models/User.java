@@ -19,7 +19,7 @@ import java.util.Collections;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name= "Users")
+@Table(name = "Users")
 @AllArgsConstructor
 @Builder
 public class User implements UserDetails {
@@ -58,12 +58,12 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 

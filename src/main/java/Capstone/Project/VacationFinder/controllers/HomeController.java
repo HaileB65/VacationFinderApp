@@ -24,11 +24,12 @@ public class HomeController {
     DestinationService destinationService;
 
     @GetMapping("/")
-    public String showWelcomePage(Model model){
+    public String showWelcomePage(Model model) {
         return "welcome";
     }
+
     @GetMapping("/home")
-    public String showHomePage(Model model){
+    public String showHomePage(Model model) {
         List<User> usersTable = userService.getAllUsers();
         model.addAttribute("usersTable", usersTable);
 
@@ -39,13 +40,11 @@ public class HomeController {
     }
 
     @PostMapping("/resultsPage")
-    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model){
+    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
         model.addAttribute("questionnaire", questionnaire);
 
-//        List<Destination> destinationsTable = destinationService.getDestinationByScenery(questionnaire.getFavoriteScenery());
-//        List<Destination> destinationsTable = destinationService.getDestinationByMinimumBudgetLessThan(questionnaire.getBudget());
         List<Destination> destinationsTable = destinationService.getDestinationBySceneryAndMinimumBudgetLessThan(questionnaire.getFavoriteScenery(), questionnaire.getBudget());
-        model.addAttribute("destinationsTable",destinationsTable);
+        model.addAttribute("destinationsTable", destinationsTable);
 
         return "results-page";
     }

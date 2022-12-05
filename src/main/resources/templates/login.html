@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" name="login" th:action="@{/login}">
+        <fieldset>
+            <legend>Please login</legend>
+            <div class="alert alert-error" th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div class="alert alert-success" th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text"/>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="text"/>
+            <div class="form-actions">
+                <button class="btn" type="submit">Log in</button>
+            </div>
+            <a align="left" th:href="@{/newUser}">Create User</a>
+        </fieldset>
+    </form>
+
+</body>
+</html>

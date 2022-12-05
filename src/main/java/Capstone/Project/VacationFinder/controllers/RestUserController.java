@@ -32,18 +32,18 @@ public class RestUserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createNewUser(@RequestBody User user){
-        try{
+    public ResponseEntity<?> createNewUser(@RequestBody User user) {
+        try {
             User newUser = userService.createNewUser(user);
             return ResponseEntity.created(newUser.getLocationURI()).body(newUser);
-        }catch (IllegalStateException e) {
-                return ResponseEntity.badRequest().body(e.getMessage());
-            }
+        } catch (IllegalStateException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
 
     @GetMapping("/CNAPI")
     public List<apiUser> getCNAPIUsers() {
         return codingNomadsAPIService.getAllUsers();
     }
 
-    }
+}

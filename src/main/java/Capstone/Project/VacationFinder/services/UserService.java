@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService  {
+public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    public List<User> getAllUsers(){return userRepository.findAll();}
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,7 +25,7 @@ public class UserService implements UserDetailsService  {
 
     }
 
-    public User createNewUser(User user){
+    public User createNewUser(User user) {
         userRepository.save(user);
         return user;
     }

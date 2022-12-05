@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:method="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
@@ -16,8 +16,8 @@
 <div align="center">
 
     <a>Find your vacation. Enter your preferences below.</a>
-    <form action="#" th:action="@{/resultsPage}" th:object="${questionnaire}"
-          method="post">
+    <form action="#" method="post" th:action="@{/resultsPage}"
+          th:object="${questionnaire}">
         <table border="0" cellpadding="10">
             <tr>
                 <th>Favorite Scenery</th>
@@ -26,10 +26,10 @@
                 <th>Holiday Budget</th>
             </tr>
             <tr>
-                <td><input type="text" th:field="*{favoriteScenery}" required/>
-                <td><input type="text" th:field="*{weather}" required/>
-                <td><input type="text" th:field="*{preferredActivity}" required/>
-                <td><input type="number" th:field="*{budget}" required/>
+                <td><input required th:field="*{favoriteScenery}" type="text"/>
+                <td><input required th:field="*{weather}" type="text"/>
+                <td><input required th:field="*{preferredActivity}" type="text"/>
+                <td><input required th:field="*{budget}" type="number"/>
                 </td>
             </tr>
         </table>

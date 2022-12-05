@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class CodingNomadsAPIResponse {
-        private List<apiUser> data;
-        private Error error;
-        private String status;
+    private List<apiUser> data;
+    private Error error;
+    private String status;
 }

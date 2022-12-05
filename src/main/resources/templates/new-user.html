@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Create New User</title>
 </head>
 <body>
 <div align="center">
     <h1>Create New User</h1>
     <br/>
-    <form action="#" th:action="@{/saveUser}" th:object="${newUser}" method="post">
+    <form action="#" method="post" th:action="@{/saveUser}" th:object="${newUser}">
 
         <table border="0" cellpadding="10">
             <tr>
                 <td>First Name:</td>
-                <td><input type="text" th:field="*{firstName}" required/></td>
+                <td><input required th:field="*{firstName}" type="text"/></td>
             </tr>
             <tr>
                 <td>Last Name:</td>
-                <td><input type="text" th:field="*{lastName}" required/></td>
+                <td><input required th:field="*{lastName}" type="text"/></td>
             </tr>
             <tr>
                 <td>Email Address:</td>
-                <td><textarea type="email" th:field="*{email}" required></textarea></td>
+                <td><textarea required th:field="*{email}" type="email"></textarea></td>
             </tr>
             <tr>
                 <td>Phone Address:</td>
-                <td><textarea type="text" th:field="*{phone}" required></textarea></td>
+                <td><textarea required th:field="*{phone}" type="text"></textarea></td>
             </tr>
             <tr>
                 <td>Username Address:</td>
-                <td><textarea type="text" th:field="*{username}" required></textarea></td>
+                <td><textarea required th:field="*{username}" type="text"></textarea></td>
             </tr>
             <tr>
                 <td>Password Address:</td>
-                <td><textarea type="text" th:field="*{password}" required></textarea></td>
+                <td><textarea required th:field="*{password}" type="text"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">Save</button> </td>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
             </tr>
         </table>
     </form>

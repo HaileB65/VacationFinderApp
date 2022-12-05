@@ -13,9 +13,11 @@ public class DestinationService {
     @Autowired
     DestinationRepository destinationRepository;
 
-    public List<Destination> getAllDestinations(){return destinationRepository.findAll();}
+    public List<Destination> getAllDestinations() {
+        return destinationRepository.findAll();
+    }
 
-    public Destination createNewDestination(Destination destination){
+    public Destination createNewDestination(Destination destination) {
         destinationRepository.save(destination);
         return destination;
     }

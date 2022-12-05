@@ -13,20 +13,22 @@ import java.sql.Timestamp;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name= "Budget")
+@Table(name = "Budget")
 @AllArgsConstructor
 @Builder
 public class Budget {
+    BigDecimal transportationCost;
+    BigDecimal lodgingCost;
+    BigDecimal foodAlcoholCost;
+    BigDecimal entertainmentCost;
+    BigDecimal total;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
-    BigDecimal transportationCost;
-    BigDecimal lodgingCost;
-    BigDecimal foodAlcoholCost;
-    BigDecimal  entertainmentCost;
-    BigDecimal total;
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    private Timestamp timestamp;
 
     public void setTotal(BigDecimal total) {
         total = total.add(transportationCost);
@@ -35,9 +37,5 @@ public class Budget {
         total = total.add(entertainmentCost);
         this.total = total;
     }
-
-    @Column(name = "timestamp")
-    @CreationTimestamp
-    private Timestamp timestamp;
 
 }

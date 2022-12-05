@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name= "Destinations")
+@Table(name = "Destinations")
 @AllArgsConstructor
 @Builder
 public class Destination {

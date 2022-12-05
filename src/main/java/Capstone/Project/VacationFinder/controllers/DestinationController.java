@@ -19,7 +19,7 @@ public class DestinationController {
     DestinationService destinationService;
 
     @GetMapping("/destinations")
-    public String showDestinationsPage(Model model){
+    public String showDestinationsPage(Model model) {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
@@ -30,13 +30,13 @@ public class DestinationController {
     }
 
     @GetMapping("/newDestination")
-    public String createNewDestination(Model model){
+    public String createNewDestination(Model model) {
         model.addAttribute("newDestination", new Destination());
         return "new-destination";
     }
 
     @PostMapping("/saveDestination")
-    public String saveDestination(@ModelAttribute("newDestination")Destination destination){
+    public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
         destinationService.createNewDestination(destination);
         return "redirect:/destinations";
     }

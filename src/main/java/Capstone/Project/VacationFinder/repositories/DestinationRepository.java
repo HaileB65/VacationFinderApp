@@ -13,10 +13,10 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
     List<Destination> findAll();
 
     List<Destination> findByMinimumBudgetLessThan(BigDecimal budget);
+
     List<Destination> findByScenery(String scenery);
 
     List<Destination> findBySceneryAndMinimumBudgetLessThan(String scenery, BigDecimal budget);
-
 
 
 }

@@ -1,7 +1,10 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.models.UserRole;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
+import Capstone.Project.VacationFinder.security.PasswordEncoder;
+import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String showWelcomePage(Model model) {
@@ -32,11 +41,7 @@ public class LoginController {
 
     @PostMapping("/process_register")
     public String processRegistration(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-
-        userRepository.save(user);
+       userService.createNewUser(user);
 
         return "successful-registration";
     }

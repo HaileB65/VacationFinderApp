@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinder.security;
 
+import Capstone.Project.VacationFinder.models.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,10 @@ public class PasswordEncoder {
         return new BCryptPasswordEncoder();
     }
 
-    public String encodedPassword(String passwordToEncode){
+    public User encodeUserPassword(User user){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(passwordToEncode);
-        return encodedPassword;
+        String encodedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        return user;
     }
 }

@@ -13,5 +13,5 @@ public class Questionnaire {
     String favoriteScenery;
     String weather;
     String preferredActivity;
-    BigDecimal budget;
+    BigDecimal dailyCost;
 }

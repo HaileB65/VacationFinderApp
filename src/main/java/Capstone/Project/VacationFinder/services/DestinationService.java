@@ -26,12 +26,12 @@ public class DestinationService {
         return destinationRepository.findByScenery(scenery);
     }
 
-    public List<Destination> getDestinationByMinimumBudgetLessThan(BigDecimal budget) {
-        return destinationRepository.findByMinimumBudgetLessThan(budget);
+    public List<Destination> getDestinationByDailyCostLessThan(BigDecimal dailyCost) {
+        return destinationRepository.findBydailyCostLessThan(dailyCost);
     }
 
-    public List<Destination> getDestinationBySceneryAndMinimumBudgetLessThan(String favoriteScenery, BigDecimal budget) {
-        return destinationRepository.findBySceneryAndMinimumBudgetLessThan(favoriteScenery, budget);
+    public List<Destination> getDestinationBySceneryAndDailyCostLessThan(String favoriteScenery, BigDecimal dailyCost) {
+        return destinationRepository.findBySceneryAndDailyCostLessThan(favoriteScenery, dailyCost);
     }
 
 }

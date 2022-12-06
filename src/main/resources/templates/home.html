@@ -11,33 +11,93 @@
 <br>
 <a align="left" th:href="@{/destinations}">Destinations</a>
 <br>
-<a align="left" th:href="@{/budget}">Holiday Budget</a>
-<br>
 <a align="left" th:href="@{/logout}">Log out</a>
 
 <div align="center">
 
-    <a>Find your vacation. Enter your preferences below.</a>
-    <form action="#" method="post" th:action="@{/resultsPage}"
-          th:object="${questionnaire}">
-        <table border="0" cellpadding="10">
-            <tr>
-                <th>Favorite Scenery</th>
-                <th>Weather</th>
-                <th>Preferred Activity</th>
-                <th>Holiday Budget</th>
-            </tr>
-            <tr>
-                <td><input required th:field="*{favoriteScenery}" type="text"/>
-                <td><input required th:field="*{weather}" type="text"/>
-                <td><input required th:field="*{preferredActivity}" type="text"/>
-                <td><input required th:field="*{budget}" type="number"/>
-                </td>
-            </tr>
-        </table>
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <table border="0" cellpadding="10">
+        <tr>
+            <td>
+                <a align="center">Find your vacation. Enter your preferences below.</a>
+                <form action="#" method="post" th:action="@{/resultsPage}"
+                      th:object="${questionnaire}">
+                    <table border="0" cellpadding="10">
+                        <tr>
+                            <th>Favorite Scenery</th>
+                            <th>Weather</th>
+                            <th>Preferred Activity</th>
+                            <th>Holiday Budget</th>
+                        </tr>
+                        <tr>
+                            <td><input required th:field="*{favoriteScenery}" type="text"/>
+                            <td><input required th:field="*{weather}" type="text"/>
+                            <td><input required th:field="*{preferredActivity}" type="text"/>
+                            <td><input required th:field="*{dailyCost}" type="number"/></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <input align="center" type="submit" value="Submit">
+                </form>
+            </td>
+            <td>
+                <table border="1" cellpadding="10">
+                    <tr>
+                        <th>Itinerary</th>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                    </tr>
+                    <tr>
+                        <td>Location 1</td>
+                    </tr>
+                    <tr>
+                        <td>Location 2</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>Location 3</td>
+                    </tr>
+                    <tr>
+                        <td>Location 4</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>Itinerary</th>
+                </tr>
+                <tr>
+                    <td>Breakfast</td>
+                </tr>
+                <tr>
+                    <td>Location 1</td>
+                </tr>
+                <tr>
+                    <td>Location 2</td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                </tr>
+                <tr>
+                    <td>Location 3</td>
+                </tr>
+                <tr>
+                    <td>Location 4</td>
+                </tr>
+                <tr>
+                    <td>Dinner</td>
+                </tr>
+            </table>
+        </tr>
+    </table>
 </div>
+
 </body>
 </html>

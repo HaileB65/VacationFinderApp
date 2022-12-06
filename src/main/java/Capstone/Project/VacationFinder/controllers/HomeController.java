@@ -38,7 +38,7 @@ public class HomeController {
     public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
         model.addAttribute("questionnaire", questionnaire);
 
-        List<Destination> destinationsTable = destinationService.getDestinationBySceneryAndMinimumBudgetLessThan(questionnaire.getFavoriteScenery(), questionnaire.getBudget());
+        List<Destination> destinationsTable = destinationService.getDestinationBySceneryAndDailyCostLessThan(questionnaire.getFavoriteScenery(), questionnaire.getDailyCost());
         model.addAttribute("destinationsTable", destinationsTable);
 
         return "results-page";

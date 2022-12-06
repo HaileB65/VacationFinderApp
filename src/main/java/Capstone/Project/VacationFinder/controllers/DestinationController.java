@@ -29,6 +29,11 @@ public class DestinationController {
         return "destinations";
     }
 
+    @GetMapping("/theBahamas")
+    public String showBahamasPage(Model model) {
+        return "the-bahamas";
+    }
+
     @GetMapping("/newDestination")
     public String createNewDestination(Model model) {
         model.addAttribute("newDestination", new Destination());

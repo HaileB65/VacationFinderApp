@@ -27,7 +27,7 @@ public class DestinationService {
     }
 
     public List<Destination> getDestinationByDailyCostLessThan(BigDecimal dailyCost) {
-        return destinationRepository.findBydailyCostLessThan(dailyCost);
+        return destinationRepository.findByDailyCostLessThan(dailyCost);
     }
 
     public List<Destination> getDestinationBySceneryAndDailyCostLessThan(String favoriteScenery, BigDecimal dailyCost) {

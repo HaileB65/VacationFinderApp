@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinder.models;
+package Capstone.Project.VacationFinder.models.CodingNomadsAPI;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

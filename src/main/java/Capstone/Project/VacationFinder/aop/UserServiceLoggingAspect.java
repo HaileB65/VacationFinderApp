@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class ServiceAspect {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAspect.class);
+public class UserServiceLoggingAspect {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceLoggingAspect.class);
 
     @Pointcut(value = "execution(* Capstone.Project.VacationFinder.services.UserService.*(..))")
     private void pointCutAllUserServiceMethods(){

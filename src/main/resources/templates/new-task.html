@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Create New Task</title>
+</head>
+<body>
+<div align="center">
+    <h1>Create New Task</h1>
+    <br/>
+    <form action="#" method="post" th:action="@{/saveTask}" th:object="${newTask}">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Enter Task:</td>
+                <td><input required th:field="*{task}" type="text"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

@@ -12,7 +12,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     List<Destination> findAll();
 
-    List<Destination> findBydailyCostLessThan(BigDecimal dailyCost);
+    List<Destination> findByDailyCostLessThan(BigDecimal dailyCost);
 
     List<Destination> findByScenery(String scenery);
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1 align="center">Vacation Planner</h1>
+
+<a align="left" th:href="@{/users}">Users</a>
+<br>
+<a align="left" th:href="@{/destinations}">Destinations</a>
+<br>
+<a align="left" th:href="@{/logout}">Log out</a>
+
+<div align="center">
+    <table border="0" cellpadding="10">
+        <tr>
+            <td>
+                <form action="#" method="post" th:action="@{/resultsPage}"
+                      th:object="${questionnaire}">
+                    <table border="0" cellpadding="10">
+                        <tr><td colspan="4"><a align="center">Find your vacation. Enter your preferences below.</a></td></tr>
+                        <tr>
+                            <th>Favorite Scenery</th>
+                            <th>Weather</th>
+                            <th>Preferred Activity</th>
+                            <th>Daily Budget</th>
+                        </tr>
+                        <tr>
+                            <td><input required th:field="*{favoriteScenery}" type="text"/>
+                            <td><input required th:field="*{weather}" type="text"/>
+                            <td><input required th:field="*{preferredActivity}" type="text"/>
+                            <td><input required th:field="*{dailyCost}" type="number"/></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

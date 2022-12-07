@@ -25,20 +25,23 @@ public class HomeController {
 
     @GetMapping("/home")
     public String showHomePage(Model model) {
-        List<User> usersTable = userService.getAllUsers();
-        model.addAttribute("usersTable", usersTable);
 
+        return "home";
+    }
+
+    @GetMapping("/vacationSpotFinder")
+    public String showVacationSpotFinder(Model model) {
         Questionnaire questionnaire = new Questionnaire();
         model.addAttribute("questionnaire", questionnaire);
 
-        return "home";
+        return "vacation-spot-finder";
     }
 
     @PostMapping("/resultsPage")
     public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
         model.addAttribute("questionnaire", questionnaire);
 
-        List<Destination> destinationsTable = destinationService.getDestinationBySceneryAndDailyCostLessThan(questionnaire.getFavoriteScenery(), questionnaire.getDailyCost());
+        List<Destination> destinationsTable = destinationService.getDestinationByScenery(questionnaire.getFavoriteScenery());
         model.addAttribute("destinationsTable", destinationsTable);
 
         return "results-page";

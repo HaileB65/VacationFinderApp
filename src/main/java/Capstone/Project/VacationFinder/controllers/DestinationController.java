@@ -34,6 +34,10 @@ public class DestinationController {
         return "the-bahamas";
     }
 
+    @GetMapping("/switzerland")
+    public String showSwitzerlandPage(Model model) {
+        return "switzerland";
+    }
     @GetMapping("/newDestination")
     public String createNewDestination(Model model) {
         model.addAttribute("newDestination", new Destination());

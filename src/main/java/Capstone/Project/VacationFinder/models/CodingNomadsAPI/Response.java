@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinder.models;
+package Capstone.Project.VacationFinder.models.CodingNomadsAPI;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CodingNomadsAPIResponse {
+public class Response {
     private List<apiUser> data;
     private Error error;
     private String status;

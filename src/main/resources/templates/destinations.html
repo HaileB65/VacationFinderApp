@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Destination Page</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
 
 <h1 align="center">Destinations</h1>
 
@@ -31,7 +33,7 @@
             <td th:text="${destination.activity2}">Activity 2</td>
             <td th:text="${destination.activity3}">Activity 3</td>
             <td th:text="${destination.dailyCost}">Daily Budget</td>
-            <td><a th:href="@{/theBahamas}">Enter</a></td>
+            <td><a th:href="@{/destination/__${destination.id}__}">Enter</a></td>
         </tr>
     </table>
     <br>

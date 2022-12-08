@@ -3,11 +3,13 @@ package Capstone.Project.VacationFinder.controllers;
 import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.services.DestinationService;
+import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -34,10 +36,24 @@ public class DestinationController {
         return "the-bahamas";
     }
 
+
+    @GetMapping("/destination/{destinationId}")
+    public String showDestinationPage(@PathVariable("destinationId")long destinationId, Model model) throws Exception {
+        System.out.println("Destination Id is " + destinationId);
+        //TODO get info and images for destination by ID from the database and add them to the model.
+        Destination destination = destinationService.getDestinationById(destinationId);
+        model.addAttribute("destinationName", destination.getName());
+
+        model.addAttribute("image1", destination.getImage1());
+        model.addAttribute("image2", destination.getImage2());
+        return "destination";
+    }
+
     @GetMapping("/switzerland")
     public String showSwitzerlandPage(Model model) {
         return "switzerland";
     }
+
     @GetMapping("/newDestination")
     public String createNewDestination(Model model) {
         model.addAttribute("newDestination", new Destination());

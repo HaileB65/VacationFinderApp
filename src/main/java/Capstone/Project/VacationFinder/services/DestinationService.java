@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DestinationService {
@@ -23,7 +24,14 @@ public class DestinationService {
     }
 
     public List<Destination> getDestinationByScenery(String scenery) {
-        return destinationRepository.findByScenery(scenery);
+        return destinationRepository.findById(scenery);
+    }
+
+    public Destination getDestinationById(long id) throws Exception {
+        Optional<Destination> destination = destinationRepository.findById(id);
+        if(destination.isPresent()){
+            return destination.get();
+        } else throw new Exception("Destination not found");
     }
 
     public List<Destination> getDestinationByDailyCostLessThan(BigDecimal dailyCost) {

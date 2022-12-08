@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
     <form method="post" name="login" th:action="@{/login}">
         <fieldset>
             <legend>Please login</legend>

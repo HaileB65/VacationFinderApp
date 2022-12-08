@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
+
 <h1 align="center">Vacation Planner</h1>
 
 <a align="left" th:href="@{/users}">Users</a>

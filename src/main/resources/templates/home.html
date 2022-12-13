@@ -25,12 +25,12 @@
             </td>
         </tr>
         <td>
-            <table border="1" cellpadding="10">
+            <table border="1" cellpadding="10" th:object="${itinerary}">
                 <tr>
                     <th>Itinerary</th>
                 </tr>
                 <tr>
-                    <td>Breakfast</td>
+                    <td th:text="${itinerary.item1}">User ID</td>
                 </tr>
                 <tr>
                     <td>Location 1</td>

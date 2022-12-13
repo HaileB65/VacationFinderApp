@@ -7,31 +7,29 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-
 @Entity
-@Table(name = "Destinations")
+@Table(name = "itineraries")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Destination {
+public class Itinerary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
-    String name;
-    String scenery;
-    String weather;
-    String activity1;
-    String activity2;
-    String activity3;
-    BigDecimal dailyCost;
-    String image1;
-    String image2;
-
+    String item1;
+    String item2;
+    String item3;
+    String item4;
+    String item5;
+    String item6;
+    String item7;
+    String item8;
+    String item9;
+    String item10;
 
     @Column(name = "timestamp")
     @CreationTimestamp

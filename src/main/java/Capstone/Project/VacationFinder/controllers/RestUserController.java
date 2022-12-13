@@ -1,7 +1,7 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.models.CodingNomadsAPI.apiUser;
+import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.CodingNomadsAPIService;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

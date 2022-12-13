@@ -2,11 +2,9 @@ package Capstone.Project.VacationFinder.services;
 
 
 import Capstone.Project.VacationFinder.models.User;
-import Capstone.Project.VacationFinder.models.UserRole;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
 import Capstone.Project.VacationFinder.security.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

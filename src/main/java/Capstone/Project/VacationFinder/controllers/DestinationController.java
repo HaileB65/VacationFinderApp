@@ -3,7 +3,6 @@ package Capstone.Project.VacationFinder.controllers;
 import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.services.DestinationService;
-import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

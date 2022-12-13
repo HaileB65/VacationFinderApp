@@ -1,9 +1,7 @@
 package Capstone.Project.VacationFinder;
 
-import Capstone.Project.VacationFinder.models.Role;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.models.UserRole;
-import Capstone.Project.VacationFinder.repositories.RoleRepository;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Arrays;
 
 @SpringBootApplication
 public class VacationFinderApplication implements CommandLineRunner {
@@ -21,9 +18,6 @@ public class VacationFinderApplication implements CommandLineRunner {
 
     @Autowired
     UserRepository userRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -35,7 +29,6 @@ public class VacationFinderApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Role userRole = roleRepository.findByName("ROLE_USER");
         if (!userRepository.existsByUsername("guest")) {
             User guest = User.builder()
                     .firstName("Robin")
@@ -49,8 +42,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .locked(false)
                     .build();
 
-            guest.setRoles(Arrays.asList(userRole));
-
             userService.createNewUser(guest);
         }
 
@@ -62,16 +53,13 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .phone("1245874568")
                     .username("user")
                     .password("password")
+                    .userRole(UserRole.USER)
                     .enabled(true)
                     .locked(false)
                     .build();
 
-            user.setRoles(Arrays.asList(userRole));
-
             userService.createNewUser(user);
         }
-
-        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
 
         if (!userRepository.existsByUsername("admin")) {
             User admin = User.builder()
@@ -81,14 +69,13 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .phone("8567487596")
                     .username("admin")
                     .password("password")
+                    .userRole(UserRole.ADMIN)
                     .enabled(true)
                     .locked(false)
                     .build();
 
-            admin.setRoles(Arrays.asList(adminRole));
-
             userService.createNewUser(admin);
         }
-
     }
+
 }

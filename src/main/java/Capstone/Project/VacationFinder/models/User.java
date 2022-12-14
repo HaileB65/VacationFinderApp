@@ -34,6 +34,19 @@ public class User implements UserDetails {
     String username;
     String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "trip_id")
+    Trip trip;
+
+//        @OneToOne  // table isn't population values
+//    @JoinTable(
+//            name ="users_trips",
+//            joinColumns = @JoinColumn(
+//                    name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "trip_id", referencedColumnName = "id"))
+//    private Trip trip;
+
     @Enumerated(EnumType.STRING)
     UserRole userRole;
 
@@ -51,14 +64,6 @@ public class User implements UserDetails {
     @JsonIgnore
     private URI locationURI;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "users_roles",
-//            joinColumns = @JoinColumn(
-//                    name = "user_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name="role_id", referencedColumnName = "id"))
-//    private Collection<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,26 +1,45 @@
 package Capstone.Project.VacationFinder;
 
-import Capstone.Project.VacationFinder.models.User;
-import Capstone.Project.VacationFinder.models.UserRole;
+import Capstone.Project.VacationFinder.models.*;
+import Capstone.Project.VacationFinder.repositories.ChecklistRepository;
+import Capstone.Project.VacationFinder.repositories.ItineraryRepository;
+import Capstone.Project.VacationFinder.repositories.TripRepository;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
+import Capstone.Project.VacationFinder.services.ChecklistService;
+import Capstone.Project.VacationFinder.services.ItineraryService;
+import Capstone.Project.VacationFinder.services.TripService;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @SpringBootApplication
 public class VacationFinderApplication implements CommandLineRunner {
-    @Autowired
-    UserService userService;
 
+    @Autowired
+    ItineraryRepository itineraryRepository;
+
+    @Autowired
+    ChecklistRepository checklistRepository;
+
+    @Autowired
+    TripRepository tripRepository;
     @Autowired
     UserRepository userRepository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    ItineraryService itineraryService;
+
+    @Autowired
+    ChecklistService checklistService;
+
+    @Autowired
+    TripService tripService;
+    @Autowired
+    UserService userService;
+
 
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApplication.class, args);
@@ -28,6 +47,39 @@ public class VacationFinderApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        if(!itineraryRepository.existsById(1L)) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("dfas")
+                    .item2("fdas")
+                    .item3("dfsa")
+                    .build();
+
+            itineraryService.createNewItinerary(itinerary);
+        }
+
+        if(!checklistRepository.existsById(1L)) {
+           Checklist checklist = Checklist.builder()
+                    .item1("fdas")
+                    .item2("fdas")
+                    .item3("asdf")
+                    .build();
+
+            checklistService.createNewChecklist(checklist);
+        }
+
+
+        if(!tripRepository.existsById(1L)) {
+            Checklist checklist = new Checklist();
+            Trip trip = Trip.builder()
+                    .itinerary(new Itinerary())
+                    .checklist(new Checklist())
+                    .selectedDestination("Rome")
+                    .build();
+
+            checklistService.createNewChecklist(checklist);
+            tripService.createNewTrip(trip);
+        }
 
         if (!userRepository.existsByUsername("guest")) {
             User guest = User.builder()
@@ -38,11 +90,13 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("guest")
                     .password("password")
                     .userRole(UserRole.GUEST)
+                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();
 
             userService.createNewUser(guest);
+
         }
 
         if (!userRepository.existsByUsername("user")) {
@@ -54,6 +108,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("user")
                     .password("password")
                     .userRole(UserRole.USER)
+                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -70,6 +125,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("admin")
                     .password("password")
                     .userRole(UserRole.ADMIN)
+                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();

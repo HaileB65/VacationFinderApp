@@ -10,12 +10,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "itineraries")
+@Table(name = "checklists")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Itinerary {
+public class Checklist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -3,8 +3,10 @@ package Capstone.Project.VacationFinder.controllers;
 import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Itinerary;
 import Capstone.Project.VacationFinder.models.Questionnaire;
+import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.ItineraryService;
+import Capstone.Project.VacationFinder.services.TripService;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +30,13 @@ public class HomeController {
     @Autowired
     ItineraryService itineraryService;
 
+    @Autowired
+    TripService tripService;
+
     @GetMapping("/home")
     public String showHomePage(Model model) throws Exception {
-        Itinerary itinerary = itineraryService.getItineraryById(1L);
-        model.addAttribute("itinerary", itinerary);
-
+        Trip trip = tripService.getTripById(1L);
+        model.addAttribute("trip", trip);
         return "home";
     }
 

@@ -21,15 +21,15 @@ public class Trip {
 
     String selectedDestination;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "itinerary_id")
-    Itinerary itinerary;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "checklist_id")
-    Checklist checklist;
-
-    @OneToOne(mappedBy = "trip")
-    User user;
+//    @OneToOne
+//    @JoinColumn(name = "itinerary_id")
+//    Itinerary itinerary;
+//
+//    @OneToOne
+//    @JoinColumn(name = "checklist_id")
+//    Checklist checklist;
+//
+//    @OneToOne(mappedBy = "trip")
+//    User user;
 
 }

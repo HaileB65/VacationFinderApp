@@ -72,8 +72,8 @@ public class VacationFinderApplication implements CommandLineRunner {
         if(!tripRepository.existsById(1L)) {
             Checklist checklist = new Checklist();
             Trip trip = Trip.builder()
-                    .itinerary(new Itinerary())
-                    .checklist(new Checklist())
+//                    .itinerary(new Itinerary())
+//                    .checklist(new Checklist())
                     .selectedDestination("Rome")
                     .build();
 
@@ -81,7 +81,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(trip);
         }
 
-        if (!userRepository.existsByUsername("guest")) {
+        if (!userRepository.existsById(1L)) {
             User guest = User.builder()
                     .firstName("Robin")
                     .lastName("Smith")
@@ -90,7 +90,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("guest")
                     .password("password")
                     .userRole(UserRole.GUEST)
-                    .trip(new Trip())
+//                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -108,7 +108,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("user")
                     .password("password")
                     .userRole(UserRole.USER)
-                    .trip(new Trip())
+//                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -125,7 +125,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .username("admin")
                     .password("password")
                     .userRole(UserRole.ADMIN)
-                    .trip(new Trip())
+//                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();

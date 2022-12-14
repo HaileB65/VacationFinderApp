@@ -34,9 +34,9 @@ public class User implements UserDetails {
     String username;
     String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "trip_id")
-    Trip trip;
+//    @OneToOne
+//    @JoinColumn(name = "trip_id")
+//    Trip trip;
 
 //        @OneToOne  // table isn't population values
 //    @JoinTable(

@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome Page</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
 <div align="center">
+    <br>
+    <br>
+    <br>
     <h1>Welcome To the Vacation Planner App!</h1>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <a th:href="@{/home}">Home page</a>
+
 
 </div>
+<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

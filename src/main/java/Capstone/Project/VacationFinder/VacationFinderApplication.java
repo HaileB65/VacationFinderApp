@@ -70,14 +70,24 @@ public class VacationFinderApplication implements CommandLineRunner {
 
 
         if(!tripRepository.existsById(1L)) {
-            Checklist checklist = new Checklist();
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("213")
+                    .item2("213")
+                    .item3("342")
+                    .build();
+
+            Checklist checklist = Checklist.builder()
+                    .item1("324")
+                    .item2("342")
+                    .item3("asd342f")
+                    .build();
+
             Trip trip = Trip.builder()
-//                    .itinerary(new Itinerary())
-//                    .checklist(new Checklist())
+                    .itinerary(itinerary)
+                    .checklist(checklist)
                     .selectedDestination("Rome")
                     .build();
 
-            checklistService.createNewChecklist(checklist);
             tripService.createNewTrip(trip);
         }
 

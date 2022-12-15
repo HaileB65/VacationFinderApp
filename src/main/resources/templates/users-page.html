@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
 <h1 align="center">Users</h1>
 <br>
 <div align="center">
@@ -28,5 +30,6 @@
     <a align="left" th:href="@{/newUser}">Create User</a>
     <a align="left" th:href="@{/home}">Home page</a>
 </div>
+<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package Capstone.Project.VacationFinder.services;
 
-
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
 import Capstone.Project.VacationFinder.security.PasswordEncoder;
@@ -11,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -19,6 +19,13 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    public User getUserById(long id) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            return user.get();
+        } else throw new Exception("User not found");
+    }
 
 
     public List<User> getAllUsers() {

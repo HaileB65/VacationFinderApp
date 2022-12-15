@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration Successful</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
     <h1>You have successfully registered!</h1>
 
     <a align="left" th:href="@{/login}">Click here to Login</a>
-
+    <div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

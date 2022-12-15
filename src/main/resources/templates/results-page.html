@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Destinations</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
 
 <h1 align="center">Possible Vacation Spots</h1>
 
@@ -55,5 +57,6 @@
     <a align="left" th:href="@{/home}">Home Page</a>
 
 </div>
+<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

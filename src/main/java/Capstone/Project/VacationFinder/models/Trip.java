@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="trips")
@@ -21,15 +22,15 @@ public class Trip {
 
     String selectedDestination;
 
-//    @OneToOne
-//    @JoinColumn(name = "itinerary_id")
-//    Itinerary itinerary;
-//
-//    @OneToOne
-//    @JoinColumn(name = "checklist_id")
-//    Checklist checklist;
-//
-//    @OneToOne(mappedBy = "trip")
-//    User user;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "itinerary_id")
+    Itinerary itinerary;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "checklist_id")
+    Checklist checklist;
+
+    @ManyToMany(mappedBy= "trips")
+    private Set<User> users;
 
 }

@@ -2,21 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <title>Create New Task</title>
+    <title>Create New Trip</title>
     <div th:replace="fragments :: header"/>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
 <div align="center">
-    <h1>Create New Task</h1>
+    <h1>Create New Trip</h1>
     <br/>
-    <form action="#" method="post" th:action="@{/saveTask}" th:object="${newTask}">
+    <form action="#" method="post" th:action="@{/saveTrip}" th:object="${newTrip}">
 
         <table border="0" cellpadding="10">
             <tr>
-                <td>Enter Task:</td>
-                <td><input required th:field="*{task}" type="text"/></td>
+                <td>Enter Destination:</td>
+                <td><input required th:field="*{selectedDestination}" type="text"/></td>
             </tr>
+            <tr>
+                <td>Create Itinerary:</td>
+                <td><input required type="text"/></td>
+            </tr>
+            <tr>
+                <td>Create Checklist:</td>
+                <td><input required  type="text"></td>
+            </tr>
+
             <tr>
                 <td colspan="2">
                     <button type="submit">Save</button>

@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>Create New User</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body>
+<div th:replace="fragments :: navigation"/>
 <div align="center">
     <h1>Create New User</h1>
     <br/>
@@ -43,4 +45,5 @@
         </table>
     </form>
 </div>
+<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>

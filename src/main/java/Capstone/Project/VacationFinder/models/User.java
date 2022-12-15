@@ -15,6 +15,7 @@ import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -34,18 +35,8 @@ public class User implements UserDetails {
     String username;
     String password;
 
-//    @OneToOne
-//    @JoinColumn(name = "trip_id")
-//    Trip trip;
-
-//        @OneToOne  // table isn't population values
-//    @JoinTable(
-//            name ="users_trips",
-//            joinColumns = @JoinColumn(
-//                    name = "user_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "trip_id", referencedColumnName = "id"))
-//    private Trip trip;
+    @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Trip> trips;
 
     @Enumerated(EnumType.STRING)
     UserRole userRole;

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -35,6 +34,7 @@ public class HomeController {
     public String showHomePage(Model model) throws Exception {
         Trip trip = tripService.getTripById(1L);
 
+        //TODO userRepository null
 //        User user = userService.getUserById(1L);
 //        System.out.println(user.getFirstName());
 //        System.out.println(user.getTrips().isEmpty());

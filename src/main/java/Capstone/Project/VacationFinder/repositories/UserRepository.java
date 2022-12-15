@@ -13,6 +13,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAll();
 
+    User getById(Long id);
+
     UserDetails findByUsername(String username) throws UsernameNotFoundException;
 
     boolean existsByUsername(String username) throws UsernameNotFoundException;

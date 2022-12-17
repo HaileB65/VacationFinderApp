@@ -30,13 +30,102 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
-          </li>
         </ul>
         <form class="d-flex"  action="#" th:action="@{/logout}" method="post">
           <div sec:authorize="isAuthenticated()">
             <input class="btn btn-light" type="submit" value="Log out"/>
+          </div>
+        </form>
+      </li>
+    </div>
+  </nav>
+</div>
+
+<div th:fragment="welcomePageNavigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+    <div class="container-fluid">
+      <a th:href="@{/home}" class="navbar-brand">Vacation Finder</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <li class="collapse navbar-collapse" id="navbarSupportedContent2">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/myTrips}">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
+          </li>
+        </ul>
+        <form class="d-flex"  action="#" th:action="@{/login}" method="get">
+          <div>
+            <input class="btn btn-light" type="submit" value="Log in"/>
+          </div>
+        </form>
+      </li>
+    </div>
+  </nav>
+</div>
+
+<div th:fragment="loginPageNavigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+    <div class="container-fluid">
+      <a th:href="@{/home}" class="navbar-brand">Vacation Finder</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <li class="collapse navbar-collapse" id="navbarSupportedContent3">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/myTrips}">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
+          </li>
+        </ul>
+        <form class="d-flex"  action="#" th:action="@{/login}" method="post">
+          <div>
+            <input class="btn btn-light" type="submit" value="Log in"/>
+          </div>
+        </form>
+      </li>
+    </div>
+  </nav>
+</div>
+<div th:fragment="registerPageNavigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+    <div class="container-fluid">
+      <a th:href="@{/home}" class="navbar-brand">Vacation Finder</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <li class="collapse navbar-collapse" id="navbarSupportedContent4">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/myTrips}">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
+          </li>
+        </ul>
+        <form class="d-flex"  action="#" th:action="@{/process_register}" method="post">
+          <div>
+            <input class="btn btn-light" type="submit" value="Create New User"/>
           </div>
         </form>
       </li>

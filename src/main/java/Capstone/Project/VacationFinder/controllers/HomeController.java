@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -30,16 +29,18 @@ public class HomeController {
     @Autowired
     TripService tripService;
 
-
     @GetMapping("/home")
     public String showHomePage(Model model) throws Exception {
         Trip trip = tripService.getTripById(1L);
-
-//        User user = userService.getUserById(1L);
-//        System.out.println(user.getFirstName());
-//        System.out.println(user.getTrips().isEmpty());
         model.addAttribute("trip", trip);
         return "home";
+    }
+
+    @GetMapping("/home2")
+    public String showHomePage2(Model model) throws Exception {
+        User user = userService.getUserById(1L);
+        model.addAttribute("user", user);
+        return "home2";
     }
 
     @GetMapping("/newTrip")

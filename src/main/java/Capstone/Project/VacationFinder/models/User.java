@@ -1,10 +1,7 @@
 package Capstone.Project.VacationFinder.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,7 +33,13 @@ public class User implements UserDetails {
     String password;
 
     @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Trip> trips;
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JoinTable(
+            name = "users_trips",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id"))
+    public Set<Trip> trips;
 
     @Enumerated(EnumType.STRING)
     UserRole userRole;

@@ -24,13 +24,13 @@ public class Trip {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
-    Itinerary itinerary;
+    public Itinerary itinerary;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "checklist_id")
-    Checklist checklist;
+    public Checklist checklist;
 
-    @ManyToMany(mappedBy= "trips")
-    private Set<User> users;
+    @ManyToMany(mappedBy = "trips")
+    public Set<User> users;
 
 }

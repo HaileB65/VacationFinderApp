@@ -39,7 +39,7 @@ public class DestinationController {
     @GetMapping("/destination/{destinationId}")
     public String showDestinationPage(@PathVariable("destinationId")long destinationId, Model model) throws Exception {
         System.out.println("Destination Id is " + destinationId);
-        //TODO get info and images for destination by ID from the database and add them to the model.
+
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
 

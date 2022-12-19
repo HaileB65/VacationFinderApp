@@ -39,7 +39,7 @@ public class LoginController {
 
     @PostMapping("/process_register")
     public String processRegistration(User user) {
-       userService.createNewUser(user);
+        userService.createNewUser(user);
 
         return "successful-registration";
     }

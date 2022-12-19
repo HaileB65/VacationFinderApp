@@ -1,6 +1,9 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.*;
+import Capstone.Project.VacationFinder.models.Destination;
+import Capstone.Project.VacationFinder.models.Questionnaire;
+import Capstone.Project.VacationFinder.models.Trip;
+import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.ItineraryService;
 import Capstone.Project.VacationFinder.services.TripService;
@@ -29,18 +32,18 @@ public class HomeController {
     @Autowired
     TripService tripService;
 
-    @GetMapping("/home")
+    @GetMapping("/tripHomePage")
     public String showHomePage(Model model) throws Exception {
         Trip trip = tripService.getTripById(1L);
         model.addAttribute("trip", trip);
-        return "home";
+        return "trip-home-page";
     }
 
-    @GetMapping("/home2")
-    public String showHomePage2(Model model) throws Exception {
+    @GetMapping("/userHomePage")
+    public String showUserHomePage(Model model) throws Exception {
         User user = userService.getUserById(1L);
         model.addAttribute("user", user);
-        return "home2";
+        return "user-home-page";
     }
 
     @GetMapping("/newTrip")

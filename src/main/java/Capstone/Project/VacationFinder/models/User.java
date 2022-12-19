@@ -41,6 +41,10 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
     public Set<Trip> trips;
 
+    public String getUserName() {
+        return firstName;
+    }
+
     @Enumerated(EnumType.STRING)
     UserRole userRole;
 

@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -32,5 +34,9 @@ public class Trip {
 
     @ManyToMany(mappedBy = "trips",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<User> users;
+
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    private Timestamp timestamp;
 
 }

@@ -48,4 +48,10 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public User saveUser(User user){
+        userRepository.save(user);
+
+        return user;
+    }
+
 }

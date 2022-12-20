@@ -14,6 +14,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @SpringBootApplication
 public class VacationFinderApplication implements CommandLineRunner {
@@ -92,6 +97,28 @@ public class VacationFinderApplication implements CommandLineRunner {
         }
 
         if (!userRepository.existsById(1L)) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("Red")
+                    .item2("Orange")
+                    .item3("Blue")
+                    .build();
+
+            Checklist checklist = Checklist.builder()
+                    .item1("Yellow")
+                    .item2("Grey")
+                    .item3("Turquoise")
+                    .build();
+
+            Trip trip = Trip.builder()
+                    .itinerary(itinerary)
+                    .checklist(checklist)
+                    .selectedDestination("Japan")
+                    .build();
+
+            ArrayList<Trip> list = new ArrayList<>(Arrays.asList(trip));
+
+            Set<Trip> set = new HashSet<>(list);
+
             User guest = User.builder()
                     .firstName("Robin")
                     .lastName("Smith")
@@ -99,8 +126,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .phone("1245684578")
                     .username("guest")
                     .password("password")
-                    .userRole(UserRole.GUEST)
-//                    .trip(new Trip())
+                    .trips(set)
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -123,6 +149,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             userService.createNewUser(user);
+
         }
 
         if (!userRepository.existsByUsername("admin")) {
@@ -140,6 +167,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             userService.createNewUser(admin);
+
         }
     }
 

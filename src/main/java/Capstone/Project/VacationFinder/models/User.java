@@ -32,7 +32,7 @@ public class User implements UserDetails {
     String username;
     String password;
 
-    @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_trips",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -52,13 +52,13 @@ public class User implements UserDetails {
     @Builder.Default
     boolean enabled = true;
 
-    @Column(name = "timestamp")
-    @CreationTimestamp
-    private Timestamp timestamp;
-
     @Transient
     @JsonIgnore
     private URI locationURI;
+
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    private Timestamp timestamp;
 
 
     @Override

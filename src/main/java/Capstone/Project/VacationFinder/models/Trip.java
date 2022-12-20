@@ -30,7 +30,7 @@ public class Trip {
     @JoinColumn(name = "checklist_id")
     public Checklist checklist;
 
-    @ManyToMany(mappedBy = "trips")
+    @ManyToMany(mappedBy = "trips",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<User> users;
 
 }

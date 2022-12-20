@@ -34,8 +34,8 @@ public class HomeController {
 
     @GetMapping("/tripHomePage")
     public String showHomePage(Model model) throws Exception {
-        Trip trip = tripService.getTripById(1L);
-        model.addAttribute("trip", trip);
+        User user = userService.getUserById(1L);
+        model.addAttribute("user", user);
         return "trip-home-page";
     }
 
@@ -44,6 +44,13 @@ public class HomeController {
         User user = userService.getUserById(1L);
         model.addAttribute("user", user);
         return "user-home-page";
+    }
+
+    @GetMapping("/testLayout")
+    public String showTestLayout(Model model) throws Exception {
+        Trip trip = tripService.getTripById(1L);
+        model.addAttribute("trip", trip);
+        return "test-layout";
     }
 
     @GetMapping("/newTrip")

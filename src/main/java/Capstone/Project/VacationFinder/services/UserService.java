@@ -1,6 +1,7 @@
 package Capstone.Project.VacationFinder.services;
 
 import Capstone.Project.VacationFinder.models.User;
+import Capstone.Project.VacationFinder.models.UserRole;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
 import Capstone.Project.VacationFinder.security.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,9 @@ public class UserService implements UserDetailsService {
     public User createNewUser(User user) {
         passwordEncoder.encodeUserPassword(user);
 
-        userRepository.save(user);
+        user.setUserRole(UserRole.USER);
+
+        userRepository.saveAndFlush(user);
 
         return user;
     }

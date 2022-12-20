@@ -109,16 +109,15 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         }
 
-        if (!userRepository.existsByUsername("user")) {
+        if (!userRepository.existsByUsername("Alex45")) {
             User user = User.builder()
                     .firstName("Alex")
                     .lastName("Walker")
                     .email("alexwalker@yahoo.com")
                     .phone("1245874568")
-                    .username("user")
-                    .password("password")
+                    .username("Alex45")
+                    .password("Walker76")
                     .userRole(UserRole.USER)
-//                    .trip(new Trip())
                     .enabled(true)
                     .locked(false)
                     .build();

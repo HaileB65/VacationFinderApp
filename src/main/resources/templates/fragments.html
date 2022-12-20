@@ -48,7 +48,7 @@
   </nav>
 </div>
 
-<div th:fragment="welcomePageNavigation">
+<div th:fragment="guestPageNavigation">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
     <div class="container-fluid">
       <a th:href="@{/userHomePage}" class="navbar-brand">Vacation Finder</a>
@@ -69,11 +69,6 @@
             <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
           </li>
         </ul>
-        <form class="d-flex"  action="#" th:action="@{/login}" method="get">
-          <div>
-            <input class="btn btn-light" type="submit" value="Log in"/>
-          </div>
-        </form>
       </li>
     </div>
   </nav>
@@ -100,15 +95,11 @@
             <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
           </li>
         </ul>
-        <form class="d-flex"  action="#" th:action="@{/login}" method="post">
-          <div>
-            <input class="btn btn-light" type="submit" value="Log in"/>
-          </div>
-        </form>
       </li>
     </div>
   </nav>
 </div>
+
 <div th:fragment="registerPageNavigation">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
     <div class="container-fluid">
@@ -139,12 +130,11 @@
     </div>
   </nav>
 </div>
-<div th:fragment="footer">
+
+<div th:fragment="footer" class="footer text-center">
   <div class="container">
     <footer>
-      <div th:fragment="footer">
-        &copy; 2022 Vacation Finder
-      </div>
+      <p>&copy; 2022 Vacation Finder</p>
     </footer>
   </div>
 </div>

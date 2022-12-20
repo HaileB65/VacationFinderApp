@@ -32,8 +32,7 @@ public class User implements UserDetails {
     String username;
     String password;
 
-    @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
-    @EqualsAndHashCode.Exclude
+    @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.PERSIST)
     @ToString.Exclude
     @JoinTable(
             name = "users_trips",

@@ -33,11 +33,10 @@ public class User implements UserDetails {
     String password;
 
     @ManyToMany(fetch =  FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @ToString.Exclude
     @JoinTable(
             name = "users_trips",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "trip_id"))
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id", referencedColumnName = "id"))
     public Set<Trip> trips;
 
     public String getUserName() {

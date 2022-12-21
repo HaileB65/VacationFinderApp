@@ -30,9 +30,9 @@ public class ChecklistController {
     }
 
     @GetMapping("/addChecklist")
-    public String showAddChecklistPage(@ModelAttribute("currentTrip") Trip trip, Model model) {
+    public String showAddChecklistPage(@ModelAttribute("currentTripId") Long id, Model model) {
         model.addAttribute("checklist", new Checklist());
-        model.addAttribute("currentTrip");
+        model.addAttribute("currentTripId");
         return "add-checklist";
     }
 
@@ -43,14 +43,13 @@ public class ChecklistController {
     }
 
     @PostMapping("/addChecklistToTrip")
-    public String showAddChecklistToTripPage(@ModelAttribute("checklist") Checklist checklist, @ModelAttribute("currentTrip") Trip trip, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String showAddChecklistToTripPage(@ModelAttribute("checklist") Checklist checklist, @ModelAttribute("currentTripId") Long id, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
-        checklistService.createNewChecklist(checklist);
-
-        //TODO add checklist to current trip being created
-
+        Trip trip = tripService.getTripById(id);
         trip.setChecklist(checklist);
         tripService.saveTrip(trip);
+
+        model.addAttribute("currentTripId");
 
         return "checklist-added";
     }

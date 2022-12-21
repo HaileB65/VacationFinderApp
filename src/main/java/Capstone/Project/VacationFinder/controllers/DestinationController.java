@@ -2,6 +2,7 @@ package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.services.DestinationService;
+import Capstone.Project.VacationFinder.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ public class DestinationController {
 
     @Autowired
     DestinationService destinationService;
+
+    @Autowired
+    TripService tripService;
 
     @GetMapping("/destinations")
     public String showDestinationsPage(Model model) {
@@ -59,14 +63,15 @@ public class DestinationController {
                 .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
                 .destinations(set)
                 .build();
-
-        System.out.println("create trip");
+        System.out.println("created trip");
+        //TODO make sure trip is created in DB with itinerary and checklist initialized above.
+        tripService.createNewTrip(trip);
+        //saved trip to database
 
         currentUser.trips.add(trip);
+        System.out.println("added trip to user");
 
-        System.out.println("add trip to user");
-
-        model.addAttribute("currentTrip", trip);
+        model.addAttribute("currentTripId", trip.getId());
 
         System.out.println("end of add destination method");
 

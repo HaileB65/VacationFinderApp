@@ -9,10 +9,10 @@
 <div th:replace="fragments :: navigation"/>
 <div align="center">
 
-    <a>Itinerary added!</a>
+    <a>Trip completed!</a>
 
     <div>
-        <form method="get" name="addChecklist" th:action="@{/addChecklist}" th:object="${currentTrip}">
+        <form method="get" name="tripHomePage" th:action="@{/tripHomePage/__${.trip_id}__}" th:object="${currentTripId}">
             <button type="submit">Continue</button>
         </form>
     </div>

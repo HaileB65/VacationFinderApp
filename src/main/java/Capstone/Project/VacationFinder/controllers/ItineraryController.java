@@ -30,9 +30,8 @@ public class ItineraryController {
     }
 
     @GetMapping("/addItinerary")
-    public String showAddItineraryPage(@ModelAttribute("currentTrip") Trip trip, Model model) {
+    public String showAddItineraryPage(Model model) {
         model.addAttribute("itinerary", new Itinerary());
-        model.addAttribute("currentTrip");
         return "add-itinerary";
     }
 
@@ -42,19 +41,16 @@ public class ItineraryController {
         return "redirect:/home";
     }
 
-    @PostMapping("/addItineraryToTrip")
-    public String showAddItineraryToTripPage(@ModelAttribute("itinerary") Itinerary itinerary, @ModelAttribute("currentTrip") Trip trip, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
-        System.out.println("start of addItinerary() method");
-
-        itineraryService.createNewItinerary(itinerary);
+    @GetMapping("/addItineraryToTrip")
+    public String showAddItineraryToTripPage(@ModelAttribute("itinerary") Itinerary itinerary, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+        System.out.println("start of add Itinerary method");
 
         //TODO add itinerary to current trip being created
+//        Trip trip = tripService.getTripById(id);  how do to get current trip id and retrieve from DB
 
-        trip.setItinerary(itinerary);
-        tripService.saveTrip(trip);
-        System.out.println("save trip");
-
-        model.addAttribute("currentTrip");
+//        trip.setItinerary(itinerary);
+//        tripService.saveTrip(trip);
+//        System.out.println("save trip");
 
         System.out.println("start of addItinerary() method");
 

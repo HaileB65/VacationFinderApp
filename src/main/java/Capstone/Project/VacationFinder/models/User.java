@@ -12,16 +12,19 @@ import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "Users")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class User implements UserDetails {
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -31,17 +34,6 @@ public class User implements UserDetails {
     String phone;
     String username;
     String password;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_trips",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "trip_id", referencedColumnName = "id"))
-    public Set<Trip> trips;
-
-    public String getUserName() {
-        return firstName;
-    }
 
     @Enumerated(EnumType.STRING)
     UserRole userRole;
@@ -60,6 +52,36 @@ public class User implements UserDetails {
     @CreationTimestamp
     private Timestamp timestamp;
 
+
+    public String getUserName() {
+        return firstName;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_trips",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id", referencedColumnName = "id"))
+    public Set<Trip> trips;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userRole=" + userRole +
+                ", locked=" + locked +
+                ", enabled=" + enabled +
+                ", locationURI=" + locationURI +
+                ", timestamp=" + timestamp +
+                ", trips=" + trips.hashCode() +
+                '}';
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

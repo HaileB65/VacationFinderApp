@@ -14,6 +14,8 @@
     <table border="0" cellpadding="10">
         <tr>
             <td><img th:src="${destination.image1}"/></td>
+        </tr>
+        <tr>
             <td><img th:src="${destination.image2}"/></td>
         </tr>
     </table>
@@ -28,7 +30,8 @@
     </table>
 
     <div>
-        <form method="get" name="selectDestination" th:action="@{/addDestination}">
+        <form action="#" method="get" name="selectDestination"
+              th:action="@{/addDestinationToTrip/__${destination.id}__}">
             <button type="submit">Add To Trip</button>
         </form>
     </div>

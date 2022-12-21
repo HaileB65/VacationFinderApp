@@ -17,7 +17,8 @@
                 <td>First Name:</td>
                 <td><input required th:field="*{firstName}" type="text"/></td>
                 <div th:if="${existedUsername != null}" class="alert alert-danger notification" role="alert">
-                    <p th:text="${existedUsername}"></p><p> already exists</p>
+                    <p th:text="${existedUsername}"></p>
+                    <p> already exists</p>
                 </div>
             </tr>
             <tr>

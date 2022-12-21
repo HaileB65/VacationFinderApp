@@ -15,7 +15,7 @@ public class ItineraryService {
 
     public Itinerary getItineraryById(long id) throws Exception {
         Optional<Itinerary> itinerary = itineraryRepository.findById(id);
-        if(itinerary.isPresent()){
+        if (itinerary.isPresent()) {
             return itinerary.get();
         } else throw new Exception("Itinerary not found");
     }

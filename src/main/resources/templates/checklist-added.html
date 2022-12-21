@@ -8,10 +8,12 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 <div align="center">
-    <h1>You have successfully registered!</h1>
+
+    <a>Checklist added!</a>
+
     <div>
-        <form method="get" name="userHomePage" th:action="@{/userHomePage}">
-            <button type="submit">Click here to Login</button>
+        <form method="get" name="tripCreated" th:action="@{/newTripPlanned}" th:object="${currentTrip}">
+            <button type="submit">Continue</button>
         </form>
     </div>
 </div>

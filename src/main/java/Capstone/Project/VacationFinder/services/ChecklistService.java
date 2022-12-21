@@ -15,7 +15,7 @@ public class ChecklistService {
 
     public Checklist getChecklistById(long id) throws Exception {
         Optional<Checklist> checklist = checklistRepository.findById(id);
-        if(checklist.isPresent()){
+        if (checklist.isPresent()) {
             return checklist.get();
         } else throw new Exception("Checklist not found");
     }

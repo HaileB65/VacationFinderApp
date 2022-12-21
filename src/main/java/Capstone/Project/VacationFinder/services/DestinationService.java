@@ -5,7 +5,6 @@ import Capstone.Project.VacationFinder.repositories.DestinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +32,12 @@ public class DestinationService {
 
     public Destination getDestinationById(long id) throws Exception {
         Optional<Destination> destination = destinationRepository.findById(id);
-        if(destination.isPresent()){
+        if (destination.isPresent()) {
             return destination.get();
         } else throw new Exception("Destination not found");
     }
 
-    public void addToTrip(Destination destination){
+    public void addToTrip(Destination destination) {
     }
 
 }

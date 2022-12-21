@@ -12,7 +12,7 @@ public class UserServiceLoggingAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceLoggingAspect.class);
 
     @Pointcut(value = "execution(* Capstone.Project.VacationFinder.services.UserService.*(..))")
-    private void pointCutAllUserServiceMethods(){
+    private void pointCutAllUserServiceMethods() {
     }
 
     @Before("pointCutAllUserServiceMethods()")
@@ -21,12 +21,12 @@ public class UserServiceLoggingAspect {
     }
 
     @After("pointCutAllUserServiceMethods()")
-    public void logAfterAdvice(JoinPoint joinPoint){
+    public void logAfterAdvice(JoinPoint joinPoint) {
         LOGGER.info("After advice: " + joinPoint.getSignature().getName());
     }
 
-    @AfterReturning(value="pointCutAllUserServiceMethods()", returning = "users")
-    public void afterReturningAdvice(JoinPoint joinpoint, Object users){
+    @AfterReturning(value = "pointCutAllUserServiceMethods()", returning = "users")
+    public void afterReturningAdvice(JoinPoint joinpoint, Object users) {
         LOGGER.info("After Returning Advice: Method Name: " + joinpoint.getSignature().getName());
         LOGGER.info("Result: " + users);
     }

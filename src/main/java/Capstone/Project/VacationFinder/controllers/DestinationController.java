@@ -1,9 +1,9 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.Destination;
-import Capstone.Project.VacationFinder.models.Questionnaire;
+import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Controller
 public class DestinationController {
@@ -34,15 +35,54 @@ public class DestinationController {
 
 
     @GetMapping("/destination/{destinationId}")
-    public String showDestinationPage(@PathVariable("destinationId")long destinationId, Model model) throws Exception {
+    public String showDestinationPage(@PathVariable("destinationId") long destinationId, Model model) throws Exception {
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
         model.addAttribute("destination", destination);
 
-        model.addAttribute("image1", destination.getImage1());
-        model.addAttribute("image2", destination.getImage2());
         return "destination";
+    }
+
+    @GetMapping("/addDestinationToTrip/{destinationId}")
+    public String showAddDestinationToTrip(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+        System.out.println("start of add destination method");
+
+        Destination destination = destinationService.getDestinationById(destinationId);
+
+        ArrayList<Destination> list = new ArrayList<>(Arrays.asList(destination));
+
+        Set<Destination> set = new HashSet<>(list);
+
+        Trip trip = Trip.builder()
+                .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
+                .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
+                .destinations(set)
+                .build();
+
+        System.out.println("create trip");
+
+        currentUser.trips.add(trip);
+
+        System.out.println("add trip to user");
+
+        model.addAttribute("currentTrip", trip);
+
+        System.out.println("end of add destination method");
+
+        return "destination-added";
+    }
+
+    public Timestamp getTimestamp() {
+        Calendar cal = Calendar.getInstance();
+        Date result = cal.getTime();
+        return new Timestamp(result.getTime());
+    }
+
+    @PostMapping("/addDestination")
+    public String addDestinationToTrip(Destination destination) {
+        destinationService.addToTrip(destination);
+        return "destination-added";
     }
 
     @GetMapping("/switzerland")

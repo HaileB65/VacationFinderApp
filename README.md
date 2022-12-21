@@ -1,8 +1,9 @@
 # NewMVCProject
 
-# Description: 
+# Description:
 
 # Pictures of app:
 
-# Authors and acknowledgement: 
+# Authors and acknowledgement:
+
 Developed by Haile with guidance from Ryan Desmond from CodingNomads.

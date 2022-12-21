@@ -8,17 +8,17 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<h1 align="center">Create Checklist</h1>
+<h1 align="center">Create Itinerary</h1>
 
 <div align="center">
 
-    <form action="#" method="post" th:action="@{/createChecklist}" th:object="${newChecklist}">
+    <form action="#" method="post" th:action="@{/addItineraryToTrip}" th:object="${itinerary}">
 
         <table border="0" cellpadding="10">
             <td>
                 <table border="1" cellpadding="10">
                     <tr>
-                        <th>Checklist</th>
+                        <th>Itinerary</th>
                     </tr>
                     <tr>
                         <td>Item 1</td>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add CSS and JS to Thymeleaf</title>
-    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
                         <span class="text-info" th:text="${#authentication.getPrincipal().getUserRole()}"></span>
                     </li>
                 </ul>
-                <form class="d-flex"  action="#" th:action="@{/logout}" method="post">
+                <form class="d-flex" action="#" th:action="@{/logout}" method="post">
                     <div sec:authorize="isAuthenticated()">
                         <input class="btn btn-light" type="submit" value="Log out"/>
                     </div>

@@ -1,6 +1,5 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
@@ -29,18 +28,13 @@ public class HomeController {
     @Autowired
     TripService tripService;
 
+
     @GetMapping("/tripHomePage")
     public String showHomePage(Model model) throws Exception {
         User user = userService.getUserById(1L);
         model.addAttribute("user", user);
-        return "trip-home-page";
-    }
 
-    @GetMapping("/userHomePage")
-    public String showUserHomePage(Model model) throws Exception {
-        User user = userService.getUserById(1L);
-        model.addAttribute("user", user);
-        return "user-home-page";
+        return "trip-home-page";
     }
 
     @GetMapping("/newTrip")
@@ -56,25 +50,16 @@ public class HomeController {
         return "redirect:/home";
     }
 
+
+    @GetMapping("/newTripPlanned")
+    public String tripPlanned() {
+        return "trip-planned";
+    }
+
     @GetMapping("/styledPage")
     public String getStyledPage(Model model) {
         model.addAttribute("name", "Baeldung Reader");
         return "cssandjs/styled-page";
-    }
-
-    @GetMapping("/addItinerary")
-    public String showAddItineraryPage(Model model) {
-
-        return "create-itinerary";
-    }
-
-    @PostMapping("/addDestination")
-    public String addDestinationToTrip(Destination destination){
-
-        destinationService.addToTrip(destination);
-
-
-        return"destination-added";
     }
 
 }

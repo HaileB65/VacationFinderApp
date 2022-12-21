@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PasswordEncoder {
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    public User encodeUserPassword(User user){
+    public User encodeUserPassword(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "itineraries")
@@ -28,4 +29,8 @@ public class Itinerary {
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
+
+    public <T> Itinerary(List<T> asList) {
+
+    }
 }

@@ -14,6 +14,13 @@
     <table border="0" cellpadding="10">
         <tr>
             <td><a>Selected Destination</a></td>
+        </tr>
+        <tr>
+        <tr th:each="trip : ${trips}">
+            <td th:text="${trip.destinations}"></td>
+        </tr>
+        </tr>
+        <tr>
             <td>
                 <table border="1" cellpadding="10" th:object="${user}">
                     <tr>
@@ -23,34 +30,36 @@
                         <td th:text="${trip.itinerary.item1}"></td>
                     </tr>
                 </table>
+            </td>
         </tr>
-        <td>
-            <table border="1" cellpadding="10">
-                <tr>
-                    <th>Checklist</th>
-                </tr>
-                <!--                <tr>-->
-                <!--                    <td th:text="${trip.checklist.item1}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td th:text="${trip.checklist.item2}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td th:text="${trip.checklist.item3}"></td>-->
-                <tr>
-                    <td>Item 4</td>
-                </tr>
-                <tr>
-                    <td>Item 5</td>
-                </tr>
-                <tr>
-                    <td>Item 6</td>
-                </tr>
-                <tr>
-                    <td>Item 7</td>
-                </tr>
-            </table>
-        </td>
+        <tr>
+            <td>
+                <table border="1" cellpadding="10">
+                    <tr>
+                        <th>Checklist</th>
+                    </tr>
+                    <!--                <tr>-->
+                    <!--                    <td th:text="${trip.checklist.item1}"></td>-->
+                    <!--                </tr>-->
+                    <!--                <tr>-->
+                    <!--                    <td th:text="${trip.checklist.item2}"></td>-->
+                    <!--                </tr>-->
+                    <!--                <tr>-->
+                    <!--                    <td th:text="${trip.checklist.item3}"></td>-->
+                    <tr>
+                        <td>Item 4</td>
+                    </tr>
+                    <tr>
+                        <td>Item 5</td>
+                    </tr>
+                    <tr>
+                        <td>Item 6</td>
+                    </tr>
+                    <tr>
+                        <td>Item 7</td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
 </div>

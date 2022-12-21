@@ -21,7 +21,7 @@
       <li class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
+            <a class="nav-link active" aria-current="page" th:href="@{/createNewTrip}">Create A New Trip</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/tripHomePage}">My Trips</a>
@@ -48,7 +48,7 @@
   </nav>
 </div>
 
-<div th:fragment="guestPageNavigation">
+<div th:fragment="guestNavigation">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
     <div class="container-fluid">
       <a th:href="@{/userHomePage}" class="navbar-brand">Vacation Finder</a>
@@ -60,41 +60,28 @@
       <li class="collapse navbar-collapse" id="navbarSupportedContent2">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
+            <a class="nav-link active" aria-current="page" th:href="@{/createNewTrip}">Create A New Trip</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/myTrips}">My Trips</a>
+            <a class="nav-link active" aria-current="page" th:href="@{/tripHomePage}">My Trips</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
           </li>
         </ul>
-      </li>
-    </div>
-  </nav>
-</div>
-
-<div th:fragment="loginPageNavigation">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
-    <div class="container-fluid">
-      <a th:href="@{/userHomePage}" class="navbar-brand">Vacation Finder</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <li class="collapse navbar-collapse" id="navbarSupportedContent3">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/vacationSpotFinder}">Destination Finder</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/myTrips}">My Trips</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/destinations}">Destinations</a>
+          <li sec:authorize="isAuthenticated()">
+            <span class="text-secondary">Current user:</span>
+            <span class="text-info" th:text="${#authentication.getPrincipal().getFirstName()}"></span>
+            <span class="text-secondary">Roles:</span>
+            <span class="text-info" th:text="${#authentication.getPrincipal().getUserRole()}"></span>
           </li>
         </ul>
+        <form class="d-flex"  action="#" th:action="@{/login}" method="post">
+          <div sec:authorize="isAuthenticated()">
+            <input class="btn btn-light" type="submit" value="Log in"/>
+          </div>
+        </form>
       </li>
     </div>
   </nav>

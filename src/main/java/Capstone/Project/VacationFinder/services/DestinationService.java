@@ -23,8 +23,12 @@ public class DestinationService {
         return destination;
     }
 
-    public List<Destination> getDestinationByScenery(String scenery) {
-        return destinationRepository.findById(scenery);
+    public List<Destination> getByWeather(String weather) {
+        return destinationRepository.findByScenery(weather);
+    }
+
+    public Destination getByName(String name) {
+        return destinationRepository.findByName(name);
     }
 
     public Destination getDestinationById(long id) throws Exception {
@@ -34,12 +38,7 @@ public class DestinationService {
         } else throw new Exception("Destination not found");
     }
 
-    public List<Destination> getDestinationByDailyCostLessThan(BigDecimal dailyCost) {
-        return destinationRepository.findByDailyCostLessThan(dailyCost);
-    }
-
-    public List<Destination> getDestinationBySceneryAndDailyCostLessThan(String favoriteScenery, BigDecimal dailyCost) {
-        return destinationRepository.findBySceneryAndDailyCostLessThan(favoriteScenery, dailyCost);
+    public void addToTrip(Destination destination){
     }
 
 }

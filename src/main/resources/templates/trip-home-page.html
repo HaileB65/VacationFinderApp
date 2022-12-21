@@ -20,7 +20,6 @@
                         <th>Itinerary</th>
                     </tr>
                     <tr th:each="trip : ${user.trips}">
-                        <!--                    <td th:text="${user.trips.itinerary.item1}"></td>-->
                         <td th:text="${trip.itinerary.item1}"></td>
                     </tr>
                 </table>

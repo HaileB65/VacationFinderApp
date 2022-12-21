@@ -1,14 +1,8 @@
 package Capstone.Project.VacationFinder;
 
 import Capstone.Project.VacationFinder.models.*;
-import Capstone.Project.VacationFinder.repositories.ChecklistRepository;
-import Capstone.Project.VacationFinder.repositories.ItineraryRepository;
-import Capstone.Project.VacationFinder.repositories.TripRepository;
-import Capstone.Project.VacationFinder.repositories.UserRepository;
-import Capstone.Project.VacationFinder.services.ChecklistService;
-import Capstone.Project.VacationFinder.services.ItineraryService;
-import Capstone.Project.VacationFinder.services.TripService;
-import Capstone.Project.VacationFinder.services.UserService;
+import Capstone.Project.VacationFinder.repositories.*;
+import Capstone.Project.VacationFinder.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,7 +24,11 @@ public class VacationFinderApplication implements CommandLineRunner {
     ChecklistRepository checklistRepository;
 
     @Autowired
+    DestinationRepository destinationRepository;
+
+    @Autowired
     TripRepository tripRepository;
+
     @Autowired
     UserRepository userRepository;
 
@@ -42,9 +40,12 @@ public class VacationFinderApplication implements CommandLineRunner {
 
     @Autowired
     TripService tripService;
+
     @Autowired
     UserService userService;
 
+    @Autowired
+    DestinationService destinationService;
 
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApplication.class, args);
@@ -96,7 +97,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(trip);
         }
 
-        if (!userRepository.existsById(1L)) {
+        if (!userRepository.existsByUsername("Robin41")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("Red")
                     .item2("Orange")
@@ -124,7 +125,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .lastName("Smith")
                     .email("smithrobin@gmail.com")
                     .phone("1245684578")
-                    .username("guest")
+                    .username("Robin41")
                     .password("password")
                     .trips(set)
                     .enabled(true)
@@ -169,6 +170,39 @@ public class VacationFinderApplication implements CommandLineRunner {
             userService.createNewUser(admin);
 
         }
+
+        if(!destinationRepository.existsByName("Bahamas")){
+            Destination bahamas = Destination.builder()
+                    .name("Bahamas")
+                    .weather("warm")
+                    .scenery("Sunny")
+                    .activity1("Swimming")
+                    .activity2("Scuba Diving")
+                    .activity3("Sport Fishing")
+                    .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
+                    .image2("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
+                    .build();
+
+            destinationService.createNewDestination(bahamas);
+        }
+
+        if(!destinationRepository.existsByName("Switzerland")){
+            Destination switzerland = Destination.builder()
+                    .name("Switzerland")
+                    .weather("Cold")
+                    .scenery("Snow")
+                    .activity1("Skiing")
+                    .activity2("Christmas Markets")
+                    .activity3("Mountain Tours")
+                    .image1("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
+                    .image2("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
+                    .build();
+
+            destinationService.createNewDestination(switzerland);
+
+        }
+
+
     }
 
 }

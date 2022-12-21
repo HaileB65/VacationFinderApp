@@ -6,7 +6,7 @@
     <div th:replace="fragments :: header"/>
 </head>
 <body>
-<div th:replace="fragments :: guestPageNavigation"/>
+<div th:replace="fragments :: navigation"/>
 <div align="center">
     <h1>Create new user to register.</h1>
     <br/>
@@ -16,6 +16,9 @@
             <tr>
                 <td>First Name:</td>
                 <td><input required th:field="*{firstName}" type="text"/></td>
+                <div th:if="${existedUsername != null}" class="alert alert-danger notification" role="alert">
+                    <p th:text="${existedUsername}"></p><p> already exists</p>
+                </div>
             </tr>
             <tr>
                 <td>Last Name:</td>

@@ -13,21 +13,26 @@
 
     <table border="0" cellpadding="10">
         <tr>
-            <td><img th:src="${image1}"/></td>
-            <td><img th:src="${image2}"/></td>
+            <td><img th:src="${destination.image1}"/></td>
+            <td><img th:src="${destination.image2}"/></td>
         </tr>
     </table>
     <br>
-    <table border="1" cellpadding="10">
+    <table border="0" cellpadding="10">
         <tr>
-            <td><a>Activities: Swimming, Scuba diving, and Sport fishing.</a></td>
-        </tr>
-        <tr>
-            <td><a>Average daily cost excluding ticket prices: $200 per person.</a></td>
+            <th>Activities</th>
+            <td th:text="${destination.activity1}">Activity 1</td>
+            <td th:text="${destination.activity2}">Activity 2</td>
+            <td th:text="${destination.activity3}">Activity 3</td>
         </tr>
     </table>
-    <br>
-    <a align="left" th:href="@{/home}">Home page</a>
+
+    <div>
+        <form method="get" name="selectDestination" th:action="@{/addDestination}">
+            <button type="submit">Add To Trip</button>
+        </form>
+    </div>
+
 </div>
 <div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
 </body>

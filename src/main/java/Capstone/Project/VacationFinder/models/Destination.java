@@ -28,7 +28,6 @@ public class Destination {
     String activity1;
     String activity2;
     String activity3;
-    BigDecimal dailyCost;
     String image1;
     String image2;
 

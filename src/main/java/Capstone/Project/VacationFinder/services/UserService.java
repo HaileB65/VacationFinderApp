@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinder.services;
 
+import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.models.UserRole;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
@@ -10,8 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -42,6 +42,8 @@ public class UserService implements UserDetailsService {
         passwordEncoder.encodeUserPassword(user);
 
         user.setUserRole(UserRole.USER);
+
+        user.trips = new HashSet<>(new ArrayList<>());
 
         userRepository.saveAndFlush(user);
 

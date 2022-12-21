@@ -24,9 +24,6 @@ public class DestinationController {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
-        Questionnaire questionnaire = new Questionnaire();
-        model.addAttribute("questionnaire", questionnaire);
-
         return "destinations";
     }
 
@@ -38,10 +35,10 @@ public class DestinationController {
 
     @GetMapping("/destination/{destinationId}")
     public String showDestinationPage(@PathVariable("destinationId")long destinationId, Model model) throws Exception {
-        System.out.println("Destination Id is " + destinationId);
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
+        model.addAttribute("destination", destination);
 
         model.addAttribute("image1", destination.getImage1());
         model.addAttribute("image2", destination.getImage2());
@@ -63,6 +60,27 @@ public class DestinationController {
     public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
         destinationService.createNewDestination(destination);
         return "redirect:/destinations";
+    }
+
+    @PostMapping("/destinationFinderResults")
+    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
+        List<Destination> searchedDestinations = destinationService.getByWeather(questionnaire.getWeather());
+        model.addAttribute("searchedDestinations", searchedDestinations);
+
+        model.addAttribute("questionnaire", questionnaire);
+
+        List<Destination> destinationsTable = destinationService.getAllDestinations();
+        model.addAttribute("destinationsTable", destinationsTable);
+
+        return "destination-finder-results";
+    }
+
+    @GetMapping("/createNewTrip")
+    public String showCreateNewTripPage(Model model) {
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
+
+        return "create-new-trip";
     }
 
 }

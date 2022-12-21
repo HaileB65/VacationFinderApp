@@ -1,7 +1,6 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.Destination;
-import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
@@ -14,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -46,13 +43,6 @@ public class HomeController {
         return "user-home-page";
     }
 
-    @GetMapping("/testLayout")
-    public String showTestLayout(Model model) throws Exception {
-        Trip trip = tripService.getTripById(1L);
-        model.addAttribute("trip", trip);
-        return "test-layout";
-    }
-
     @GetMapping("/newTrip")
     public String createTrip(Model model) throws Exception {
         Trip newTrip = new Trip();
@@ -66,23 +56,26 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @GetMapping("/vacationSpotFinder")
-    public String showVacationSpotFinder(Model model) {
-        Questionnaire questionnaire = new Questionnaire();
-        model.addAttribute("questionnaire", questionnaire);
-
-        return "vacation-spot-finder";
+    @GetMapping("/styledPage")
+    public String getStyledPage(Model model) {
+        model.addAttribute("name", "Baeldung Reader");
+        return "cssandjs/styled-page";
     }
 
-    @PostMapping("/resultsPage")
-    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
-        model.addAttribute("questionnaire", questionnaire);
+    @GetMapping("/addItinerary")
+    public String showAddItineraryPage(Model model) {
 
-        List<Destination> destinationsTable = destinationService.getDestinationByScenery(questionnaire.getFavoriteScenery());
-        model.addAttribute("destinationsTable", destinationsTable);
-
-        return "results-page";
+        return "create-itinerary";
     }
 
+    @PostMapping("/addDestination")
+    public String addDestinationToTrip(Destination destination){
+
+        destinationService.addToTrip(destination);
+
+
+        return"destination-added";
+    }
 
 }
+

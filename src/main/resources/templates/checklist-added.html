@@ -12,7 +12,7 @@
     <a>Checklist added!</a>
 
     <div>
-        <form method="get" name="tripCreated" th:action="@{/newTripPlanned}" th:object="${currentTripId}">
+        <form method="post" name="tripCreated" th:action="@{/newTripPlanned}">
             <button type="submit">Continue</button>
         </form>
     </div>

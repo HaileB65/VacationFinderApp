@@ -23,7 +23,7 @@ public class DestinationService {
     }
 
     public List<Destination> getByWeather(String weather) {
-        return destinationRepository.findByScenery(weather);
+        return destinationRepository.findByWeather(weather);
     }
 
     public Destination getByName(String name) {

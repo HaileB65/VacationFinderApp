@@ -54,19 +54,15 @@ public class DestinationController {
 
         Destination destination = destinationService.getDestinationById(destinationId);
 
-        ArrayList<Destination> list = new ArrayList<>(Arrays.asList(destination));
-
-        Set<Destination> set = new HashSet<>(list);
-
         Trip trip = Trip.builder()
                 .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
                 .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
-                .destinations(set)
+                .selectedDestination("Peru")
                 .build();
+
         System.out.println("created trip");
-        //TODO make sure trip is created in DB with itinerary and checklist initialized above.
+        //TODO make sure trip is created in DB with itinerary and checklist initialized above. Make sure destination is attache to trip.
         tripService.createNewTrip(trip);
-        //saved trip to database
 
         currentUser.trips.add(trip);
         System.out.println("added trip to user");
@@ -109,6 +105,7 @@ public class DestinationController {
 
     @PostMapping("/destinationFinderResults")
     public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
+
         List<Destination> searchedDestinations = destinationService.getByWeather(questionnaire.getWeather());
         model.addAttribute("searchedDestinations", searchedDestinations);
 

@@ -34,23 +34,6 @@ public class Destination {
     @CreationTimestamp
     private Timestamp timestamp;
 
-    @ManyToMany(mappedBy = "destinations", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    public Set<Trip> trips;
-
-    @Override
-    public String toString() {
-        return "Destination{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", scenery='" + scenery + '\'' +
-                ", weather='" + weather + '\'' +
-                ", activity1='" + activity1 + '\'' +
-                ", activity2='" + activity2 + '\'' +
-                ", activity3='" + activity3 + '\'' +
-                ", image1='" + image1 + '\'' +
-                ", image2='" + image2 + '\'' +
-                ", timestamp=" + timestamp +
-                ", trips=" + trips.hashCode() +
-                '}';
-    }
+//    @ManyToMany(mappedBy = "destinations", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    public Set<Trip> trips;
 }

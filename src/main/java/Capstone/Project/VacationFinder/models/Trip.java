@@ -10,14 +10,14 @@ import java.util.Set;
 @Entity
 @Table(name = "trips")
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Trip {
 
     @Id
-    @EqualsAndHashCode.Include
+//    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -33,26 +33,23 @@ public class Trip {
     @JoinColumn(name = "checklist_id")
     public Checklist checklist;
 
-    @ManyToMany(mappedBy = "trips", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "trips")
     public Set<User> users;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "trips_destinations",
-            joinColumns = @JoinColumn(name = "trip_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "destination_id", referencedColumnName = "id"))
-    public Set<Destination> destinations;
+    String selectedDestination;
 
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    public Set<Destination> destinations;
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", timestamp=" + timestamp +
-                ", itinerary=" + itinerary +
-                ", checklist=" + checklist +
-                ", users=" + users +
-                ", destinations=" + destinations.hashCode() +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Trip{" +
+//                "id=" + id +
+//                ", timestamp=" + timestamp +
+//                ", itinerary=" + itinerary +
+//                ", checklist=" + checklist +
+//                ", users=" + users +
+//                ", destination=" + selectedDestination +
+//                '}';
+//    }
 }

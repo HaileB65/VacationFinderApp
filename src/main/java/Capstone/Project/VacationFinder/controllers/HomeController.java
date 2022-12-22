@@ -52,8 +52,7 @@ public class HomeController {
 
 
     @GetMapping("/newTripPlanned")
-    public String tripPlanned(@ModelAttribute("currentTripId") Long id, Model model) {
-        model.addAttribute("currentTripId");
+    public String tripPlanned(Model model) {
         return "trip-planned";
     }
 
@@ -64,12 +63,13 @@ public class HomeController {
     }
 
     @GetMapping("/trip/{tripId}")
-    public String showTripHomePage(@PathVariable("tripId") long tripId, Model model) throws Exception {
-        Trip trip = tripService.getTripById(tripId);
+    public String showTripHomePage( Model model) throws Exception {
 
-        model.addAttribute("destinationName", trip.destinations);
-        model.addAttribute("destinationName", trip.getItinerary());
-        model.addAttribute("destinationName", trip.getChecklist());
+        //TODO Get trip id from previous page to display completed trip.
+//        Trip trip = tripService.getTripById(tripId);
+//        model.addAttribute("destination", trip.getDestination());
+//        model.addAttribute("itinerary", trip.getItinerary());
+//        model.addAttribute("checklist", trip.getChecklist());
 
         return "trip-home-page";
     }

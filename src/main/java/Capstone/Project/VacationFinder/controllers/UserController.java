@@ -36,10 +36,11 @@ public class UserController {
 
     @GetMapping("/userHomePage")
     public String showUserHomePage(Model model) throws Exception {
+
         User user = userService.getUserById(1L);
         model.addAttribute("user", user);
 
-        ArrayList<Destination> desintations = new ArrayList<>();
+        ArrayList<Destination> destinations = new ArrayList<>();
 
         //TODO add a user trips to user home page
 

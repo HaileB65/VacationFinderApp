@@ -99,14 +99,10 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image2("https://ontheworldmap.com/bahamas/the-islands-of-the-bahamas-map.jpg")
                     .build();
 
-            ArrayList<Destination> list1 = new ArrayList<>(Arrays.asList(destination));
-
-            Set<Destination> set = new HashSet<>(list1);
-
             Trip trip = Trip.builder()
                     .itinerary(itinerary)
                     .checklist(checklist)
-                    .destinations(set)
+                    .selectedDestination("Peru")
                     .build();
 
             tripService.createNewTrip(trip);
@@ -136,17 +132,14 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
                     .build();
 
-            ArrayList<Destination> list1 = new ArrayList<>(Arrays.asList(destination));
-            Set<Destination> set = new HashSet<>(list1);
-
             Trip trip = Trip.builder()
                     .itinerary(itinerary)
                     .checklist(checklist)
-                    .destinations(set)
+                    .selectedDestination("Brazil")
                     .build();
 
-            ArrayList<Trip> list2 = new ArrayList<>(Arrays.asList(trip));
-            Set<Trip> set2 = new HashSet<>(list2);
+            Set<Trip> set = new HashSet<>();
+            set.add(trip);
 
             User guest = User.builder()
                     .firstName("Robin")
@@ -155,7 +148,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .phone("1245684578")
                     .username("Robin41")
                     .password("password")
-                    .trips(set2)
+                    .trips(set)
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -229,6 +222,20 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         }
 
+        if(!destinationRepository.existsByName("Brazil")) {
+            Destination brazil = Destination.builder()
+                    .name("Brazil")
+                    .weather("Warm")
+                    .scenery("Beach")
+                    .activity1("Swimming")
+                    .activity2("Snorkeling")
+                    .activity3("Parasailing")
+                    .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
+                    .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
+                    .build();
+
+            destinationService.createNewDestination(brazil);
+        }
 
     }
 

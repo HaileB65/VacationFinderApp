@@ -30,9 +30,8 @@ public class ChecklistController {
     }
 
     @GetMapping("/addChecklist")
-    public String showAddChecklistPage(@ModelAttribute("currentTripId") Long id, Model model) {
+    public String showAddChecklistPage(Model model) {
         model.addAttribute("checklist", new Checklist());
-        model.addAttribute("currentTripId");
         return "add-checklist";
     }
 
@@ -43,13 +42,12 @@ public class ChecklistController {
     }
 
     @PostMapping("/addChecklistToTrip")
-    public String showAddChecklistToTripPage(@ModelAttribute("checklist") Checklist checklist, @ModelAttribute("currentTripId") Long id, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String showAddChecklistToTripPage(@ModelAttribute("checklist") Checklist checklist, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
-        Trip trip = tripService.getTripById(id);
-        trip.setChecklist(checklist);
-        tripService.saveTrip(trip);
-
-        model.addAttribute("currentTripId");
+        //TODO add checklist to current trip. How to get trip id from previous page?
+//        Trip trip = tripService.getTripById();
+//        trip.setChecklist(checklist);
+//        tripService.saveTrip(trip);
 
         return "checklist-added";
     }

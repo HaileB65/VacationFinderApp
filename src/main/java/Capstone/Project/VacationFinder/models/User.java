@@ -17,13 +17,13 @@ import java.util.Set;
 @Entity
 @Table(name = "Users")
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class User implements UserDetails {
     @Id
-    @EqualsAndHashCode.Include
+//    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -57,30 +57,26 @@ public class User implements UserDetails {
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_trips",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "trip_id", referencedColumnName = "id"))
     public Set<Trip> trips;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userRole=" + userRole +
-                ", locked=" + locked +
-                ", enabled=" + enabled +
-                ", locationURI=" + locationURI +
-                ", timestamp=" + timestamp +
-                ", trips=" + trips.hashCode() +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", email='" + email + '\'' +
+//                ", phone='" + phone + '\'' +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", userRole=" + userRole +
+//                ", locked=" + locked +
+//                ", enabled=" + enabled +
+//                ", locationURI=" + locationURI +
+//                ", timestamp=" + timestamp +
+//                ", trips=" + trips.hashCode() +
+//                '}';
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

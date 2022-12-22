@@ -12,7 +12,7 @@
     <a>Trip completed!</a>
 
     <div>
-        <form method="get" name="tripHomePage" th:action="@{/tripHomePage/__${.trip_id}__}" th:object="${currentTripId}">
+        <form method="get" name="tripHomePage" th:action="@{/tripHomePage/__${.trip_id}__}">
             <button type="submit">Continue</button>
         </form>
     </div>

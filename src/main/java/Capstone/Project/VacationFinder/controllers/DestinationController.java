@@ -55,8 +55,8 @@ public class DestinationController {
         Destination destination = destinationService.getDestinationById(destinationId);
 
         Trip trip = Trip.builder()
-                .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
-                .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
+//                .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
+//                .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
                 .selectedDestination("Peru")
                 .build();
 
@@ -64,7 +64,7 @@ public class DestinationController {
         //TODO make sure trip is created in DB with itinerary and checklist initialized above. Make sure destination is attache to trip.
         tripService.createNewTrip(trip);
 
-        currentUser.trips.add(trip);
+//        currentUser.trips.add(trip);
         System.out.println("added trip to user");
 
         model.addAttribute("currentTripId", trip.getId());

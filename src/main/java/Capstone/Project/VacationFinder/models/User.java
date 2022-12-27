@@ -15,15 +15,13 @@ import java.util.Collections;
 import java.util.Set;
 
 @Entity
-@Table(name = "Users")
-@Data
-//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class User implements UserDetails {
     @Id
-//    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -37,46 +35,27 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     UserRole userRole;
 
+    @Transient
+    @JsonIgnore
+    public URI locationURI;
+
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    public Timestamp timestamp;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Trip> trips;
+
+
     @Builder.Default
     boolean locked = false;
 
     @Builder.Default
     boolean enabled = true;
 
-    @Transient
-    @JsonIgnore
-    private URI locationURI;
-
-    @Column(name = "timestamp")
-    @CreationTimestamp
-    private Timestamp timestamp;
-
-
     public String getUserName() {
         return firstName;
     }
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Set<Trip> trips;
-
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", email='" + email + '\'' +
-//                ", phone='" + phone + '\'' +
-//                ", username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", userRole=" + userRole +
-//                ", locked=" + locked +
-//                ", enabled=" + enabled +
-//                ", locationURI=" + locationURI +
-//                ", timestamp=" + timestamp +
-//                ", trips=" + trips.hashCode() +
-//                '}';
-//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

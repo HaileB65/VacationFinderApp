@@ -45,11 +45,7 @@ public class ItineraryController {
     public String showAddItineraryToTripPage(@ModelAttribute("itinerary") Itinerary itinerary, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         System.out.println("start of add Itinerary method");
 
-        //TODO add itinerary to current trip. How to get trip id from previous page?
-//        Trip trip = tripService.getTripById(id);  how do to get current trip id and retrieve from DB
-//        trip.setItinerary(itinerary);
-//        tripService.saveTrip(trip);
-//        System.out.println("save trip");
+        //TODO add itinerary to current trip being created.
 
         System.out.println("start of addItinerary() method");
 

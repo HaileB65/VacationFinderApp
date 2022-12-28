@@ -32,6 +32,6 @@ public class Destination {
     @CreationTimestamp
     private Timestamp timestamp;
 
-//    @ManyToMany(mappedBy = "destinations")
-//    public Set<Trip> trips;
+    @ManyToMany(mappedBy = "destinations")
+    public Set<Trip> trips;
 }

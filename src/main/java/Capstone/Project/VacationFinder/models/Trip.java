@@ -34,7 +34,7 @@ public class Trip {
     @ManyToMany(mappedBy = "trips")
     public Set<User> users;
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    public Set<Destination> destinations;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Destination> destinations;
 
 }

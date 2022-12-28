@@ -64,9 +64,9 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         if (!checklistRepository.existsById(1L)) {
             Checklist checklist = Checklist.builder()
-                    .item1("fdas")
-                    .item2("fdas")
-                    .item3("asdf")
+                    .item1("431")
+                    .item2("4123")
+                    .item3("324")
                     .build();
 
             checklistService.createNewChecklist(checklist);
@@ -75,15 +75,15 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         if (!tripRepository.existsById(1L)) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("213")
-                    .item2("213")
-                    .item3("342")
+                    .item1("AEUEKD")
+                    .item2("HJKLD")
+                    .item3("SHKJ")
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .item1("324")
-                    .item2("342")
-                    .item3("asd342f")
+                    .item1("%^*")
+                    .item2("&*(")
+                    .item3("*&&*(")
                     .build();
 
             Destination destination = Destination.builder()
@@ -97,13 +97,13 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image2("https://ontheworldmap.com/bahamas/the-islands-of-the-bahamas-map.jpg")
                     .build();
 
-            Set set = new HashSet();
+            Set<Destination> set = new HashSet();
             set.add(destination);
 
             Trip trip = Trip.builder()
                     .itinerary(itinerary)
                     .checklist(checklist)
-//                    .destinations(set)
+                    .destinations(set)
                     .build();
 
             tripService.createNewTrip(trip);
@@ -139,14 +139,14 @@ public class VacationFinderApplication implements CommandLineRunner {
                 .build();
         destinationService.createNewDestination(destination);
 
-        Set set = new HashSet();
+        Set<Destination> set = new HashSet();
         set.add(destination);
 
         Trip trip = Trip.builder()
                 .id(1L)
                 .itinerary(itinerary)
                 .checklist(checklist)
-//                .destinations(set)
+                .destinations(set)
                 .build();
         tripService.createNewTrip(trip);
 
@@ -185,13 +185,13 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         }
 
-        if (!userRepository.existsByUsername("admin")) {
+        if (!userRepository.existsByUsername("kyle")) {
             User admin = User.builder()
                     .firstName("Kyle")
                     .lastName("Jackson")
                     .email("kylejackson@yahoo.com")
                     .phone("8567487596")
-                    .username("admin")
+                    .username("kyle")
                     .password("password")
                     .userRole(UserRole.ADMIN)
                     .enabled(true)

@@ -111,7 +111,6 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         if (!userRepository.existsByUsername("Robin41")) {
         Itinerary itinerary = Itinerary.builder()
-                .id(1L)
                 .item1("Red")
                 .item2("Orange")
                 .item3("Blue")
@@ -119,7 +118,6 @@ public class VacationFinderApplication implements CommandLineRunner {
         itineraryService.createNewItinerary(itinerary);
 
         Checklist checklist = Checklist.builder()
-                .id(1L)
                 .item1("Yellow")
                 .item2("Grey")
                 .item3("Turquoise")

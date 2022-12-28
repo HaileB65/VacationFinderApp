@@ -19,6 +19,8 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    String name;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
     public Itinerary itinerary;

@@ -53,10 +53,6 @@ public class User implements UserDetails {
     @Builder.Default
     boolean enabled = true;
 
-    public String getUserName() {
-        return firstName;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());

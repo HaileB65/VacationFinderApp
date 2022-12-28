@@ -3,6 +3,7 @@ package Capstone.Project.VacationFinder.controllers;
 import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.TripService;
+import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class DestinationController {
 
     @Autowired
     DestinationService destinationService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     TripService tripService;
@@ -54,19 +58,21 @@ public class DestinationController {
 
         Destination destination = destinationService.getDestinationById(destinationId);
 
+        Set<Destination> destinations = new HashSet<>();
+        destinations.add(destination);
+
         Trip trip = Trip.builder()
-//                .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
-//                .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
+                .name(destination.getName())
+                .destinations(destinations)
                 .build();
 
-        System.out.println("created trip");
-        //TODO make sure trip is created in DB with itinerary and checklist initialized above. Make sure destination is attache to trip.
-        tripService.createNewTrip(trip);
+        Set<Trip> trips = new HashSet<>();
+        trips.add(trip);
 
-//        currentUser.trips.add(trip);
-        System.out.println("added trip to user");
+        User user = userService.getUserById(currentUser.getId());
+        user.setTrips(trips);
 
-        model.addAttribute("currentTripId", trip.getId());
+        userService.saveUser(user);
 
         System.out.println("end of add destination method");
 

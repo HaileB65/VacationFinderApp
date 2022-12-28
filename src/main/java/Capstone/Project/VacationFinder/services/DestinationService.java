@@ -38,6 +38,7 @@ public class DestinationService {
     }
 
     public void addToTrip(Destination destination) {
+
     }
 
 }

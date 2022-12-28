@@ -9,15 +9,13 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Destinations")
-@Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Destination {
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -34,6 +32,6 @@ public class Destination {
     @CreationTimestamp
     private Timestamp timestamp;
 
-//    @ManyToMany(mappedBy = "destinations", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    @ManyToMany(mappedBy = "destinations")
 //    public Set<Trip> trips;
 }

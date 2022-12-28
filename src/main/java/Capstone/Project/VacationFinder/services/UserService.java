@@ -43,10 +43,6 @@ public class UserService implements UserDetailsService {
     public User createNewUser(User user) {
         passwordEncoder.encodeUserPassword(user);
 
-        user.setUserRole(UserRole.USER);
-
-        user.trips = new HashSet<>(new ArrayList<>());
-
         userRepository.saveAndFlush(user);
 
         return user;

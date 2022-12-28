@@ -57,7 +57,6 @@ public class DestinationController {
         Trip trip = Trip.builder()
 //                .itinerary(new Itinerary(Arrays.asList("", "", "", getTimestamp())))
 //                .checklist(new Checklist(Arrays.asList("", "", "", getTimestamp())))
-                .selectedDestination("Peru")
                 .build();
 
         System.out.println("created trip");

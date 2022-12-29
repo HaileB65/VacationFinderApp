@@ -66,11 +66,8 @@ public class DestinationController {
                 .destinations(destinations)
                 .build();
 
-        Set<Trip> trips = new HashSet<>();
-        trips.add(trip);
-
         User user = userService.getUserById(currentUser.getId());
-        user.setTrips(trips);
+        user.getTrips().add(trip);
 
         userService.saveUser(user);
 

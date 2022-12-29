@@ -142,6 +142,7 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         Trip trip = Trip.builder()
                 .id(1L)
+                .name("Mongolia Trip")
                 .itinerary(itinerary)
                 .checklist(checklist)
                 .destinations(set)

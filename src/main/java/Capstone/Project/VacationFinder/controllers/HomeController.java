@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -28,13 +25,21 @@ public class HomeController {
     @Autowired
     TripService tripService;
 
+    @GetMapping("/myTrips")
+    public String showMyTripsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
+        User user = userService.getUserById(currentUser.getId());
 
-    @GetMapping("/tripHomePage")
-    public String showHomePage(Model model) throws Exception {
-        User user = userService.getUserById(1L);
-        model.addAttribute("user", user);
+        Set<Trip> userTrips = user.getTrips();
 
-        return "trip-home-page";
+        ArrayList<Trip> trips = new ArrayList<>();
+
+        for(Trip trip: userTrips){
+            trips.add(trip);
+        }
+
+        model.addAttribute("trips", trips);
+
+        return "my-trips";
     }
 
     @GetMapping("/newTrip")
@@ -52,8 +57,25 @@ public class HomeController {
 
 
     @GetMapping("/newTripPlanned")
-    public String tripPlanned(Model model) {
-        return "trip-planned";
+    public String showTrip(Model model) throws Exception {
+
+        Trip trip = tripService.getTripById(1L);
+        model.addAttribute("tripName", trip.getName());
+        model.addAttribute("trip", trip);
+
+        model.addAttribute("itineraryId", trip.itinerary.getId());
+        model.addAttribute("checklistId", trip.checklist.getId());
+
+        Set<Destination> tripDestinations = trip.destinations;
+        ArrayList<Destination> destinations = new ArrayList<>();
+        for(Destination destination: tripDestinations){
+            destinations.add(destination);
+        }
+
+        model.addAttribute("destinations", destinations);
+
+
+        return "trip-home-page";
     }
 
     @GetMapping("/styledPage")
@@ -63,15 +85,27 @@ public class HomeController {
     }
 
     @GetMapping("/trip/{tripId}")
-    public String showTripHomePage( Model model) throws Exception {
+    public String showTrip(@PathVariable("tripId") long tripId, Model model) throws Exception {
 
-        //TODO Get trip id from previous page to display completed trip.
-//        Trip trip = tripService.getTripById(tripId);
-//        model.addAttribute("destination", trip.getDestination());
-//        model.addAttribute("itinerary", trip.getItinerary());
-//        model.addAttribute("checklist", trip.getChecklist());
+        Trip trip = tripService.getTripById(tripId);
+        model.addAttribute("tripName", trip.getName());
+        model.addAttribute("trip", trip);
+
+        model.addAttribute("itineraryId", trip.itinerary.getId());
+        model.addAttribute("checklistId", trip.checklist.getId());
+
+        Set<Destination> tripDestinations = trip.destinations;
+        ArrayList<Destination> destinations = new ArrayList<>();
+        for(Destination destination: tripDestinations){
+            destinations.add(destination);
+        }
+
+        model.addAttribute("destinations", destinations);
+
 
         return "trip-home-page";
     }
+
+
 }
 

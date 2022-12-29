@@ -2,66 +2,75 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Trip Home Page</title>
     <div th:replace="fragments :: header"/>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<h1 align="center">Planned Trip</h1>
+<h1 align="center" th:text="${tripName}"></h1>
 
 <div align="center">
-    <table border="0" cellpadding="10">
+
+    <a>Destinations</a>
+    <table border="1" cellpadding="10">
         <tr>
-            <td><a>Selected Destination</a></td>
+            <th>Destination ID</th>
+            <th>Name</th>
+            <th>Action</th>
+
         </tr>
-        <tr>
-        <tr th:each="trip : ${trips}">
-            <td th:text="${trip.destinations}"></td>
-        </tr>
-        </tr>
-        <tr>
-            <td>
-                <table border="1" cellpadding="10" th:object="${user}">
-                    <tr>
-                        <th>Itinerary</th>
-                    </tr>
-                    <tr th:each="trip : ${user.trips}">
-                        <td th:text="${trip.itinerary.item1}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table border="1" cellpadding="10">
-                    <tr>
-                        <th>Checklist</th>
-                    </tr>
-                    <!--                <tr>-->
-                    <!--                    <td th:text="${trip.checklist.item1}"></td>-->
-                    <!--                </tr>-->
-                    <!--                <tr>-->
-                    <!--                    <td th:text="${trip.checklist.item2}"></td>-->
-                    <!--                </tr>-->
-                    <!--                <tr>-->
-                    <!--                    <td th:text="${trip.checklist.item3}"></td>-->
-                    <tr>
-                        <td>Item 4</td>
-                    </tr>
-                    <tr>
-                        <td>Item 5</td>
-                    </tr>
-                    <tr>
-                        <td>Item 6</td>
-                    </tr>
-                    <tr>
-                        <td>Item 7</td>
-                    </tr>
-                </table>
-            </td>
+        <tr th:each="destination : ${destinations}">
+            <td th:text="${destination.id}">Destination ID</td>
+            <td th:text="${destination.name}">Name</td>
+            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
         </tr>
     </table>
+
+    <table border="0" cellpadding="10">
+        <td>
+            <table border="1" cellpadding="10" >
+                <tr>
+                    <th>Itinerary</th>
+                </tr>
+                <tr>
+                    <td th:text="${trip.itinerary.item1}">Item 1</td>
+                </tr>
+                <tr>
+                    <td th:text="${trip.itinerary.item2}">Item 2</td>
+                </tr>
+                <tr>
+                    <td th:text="${trip.itinerary.item3}">Item 3</td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/itinerary/__${itineraryId}__}">Edit</a></td>
+                </tr>
+            </table>
+        </td>
+    </table>
+
+    <table border="0" cellpadding="10">
+        <td>
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>Checklist</th>
+                </tr>
+                <tr>
+                    <td th:text="${trip.checklist.item1}">Item 1</td>
+                </tr>
+                <tr>
+                    <td th:text="${trip.checklist.item2}">Item 2</td>
+                </tr>
+                <tr>
+                    <td th:text="${trip.checklist.item3}">Item 3</td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/checklist/__${checklistId}__}">Edit</a></td>
+                </tr>
+            </table>
+        </td>
+    </table>
+
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

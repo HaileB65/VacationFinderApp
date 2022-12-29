@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Trips</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<h1 align="center">My Trips</h1>
+
+<div align="center">
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Trip ID</th>
+            <th align="center">Name</th>
+            <th>Action</th>
+
+        </tr>
+        <tr th:each="trip : ${trips}">
+            <td th:text="${trip.id}">Destination ID</td>
+            <td th:text="${trip.name}">Name</td>
+            <td><a th:href="@{/trip/__${trip.id}__}">View</a></td>
+        </tr>
+    </table>
+    <br>
+</div>
+<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

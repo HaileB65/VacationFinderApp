@@ -27,5 +27,12 @@ public class ItineraryService {
         return newItinerary;
     }
 
+    public Itinerary saveItinerary(Itinerary itinerary) {
+
+        itineraryRepository.save(itinerary);
+
+        return itinerary;
+    }
+
 
 }

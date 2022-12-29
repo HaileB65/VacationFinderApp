@@ -52,7 +52,7 @@ public class HomeController {
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("newTrip") Trip trip) {
         tripService.createNewTrip(trip);
-        return "redirect:/home";
+        return "redirect:/myTrips";
     }
 
 

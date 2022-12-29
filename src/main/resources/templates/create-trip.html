@@ -2,35 +2,27 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Create Itinerary</title>
+    <title>Create Trip</title>
     <div th:replace="fragments :: header"/>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<h1 align="center">Create Itinerary</h1>
+<h1 align="center">Create Trip</h1>
 
 <div align="center">
 
-    <form action="#" method="post" th:action="@{/saveItinerary}" th:object="${newItinerary}">
+    <form action="#" method="post" th:action="@{/saveTrip}" th:object="${newTrip}">
 
         <table border="0" cellpadding="10">
             <td>
                 <table border="1" cellpadding="10">
                     <tr>
-                        <th>Itinerary</th>
+                        <th>Trip</th>
                     </tr>
                     <tr>
-                        <td>Item 1</td>
-                        <td><input required th:field="*{item1}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 2</td>
-                        <td><input required th:field="*{item2}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 3</td>
-                        <td><input required th:field="*{item3}" type="text"/></td>
+                        <td>Name</td>
+                        <td><input required th:field="*{name}" type="text"/></td>
                     </tr>
                     <tr align="center">
                         <td colspan="2">

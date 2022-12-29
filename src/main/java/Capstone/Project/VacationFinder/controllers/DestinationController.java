@@ -119,12 +119,12 @@ public class DestinationController {
         return "destination-finder-results";
     }
 
-    @GetMapping("/createNewTrip")
+    @GetMapping("/destinationFinder")
     public String showCreateNewTripPage(Model model) {
         Questionnaire questionnaire = new Questionnaire();
         model.addAttribute("questionnaire", questionnaire);
 
-        return "create-new-trip";
+        return "destination-finder";
     }
 
 }

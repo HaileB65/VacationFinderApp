@@ -12,7 +12,7 @@
 
 <div align="center">
 
-    <form action="#" method="post" th:action="@{/editChecklist}" th:object="${checklist}">
+    <form action="#" method="post" th:action="@{'/editChecklist/' + ${checklist.id}}" th:object="${checklist}">
 
         <table border="0" cellpadding="10">
             <td>

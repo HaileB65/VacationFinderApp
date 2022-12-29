@@ -13,7 +13,6 @@ public class TripService {
     @Autowired
     TripRepository tripRepository;
 
-
     public Trip getTripById(long id) throws Exception {
         Optional<Trip> trip = tripRepository.findById(id);
         if (trip.isPresent()) {
@@ -22,16 +21,12 @@ public class TripService {
     }
 
     public Trip createNewTrip(Trip newTrip) {
-
         tripRepository.save(newTrip);
-
         return newTrip;
     }
 
     public Trip saveTrip(Trip newTrip) {
-
         tripRepository.save(newTrip);
-
         return newTrip;
     }
 

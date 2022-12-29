@@ -11,21 +11,11 @@
     <h1>Create New Trip</h1>
     <br/>
     <form action="#" method="post" th:action="@{/saveTrip}" th:object="${newTrip}">
-
         <table border="0" cellpadding="10">
             <tr>
-                <td>Enter Destination:</td>
-                <td><input required th:field="*{selectedDestination}" type="text"/></td>
+                <td>Name:</td>
+                <td><input required th:field="*{name}" type="text"/></td>
             </tr>
-            <tr>
-                <td>Create Itinerary:</td>
-                <td><input required type="text"/></td>
-            </tr>
-            <tr>
-                <td>Create Checklist:</td>
-                <td><input required type="text"></td>
-            </tr>
-
             <tr>
                 <td colspan="2">
                     <button type="submit">Save</button>

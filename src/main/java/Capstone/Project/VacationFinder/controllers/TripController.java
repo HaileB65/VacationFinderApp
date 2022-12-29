@@ -49,13 +49,6 @@ public class TripController {
         return "new-trip";
     }
 
-    @PostMapping("/saveTrip")
-    public String saveTrip(@ModelAttribute("newTrip") Trip trip) {
-        tripService.createNewTrip(trip);
-        return "redirect:/myTrips";
-    }
-
-
     @GetMapping("/newTripPlanned")
     public String showTrip(Model model) throws Exception {
 
@@ -104,6 +97,14 @@ public class TripController {
 
 
         return "trip-home-page";
+    }
+
+    @PostMapping("/saveTrip")
+    public String saveTrip(@ModelAttribute("newTrip") Trip trip) throws Exception {
+        tripService.createNewTrip(trip);
+
+        tripService.getTripById(trip.getId());
+        return "redirect:/myTrips";
     }
 
 

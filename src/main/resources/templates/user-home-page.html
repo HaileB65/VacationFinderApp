@@ -11,12 +11,6 @@
 
 <div align="center">
     <h1 th:text="'Welcome ' + ${#authentication.getPrincipal().getFirstName()} + ' !' "></h1>
-
-    <table border="1" cellpadding="10">
-        <th>Planned Trips</th>
-        <tr></tr>
-    </table>
-
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

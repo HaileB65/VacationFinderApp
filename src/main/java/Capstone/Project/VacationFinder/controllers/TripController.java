@@ -100,10 +100,15 @@ public class TripController {
     }
 
     @PostMapping("/saveTrip")
-    public String saveTrip(@ModelAttribute("newTrip") Trip trip) throws Exception {
-        tripService.createNewTrip(trip);
+    public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @AuthenticationPrincipal User currentUser) throws Exception {
+        tripService.createNewTrip(newTrip);
 
-        tripService.getTripById(trip.getId());
+        Trip trip = tripService.getTripById(newTrip.getId());
+
+        currentUser.getTrips().add(trip);
+
+        userService.saveUser(currentUser);
+
         return "redirect:/myTrips";
     }
 

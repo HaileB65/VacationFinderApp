@@ -101,6 +101,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             set.add(destination);
 
             Trip trip = Trip.builder()
+                    .name("France Trip")
                     .itinerary(itinerary)
                     .checklist(checklist)
                     .destinations(set)

@@ -1,10 +1,8 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.*;
-import Capstone.Project.VacationFinder.services.DestinationService;
-import Capstone.Project.VacationFinder.services.ItineraryService;
-import Capstone.Project.VacationFinder.services.TripService;
-import Capstone.Project.VacationFinder.services.UserService;
+import Capstone.Project.VacationFinder.services.*;
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,12 @@ public class TripController {
 
     @Autowired
     TripService tripService;
+
+    @Autowired
+    ItineraryService itineraryService;
+
+    @Autowired
+    ChecklistService checklistService;
 
     @GetMapping("/myTrips")
     public String showMyTripsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
@@ -84,16 +88,29 @@ public class TripController {
         model.addAttribute("tripName", trip.getName());
         model.addAttribute("trip", trip);
 
+        if(trip.itinerary == null){
+            Itinerary newItinerary = new Itinerary();
+            itineraryService.saveItinerary(newItinerary);
+            trip.setItinerary(newItinerary);
+            tripService.saveTrip(trip);
+        }
         model.addAttribute("itineraryId", trip.itinerary.getId());
+
+        if(trip.checklist == null){
+            Checklist newChecklist = new Checklist();
+            checklistService.saveChecklist(newChecklist);
+            trip.setChecklist(newChecklist);
+            tripService.saveTrip(trip);
+        }
         model.addAttribute("checklistId", trip.checklist.getId());
 
-        Set<Destination> tripDestinations = trip.destinations;
-        ArrayList<Destination> destinations = new ArrayList<>();
-        for(Destination destination: tripDestinations){
-            destinations.add(destination);
-        }
 
-        model.addAttribute("destinations", destinations);
+        if(trip.destinations == null){
+            Set<Destination> destinations = new HashSet();
+            trip.setDestinations(destinations);
+            tripService.saveTrip(trip);
+        }
+        model.addAttribute("destinations", trip.destinations);
 
 
         return "trip-home-page";

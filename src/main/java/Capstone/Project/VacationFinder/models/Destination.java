@@ -27,6 +27,12 @@ public class Destination {
     String activity3;
     String image1;
     String image2;
+    String city1;
+    String city2;
+    String city3;
+    String city4;
+    String city5;
+
 
     @Column(name = "timestamp")
     @CreationTimestamp

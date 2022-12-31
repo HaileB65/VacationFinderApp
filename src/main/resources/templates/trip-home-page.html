@@ -14,15 +14,21 @@
 
     <a>Destinations</a>
     <table border="1" cellpadding="10">
-        <tr>
-            <th>Destination ID</th>
-            <th>Name</th>
+        <tr align="center">
+            <th>City 1</th>
+            <th>City 2</th>
+            <th>City 3</th>
+            <th>City 4</th>
+            <th>City 5</th>
             <th>Action</th>
 
         </tr>
         <tr th:each="destination : ${destinations}">
-            <td th:text="${destination.id}">Destination ID</td>
-            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.city1}">City 1</td>
+            <td th:text="${destination.city2}">City 2</td>
+            <td th:text="${destination.city3}">City 3</td>
+            <td th:text="${destination.city4}">City 4</td>
+            <td th:text="${destination.city5}">City 5</td>
             <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
         </tr>
     </table>

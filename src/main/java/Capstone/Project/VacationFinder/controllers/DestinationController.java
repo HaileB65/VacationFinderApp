@@ -61,14 +61,8 @@ public class DestinationController {
         Set<Destination> destinations = new HashSet<>();
         destinations.add(destination);
 
-        Trip trip = Trip.builder()
-                .name(destination.getName())
-                .destinations(destinations)
-                .build();
 
         User user = userService.getUserById(currentUser.getId());
-        user.getTrips().add(trip);
-
         userService.saveUser(user);
 
         System.out.println("end of add destination method");

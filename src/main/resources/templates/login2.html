@@ -9,28 +9,44 @@
 <div th:replace="fragments :: navigation"/>
 
 <form method="post" name="login" th:action="@{/login}">
+    <table border="0" cellpadding="10">
     <fieldset>
-        <legend>Please login to enter Vacation Finder.</legend>
-        <div class="alert alert-error" th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div class="alert alert-success" th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text"/>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="text"/>
-        <div class="form-actions">
-            <input value="Log in" type="submit"/>
-        </div>
+        <tr>
+            <td><legend>Please login to enter Vacation Finder.</legend></td>
+
+        </tr>
+        <tr>
+            <td><div class="alert alert-error" th:if="${param.error}">
+                Invalid username and password.
+            </div>
+                <div class="alert alert-success" th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label>
+                <input id="password" name="password" type="text"/></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-actions">
+                    <input value="Log in" type="submit"/>
+                </div>
+            </td>
+
+            <td>
+                <div>
+                <form method="get" name="register" th:action="@{/register}">
+                    <input value="Register" type="submit"/>
+                </form>
+                </div>
+            </td>
+        </tr>
     </fieldset>
+    </table>
 </form>
-<div>
-    <form method="get" name="register" th:action="@{/register}">
-        <input value="Register" type="submit"/>
-    </form>
-</div>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 
 </body>

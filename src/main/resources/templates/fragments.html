@@ -78,11 +78,6 @@
                         <span class="text-info" th:text="${#authentication.getPrincipal().getUserRole()}"></span>
                     </li>
                 </ul>
-                <form class="d-flex" action="#" th:action="@{/login}" method="post">
-                    <div sec:authorize="isAuthenticated()">
-                        <input class="btn btn-light" type="submit" value="Log in"/>
-                    </div>
-                </form>
             </li>
         </div>
     </nav>

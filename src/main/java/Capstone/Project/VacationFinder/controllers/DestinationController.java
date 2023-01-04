@@ -52,22 +52,35 @@ public class DestinationController {
         return "destination";
     }
 
-    @GetMapping("/addDestinationToTrip/{destinationId}")
-    public String showAddDestinationToTrip(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    @GetMapping("/addDestinationToList/{destinationId}")
+    public String addToUserDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         System.out.println("start of add destination method");
 
         Destination destination = destinationService.getDestinationById(destinationId);
 
-        Set<Destination> destinations = new HashSet<>();
-        destinations.add(destination);
-
-
         User user = userService.getUserById(currentUser.getId());
+        user.getSavedDestinations().add(destination);
         userService.saveUser(user);
 
         System.out.println("end of add destination method");
 
-        return "destination-added";
+        return "redirect:/myTrips";
+    }
+
+    @GetMapping("/addDestinationToTrip/{destinationId}")
+    public String addDestinationToTrip(@PathVariable("destinationId") long destinationId, @PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+        System.out.println("start of add destination method");
+
+        Destination destination = destinationService.getDestinationById(destinationId);
+        Trip trip = tripService.getTripById(tripId);
+
+        trip.getDestinations().add(destination);
+
+        tripService.saveTrip(trip);
+
+        System.out.println("end of add destination method");
+
+        return "redirect:/myTrips";
     }
 
     public Timestamp getTimestamp() {

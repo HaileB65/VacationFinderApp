@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:a="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <div th:replace="fragments :: header"/>
+    <style>
+    a {
+  color: grey;
+}
+        a:link {
+        color: red;
+  text-decoration: none;
+ }
+    </style>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
@@ -13,8 +22,7 @@
     <table border="0" cellpadding="10">
     <fieldset>
         <tr>
-            <td align="center" colspan="2"><legend>Please login to enter Vacation Finder.</legend></td>
-
+            <td align="left"><legend>Login</legend></td>
         </tr>
         <tr>
             <td align="center" colspan="2">
@@ -35,28 +43,22 @@
             </td>
         </tr>
         <tr>
-            <td align="center">
-                <div class="form-actions" align="center">
+            <td>
+                <div class="form-actions" align="left">
                     <input value="Log in" type="submit"/>
-                    <a class="btn btn-primary" th:href="@{/register}" value="Register"></a>
-                    <a class="custom-btn" th:href="@{/register}" value="Register"></a>
-                    <a  th:href="@{/register}" value="Register"></a>
                 </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{register}">Register</a>
             </td>
         </tr>
     </fieldset>
     </table>
 </form>
-    <table border="0" cellpadding="10">
-    <tr>
-        <td>
-            <form method="get" name="register" th:action="@{/register}">
-                <input value="Register" type="submit"/>
-            </form>
-        </td>
-    </tr>
-    </table>
 </div>
+
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 
 </body>

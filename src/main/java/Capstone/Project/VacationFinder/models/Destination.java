@@ -40,4 +40,7 @@ public class Destination {
 
     @ManyToMany(mappedBy = "destinations")
     public Set<Trip> trips;
+
+    @ManyToMany(mappedBy = "savedDestinations")
+    public Set<User> users;
 }

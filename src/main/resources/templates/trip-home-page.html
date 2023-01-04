@@ -19,7 +19,6 @@
             <th>City 3</th>
             <th>City 4</th>
             <th>City 5</th>
-            <th>Action</th>
 
         </tr>
         <tr th:each="destination : ${destinations}">
@@ -28,30 +27,44 @@
             <td th:text="${destination.city3}">City 3</td>
             <td th:text="${destination.city4}">City 4</td>
             <td th:text="${destination.city5}">City 5</td>
-            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
         </tr>
     </table>
 
-    <table border="0" cellpadding="10">
-        <td>
-            <table border="1" cellpadding="10" >
-                <tr>
-                    <th>Itinerary</th>
-                </tr>
-                <tr>
-                    <td th:text="${trip.itinerary.item1}">Item 1</td>
-                </tr>
-                <tr>
-                    <td th:text="${trip.itinerary.item2}">Item 2</td>
-                </tr>
-                <tr>
-                    <td th:text="${trip.itinerary.item3}">Item 3</td>
-                </tr>
-                <tr align="center">
-                    <td><a th:href="@{/itinerary/__${itineraryId}__}">Edit</a></td>
-                </tr>
-            </table>
-        </td>
+    <a>Saved Destinations</a>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Scenery</th>
+            <th>Weather</th>
+            <th>Action</th>
+
+        </tr>
+        <tr th:each="destination : ${savedDestinations}">
+            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.scenery}">Scenery</td>
+            <td th:text="${destination.weather}">Weather</td>
+            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
+            <td><a th:href="@{/destination/__${destination.id}__/">Add to Trip</a></td>
+        </tr>
+    </table>
+
+    <br>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Itinerary</th>
+        </tr>
+        <tr>
+            <td th:text="${trip.itinerary.item1}">Item 1</td>
+        </tr>
+        <tr>
+            <td th:text="${trip.itinerary.item2}">Item 2</td>
+        </tr>
+        <tr>
+            <td th:text="${trip.itinerary.item3}">Item 3</td>
+        </tr>
+        <tr align="center">
+            <td><a th:href="@{/itinerary/__${itineraryId}__}">Edit</a></td>
+        </tr>
     </table>
 
     <table border="0" cellpadding="10">

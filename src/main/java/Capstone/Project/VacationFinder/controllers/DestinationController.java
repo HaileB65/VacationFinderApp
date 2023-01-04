@@ -29,9 +29,12 @@ public class DestinationController {
     TripService tripService;
 
     @GetMapping("/destinations")
-    public String showDestinationsPage(Model model) {
+    public String showDestinationsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
+
+        User user = userService.getUserById(currentUser.getId());
+        model.addAttribute("savedDestinations", user.savedDestinations);
 
         return "destinations";
     }
@@ -52,8 +55,8 @@ public class DestinationController {
         return "destination";
     }
 
-    @GetMapping("/addDestinationToList/{destinationId}")
-    public String addToUserDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    @GetMapping("/addToSavedDestinations/{destinationId}")
+    public String addToSavedDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         System.out.println("start of add destination method");
 
         Destination destination = destinationService.getDestinationById(destinationId);
@@ -64,16 +67,32 @@ public class DestinationController {
 
         System.out.println("end of add destination method");
 
-        return "redirect:/myTrips";
+        return "redirect:/destinations";
     }
 
-    @GetMapping("/addDestinationToTrip/{destinationId}")
-    public String addDestinationToTrip(@PathVariable("destinationId") long destinationId, @PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    @GetMapping("/removeFromSavedDestinations/{destinationId}")
+    public String removeFromSavedDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         System.out.println("start of add destination method");
 
         Destination destination = destinationService.getDestinationById(destinationId);
-        Trip trip = tripService.getTripById(tripId);
 
+        User user = userService.getUserById(currentUser.getId());
+        user.getSavedDestinations().remove(destination);
+        userService.saveUser(user);
+
+        System.out.println("end of add destination method");
+
+        return "redirect:/destinations";
+    }
+
+    @GetMapping("/addDestinationToTrip/{destinationId}/{tripId}")
+    public String addDestinationToTrip(@PathVariable("destinationId") long destinationId, @PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+        System.out.println("start of add destination method");
+
+        Trip trip = tripService.getTripById(tripId);
+        trip.getDestinations().clear();
+
+        Destination destination = destinationService.getDestinationById(destinationId);
         trip.getDestinations().add(destination);
 
         tripService.saveTrip(trip);

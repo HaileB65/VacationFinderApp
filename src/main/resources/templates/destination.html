@@ -30,8 +30,8 @@
     </table>
 
     <div>
-        <form action="#" method="get" name="destination" th:action="@{/addDestinationToList/__${destination.id}__}">
-            <button type="submit">Add To Trip</button>
+        <form action="#" method="get" name="addDestination"th:action="@{/addToSavedDestinations/__${destination.id}__}">
+            <button type="submit">Add To Saved Destinations</button>
         </form>
     </div>
 

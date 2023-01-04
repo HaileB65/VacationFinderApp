@@ -9,33 +9,60 @@
 <div th:replace="fragments :: navigation"/>
 
 <h1 align="center">Destinations</h1>
+<table border="0" cellpadding="10">
+    <tr>
+        <td>
+            <div align="center">
+                <table border="1" cellpadding="10">
+                    <tr>
+                        <th>Destination ID</th>
+                        <th>Name</th>
+                        <th>Scenery</th>
+                        <th>Weather</th>
+                        <th>Activity 1</th>
+                        <th>Activity 2</th>
+                        <th>Activity 3</th>
+                        <th>Action</th>
 
-<div align="center">
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>Destination ID</th>
-            <th>Name</th>
-            <th>Scenery</th>
-            <th>Weather</th>
-            <th>Activity 1</th>
-            <th>Activity 2</th>
-            <th>Activity 3</th>
-            <th>Action</th>
+                    </tr>
+                    <tr th:each="destination : ${destinationsTable}">
+                        <td th:text="${destination.id}">Destination ID</td>
+                        <td th:text="${destination.name}">Name</td>
+                        <td th:text="${destination.scenery}">Scenery</td>
+                        <td th:text="${destination.weather}">Weather</td>
+                        <td th:text="${destination.activity1}">Activity 1</td>
+                        <td th:text="${destination.activity2}">Activity 2</td>
+                        <td th:text="${destination.activity3}">Activity 3</td>
+                        <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
 
-        </tr>
-        <tr th:each="destination : ${destinationsTable}">
-            <td th:text="${destination.id}">Destination ID</td>
-            <td th:text="${destination.name}">Name</td>
-            <td th:text="${destination.scenery}">Scenery</td>
-            <td th:text="${destination.weather}">Weather</td>
-            <td th:text="${destination.activity1}">Activity 1</td>
-            <td th:text="${destination.activity2}">Activity 2</td>
-            <td th:text="${destination.activity3}">Activity 3</td>
-            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
-        </tr>
-    </table>
-    <br>
-</div>
-<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
+        <td align="center">
+            <div align="center">
+            <a>Saved Destinations</a>
+            <table border="1" cellpadding="10">
+                <tr align="center">
+                    <th>Name</th>
+                    <th>Scenery</th>
+                    <th>Weather</th>
+                    <th>Actions</th>
+
+                </tr>
+                <tr align="center" th:each="destination : ${savedDestinations}">
+                    <td th:text="${destination.name}">Name</td>
+                    <td th:text="${destination.scenery}">Scenery</td>
+                    <td th:text="${destination.weather}">Weather</td>
+                    <td>
+                        <a th:href="@{/removeFromSavedDestinations/__${destination.id}__}">Remove</a></td>
+                </tr>
+            </table>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

@@ -21,7 +21,7 @@
             <th>City 5</th>
 
         </tr>
-        <tr th:each="destination : ${destinations}">
+        <tr th:each="destination : ${destinations}" align="center">
             <td th:text="${destination.city1}">City 1</td>
             <td th:text="${destination.city2}">City 2</td>
             <td th:text="${destination.city3}">City 3</td>
@@ -32,19 +32,20 @@
 
     <a>Saved Destinations</a>
     <table border="1" cellpadding="10">
-        <tr>
+        <tr align="center">
             <th>Name</th>
             <th>Scenery</th>
             <th>Weather</th>
-            <th>Action</th>
+            <th>Actions</th>
 
         </tr>
-        <tr th:each="destination : ${savedDestinations}">
+        <tr th:each="destination : ${savedDestinations}" align="center">
             <td th:text="${destination.name}">Name</td>
             <td th:text="${destination.scenery}">Scenery</td>
             <td th:text="${destination.weather}">Weather</td>
-            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
-            <td><a th:href="@{/destination/__${destination.id}__/">Add to Trip</a></td>
+            <td>
+                <a th:href="@{/destination/__${destination.id}__}">View</a>
+                <a th:href="@{/addDestinationToTrip/__${destination.id}__/__${trip.id}__}">Add to Trip</a></td>
         </tr>
     </table>
 

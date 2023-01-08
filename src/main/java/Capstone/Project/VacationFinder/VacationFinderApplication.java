@@ -172,7 +172,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                 .phone("1245684578")
                 .username("Robin41")
                 .password("password")
-                .userRole(UserRole.GUEST)
+                .role(Role.GUEST)
                 .trips(set2)
                 .build();
 
@@ -186,8 +186,8 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .email("alexwalker@yahoo.com")
                     .phone("1245874568")
                     .username("Alex45")
-                    .password("Walker76")
-                    .userRole(UserRole.USER)
+                    .password("password")
+                    .role(Role.USER)
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -204,7 +204,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .phone("8567487596")
                     .username("kyle")
                     .password("password")
-                    .userRole(UserRole.ADMIN)
+                    .role(Role.ADMIN)
                     .enabled(true)
                     .locked(false)
                     .build();
@@ -216,7 +216,7 @@ public class VacationFinderApplication implements CommandLineRunner {
         if (!destinationRepository.existsByName("Bahamas")) {
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
-                    .weather("warm")
+                    .weather("Warm")
                     .scenery("Beach")
                     .activity1("Swimming")
                     .activity2("Scuba Diving")

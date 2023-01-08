@@ -36,7 +36,7 @@
                         <span class="text-secondary">Current user:</span>
                         <span class="text-info" th:text="${#authentication.getPrincipal().getFirstName()}"></span>
                         <span class="text-secondary">Roles:</span>
-                        <span class="text-info" th:text="${#authentication.getPrincipal().getUserRole()}"></span>
+                        <span class="text-info" th:text="${#authentication.getPrincipal().getRole()}"></span>
                     </li>
                 </ul>
                 <form class="d-flex" action="#" th:action="@{/logout}" method="post">

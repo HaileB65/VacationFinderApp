@@ -21,9 +21,15 @@
                             <th>Preferred Activity</th>
                         </tr>
                         <tr>
-                            <td><input required th:field="*{favoriteScenery}" type="text"/>
-                            <td><input required th:field="*{weather}" type="text"/>
-                            <td><input required th:field="*{preferredActivity}" type="text"/>
+                            <td><input required th:field="*{favoriteScenery}" type="text"/></td>
+                            <td>
+<!--                                <select th:field="*{weather}">-->
+<!--                                    <option value="Warm">Warm</option>-->
+<!--                                    <option value="Cold">Cold</option>-->
+<!--                                </select>-->
+                                <input required th:field="*{weather}" type="text"/>
+                            </td>
+                            <td><input required th:field="*{preferredActivity}" type="text"/></td>
                         </tr>
                         <tr align="center">
                             <td colspan="3"><input type="submit" value="Submit"></td>

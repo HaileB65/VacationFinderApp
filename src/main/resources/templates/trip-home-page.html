@@ -46,12 +46,18 @@
     <div th:if="${#authorization.expression('hasRole(''USER'')')}">
         This will only be displayed if authenticated user has role ROLE_ADMIN.
     </div>
-    <div sec:authorize="hasRole('USER')"> This content is only shown to dfaslk.</div>
+    <div sec:authorize="hasRole('USER')"> <a>This content is only shown to dfaslk.</a></div>
     <div sec:if="{#authoriztion.expression('hasRole('ROLE_USER')')">
-        This content is only shown to bnmbm.
+        This content is only shown to $%^%$.
     </div>
     <div sec:authorize="hasRole('USER')">
         This content is only shown to erturt.
+    </div>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        This content is only shown to 54254.
+    </div>
+    <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+        ADMIn section
     </div>
     <div sec:if="{#authoriztion.expression('hasRole('USER')')">
     <tr align="center">

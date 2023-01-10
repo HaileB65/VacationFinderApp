@@ -9,12 +9,11 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<h1 align="center">Possible Vacation Spots</h1>
+<h1 align="center">Searched Destinations</h1>
 
 <div align="center">
     <table border="1" cellpadding="10">
         <tr>
-            <th>Destination ID</th>
             <th>Name</th>
             <th>Scenery</th>
             <th>Weather</th>
@@ -24,7 +23,6 @@
             <th>Action</th>
         </tr>
         <tr th:each="destination : ${searchedDestinations}">
-            <td th:text="${destination.id}">Destination ID</td>
             <td th:text="${destination.name}">Name</td>
             <td th:text="${destination.scenery}">Scenery</td>
             <td th:text="${destination.weather}">Weather</td>
@@ -37,10 +35,9 @@
 
     <br><br>
 
-    <h1 align="center">All Destinations</h1>
+    <h1 align="center">Other Destinations</h1>
     <table border="1" cellpadding="10">
         <tr>
-            <th>Destination ID</th>
             <th>Name</th>
             <th>Scenery</th>
             <th>Weather</th>
@@ -49,8 +46,7 @@
             <th>Activity 3</th>
             <th>Action</th>
         </tr>
-        <tr th:each="destination : ${destinationsTable}">
-            <td th:text="${destination.id}">Destination ID</td>
+        <tr th:each="destination : ${remainingDestinations}">
             <td th:text="${destination.name}">Name</td>
             <td th:text="${destination.scenery}">Scenery</td>
             <td th:text="${destination.weather}">Weather</td>

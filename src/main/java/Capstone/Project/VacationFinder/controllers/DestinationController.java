@@ -133,14 +133,16 @@ public class DestinationController {
 
     @PostMapping("/destinationFinderResults")
     public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
+        model.addAttribute("questionnaire", questionnaire);
 
         List<Destination> searchedDestinations = destinationService.getByWeather(questionnaire.getWeather());
         model.addAttribute("searchedDestinations", searchedDestinations);
 
-        model.addAttribute("questionnaire", questionnaire);
-
-        List<Destination> destinationsTable = destinationService.getAllDestinations();
-        model.addAttribute("destinationsTable", destinationsTable);
+        List<Destination> remainingDestinations = destinationService.getAllDestinations();
+        for(Destination destination:searchedDestinations){
+            remainingDestinations.remove(destination);
+        }
+        model.addAttribute("remainingDestinations", remainingDestinations);
 
         return "destination-finder-results";
     }

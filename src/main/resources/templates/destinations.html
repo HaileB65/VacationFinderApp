@@ -15,7 +15,6 @@
             <div align="center">
                 <table border="1" cellpadding="10">
                     <tr>
-                        <th>Destination ID</th>
                         <th>Name</th>
                         <th>Scenery</th>
                         <th>Weather</th>
@@ -26,7 +25,6 @@
 
                     </tr>
                     <tr th:each="destination : ${destinationsTable}">
-                        <td th:text="${destination.id}">Destination ID</td>
                         <td th:text="${destination.name}">Name</td>
                         <td th:text="${destination.scenery}">Scenery</td>
                         <td th:text="${destination.weather}">Weather</td>

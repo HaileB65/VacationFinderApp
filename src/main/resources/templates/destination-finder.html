@@ -15,15 +15,31 @@
             <td>
                 <form action="#" method="post" th:action="@{/destinationFinderResults}" th:object="${questionnaire}">
                     <table border="0" cellpadding="10">
-                        <tr align="center">
-                            <th>Favorite Scenery</th>
-                            <th>Preferred Weather</th>
-                            <th>Preferred Activity</th>
-                        </tr>
                         <tr>
-                            <td><input required th:field="*{favoriteScenery}" type="text"/>
-                            <td><input required th:field="*{weather}" type="text"/>
-                            <td><input required th:field="*{preferredActivity}" type="text"/>
+                            <td>
+                                <select th:field="*{favoriteScenery}" id="favoriteScenery" name="favoriteScenery">
+                                    <option value="">Select Preferred Scenery</option>
+                                    <option value="Beach" th:text="Beach"></option>
+                                    <option value="Mountains" th:text="Mountains"></option>
+                                    <option value="Snow" th:text="Snow"></option>
+                                    <option value="Dessert" th:text="Dessert"></option>
+                                </select>
+                            <td>
+                                <select th:field="*{weather}" id="weather" name="weather">
+                                    <option value="">Select Preferred Weather</option>
+                                    <option value="Warm" th:text="Warm"></option>
+                                    <option value="Cold" th:text="Cold"></option>
+                                </select>
+                            <td>
+                                <select th:field="*{preferredActivity}" id="preferredActivity" name="preferredActivity">
+                                    <option value="">Select Preferred Activity</option>
+                                    <option value="Skiing" th:text="Skiing"></option>
+                                    <option value="SnowBoarding" th:text="'Snow'+ ' Boarding'"></option>
+                                    <option value="Swimming" th:text="Swimming"></option>
+                                    <option value="Snorkeling" th:text="Snorkeling"></option>
+                                    <option value="Parasailing" th:text="Parasailing"></option>
+                                    <option value="Kayaking" th:text="Kayaking"></option>
+                                </select>
                         </tr>
                         <tr align="center">
                             <td colspan="3"><input type="submit" value="Submit"></td>

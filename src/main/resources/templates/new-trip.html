@@ -13,8 +13,16 @@
     <form action="#" method="post" th:action="@{/saveTrip}" th:object="${newTrip}">
         <table border="0" cellpadding="10">
             <tr>
-                <td>Name:</td>
-                <td><input required th:field="*{name}" type="text"/></td>
+                <td>
+                    <select th:field="*{destination}" id="destination" name="destination">
+                        <option value="">Select Trip</option>
+                        <option value="Peru" th:text="Peru"></option>
+                        <option value="Switzerland" th:text="Switzerland"></option>
+                        <option value="Mongolia" th:text="Mongolia"></option>
+                        <option value="Bahamas" th:text="Bahamas"></option>
+                        <option value="Brazil" th:text="Brazil"></option>
+                    </select>
+                </td>
             </tr>
             <tr align="center">
                 <td colspan="2">

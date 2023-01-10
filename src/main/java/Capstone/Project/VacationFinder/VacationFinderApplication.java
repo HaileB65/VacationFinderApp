@@ -216,7 +216,7 @@ public class VacationFinderApplication implements CommandLineRunner {
         if (!destinationRepository.existsByName("Bahamas")) {
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
-                    .weather("warm")
+                    .weather("Warm")
                     .scenery("Beach")
                     .activity1("Swimming")
                     .activity2("Scuba Diving")

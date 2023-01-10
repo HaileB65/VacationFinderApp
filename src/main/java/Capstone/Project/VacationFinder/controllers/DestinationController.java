@@ -52,6 +52,11 @@ public class DestinationController {
         model.addAttribute("destinationName", destination.getName());
         model.addAttribute("destination", destination);
 
+        ArrayList<String> images = new ArrayList<>();
+        images.add(destination.getImage1());
+        images.add(destination.getImage2());
+        model.addAttribute("images", images);
+
         return "destination";
     }
 

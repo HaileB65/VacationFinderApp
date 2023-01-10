@@ -18,13 +18,16 @@
         </tr>
         <tr th:each="trip : ${trips}">
             <td th:text="${trip.name}">Name</td>
-            <td><a th:href="@{/trip/__${trip.id}__}">View</a></td>
+            <td>
+                <a th:href="@{/trip/__${trip.id}__}">View</a>
+                <a th:href="@{/deleteTrip/__${trip.id}__}">Delete</a>
+            </td>
         </tr>
     </table>
     <br>
 
     <form action="#" method="get" th:action="@{/newTrip}">
-        <button type="submit">Create New Trip</button>
+        <input type="submit" value="Create New Trip">
     </form>
 
 </div>

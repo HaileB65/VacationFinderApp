@@ -12,7 +12,6 @@ import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,7 +33,7 @@ public class User implements UserDetails {
     String password;
 
     @Enumerated(EnumType.STRING)
-    UserRole userRole;
+    Role role;
 
     @Transient
     @JsonIgnore
@@ -59,7 +58,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
     }
 

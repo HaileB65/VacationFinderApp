@@ -133,7 +133,7 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         Destination destination = Destination.builder()
                 .name("Mongolia")
-                .weather("Warm")
+                .weather("Cold")
                 .scenery("Mountains")
                 .activity1("Hiking")
                 .activity2("Mountain Tours")

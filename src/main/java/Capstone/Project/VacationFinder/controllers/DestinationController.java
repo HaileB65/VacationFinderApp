@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class DestinationController {
@@ -140,11 +141,12 @@ public class DestinationController {
     public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
         model.addAttribute("questionnaire", questionnaire);
 
-        List<Destination> searchedDestinations = destinationService.getByWeather(questionnaire.getWeather());
-        model.addAttribute("searchedDestinations", searchedDestinations);
+        List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(questionnaire.getWeather(), questionnaire.getFavoriteScenery());
+        model.addAttribute("searchedDestinations", destinationsMatchingWeatherAndScenery);
 
-        List<Destination> remainingDestinations = destinationService.getAllDestinations();
-        for(Destination destination:searchedDestinations){
+
+        List<Destination> remainingDestinations = destinationService.getByWeather(questionnaire.getWeather());
+        for(Destination destination:destinationsMatchingWeatherAndScenery){
             remainingDestinations.remove(destination);
         }
         model.addAttribute("remainingDestinations", remainingDestinations);

@@ -13,6 +13,8 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     List<Destination> findByWeather(String weather);
 
+    List<Destination> findByWeatherAndScenery(String weather, String scenery);
+
     Destination findByName(String name);
 
     boolean existsByName(String username);

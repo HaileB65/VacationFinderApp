@@ -10,12 +10,12 @@
 <div align="center">
     <h1>Create New Trip</h1>
     <br/>
-    <form action="#" method="post" th:action="@{/saveTrip}" th:object="${newTrip}">
+    <form action="#" method="post" th:action="@{/saveTrip}" th:object="${destination}">
         <table border="0" cellpadding="10">
             <tr>
                 <td>
-                    <select th:field="*{destination}" id="destination" name="destination">
-                        <option value="">Select Trip</option>
+                    <select th:field="*{name}" id="destinationName" name="destinationName">
+                        <option value="">Select Destination</option>
                         <option value="Peru" th:text="Peru"></option>
                         <option value="Switzerland" th:text="Switzerland"></option>
                         <option value="Mongolia" th:text="Mongolia"></option>

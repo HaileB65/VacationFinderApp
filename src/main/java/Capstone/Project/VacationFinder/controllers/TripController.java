@@ -29,6 +29,9 @@ public class TripController {
     @Autowired
     ChecklistService checklistService;
 
+    @Autowired
+    DestinationService destinationService;
+
     @GetMapping("/myTrips")
     public String showMyTripsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
         User user = userService.getUserById(currentUser.getId());
@@ -50,6 +53,9 @@ public class TripController {
     public String createTrip(Model model) throws Exception {
         Trip newTrip = new Trip();
         model.addAttribute("newTrip", newTrip);
+
+        Destination destination = new Destination();
+        model.addAttribute("destination", destination);
         return "new-trip";
     }
 
@@ -73,12 +79,6 @@ public class TripController {
 
 
         return "trip-home-page";
-    }
-
-    @GetMapping("/styledPage")
-    public String getStyledPage(Model model) {
-        model.addAttribute("name", "Baeldung Reader");
-        return "cssandjs/styled-page";
     }
 
     @GetMapping("/trip/{tripId}")
@@ -119,14 +119,34 @@ public class TripController {
     }
 
     @PostMapping("/saveTrip")
-    public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @AuthenticationPrincipal User currentUser) throws Exception {
+    public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
+        newTrip.setDestinations(new HashSet<>());
+
+        Itinerary newItinerary = new Itinerary();
+        itineraryService.saveItinerary(newItinerary);
+        newTrip.setItinerary(newItinerary);
+
+        Checklist newChecklist = new Checklist();
+        checklistService.saveChecklist(newChecklist);
+        newTrip.setChecklist(newChecklist);
         tripService.createNewTrip(newTrip);
 
         Trip trip = tripService.getTripById(newTrip.getId());
+        Destination des = destinationService.getByName(destination.getName());
+
+        trip.getDestinations().add(des);
+        trip.setName(des.getName());
+        tripService.saveTrip(trip);
 
         currentUser.getTrips().add(trip);
-
         userService.saveUser(currentUser);
+
+        return "redirect:/myTrips";
+    }
+
+    @GetMapping("/deleteTrip/{tripId}")
+    public String deleteTrip(@PathVariable("tripId") long tripId, Model model) throws Exception {
+        tripService.deleteTrip(tripService.getTripById(tripId));
 
         return "redirect:/myTrips";
     }

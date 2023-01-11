@@ -26,6 +26,10 @@ public class DestinationService {
         return destinationRepository.findByWeather(weather);
     }
 
+    public List<Destination> getByWeatherAndScenery(String weather, String scenery) {
+        return destinationRepository.findByWeatherAndScenery(weather, scenery);
+    }
+
     public Destination getByName(String name) {
         return destinationRepository.findByName(name);
     }

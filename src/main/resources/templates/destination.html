@@ -7,8 +7,8 @@
     <style>
 .t-table {
   border: 1px solid black;
-  height: 400px;
-  width: 1000px
+  height: 800px;
+  width: 800px
   border-collapse: collapse;
 }
 .t-table td {
@@ -20,8 +20,8 @@
 }
 .t-body{
   display:block;
-  height:400px;
-  width: 1000px
+  height: 1205px;
+  width: 800px
   overflow:auto;
   overflow-x:hidden;
   border: 1px solid black;
@@ -39,10 +39,11 @@
     <table border="0" cellpadding="0" class="t-table">
         <tbody class="t-body">
         <tr style="line-height: 8px; height: 8px;">
-            <td><img th:src="${destination.image1}" height="500" width="500"/></td>
+            <td><img th:src="${destination.image1}" height="600" width="800"/></td>
+<!--            <td><img th:src="${destination.image2}" height="400" width="400"/></td>-->
         </tr>
         <tr style="line-height: 8px; height: 8px;">
-            <td><img th:src="${destination.image2}" height="500" width="500"/></td>
+            <td><img th:src="${destination.image2}" height="600" width="800"/></td>
         </tr>
         </tbody>
     </table>
@@ -56,11 +57,11 @@
         </tr>
     </table>
 
-    <div>
-        <form action="#" method="get" name="destination" th:action="@{/addToSavedDestinations/__${destination.id}__}">
-            <input type="submit" value="Add To Saved Destinations">
-        </form>
-    </div>
+<!--    <div>-->
+<!--        <form action="#" method="get" name="destination" th:action="@{/addToSavedDestinations/__${destination.id}__}">-->
+<!--            <input type="submit" value="Add To Saved Destinations">-->
+<!--        </form>-->
+<!--    </div>-->
 
 </div>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

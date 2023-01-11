@@ -30,5 +30,10 @@ public class TripService {
         return newTrip;
     }
 
+    public Trip deleteTrip(Trip trip) {
+        tripRepository.delete(trip);
+        return trip;
+    }
+
 
 }

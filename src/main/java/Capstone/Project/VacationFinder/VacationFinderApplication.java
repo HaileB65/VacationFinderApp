@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -54,9 +55,9 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         if (!itineraryRepository.existsById(1L)) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("dfas")
-                    .item2("fdas")
-                    .item3("dfsa")
+                    .item1("Day 1")
+                    .item2("Day 2")
+                    .item3("Day 3")
                     .build();
 
             itineraryService.createNewItinerary(itinerary);
@@ -64,9 +65,7 @@ public class VacationFinderApplication implements CommandLineRunner {
 
         if (!checklistRepository.existsById(1L)) {
             Checklist checklist = Checklist.builder()
-                    .item1("431")
-                    .item2("4123")
-                    .item3("324")
+                    .checklistItems(List.of("123","4568", "486132"))
                     .build();
 
             checklistService.createNewChecklist(checklist);
@@ -81,9 +80,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .item1("%^*")
-                    .item2("&*(")
-                    .item3("*&&*(")
+                    .checklistItems(List.of("adf","hgdg", "glil", "jfdak;sji"))
                     .build();
 
             Destination destination = Destination.builder()
@@ -124,9 +121,7 @@ public class VacationFinderApplication implements CommandLineRunner {
         itineraryService.createNewItinerary(itinerary);
 
         Checklist checklist = Checklist.builder()
-                .item1("Yellow")
-                .item2("Grey")
-                .item3("Turquoise")
+                .checklistItems(List.of("fdsafda","4568"))
                 .build();
 
         checklistService.createNewChecklist(checklist);

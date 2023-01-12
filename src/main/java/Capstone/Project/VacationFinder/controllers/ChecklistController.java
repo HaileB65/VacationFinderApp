@@ -1,8 +1,6 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.Checklist;
-import Capstone.Project.VacationFinder.models.Itinerary;
-import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.ChecklistService;
 import Capstone.Project.VacationFinder.services.TripService;
@@ -58,27 +56,21 @@ public class ChecklistController {
         return "redirect:/home";
     }
 
+    /**
+     * Edits checklist based on user input from form.
+     * @param checklist newly updated checklist
+     * @param checklistId used to pull existing checklist from database.
+     * @return redirects to my trip page.
+     * @throws Exception
+     */
     @PostMapping("/editChecklist/{checklistId}")
     public String editChecklist(@ModelAttribute("checklist") Checklist checklist, @PathVariable(name="checklistId") Long checklistId) throws Exception {
         Checklist che = checklistService.getChecklistById(checklistId);
 
-        che.setItem1(checklist.getItem1());
-        che.setItem2(checklist.getItem2());
-        che.setItem3(checklist.getItem3());
+        che.setChecklistItems(checklist.getChecklistItems());
 
         checklistService.saveChecklist(che);
         return "redirect:/myTrips";
-    }
-
-    @PostMapping("/addChecklistToTrip")
-    public String showAddChecklistToTripPage(@ModelAttribute("checklist") Checklist checklist, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
-
-        //TODO add checklist to current trip. How to get trip id from previous page?
-//        Trip trip = tripService.getTripById();
-//        trip.setChecklist(checklist);
-//        tripService.saveTrip(trip);
-
-        return "checklist-added";
     }
 
 }

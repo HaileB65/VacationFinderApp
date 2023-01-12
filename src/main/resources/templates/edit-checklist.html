@@ -20,17 +20,8 @@
                     <tr>
                         <th>Checklist</th>
                     </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><input required th:field="*{item1}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 2</td>
-                        <td><input required th:field="*{item2}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 3</td>
-                        <td><input required th:field="*{item3}" type="text"/></td>
+                    <tr th:each="item,counter : ${checklist.checklistItems}">
+                        <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
                     </tr>
                     <tr align="center">
                         <td colspan="2">

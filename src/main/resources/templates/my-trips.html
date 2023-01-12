@@ -11,13 +11,13 @@
 <h1 align="center">My Trips</h1>
 
 <div align="center">
-    <table border="1" cellpadding="10">
+    <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr align="center">
             <th>Name</th>
             <th>Actions</th>
 
         </tr>
-        <tr th:each="trip : ${trips}">
+        <tr th:each="trip : ${trips}" align="center">
             <td th:text="${trip.name}">Name</td>
             <td>
                 <a th:href="@{/trip/__${trip.id}__}">View</a>

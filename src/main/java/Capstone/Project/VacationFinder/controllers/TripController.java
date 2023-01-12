@@ -4,6 +4,7 @@ import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.services.*;
 import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,28 +60,6 @@ public class TripController {
         return "new-trip";
     }
 
-    @GetMapping("/newTripPlanned")
-    public String showTrip(Model model) throws Exception {
-
-        Trip trip = tripService.getTripById(1L);
-        model.addAttribute("tripName", trip.getName());
-        model.addAttribute("trip", trip);
-
-        model.addAttribute("itineraryId", trip.itinerary.getId());
-        model.addAttribute("checklistId", trip.checklist.getId());
-
-        Set<Destination> tripDestinations = trip.destinations;
-        ArrayList<Destination> destinations = new ArrayList<>();
-        for(Destination destination: tripDestinations){
-            destinations.add(destination);
-        }
-
-        model.addAttribute("destinations", destinations);
-
-
-        return "trip-home-page";
-    }
-
     @GetMapping("/trip/{tripId}")
     public String showTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
@@ -133,20 +112,30 @@ public class TripController {
 
         Trip trip = tripService.getTripById(newTrip.getId());
         Destination des = destinationService.getByName(destination.getName());
-
         trip.getDestinations().add(des);
         trip.setName(des.getName());
         tripService.saveTrip(trip);
 
-        currentUser.getTrips().add(trip);
-        userService.saveUser(currentUser);
+        User user = userService.getUserById(currentUser.getId());
+        user.getTrips().add(trip);
+        userService.saveUser(user);
 
         return "redirect:/myTrips";
     }
 
     @GetMapping("/deleteTrip/{tripId}")
-    public String deleteTrip(@PathVariable("tripId") long tripId, Model model) throws Exception {
-        tripService.deleteTrip(tripService.getTripById(tripId));
+    public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser,Model model) throws Exception {
+        Trip trip = tripService.getTripById(tripId);
+        User user = userService.getUserById(currentUser.getId());
+
+        trip.getUsers().remove(user);
+        trip.getDestinations().clear();
+        tripService.saveTrip(trip);
+
+
+        user.getTrips().remove(trip);
+        tripService.deleteTrip(trip);
+        userService.saveUser(user);
 
         return "redirect:/myTrips";
     }

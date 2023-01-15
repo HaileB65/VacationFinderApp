@@ -11,7 +11,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     List<Trip> findAll();
 
-    Trip getById(Long id);
+    boolean findByName(String name);
 
 }
 

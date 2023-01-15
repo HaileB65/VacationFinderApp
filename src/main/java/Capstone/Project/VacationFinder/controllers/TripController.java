@@ -2,9 +2,7 @@ package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.services.*;
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +61,7 @@ public class TripController {
     @GetMapping("/trip/{tripId}")
     public String showTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
-        Trip trip = tripService.getTripById(tripId);
+        Trip trip = tripService.getById(tripId);
         model.addAttribute("tripName", trip.getName());
         model.addAttribute("trip", trip);
 
@@ -110,7 +108,7 @@ public class TripController {
         newTrip.setChecklist(newChecklist);
         tripService.createNewTrip(newTrip);
 
-        Trip trip = tripService.getTripById(newTrip.getId());
+        Trip trip = tripService.getById(newTrip.getId());
         Destination des = destinationService.getByName(destination.getName());
         trip.getDestinations().add(des);
         trip.setName(des.getName());
@@ -125,7 +123,7 @@ public class TripController {
 
     @GetMapping("/deleteTrip/{tripId}")
     public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser,Model model) throws Exception {
-        Trip trip = tripService.getTripById(tripId);
+        Trip trip = tripService.getById(tripId);
         User user = userService.getUserById(currentUser.getId());
 
         trip.getUsers().remove(user);

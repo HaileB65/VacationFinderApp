@@ -72,7 +72,7 @@ public class VacationFinderApplication implements CommandLineRunner {
         }
 
 
-        if (!tripRepository.existsById(1L)) {
+        if (!tripRepository.findByName("Mongolia")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("AEUEKD")
                     .item2("HJKLD")
@@ -83,7 +83,179 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .checklistItems(List.of("adf","hgdg", "glil", "jfdak;sji"))
                     .build();
 
-            Destination destination = Destination.builder()
+            Destination mongolia = Destination.builder()
+                    .name("Mongolia")
+                    .weather("Cold")
+                    .scenery("Mountains")
+                    .activity1("Hiking")
+                    .activity2("Mountain Tours")
+                    .activity3("Horse Riding")
+                    .city1("Ulaanbaatar")
+                    .city2("Uliastai")
+                    .city3("Olgii")
+                    .city4("Erdenet")
+                    .city5("Dalanzadgad")
+                    .image1("https://www.worldtravelguide.net/wp-content/uploads/2012/05/shu-Mongolia-600892928-1440x823.jpg")
+                    .image2("https://www.mappr.co/wp-content/uploads/2021/11/mongolia-map-1024x586.jpg")
+                    .build();
+            destinationService.createNewDestination(mongolia);
+
+            Set<Destination> destinations = new HashSet();
+            destinations.add(mongolia);
+
+            Trip mongoliaTrip = Trip.builder()
+                    .name("Mongolia Trip")
+                    .itinerary(itinerary)
+                    .checklist(checklist)
+                    .destinations(destinations)
+                    .build();
+
+            tripService.createNewTrip(mongoliaTrip);
+        }
+
+        if (!tripRepository.findByName("Bahamas")) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("Red")
+                    .item2("Orange")
+                    .item3("Blue")
+                    .build();
+            itineraryService.createNewItinerary(itinerary);
+
+            Checklist checklist = Checklist.builder()
+                    .checklistItems(List.of("fdsafda","4568"))
+                    .build();
+            checklistService.createNewChecklist(checklist);
+
+            Destination bahamas = Destination.builder()
+                    .name("Bahamas")
+                    .weather("Warm")
+                    .scenery("Beach")
+                    .activity1("Swimming")
+                    .activity2("Scuba Diving")
+                    .activity3("Sport Fishing")
+                    .city1("Nassau")
+                    .city2("Paradise Island")
+                    .city3("Arawak Cay")
+                    .city4("Freeport")
+                    .city5("Alice Town")
+                    .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
+                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrnLKJGVO40ijQvXp4XXaShoJRvob75N8ghSAFwsox3aM7Z4TJUeYXr8pVeTuZ7QJrDco&usqp=CAU")
+                    .build();
+            destinationService.createNewDestination(bahamas);
+
+            Set<Destination> destinations = new HashSet();
+            destinations.add(bahamas);
+
+            Trip bahamasTrip = Trip.builder()
+                    .name("Bahamas Trip")
+                    .itinerary(itinerary)
+                    .checklist(checklist)
+                    .destinations(destinations)
+                    .build();
+
+            tripService.createNewTrip(bahamasTrip);
+        }
+
+        if (!tripRepository.findByName("Switzerland")) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("431")
+                    .item2("413")
+                    .item3("4134")
+                    .build();
+            itineraryService.createNewItinerary(itinerary);
+
+            Checklist checklist = Checklist.builder()
+                    .checklistItems(List.of("876","45JKHI68"))
+                    .build();
+            checklistService.createNewChecklist(checklist);
+
+            Destination switzerland = Destination.builder()
+                    .name("Switzerland")
+                    .weather("Cold")
+                    .scenery("Snow")
+                    .activity1("Skiing")
+                    .activity2("Christmas Markets")
+                    .activity3("Mountain Tours")
+                    .city1("Zürich")
+                    .city2("Lucerne")
+                    .city3("Bern")
+                    .city4("Interlaken")
+                    .city5("Zermatt")
+                    .image1("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
+                    .image2("https://c8.alamy.com/comp/JF64PT/alps-switzerland-zurich-swiss-map-atlas-map-of-the-world-bern-rhine-JF64PT.jpg")
+                    .build();
+            destinationService.createNewDestination(switzerland);
+
+            Set<Destination> destinations = new HashSet();
+            destinations.add(switzerland);
+
+            Trip switzerlandTrip = Trip.builder()
+                    .name("Switzerland Trip")
+                    .itinerary(itinerary)
+                    .checklist(checklist)
+                    .destinations(destinations)
+                    .build();
+
+            tripService.createNewTrip(switzerlandTrip);
+        }
+
+        if (!tripRepository.findByName("Brazil")) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("JKLDF")
+                    .item2("KLDFS")
+                    .item3("JKDFLS")
+                    .build();
+            itineraryService.createNewItinerary(itinerary);
+
+            Checklist checklist = Checklist.builder()
+                    .checklistItems(List.of("699","45JKHI68"))
+                    .build();
+            checklistService.createNewChecklist(checklist);
+
+            Destination brazil = Destination.builder()
+                    .name("Brazil")
+                    .weather("Warm")
+                    .scenery("Beach")
+                    .activity1("Swimming")
+                    .activity2("Snorkeling")
+                    .activity3("Parasailing")
+                    .city1("Rio de Janeiro")
+                    .city2("Florianopolis")
+                    .city3("Salvador")
+                    .city4("São Paulo")
+                    .city5("Foz do Iguaçu")
+                    .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
+                    .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
+                    .build();
+            destinationService.createNewDestination(brazil);
+
+            Set<Destination> destinations = new HashSet();
+            destinations.add(brazil);
+
+            Trip brazilTrip = Trip.builder()
+                    .name("Brazil Trip")
+                    .itinerary(itinerary)
+                    .checklist(checklist)
+                    .destinations(destinations)
+                    .build();
+
+            tripService.createNewTrip(brazilTrip);
+        }
+
+        if (!tripRepository.findByName("Peru")) {
+            Itinerary itinerary = Itinerary.builder()
+                    .item1("JKLDF")
+                    .item2("KLDFS")
+                    .item3("JKDFLS")
+                    .build();
+            itineraryService.createNewItinerary(itinerary);
+
+            Checklist checklist = Checklist.builder()
+                    .checklistItems(List.of("699","45JKHI68"))
+                    .build();
+            checklistService.createNewChecklist(checklist);
+
+            Destination peru = Destination.builder()
                     .name("Peru")
                     .weather("Cold")
                     .scenery("Mountains")
@@ -96,69 +268,24 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city4("Ayacucho")
                     .city5("Iquitos")
                     .image1("https://www.planetware.com/wpimages/2019/12/peru-in-pictures-best-places-to-photograph-machu-picchu-llama.jpg")
-                    .image2("https://ontheworldmap.com/bahamas/the-islands-of-the-bahamas-map.jpg")
+                    .image2("https://www.tripsavvy.com/thmb/uEReEir7LcDkySAMkkl4gqMMUPk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-498613571-eb1b37fc20ad4152892951bb8ea3f3e1.jpg")
                     .build();
+            destinationService.createNewDestination(peru);
 
-            Set<Destination> set = new HashSet();
-            set.add(destination);
+            Set<Destination> destinations = new HashSet();
+            destinations.add(peru);
 
-            Trip trip = Trip.builder()
-                    .name("France Trip")
+            Trip peruTrip = Trip.builder()
+                    .name("Peru Trip")
                     .itinerary(itinerary)
                     .checklist(checklist)
-                    .destinations(set)
+                    .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(trip);
+            tripService.createNewTrip(peruTrip);
         }
 
         if (!userRepository.existsByUsername("Robin41")) {
-        Itinerary itinerary = Itinerary.builder()
-                .item1("Red")
-                .item2("Orange")
-                .item3("Blue")
-                .build();
-        itineraryService.createNewItinerary(itinerary);
-
-        Checklist checklist = Checklist.builder()
-                .checklistItems(List.of("fdsafda","4568"))
-                .build();
-
-        checklistService.createNewChecklist(checklist);
-
-        Destination destination = Destination.builder()
-                .name("Mongolia")
-                .weather("Cold")
-                .scenery("Mountains")
-                .activity1("Hiking")
-                .activity2("Mountain Tours")
-                .activity3("Horse Riding")
-                .city1("Ulaanbaatar")
-                .city2("Uliastai")
-                .city3("Olgii")
-                .city4("Erdenet")
-                .city5("Dalanzadgad")
-                .image1("https://www.worldtravelguide.net/wp-content/uploads/2012/05/shu-Mongolia-600892928-1440x823.jpg")
-                .image2("https://www.mappr.co/wp-content/uploads/2021/11/mongolia-map-1024x586.jpg")
-                .build();
-
-        destinationService.createNewDestination(destination);
-
-        Set<Destination> set = new HashSet();
-        set.add(destination);
-
-        Trip trip = Trip.builder()
-                .id(1L)
-                .name("Mongolia Trip")
-                .itinerary(itinerary)
-                .checklist(checklist)
-                .destinations(set)
-                .build();
-        tripService.createNewTrip(trip);
-
-        Set<Trip> set2 = new HashSet<>();
-        set2.add(trip);
-
         User guest = User.builder()
                 .id(1L)
                 .firstName("Robin")
@@ -168,7 +295,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                 .username("Robin41")
                 .password("password")
                 .role(Role.GUEST)
-                .trips(set2)
+                .trips(new HashSet<>())
                 .build();
 
         userService.createNewUser(guest);
@@ -188,7 +315,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             userService.createNewUser(user);
-
         }
 
         if (!userRepository.existsByUsername("kyle")) {
@@ -205,70 +331,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             userService.createNewUser(admin);
-
         }
-
-        if (!destinationRepository.existsByName("Bahamas")) {
-            Destination bahamas = Destination.builder()
-                    .name("Bahamas")
-                    .weather("Warm")
-                    .scenery("Beach")
-                    .activity1("Swimming")
-                    .activity2("Scuba Diving")
-                    .activity3("Sport Fishing")
-                    .city1("Nassau")
-                    .city2("Paradise Island")
-                    .city3("Arawak Cay")
-                    .city4("Freeport")
-                    .city5("Alice Town")
-                    .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
-                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrnLKJGVO40ijQvXp4XXaShoJRvob75N8ghSAFwsox3aM7Z4TJUeYXr8pVeTuZ7QJrDco&usqp=CAU")
-                    .build();
-
-            destinationService.createNewDestination(bahamas);
-        }
-
-        if (!destinationRepository.existsByName("Switzerland")) {
-            Destination switzerland = Destination.builder()
-                    .name("Switzerland")
-                    .weather("Cold")
-                    .scenery("Snow")
-                    .activity1("Skiing")
-                    .activity2("Christmas Markets")
-                    .activity3("Mountain Tours")
-                    .city1("Zürich")
-                    .city2("Lucerne")
-                    .city3("Bern")
-                    .city4("Interlaken")
-                    .city5("Zermatt")
-                    .image1("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
-                    .image2("https://c8.alamy.com/comp/JF64PT/alps-switzerland-zurich-swiss-map-atlas-map-of-the-world-bern-rhine-JF64PT.jpg")
-                    .build();
-
-            destinationService.createNewDestination(switzerland);
-
-        }
-
-        if(!destinationRepository.existsByName("Brazil")) {
-            Destination brazil = Destination.builder()
-                    .name("Brazil")
-                    .weather("Warm")
-                    .scenery("Beach")
-                    .activity1("Swimming")
-                    .activity2("Snorkeling")
-                    .activity3("Parasailing")
-                    .city1("Rio de Janeiro")
-                    .city2("Florianopolis")
-                    .city3("Salvador")
-                    .city4("São Paulo")
-                    .city5("Foz do Iguaçu")
-                    .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
-                    .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
-                    .build();
-
-            destinationService.createNewDestination(brazil);
-        }
-
     }
 
 }

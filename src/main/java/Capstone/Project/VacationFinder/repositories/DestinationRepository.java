@@ -17,7 +17,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     Destination findByName(String name);
 
-    boolean existsByName(String username);
+    boolean existsByName(String destination);
 
 
 }

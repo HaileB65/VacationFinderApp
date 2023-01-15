@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Timestamp;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 public class DestinationController {
@@ -95,7 +94,7 @@ public class DestinationController {
     public String addDestinationToTrip(@PathVariable("destinationId") long destinationId, @PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         System.out.println("start of add destination method");
 
-        Trip trip = tripService.getTripById(tripId);
+        Trip trip = tripService.getById(tripId);
         trip.getDestinations().clear();
 
         Destination destination = destinationService.getDestinationById(destinationId);

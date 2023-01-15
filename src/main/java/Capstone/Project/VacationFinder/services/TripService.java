@@ -13,7 +13,7 @@ public class TripService {
     @Autowired
     TripRepository tripRepository;
 
-    public Trip getTripById(long id) throws Exception {
+    public Trip getById(long id) throws Exception {
         Optional<Trip> trip = tripRepository.findById(id);
         if (trip.isPresent()) {
             return trip.get();

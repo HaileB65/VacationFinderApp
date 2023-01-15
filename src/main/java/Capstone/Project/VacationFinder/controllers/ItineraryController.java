@@ -1,8 +1,6 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Itinerary;
-import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.ItineraryService;
 import Capstone.Project.VacationFinder.services.TripService;
@@ -53,7 +51,7 @@ public class ItineraryController {
     }
 
     @PostMapping("/editItinerary/{itineraryId}")
-    public String editItinerary(@ModelAttribute("itinerary") Itinerary itinerary, @PathVariable(name="itineraryId") Long itineraryId) throws Exception {
+    public String editItinerary(@ModelAttribute("itinerary") Itinerary itinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
         Itinerary itn = itineraryService.getItineraryById(itineraryId);
 
         itn.setItem1(itinerary.getItem1());

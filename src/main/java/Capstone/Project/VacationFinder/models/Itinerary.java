@@ -17,15 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Itinerary {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     String item1;
     String item2;
     String item3;
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;

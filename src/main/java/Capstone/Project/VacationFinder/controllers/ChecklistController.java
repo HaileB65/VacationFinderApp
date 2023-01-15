@@ -64,7 +64,7 @@ public class ChecklistController {
      * @throws Exception
      */
     @PostMapping("/editChecklist/{checklistId}")
-    public String editChecklist(@ModelAttribute("checklist") Checklist checklist, @PathVariable(name="checklistId") Long checklistId) throws Exception {
+    public String editChecklist(@ModelAttribute("checklist") Checklist checklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
         Checklist che = checklistService.getChecklistById(checklistId);
 
         che.setChecklistItems(checklist.getChecklistItems());

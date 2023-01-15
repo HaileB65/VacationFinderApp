@@ -15,10 +15,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class Destination {
+    @ManyToMany(mappedBy = "destinations")
+    public Set<Trip> trips;
+    @ManyToMany(mappedBy = "savedDestinations")
+    public Set<User> users;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String name;
     String scenery;
     String weather;
@@ -32,15 +35,7 @@ public class Destination {
     String city3;
     String city4;
     String city5;
-
-
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
-
-    @ManyToMany(mappedBy = "destinations")
-    public Set<Trip> trips;
-
-    @ManyToMany(mappedBy = "savedDestinations")
-    public Set<User> users;
 }

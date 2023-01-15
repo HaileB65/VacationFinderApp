@@ -21,35 +21,27 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class User implements UserDetails {
+    @Transient
+    @JsonIgnore
+    public URI locationURI;
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    public Timestamp timestamp;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Trip> trips;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Destination> savedDestinations;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String firstName;
     String lastName;
     String email;
     String phone;
     String username;
     String password;
-
     @Enumerated(EnumType.STRING)
     Role role;
-
-    @Transient
-    @JsonIgnore
-    public URI locationURI;
-
-    @Column(name = "timestamp")
-    @CreationTimestamp
-    public Timestamp timestamp;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Set<Trip> trips;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Set<Destination> savedDestinations;
-
-
     @Builder.Default
     boolean locked = false;
 

@@ -43,8 +43,8 @@
             <td th:text="${trip.itinerary.item1}">Item 1</td>
             <td th:text="${trip.itinerary.item2}">Item 2</td>
             <td th:text="${trip.itinerary.item3}">Item 3</td>
-            <td >Item 4</td>
-            <td >Item 5</td>
+            <td>Item 4</td>
+            <td>Item 5</td>
         </tr>
         <tr>
             <th>Transport</th>
@@ -65,17 +65,9 @@
         <tr align="center">
             <th colspan="2">Checklist</th>
         </tr>
-        <tr th:each="item : ${trip.checklist.checklistItems}" align="center">
-                <td>
-                    <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault" th:text="${item}">
-<!--                    Default checkbox-->
-                </label>
-                    </div>
-                </td>
-<!--            <td><input type="checkbox"/></td>-->
-<!--            <td th:text="${item}">Item 1</td>-->
+        <tr align="center" th:each="item : ${trip.checklist.checklistItems}">
+                        <td><input type="checkbox"/></td>
+                        <td th:text="${item}">Item 1</td>
         </tr>
         <tr align="center">
             <td colspan="2"><a th:href="@{/checklist/__${checklistId}__}">Edit</a></td>

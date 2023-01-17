@@ -66,8 +66,16 @@
             <th colspan="2">Checklist</th>
         </tr>
         <tr th:each="item : ${trip.checklist.checklistItems}" align="center">
-            <td><input type="checkbox"/></td>
-            <td th:text="${item}">Item 1</td>
+                <td>
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault" th:text="${item}">
+<!--                    Default checkbox-->
+                </label>
+                    </div>
+                </td>
+<!--            <td><input type="checkbox"/></td>-->
+<!--            <td th:text="${item}">Item 1</td>-->
         </tr>
         <tr align="center">
             <td colspan="2"><a th:href="@{/checklist/__${checklistId}__}">Edit</a></td>

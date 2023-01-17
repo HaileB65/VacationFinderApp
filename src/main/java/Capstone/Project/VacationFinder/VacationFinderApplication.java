@@ -72,7 +72,7 @@ public class VacationFinderApplication implements CommandLineRunner {
         }
 
 
-        if (!tripRepository.findByName("Mongolia")) {
+        if (!tripRepository.existsById(1L)) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("AEUEKD")
                     .item2("HJKLD")
@@ -113,18 +113,16 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(mongoliaTrip);
         }
 
-        if (!tripRepository.findByName("Bahamas")) {
+        if (!tripRepository.existsById(2L)) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("Red")
                     .item2("Orange")
                     .item3("Blue")
                     .build();
-            itineraryService.createNewItinerary(itinerary);
 
             Checklist checklist = Checklist.builder()
                     .checklistItems(List.of("fdsafda","4568"))
                     .build();
-            checklistService.createNewChecklist(checklist);
 
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
@@ -141,7 +139,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
                     .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrnLKJGVO40ijQvXp4XXaShoJRvob75N8ghSAFwsox3aM7Z4TJUeYXr8pVeTuZ7QJrDco&usqp=CAU")
                     .build();
-            destinationService.createNewDestination(bahamas);
 
             Set<Destination> destinations = new HashSet();
             destinations.add(bahamas);
@@ -156,18 +153,16 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(bahamasTrip);
         }
 
-        if (!tripRepository.findByName("Switzerland")) {
+        if (!tripRepository.existsById(3L)) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("431")
                     .item2("413")
                     .item3("4134")
                     .build();
-            itineraryService.createNewItinerary(itinerary);
 
             Checklist checklist = Checklist.builder()
                     .checklistItems(List.of("876","45JKHI68"))
                     .build();
-            checklistService.createNewChecklist(checklist);
 
             Destination switzerland = Destination.builder()
                     .name("Switzerland")
@@ -199,18 +194,16 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(switzerlandTrip);
         }
 
-        if (!tripRepository.findByName("Brazil")) {
+        if (!tripRepository.existsById(4L)) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
                     .item2("KLDFS")
                     .item3("JKDFLS")
                     .build();
-            itineraryService.createNewItinerary(itinerary);
 
             Checklist checklist = Checklist.builder()
                     .checklistItems(List.of("699","45JKHI68"))
                     .build();
-            checklistService.createNewChecklist(checklist);
 
             Destination brazil = Destination.builder()
                     .name("Brazil")
@@ -227,7 +220,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
                     .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
                     .build();
-            destinationService.createNewDestination(brazil);
 
             Set<Destination> destinations = new HashSet();
             destinations.add(brazil);
@@ -242,18 +234,16 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(brazilTrip);
         }
 
-        if (!tripRepository.findByName("Peru")) {
+        if (!tripRepository.existsById(5L)) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
                     .item2("KLDFS")
                     .item3("JKDFLS")
                     .build();
-            itineraryService.createNewItinerary(itinerary);
 
             Checklist checklist = Checklist.builder()
                     .checklistItems(List.of("699","45JKHI68"))
                     .build();
-            checklistService.createNewChecklist(checklist);
 
             Destination peru = Destination.builder()
                     .name("Peru")
@@ -270,7 +260,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image1("https://www.planetware.com/wpimages/2019/12/peru-in-pictures-best-places-to-photograph-machu-picchu-llama.jpg")
                     .image2("https://www.tripsavvy.com/thmb/uEReEir7LcDkySAMkkl4gqMMUPk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-498613571-eb1b37fc20ad4152892951bb8ea3f3e1.jpg")
                     .build();
-            destinationService.createNewDestination(peru);
 
             Set<Destination> destinations = new HashSet();
             destinations.add(peru);

@@ -34,19 +34,33 @@ public class DestinationController {
     @Autowired
     TripService tripService;
 
+
+    /**
+     * Shows all destinations.
+     *
+     * @param currentUser current user signed in.
+     * @param model adds a list of all destinations to view.
+     * @return displays destinations page.
+     * @throws Exception
+     */
     @GetMapping("/destinations")
     public String showDestinationsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
-        User user = userService.getUserById(currentUser.getId());
-        model.addAttribute("savedDestinations", user.savedDestinations);
-
         return "destinations";
     }
 
+    /**
+     * Shows a specific destination's home page.
+     *
+     * @param destinationId ID of destination to be shown
+     * @param model adds destination object, name, and images to view
+     * @return displays a specific destination page
+     * @throws Exception
+     */
     @GetMapping("/destination/{destinationId}")
-    public String showDestinationPage(@PathVariable("destinationId") long destinationId, Model model) throws Exception {
+    public String showDestinationHomePage(@PathVariable("destinationId") long destinationId, Model model) throws Exception {
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
@@ -60,28 +74,51 @@ public class DestinationController {
         return "destination";
     }
 
+    /**
+     * Creates a new destination.
+     *
+     * @param model adds an empty destination object to view.
+     * @return displays new-destination pagee.
+     */
     @GetMapping("/newDestination")
-    public String createNewDestination(Model model) {
+    public String ShowNewDestinationPage(Model model) {
         model.addAttribute("newDestination", new Destination());
         return "new-destination";
     }
 
+    /**
+     * Shows destination finder page.
+     *
+     * @param model adds empty questionnaire to view.
+     * @return displays destination-finder page.
+     */
     @GetMapping("/destinationFinder")
-    public String showCreateNewTripPage(Model model) {
-        Questionnaire questionnaire = new Questionnaire();
-        model.addAttribute("questionnaire", questionnaire);
-
+    public String showDestinationFinderPage(Model model) {
+        model.addAttribute("questionnaire", new Questionnaire());
         return "destination-finder";
     }
 
+    /**
+     * Saves a new destination.
+     *
+     * @param destination destination to be saved.
+     * @return redirects to destinations page.
+     */
     @PostMapping("/saveDestination")
     public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
         destinationService.createNewDestination(destination);
         return "redirect:/destinations";
     }
 
+    /**
+     * Shows destination finder results.
+     *
+     * @param questionnaire
+     * @param model
+     * @return
+     */
     @PostMapping("/destinationFinderResults")
-    public String showQuestionnaireResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
+    public String showDestinationFinderResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
         model.addAttribute("questionnaire", questionnaire);
 
         List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(questionnaire.getWeather(), questionnaire.getFavoriteScenery());

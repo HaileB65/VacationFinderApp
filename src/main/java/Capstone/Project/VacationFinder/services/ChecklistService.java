@@ -27,13 +27,6 @@ public class ChecklistService {
         return newChecklist;
     }
 
-    public Checklist editChecklist(Checklist checklist) {
-
-        checklistRepository.save(checklist);
-
-        return checklist;
-    }
-
     public Checklist saveChecklist(Checklist checklist) {
 
         checklistRepository.save(checklist);

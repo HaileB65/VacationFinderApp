@@ -34,5 +34,9 @@ public class ItineraryService {
         return itinerary;
     }
 
+    public void deleteItinerary(Itinerary itinerary) {
+        itineraryRepository.delete(itinerary);
+    }
+
 
 }

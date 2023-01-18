@@ -127,9 +127,19 @@ public class TripController {
         User user = userService.getUserById(currentUser.getId());
 
         trip.getUsers().remove(user);
-        trip.getDestinations().clear();
-        tripService.saveTrip(trip);
 
+        Itinerary itineraryFromDB = itineraryService.getItineraryById(trip.getItinerary().getId());
+        itineraryService.deleteItinerary(itineraryFromDB);
+        Checklist checklistFromDB = checklistService.getChecklistById(trip.getChecklist().getId());
+        checklistService.deleteChecklist(checklistFromDB);
+
+        List<Destination> destinations = trip.getDestinations().stream().toList();
+        Destination des = destinations.get(0);
+        Destination destinationFromDB = destinationService.getDestinationById(des.getId());
+        destinationFromDB.getTrips().remove(trip);
+        trip.getDestinations().clear();
+
+        tripService.saveTrip(trip);
 
         user.getTrips().remove(trip);
         tripService.deleteTrip(trip);

@@ -27,7 +27,4 @@ public class Itinerary {
     @CreationTimestamp
     private Timestamp timestamp;
 
-    public <T> Itinerary(List<T> asList) {
-
-    }
 }

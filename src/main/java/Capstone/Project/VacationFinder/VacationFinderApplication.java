@@ -31,9 +31,6 @@ public class VacationFinderApplication implements CommandLineRunner {
     @Autowired
     UserService userService;
 
-    @Autowired
-    DestinationService destinationService;
-
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApplication.class, args);
     }

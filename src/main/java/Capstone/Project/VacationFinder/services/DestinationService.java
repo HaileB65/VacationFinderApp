@@ -40,9 +40,4 @@ public class DestinationService {
             return destination.get();
         } else throw new Exception("Destination not found");
     }
-
-    public void addToTrip(Destination destination) {
-
-    }
-
 }

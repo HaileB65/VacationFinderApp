@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
-
 @Controller
 public class ChecklistController {
 
@@ -34,7 +32,7 @@ public class ChecklistController {
      * Edits an existing checklist.
      *
      * @param checklistId ID of checklist to be edited.
-     * @param model displays checklist from DB that was found using checklistId param.
+     * @param model       displays checklist from DB that was found using checklistId param.
      * @return displays edit-checklist page.
      * @throws Exception
      */

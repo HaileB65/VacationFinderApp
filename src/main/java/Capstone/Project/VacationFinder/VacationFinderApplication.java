@@ -3,7 +3,6 @@ package Capstone.Project.VacationFinder;
 import Capstone.Project.VacationFinder.models.*;
 import Capstone.Project.VacationFinder.repositories.TripRepository;
 import Capstone.Project.VacationFinder.repositories.UserRepository;
-import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.TripService;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

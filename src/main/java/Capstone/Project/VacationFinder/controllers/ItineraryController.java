@@ -1,11 +1,8 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.Itinerary;
-import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.ItineraryService;
-import Capstone.Project.VacationFinder.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -2,7 +2,6 @@ package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Questionnaire;
-import Capstone.Project.VacationFinder.models.Trip;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.TripService;
@@ -16,10 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -39,7 +35,7 @@ public class DestinationController {
      * Shows all destinations.
      *
      * @param currentUser current user signed in.
-     * @param model adds a list of all destinations to view.
+     * @param model       adds a list of all destinations to view.
      * @return displays destinations page.
      * @throws Exception
      */
@@ -55,7 +51,7 @@ public class DestinationController {
      * Shows a specific destination's home page.
      *
      * @param destinationId ID of destination to be shown
-     * @param model adds destination object, name, and images to view
+     * @param model         adds destination object, name, and images to view
      * @return displays a specific destination page
      * @throws Exception
      */

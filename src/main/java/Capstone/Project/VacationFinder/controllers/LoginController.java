@@ -1,8 +1,6 @@
 package Capstone.Project.VacationFinder.controllers;
 
 import Capstone.Project.VacationFinder.models.User;
-import Capstone.Project.VacationFinder.repositories.UserRepository;
-import Capstone.Project.VacationFinder.security.PasswordEncoder;
 import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

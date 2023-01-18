@@ -19,9 +19,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserRepository userRepository;
-
     @GetMapping("/newUser")
     public String createNewUser(Model model) {
         model.addAttribute("newUser", new User());
@@ -36,20 +33,6 @@ public class UserController {
 
     @GetMapping("/userHomePage")
     public String showUserHomePage(Model model) throws Exception {
-
-        User user = userService.getUserById(1L);
-        model.addAttribute("user", user);
-
-        ArrayList<Destination> destinations = new ArrayList<>();
-
-        //TODO add a user trips to user home page
-
-//        for(Trip trip : user.getTrips()){
-//            desintations.add((Destination) trip.destinations);
-//        }
-//
-//        List<Trip> trips = (List<Trip>) user.getTrips();
-//        model.addAttribute("trips",trips);
 
         return "user-home-page";
     }

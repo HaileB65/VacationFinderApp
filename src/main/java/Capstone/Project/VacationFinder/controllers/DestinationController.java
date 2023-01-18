@@ -45,12 +45,6 @@ public class DestinationController {
         return "destinations";
     }
 
-    @GetMapping("/theBahamas")
-    public String showBahamasPage(Model model) {
-        return "the-bahamas";
-    }
-
-
     @GetMapping("/destination/{destinationId}")
     public String showDestinationPage(@PathVariable("destinationId") long destinationId, Model model) throws Exception {
 
@@ -66,74 +60,18 @@ public class DestinationController {
         return "destination";
     }
 
-    @GetMapping("/addToSavedDestinations/{destinationId}")
-    public String addToSavedDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
-        System.out.println("start of add destination method");
-
-        Destination destination = destinationService.getDestinationById(destinationId);
-
-        User user = userService.getUserById(currentUser.getId());
-        user.getSavedDestinations().add(destination);
-        userService.saveUser(user);
-
-        System.out.println("end of add destination method");
-
-        return "redirect:/destinations";
-    }
-
-    @GetMapping("/removeFromSavedDestinations/{destinationId}")
-    public String removeFromSavedDestinations(@PathVariable("destinationId") long destinationId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
-        System.out.println("start of add destination method");
-
-        Destination destination = destinationService.getDestinationById(destinationId);
-
-        User user = userService.getUserById(currentUser.getId());
-        user.getSavedDestinations().remove(destination);
-        userService.saveUser(user);
-
-        System.out.println("end of add destination method");
-
-        return "redirect:/destinations";
-    }
-
-    @GetMapping("/addDestinationToTrip/{destinationId}/{tripId}")
-    public String addDestinationToTrip(@PathVariable("destinationId") long destinationId, @PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
-        System.out.println("start of add destination method");
-
-        Trip trip = tripService.getById(tripId);
-        trip.getDestinations().clear();
-
-        Destination destination = destinationService.getDestinationById(destinationId);
-        trip.getDestinations().add(destination);
-
-        tripService.saveTrip(trip);
-
-        System.out.println("end of add destination method");
-
-        return "redirect:/myTrips";
-    }
-
-    public Timestamp getTimestamp() {
-        Calendar cal = Calendar.getInstance();
-        Date result = cal.getTime();
-        return new Timestamp(result.getTime());
-    }
-
-    @PostMapping("/addDestination")
-    public String addDestinationToTrip(Destination destination) {
-        destinationService.addToTrip(destination);
-        return "destination-added";
-    }
-
-    @GetMapping("/switzerland")
-    public String showSwitzerlandPage(Model model) {
-        return "switzerland";
-    }
-
     @GetMapping("/newDestination")
     public String createNewDestination(Model model) {
         model.addAttribute("newDestination", new Destination());
         return "new-destination";
+    }
+
+    @GetMapping("/destinationFinder")
+    public String showCreateNewTripPage(Model model) {
+        Questionnaire questionnaire = new Questionnaire();
+        model.addAttribute("questionnaire", questionnaire);
+
+        return "destination-finder";
     }
 
     @PostMapping("/saveDestination")
@@ -159,12 +97,5 @@ public class DestinationController {
         return "destination-finder-results";
     }
 
-    @GetMapping("/destinationFinder")
-    public String showCreateNewTripPage(Model model) {
-        Questionnaire questionnaire = new Questionnaire();
-        model.addAttribute("questionnaire", questionnaire);
-
-        return "destination-finder";
-    }
 
 }

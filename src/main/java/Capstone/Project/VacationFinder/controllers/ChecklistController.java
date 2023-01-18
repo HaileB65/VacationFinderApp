@@ -17,28 +17,16 @@ public class ChecklistController {
     @Autowired
     ChecklistService checklistService;
 
-    @Autowired
-    TripService tripService;
-
-
     @GetMapping("/createChecklist")
     public String createNewChecklist(Model model) {
         model.addAttribute("newChecklist", new Checklist());
         return "create-checklist";
     }
 
-    @GetMapping("/addChecklist")
-    public String showAddChecklistPage(Model model) {
-        model.addAttribute("checklist", new Checklist());
-        return "add-checklist";
-    }
-
     @GetMapping("/checklist/{checklistId}")
     public String editChecklistPage(@PathVariable("checklistId") long checklistId, Model model) throws Exception {
-
         Checklist checklist = checklistService.getChecklistById(checklistId);
         model.addAttribute("checklist", checklist);
-
         return "edit-checklist";
     }
 

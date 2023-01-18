@@ -13,13 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     UserService userService;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String showWelcomePage(Model model) {

@@ -19,6 +19,7 @@ public class Destination {
     public Set<Trip> trips;
     @ManyToMany(mappedBy = "savedDestinations")
     public Set<User> users;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -35,6 +36,7 @@ public class Destination {
     String city3;
     String city4;
     String city5;
+
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;

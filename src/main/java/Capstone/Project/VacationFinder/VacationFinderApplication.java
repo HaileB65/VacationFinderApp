@@ -17,25 +17,10 @@ import java.util.Set;
 public class VacationFinderApplication implements CommandLineRunner {
 
     @Autowired
-    ItineraryRepository itineraryRepository;
-
-    @Autowired
-    ChecklistRepository checklistRepository;
-
-    @Autowired
-    DestinationRepository destinationRepository;
-
-    @Autowired
     TripRepository tripRepository;
 
     @Autowired
     UserRepository userRepository;
-
-    @Autowired
-    ItineraryService itineraryService;
-
-    @Autowired
-    ChecklistService checklistService;
 
     @Autowired
     TripService tripService;
@@ -53,26 +38,7 @@ public class VacationFinderApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (!itineraryRepository.existsById(1L)) {
-            Itinerary itinerary = Itinerary.builder()
-                    .item1("Day 1")
-                    .item2("Day 2")
-                    .item3("Day 3")
-                    .build();
-
-            itineraryService.createNewItinerary(itinerary);
-        }
-
-        if (!checklistRepository.existsById(1L)) {
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("123","4568", "486132"))
-                    .build();
-
-            checklistService.createNewChecklist(checklist);
-        }
-
-
-        if (!tripRepository.existsById(1L)) {
+        if (!tripRepository.existsByName("Mongolia Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("AEUEKD")
                     .item2("HJKLD")
@@ -97,8 +63,9 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city5("Dalanzadgad")
                     .image1("https://www.worldtravelguide.net/wp-content/uploads/2012/05/shu-Mongolia-600892928-1440x823.jpg")
                     .image2("https://www.mappr.co/wp-content/uploads/2021/11/mongolia-map-1024x586.jpg")
+                    .trips(new HashSet<>())
+                    .users(new HashSet<>())
                     .build();
-            destinationService.createNewDestination(mongolia);
 
             Set<Destination> destinations = new HashSet();
             destinations.add(mongolia);
@@ -113,7 +80,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(mongoliaTrip);
         }
 
-        if (!tripRepository.existsById(2L)) {
+        if (!tripRepository.existsByName("Bahamas Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("Red")
                     .item2("Orange")
@@ -137,7 +104,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city4("Freeport")
                     .city5("Alice Town")
                     .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
-                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrnLKJGVO40ijQvXp4XXaShoJRvob75N8ghSAFwsox3aM7Z4TJUeYXr8pVeTuZ7QJrDco&usqp=CAU")
+                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKa7vLj_DYhGIiazr3DY9a2W7aZSPrZK4DCQ&usqp=CAU")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -153,7 +120,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(bahamasTrip);
         }
 
-        if (!tripRepository.existsById(3L)) {
+        if (!tripRepository.existsByName("Switzerland Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("431")
                     .item2("413")
@@ -179,7 +146,6 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .image1("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
                     .image2("https://c8.alamy.com/comp/JF64PT/alps-switzerland-zurich-swiss-map-atlas-map-of-the-world-bern-rhine-JF64PT.jpg")
                     .build();
-            destinationService.createNewDestination(switzerland);
 
             Set<Destination> destinations = new HashSet();
             destinations.add(switzerland);
@@ -194,7 +160,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(switzerlandTrip);
         }
 
-        if (!tripRepository.existsById(4L)) {
+        if (!tripRepository.existsByName("Brazil Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
                     .item2("KLDFS")
@@ -218,7 +184,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city4("São Paulo")
                     .city5("Foz do Iguaçu")
                     .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
-                    .image2("https://static.wikia.nocookie.net/rio/images/1/12/1_brazil.gif/revision/latest?cb=20110411190105")
+                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQagGug574XsHuWWpx8z64TJVAKZE0fLLkj6Q&usqp=CAU")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -234,7 +200,7 @@ public class VacationFinderApplication implements CommandLineRunner {
             tripService.createNewTrip(brazilTrip);
         }
 
-        if (!tripRepository.existsById(5L)) {
+        if (!tripRepository.existsByName("Peru Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
                     .item2("KLDFS")

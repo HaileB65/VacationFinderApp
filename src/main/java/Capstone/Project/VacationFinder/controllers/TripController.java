@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class TripController {
@@ -107,6 +104,7 @@ public class TripController {
         newTrip.setItinerary(newItinerary);
 
         Checklist newChecklist = new Checklist();
+        newChecklist.getChecklistItems().addAll((Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")));
         checklistService.saveChecklist(newChecklist);
         newTrip.setChecklist(newChecklist);
         tripService.createNewTrip(newTrip);
@@ -114,7 +112,7 @@ public class TripController {
         Trip trip = tripService.getById(newTrip.getId());
         Destination des = destinationService.getByName(destination.getName());
         trip.getDestinations().add(des);
-        trip.setName(des.getName());
+        trip.setName(des.getName() + " Trip");
         tripService.saveTrip(trip);
 
         User user = userService.getUserById(currentUser.getId());

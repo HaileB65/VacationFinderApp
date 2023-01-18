@@ -10,29 +10,29 @@
 
 <h1 align="center">Destinations</h1>
 
-            <div align="center">
-                <table border="1" cellpadding="10" class="table table-striped table-hover">
-                    <tr>
-                        <th>Name</th>
-                        <th>Scenery</th>
-                        <th>Weather</th>
-                        <th>Activity 1</th>
-                        <th>Activity 2</th>
-                        <th>Activity 3</th>
-                        <th>Action</th>
+<div align="center">
+    <table border="1" cellpadding="10" class="table table-striped table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Scenery</th>
+            <th>Weather</th>
+            <th>Activity 1</th>
+            <th>Activity 2</th>
+            <th>Activity 3</th>
+            <th>Action</th>
 
-                    </tr>
-                    <tr th:each="destination : ${destinationsTable}">
-                        <td th:text="${destination.name}">Name</td>
-                        <td th:text="${destination.scenery}">Scenery</td>
-                        <td th:text="${destination.weather}">Weather</td>
-                        <td th:text="${destination.activity1}">Activity 1</td>
-                        <td th:text="${destination.activity2}">Activity 2</td>
-                        <td th:text="${destination.activity3}">Activity 3</td>
-                        <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
-                    </tr>
-                </table>
-            </div>
+        </tr>
+        <tr th:each="destination : ${destinationsTable}">
+            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.scenery}">Scenery</td>
+            <td th:text="${destination.weather}">Weather</td>
+            <td th:text="${destination.activity1}">Activity 1</td>
+            <td th:text="${destination.activity2}">Activity 2</td>
+            <td th:text="${destination.activity3}">Activity 3</td>
+            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
+        </tr>
+    </table>
+</div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>

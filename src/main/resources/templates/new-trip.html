@@ -14,23 +14,23 @@
         <table border="0" cellpadding="10">
             <tr>
                 <td>
-                    <select th:field="*{name}" id="destinationName" name="destinationName">
+                    <select id="destinationName" name="destinationName" th:field="*{name}">
                         <option value="">Select Destination</option>
-                        <option value="Peru" th:text="Peru"></option>
-                        <option value="Switzerland" th:text="Switzerland"></option>
-                        <option value="Mongolia" th:text="Mongolia"></option>
-                        <option value="Bahamas" th:text="Bahamas"></option>
-                        <option value="Brazil" th:text="Brazil"></option>
+                        <option th:text="Peru" value="Peru"></option>
+                        <option th:text="Switzerland" value="Switzerland"></option>
+                        <option th:text="Mongolia" value="Mongolia"></option>
+                        <option th:text="Bahamas" value="Bahamas"></option>
+                        <option th:text="Brazil" value="Brazil"></option>
                     </select>
                 </td>
             </tr>
             <tr align="center">
                 <td colspan="2">
                     <button align="center" type="submit">Save</button>
-                </td >
+                </td>
             </tr>
         </table>
     </form>
 </div>
-<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>

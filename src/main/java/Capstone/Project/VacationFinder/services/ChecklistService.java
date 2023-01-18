@@ -1,7 +1,6 @@
 package Capstone.Project.VacationFinder.services;
 
 import Capstone.Project.VacationFinder.models.Checklist;
-import Capstone.Project.VacationFinder.models.Itinerary;
 import Capstone.Project.VacationFinder.repositories.ChecklistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

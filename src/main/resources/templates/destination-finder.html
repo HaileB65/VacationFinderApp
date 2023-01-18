@@ -10,31 +10,31 @@
 <h1 align="center">Destination Finder</h1>
 
 <div align="center">
-                <form action="#" method="post" th:action="@{/destinationFinderResults}" th:object="${questionnaire}">
-                    <table border="0" cellpadding="10" class="table table-striped table-hover">
-                        <tr align="center">
-                            <td>
-                                <select th:field="*{favoriteScenery}" id="favoriteScenery" name="favoriteScenery">
-                                    <option value="">Select Scenery</option>
-                                    <option value="Beach" th:text="Beach"></option>
-                                    <option value="Mountains" th:text="Mountains"></option>
-                                    <option value="Snow" th:text="Snow"></option>
-                                </select>
-                            </td>
-                            <td>
-                                <select th:field="*{weather}" id="weather" name="weather">
-                                    <option value="">Select Weather</option>
-                                    <option value="Warm" th:text="Warm"></option>
-                                    <option value="Cold" th:text="Cold"></option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr align="center">
-                            <td colspan="3"><input type="submit" value="Submit"></td>
-                        </tr>
-                    </table>
-                </form>
+    <form action="#" method="post" th:action="@{/destinationFinderResults}" th:object="${questionnaire}">
+        <table border="0" cellpadding="10" class="table table-striped table-hover">
+            <tr align="center">
+                <td>
+                    <select id="favoriteScenery" name="favoriteScenery" th:field="*{favoriteScenery}">
+                        <option value="">Select Scenery</option>
+                        <option th:text="Beach" value="Beach"></option>
+                        <option th:text="Mountains" value="Mountains"></option>
+                        <option th:text="Snow" value="Snow"></option>
+                    </select>
+                </td>
+                <td>
+                    <select id="weather" name="weather" th:field="*{weather}">
+                        <option value="">Select Weather</option>
+                        <option th:text="Warm" value="Warm"></option>
+                        <option th:text="Cold" value="Cold"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="3"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
 </div>
-<div th:replace="fragments :: footer" align="center">&copy; 2022 Vacation Finder</div>
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

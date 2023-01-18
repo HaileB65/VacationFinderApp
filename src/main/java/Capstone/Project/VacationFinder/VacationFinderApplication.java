@@ -1,8 +1,11 @@
 package Capstone.Project.VacationFinder;
 
 import Capstone.Project.VacationFinder.models.*;
-import Capstone.Project.VacationFinder.repositories.*;
-import Capstone.Project.VacationFinder.services.*;
+import Capstone.Project.VacationFinder.repositories.TripRepository;
+import Capstone.Project.VacationFinder.repositories.UserRepository;
+import Capstone.Project.VacationFinder.services.DestinationService;
+import Capstone.Project.VacationFinder.services.TripService;
+import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -46,7 +49,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("adf","hgdg", "glil", "jfdak;sji"))
+                    .checklistItems(List.of("adf", "hgdg", "glil", "jfdak;sji"))
                     .build();
 
             Destination mongolia = Destination.builder()
@@ -88,7 +91,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("fdsafda","4568"))
+                    .checklistItems(List.of("fdsafda", "4568"))
                     .build();
 
             Destination bahamas = Destination.builder()
@@ -128,7 +131,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("876","45JKHI68"))
+                    .checklistItems(List.of("876", "45JKHI68"))
                     .build();
 
             Destination switzerland = Destination.builder()
@@ -168,7 +171,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("699","45JKHI68"))
+                    .checklistItems(List.of("699", "45JKHI68"))
                     .build();
 
             Destination brazil = Destination.builder()
@@ -208,7 +211,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("699","45JKHI68"))
+                    .checklistItems(List.of("699", "45JKHI68"))
                     .build();
 
             Destination peru = Destination.builder()
@@ -241,19 +244,19 @@ public class VacationFinderApplication implements CommandLineRunner {
         }
 
         if (!userRepository.existsByUsername("Robin41")) {
-        User guest = User.builder()
-                .id(1L)
-                .firstName("Robin")
-                .lastName("Smith")
-                .email("smithrobin@gmail.com")
-                .phone("1245684578")
-                .username("Robin41")
-                .password("password")
-                .role(Role.GUEST)
-                .trips(new HashSet<>())
-                .build();
+            User guest = User.builder()
+                    .id(1L)
+                    .firstName("Robin")
+                    .lastName("Smith")
+                    .email("smithrobin@gmail.com")
+                    .phone("1245684578")
+                    .username("Robin41")
+                    .password("password")
+                    .role(Role.GUEST)
+                    .trips(new HashSet<>())
+                    .build();
 
-        userService.createNewUser(guest);
+            userService.createNewUser(guest);
         }
 
         if (!userRepository.existsByUsername("Alex45")) {

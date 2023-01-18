@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class TripController {
@@ -39,7 +42,7 @@ public class TripController {
 
         ArrayList<Trip> trips = new ArrayList<>();
 
-        for(Trip trip: userTrips){
+        for (Trip trip : userTrips) {
             trips.add(trip);
         }
 
@@ -65,7 +68,7 @@ public class TripController {
         model.addAttribute("tripName", trip.getName());
         model.addAttribute("trip", trip);
 
-        if(trip.itinerary == null){
+        if (trip.itinerary == null) {
             Itinerary newItinerary = new Itinerary();
             itineraryService.saveItinerary(newItinerary);
             trip.setItinerary(newItinerary);
@@ -73,7 +76,7 @@ public class TripController {
         }
         model.addAttribute("itineraryId", trip.itinerary.getId());
 
-        if(trip.checklist == null){
+        if (trip.checklist == null) {
             Checklist newChecklist = new Checklist();
             checklistService.saveChecklist(newChecklist);
             trip.setChecklist(newChecklist);
@@ -82,7 +85,7 @@ public class TripController {
         model.addAttribute("checklistId", trip.checklist.getId());
 
 
-        if(trip.destinations == null){
+        if (trip.destinations == null) {
             Set<Destination> destinations = new HashSet();
             trip.setDestinations(destinations);
             tripService.saveTrip(trip);
@@ -122,7 +125,7 @@ public class TripController {
     }
 
     @GetMapping("/deleteTrip/{tripId}")
-    public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser,Model model) throws Exception {
+    public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
         Trip trip = tripService.getById(tripId);
         User user = userService.getUserById(currentUser.getId());
 

@@ -1,6 +1,9 @@
 package Capstone.Project.VacationFinder.controllers;
 
-import Capstone.Project.VacationFinder.models.*;
+import Capstone.Project.VacationFinder.models.Destination;
+import Capstone.Project.VacationFinder.models.Questionnaire;
+import Capstone.Project.VacationFinder.models.Trip;
+import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
 import Capstone.Project.VacationFinder.services.TripService;
 import Capstone.Project.VacationFinder.services.UserService;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Timestamp;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class DestinationController {
@@ -145,7 +151,7 @@ public class DestinationController {
 
 
         List<Destination> remainingDestinations = destinationService.getByWeather(questionnaire.getWeather());
-        for(Destination destination:destinationsMatchingWeatherAndScenery){
+        for (Destination destination : destinationsMatchingWeatherAndScenery) {
             remainingDestinations.remove(destination);
         }
         model.addAttribute("remainingDestinations", remainingDestinations);

@@ -24,13 +24,6 @@ public class DestinationController {
     @Autowired
     DestinationService destinationService;
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    TripService tripService;
-
-
     /**
      * Shows all destinations.
      *

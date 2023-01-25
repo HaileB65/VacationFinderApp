@@ -15,20 +15,38 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * Creates a new user.
+     *
+     * @param model adds empty user to view.
+     * @return displays new-user page.
+     */
     @GetMapping("/newUser")
     public String createNewUser(Model model) {
         model.addAttribute("newUser", new User());
         return "new-user";
     }
 
+    /**
+     * Saves newly created user.
+     *
+     * @param newUser new user to be saved.
+     * @return redirects to users page.
+     */
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("newUser") User newUser) {
         userService.createNewUser(newUser);
         return "redirect:/users";
     }
 
+    /**
+     * Shows user's home page.
+     *
+     * @return displays user-home-page page.
+     * @throws Exception
+     */
     @GetMapping("/userHomePage")
-    public String showUserHomePage(Model model) throws Exception {
+    public String showUserHomePage() throws Exception {
 
         return "user-home-page";
     }

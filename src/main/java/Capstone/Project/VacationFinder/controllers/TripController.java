@@ -31,6 +31,15 @@ public class TripController {
     @Autowired
     DestinationService destinationService;
 
+
+    /**
+     * Shows all trips that a user has.
+     *
+     * @param currentUser current user logged in.
+     * @param model adds user trips to view.
+     * @return displays my-trips page.
+     * @throws Exception
+     */
     @GetMapping("/myTrips")
     public String showMyTripsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
         User user = userService.getUserById(currentUser.getId());
@@ -48,21 +57,34 @@ public class TripController {
         return "my-trips";
     }
 
+    /**
+     * Creates a new trip.
+     *
+     * @param model adds an empty trip and empty destination to view.
+     * @return displays new-trip page.
+     * @throws Exception
+     */
     @GetMapping("/newTrip")
     public String createTrip(Model model) throws Exception {
-        Trip newTrip = new Trip();
-        model.addAttribute("newTrip", newTrip);
+        model.addAttribute("newTrip", new Trip());
 
-        Destination destination = new Destination();
-        model.addAttribute("destination", destination);
+        model.addAttribute("destination", new Destination());
         return "new-trip";
     }
 
+    /**
+     * Shows a trip's home page.
+     *
+     * @param tripId ID of trip to be pulled from database.
+     * @param currentUser current user logged in.
+     * @param model adds itineraryId, checklistId, and destinations of trip to view. Adds trip to view.
+     * @return displays trip-home-page.
+     * @throws Exception
+     */
     @GetMapping("/trip/{tripId}")
     public String showTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
         Trip trip = tripService.getById(tripId);
-        model.addAttribute("tripName", trip.getName());
         model.addAttribute("trip", trip);
 
         if (trip.itinerary == null) {
@@ -89,12 +111,18 @@ public class TripController {
         }
         model.addAttribute("destinations", trip.destinations);
 
-        User user = userService.getUserById(currentUser.getId());
-        model.addAttribute("savedDestinations", user.savedDestinations);
-
         return "trip-home-page";
     }
 
+    /**
+     * Saves a new trip.
+     *
+     * @param newTrip new trip to be saved.
+     * @param destination destination selected for trip.
+     * @param currentUser current user logged in.
+     * @return redirects to myTrips page.
+     * @throws Exception
+     */
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
         newTrip.setDestinations(new HashSet<>());
@@ -122,8 +150,16 @@ public class TripController {
         return "redirect:/myTrips";
     }
 
+    /**
+     * Deletes trip.
+     *
+     * @param tripId ID of trip to be pulled from database.
+     * @param currentUser current user logged in.
+     * @return redirects to myTrips page.
+     * @throws Exception
+     */
     @GetMapping("/deleteTrip/{tripId}")
-    public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String deleteTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser) throws Exception {
         Trip trip = tripService.getById(tripId);
         User user = userService.getUserById(currentUser.getId());
 

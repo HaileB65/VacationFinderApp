@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Trip Home Page</title>
-    <div th:replace="fragments :: header"/>
+    <div th:replace="fragments :: header"></div>
 </head>
 <body>
-<div th:replace="fragments :: navigation"/>
+<div th:replace="fragments :: navigation"></div>
 
-<h1 align="center" th:text="${tripName}"></h1>
+<h1 align="center" th:text="${trip.name}"></h1>
 
 <div align="center">
 

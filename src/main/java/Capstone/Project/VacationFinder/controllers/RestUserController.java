@@ -14,6 +14,11 @@ public class RestUserController {
     @Autowired
     UserService userService;
 
+    /**
+     * Gets all users from database.
+     *
+     * @return returns all users found.
+     */
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
         try {
@@ -23,6 +28,12 @@ public class RestUserController {
         }
     }
 
+    /**
+     * Creates new user.
+     *
+     * @param user user to be saved.
+     * @return returns new user info.
+     */
     @PostMapping
     public ResponseEntity<?> createNewUser(@RequestBody User user) {
         try {

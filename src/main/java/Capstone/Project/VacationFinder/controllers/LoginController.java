@@ -13,16 +13,32 @@ public class LoginController {
     @Autowired
     UserService userService;
 
+    /**
+     * Shows welcome page.
+     *
+     * @return displays welcome page.
+     */
     @GetMapping("/")
-    public String showWelcomePage(Model model) {
+    public String showWelcomePage() {
         return "welcome";
     }
 
+    /**
+     * Shows login page.
+     *
+     * @return displays login page.
+     */
     @GetMapping("/login")
     public String login() {
         return "login2";
     }
 
+    /**
+     * Shows register page.
+     *
+     * @param model adds empty user object to view.
+     * @return displays register page.
+     */
     @GetMapping("/register")
     public String register(Model model) {
 
@@ -31,8 +47,14 @@ public class LoginController {
         return "register";
     }
 
+    /**
+     * Saves new user.
+     *
+     * @param newUser new user to be saved.
+     * @return displays successful-registration page.
+     */
     @PostMapping("/process_register")
-    public String processRegistration(User newUser, Model model) {
+    public String processRegistration(User newUser) {
         userService.createNewUser(newUser);
         return "successful-registration";
 

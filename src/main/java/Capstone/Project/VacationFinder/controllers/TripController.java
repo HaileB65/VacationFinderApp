@@ -82,7 +82,7 @@ public class TripController {
      * @throws Exception
      */
     @GetMapping("/trip/{tripId}")
-    public String showTrip(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String showTripHomePage(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
         Trip trip = tripService.getById(tripId);
         model.addAttribute("trip", trip);

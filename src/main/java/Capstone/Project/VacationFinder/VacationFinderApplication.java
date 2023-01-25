@@ -37,11 +37,17 @@ public class VacationFinderApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        /**
+         * Creates Mongolia Trip and destination. Includes prefilled itinerary and checklist.
+         *
+         */
         if (!tripRepository.existsByName("Mongolia Trip")) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("AEUEKD")
-                    .item2("HJKLD")
-                    .item3("SHKJ")
+                    .item1("Weston Hotel")
+                    .item2("Atrium Event Center")
+                    .item3("The Axewell")
+                    .item4("The Arboretum")
+                    .item5("Flight Museum")
                     .build();
 
             Checklist checklist = Checklist.builder()

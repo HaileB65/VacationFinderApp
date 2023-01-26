@@ -6,7 +6,7 @@ plugins {
 
 group = 'Capstone.Project'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -37,3 +37,16 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//        gradlePluginPortal()
+//    }
+//    dependencies {
+//        classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
+//    }
+//}
+
+//apply plugin: 'java'
+//apply plugin: 'com.github.johnrengelman.shadow'

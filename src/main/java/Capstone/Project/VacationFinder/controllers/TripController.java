@@ -36,7 +36,7 @@ public class TripController {
      * Shows all trips that a user has.
      *
      * @param currentUser current user logged in.
-     * @param model adds user trips to view.
+     * @param model       adds user trips to view.
      * @return displays my-trips page.
      * @throws Exception
      */
@@ -75,9 +75,9 @@ public class TripController {
     /**
      * Shows a trip's home page.
      *
-     * @param tripId ID of trip to be pulled from database.
+     * @param tripId      ID of trip to be pulled from database.
      * @param currentUser current user logged in.
-     * @param model adds itineraryId, checklistId, and destinations of trip to view. Adds trip to view.
+     * @param model       adds itineraryId, checklistId, and destinations of trip to view. Adds trip to view.
      * @return displays trip-home-page.
      * @throws Exception
      */
@@ -117,7 +117,7 @@ public class TripController {
     /**
      * Saves a new trip.
      *
-     * @param newTrip new trip to be saved.
+     * @param newTrip     new trip to be saved.
      * @param destination destination selected for trip.
      * @param currentUser current user logged in.
      * @return redirects to myTrips page.
@@ -153,7 +153,7 @@ public class TripController {
     /**
      * Deletes trip.
      *
-     * @param tripId ID of trip to be pulled from database.
+     * @param tripId      ID of trip to be pulled from database.
      * @param currentUser current user logged in.
      * @return redirects to myTrips page.
      * @throws Exception

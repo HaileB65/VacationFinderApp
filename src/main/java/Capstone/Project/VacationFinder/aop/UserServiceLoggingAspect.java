@@ -29,7 +29,7 @@ public class UserServiceLoggingAspect {
     }
 
     /**
-     *Runs advice after a user service method is executed.
+     * Runs advice after a user service method is executed.
      *
      * @param joinPoint is a user service method that is being executed.
      */
@@ -42,7 +42,7 @@ public class UserServiceLoggingAspect {
      * Runs advice after a user service method is executed and returns a user.
      *
      * @param joinPoint is a user service method that is being executed.
-     * @param users a user returned from the database.
+     * @param users     a user returned from the database.
      */
     @AfterReturning(value = "pointCutAllUserServiceMethods()", returning = "users")
     public void afterReturningAdvice(JoinPoint joinPoint, Object users) {

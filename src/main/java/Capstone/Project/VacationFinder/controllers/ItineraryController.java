@@ -43,7 +43,7 @@ public class ItineraryController {
     /**
      * Edits an existing itinerary.
      *
-     * @param itinerary edited itinerary.
+     * @param itinerary   edited itinerary.
      * @param itineraryId ID of existing itinerary to be pulled from database.
      * @return redirects to myTrips page.
      * @throws Exception

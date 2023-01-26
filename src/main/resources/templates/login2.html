@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <div th:replace="fragments :: header"/>
+    <div th:replace="fragments :: header"></div>
     <style>
     a {
   color: grey;
@@ -16,10 +16,11 @@
 
 
 
+
     </style>
 </head>
 <body>
-<div th:replace="fragments :: navigation"/>
+<div th:replace="fragments :: navigation"></div>
 
 <div align="center">
     <form method="post" name="login" th:action="@{/login}">

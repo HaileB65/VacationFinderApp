@@ -4,8 +4,6 @@ import Capstone.Project.VacationFinder.models.Destination;
 import Capstone.Project.VacationFinder.models.Questionnaire;
 import Capstone.Project.VacationFinder.models.User;
 import Capstone.Project.VacationFinder.services.DestinationService;
-import Capstone.Project.VacationFinder.services.TripService;
-import Capstone.Project.VacationFinder.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

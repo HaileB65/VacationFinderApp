@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -109,7 +110,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city4("Freeport")
                     .city5("Alice Town")
                     .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
-                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKa7vLj_DYhGIiazr3DY9a2W7aZSPrZK4DCQ&usqp=CAU")
+                    .image2("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Taino_Beach%2C_Grand_Bahama_Island%2C_Bahamas.jpg/1280px-Taino_Beach%2C_Grand_Bahama_Island%2C_Bahamas.jpg")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -189,7 +190,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .city4("São Paulo")
                     .city5("Foz do Iguaçu")
                     .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
-                    .image2("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQagGug574XsHuWWpx8z64TJVAKZE0fLLkj6Q&usqp=CAU")
+                    .image2("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-sugarloaf-mountain.jpg")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -213,7 +214,7 @@ public class VacationFinderApplication implements CommandLineRunner {
                     .build();
 
             Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("699", "45JKHI68"))
+                    .checklistItems(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
                     .build();
 
             Destination peru = Destination.builder()

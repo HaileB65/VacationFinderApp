@@ -16,7 +16,7 @@
         <tr align="center">
             <th colspan="6">Itinerary</th>
         </tr>
-        <tr>
+        <tr align="center">
             <th>Days</th>
             <th>Day 1</th>
             <th>Day 2</th>
@@ -24,7 +24,7 @@
             <th>Day 4</th>
             <th>Day 5</th>
         </tr>
-        <tr>
+        <tr align="center">
             <th>Destination</th>
             <td>Weston Hotel</td>
             <td>Atrium Event Center</td>
@@ -32,7 +32,7 @@
             <td>The Arboretum</td>
             <td>Flight Museum</td>
         </tr>
-        <tr>
+        <tr align="center">
             <th>Eat</th>
             <td>Ephesus Mediterranean Grill</td>
             <td>True Food Kitchen</td>
@@ -40,7 +40,7 @@
             <td>TJ's Seafood Market & Grill</td>
             <td>Elm & Good</td>
         </tr>
-        <tr>
+        <tr align="center">
             <th>Leisure</th>
             <td>Jazz Festival</td>
             <td>Comedy Club</td>
@@ -48,7 +48,7 @@
             <td>Jack's Bar</td>
             <td>Klyde Warren Park</td>
         </tr>
-        <tr>
+        <tr align="center">
             <th>Transport</th>
             <td>Hotel Cab</td>
             <td>Hotel Cab</td>
@@ -69,7 +69,7 @@
         </tr>
         <tr align="center" th:each="item : ${trip.checklist.checklistItems}">
             <td><input type="checkbox"/></td>
-            <td th:text="${item}">Item 1</td>
+            <td th:text="${item}">Item</td>
         </tr>
         <tr align="center">
             <td colspan="2"><a th:href="@{/checklist/__${checklistId}__}">Edit</a></td>

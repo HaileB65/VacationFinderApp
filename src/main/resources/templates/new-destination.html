@@ -17,7 +17,7 @@
 <div align="center">
     <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
 
-        <table border="0" cellpadding="10">
+        <table border="1" cellpadding="10" class="table table-hover">
             <tr>
                 <td>Name:</td>
                 <td><input required th:field="*{name}" type="text"/></td>

@@ -9,10 +9,14 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
+<br>
+
 <h1 align="center">Destination Results</h1>
 
+<br>
+
 <div align="center">
-    <table border="1" cellpadding="10">
+    <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr>
             <th>Name</th>
             <th>Scenery</th>
@@ -29,14 +33,17 @@
             <td th:text="${destination.activity1}">Activity 1</td>
             <td th:text="${destination.activity2}">Activity 2</td>
             <td th:text="${destination.activity3}">Activity 3</td>
-            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
+            <td><a th:href="@{/destination/__${destination.id}__/__${weather}__/__${scenery}__}">View</a></td>
         </tr>
     </table>
 
     <br><br>
 
     <h1 align="center">Partial Matches</h1>
-    <table border="1" cellpadding="10">
+
+    <br>
+
+    <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr>
             <th>Name</th>
             <th>Scenery</th>

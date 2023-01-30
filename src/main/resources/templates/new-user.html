@@ -7,12 +7,17 @@
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
+
+<br>
+
+<h1 align="center">Create New User</h1>
+
+<br>
+
 <div align="center">
-    <h1>Create New User</h1>
-    <br/>
     <form action="#" method="post" th:action="@{/saveUser}" th:object="${newUser}">
 
-        <table border="0" cellpadding="10">
+        <table border="0" cellpadding="10" class="table table-striped table-hover">
             <tr>
                 <td>First Name:</td>
                 <td><input required th:field="*{firstName}" type="text"/></td>

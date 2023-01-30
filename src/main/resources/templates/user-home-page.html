@@ -8,8 +8,12 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
+<br>
 
 <div align="center">
+    <br>
+    <br>
+    <br>
     <h1 th:text="'Welcome ' + ${#authentication.getPrincipal().getFirstName()} + ' !' "></h1>
 </div>
 

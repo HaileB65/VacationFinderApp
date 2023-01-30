@@ -61,6 +61,27 @@ public class DestinationController {
         return "destination";
     }
 
+    @GetMapping("/destination/{destinationId}/{weather}/{scenery}")
+    public String viewDestinationFromDestinationResultsPage(
+            @PathVariable("destinationId") long destinationId,
+            @PathVariable ("weather") String weather,
+            @PathVariable ("scenery") String scenery, Model model) throws Exception {
+
+        Destination destination = destinationService.getDestinationById(destinationId);
+        model.addAttribute("destinationName", destination.getName());
+        model.addAttribute("destination", destination);
+
+        ArrayList<String> images = new ArrayList<>();
+        images.add(destination.getImage1());
+        images.add(destination.getImage2());
+        model.addAttribute("images", images);
+
+        model.addAttribute("weather",weather);
+        model.addAttribute("scenery",scenery);
+
+        return "destination-from-results-page";
+    }
+
     /**
      * Creates a new destination.
      *
@@ -97,6 +118,21 @@ public class DestinationController {
         return "redirect:/destinations";
     }
 
+    @GetMapping("/destinationFinderResults/{weather}/{scenery}")
+    public String returnToDestinationFinderResultsPage(@PathVariable String weather,@PathVariable String scenery, Model model) {
+
+        List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(weather, scenery);
+        model.addAttribute("searchedDestinations", destinationsMatchingWeatherAndScenery);
+
+        List<Destination> remainingDestinations = destinationService.getByWeather(weather);
+        for (Destination destination : destinationsMatchingWeatherAndScenery) {
+            remainingDestinations.remove(destination);
+        }
+        model.addAttribute("remainingDestinations", remainingDestinations);
+
+        return "destination-finder-results";
+    }
+
     /**
      * Shows destination finder results.
      *
@@ -106,20 +142,19 @@ public class DestinationController {
      */
     @PostMapping("/destinationFinderResults")
     public String showDestinationFinderResultsPage(@ModelAttribute("questionnaire") Questionnaire questionnaire, Model model) {
-        model.addAttribute("questionnaire", questionnaire);
-
-        List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(questionnaire.getWeather(), questionnaire.getFavoriteScenery());
+        List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(questionnaire.getPreferredWeather(), questionnaire.getPreferredScenery());
         model.addAttribute("searchedDestinations", destinationsMatchingWeatherAndScenery);
 
-
-        List<Destination> remainingDestinations = destinationService.getByWeather(questionnaire.getWeather());
+        List<Destination> remainingDestinations = destinationService.getByWeather(questionnaire.getPreferredWeather());
         for (Destination destination : destinationsMatchingWeatherAndScenery) {
             remainingDestinations.remove(destination);
         }
         model.addAttribute("remainingDestinations", remainingDestinations);
 
+        model.addAttribute("weather", questionnaire.getPreferredWeather());
+        model.addAttribute("scenery", questionnaire.getPreferredScenery());
+
         return "destination-finder-results";
     }
-
 
 }

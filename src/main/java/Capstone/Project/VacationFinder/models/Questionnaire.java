@@ -8,7 +8,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Questionnaire {
-    String favoriteScenery;
-    String weather;
+    String preferredScenery;
+    String preferredWeather;
     String preferredActivity;
+
 }

@@ -7,9 +7,14 @@
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
+
+<br>
+
+<h1 align="center">Create new user to register.</h1>
+
+<br>
+
 <div align="center">
-    <h1>Create new user to register.</h1>
-    <br/>
     <form action="#" method="post" th:action="@{/process_register}" th:object="${newUser}">
 
         <table border="0" cellpadding="10">

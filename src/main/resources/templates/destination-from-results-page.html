@@ -52,12 +52,19 @@
     <br>
     <table border="0" cellpadding="10" class="table table-striped table-hover">
         <tr align="center">
-            <th colspan="3">Activities</th>
+                <th colspan="3">Activities</th>
         </tr>
         <tr align="center">
             <td th:text="${destination.activity1}"></td>
             <td th:text="${destination.activity2}"></td>
             <td th:text="${destination.activity3}"></td>
+        </tr>
+        <tr align="center">
+            <td colspan="3">
+                <form action="#" method="get" th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
+                    <input align="center" type="submit" value="Return">
+                </form>
+            </td>
         </tr>
     </table>
 </div>

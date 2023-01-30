@@ -59,15 +59,16 @@
             <td th:text="${destination.activity2}"></td>
             <td th:text="${destination.activity3}"></td>
         </tr>
-        <tr align="center">
-            <td colspan="3">
-                <form action="#" method="get" th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
-                    <input align="center" type="submit" value="Return">
-                </form>
-            </td>
-        </tr>
     </table>
+
+    <form action="#" method="get" th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
+        <input align="center" type="submit" value="Return">
+    </form>
+
 </div>
+<br>
+<br>
+<br>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

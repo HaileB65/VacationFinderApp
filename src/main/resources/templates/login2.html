@@ -21,7 +21,7 @@
     <form method="post" name="login" th:action="@{/login}">
         <table border="0" cellpadding="10">
             <fieldset>
-                <tr>
+                <tr align="center">
                     <td align="left">
                         <legend>Login</legend>
                     </td>
@@ -44,14 +44,10 @@
                         <input id="password" name="password" type="text"/>
                     </td>
                 </tr>
-                <tr>
+                <tr align="center">
                     <td>
-                        <div align="left" class="form-actions">
-                            <input type="submit" value="Log in"/>
-                        </div>
+                        <input type="submit" value="Log in"/>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <a th:href="@{register}">Register</a>
                     </td>

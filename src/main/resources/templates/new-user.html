@@ -42,12 +42,10 @@
                 <td>Password:</td>
                 <td><textarea required th:field="*{password}" type="text"></textarea></td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <button type="submit">Save</button>
-                </td>
-            </tr>
         </table>
+
+        <input type="submit" value="Save">
+
     </form>
 </div>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

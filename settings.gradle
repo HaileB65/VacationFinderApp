@@ -1,1 +1,3 @@
-rootProject.name = 'NewMVCProject'
+rootProject.name = 'VacationFinderApp'
+include 'VacationFinderApp'
+

@@ -63,7 +63,7 @@ public class ChecklistController {
      */
     @PostMapping("/saveChecklist")
     public String saveChecklist(@ModelAttribute("newChecklist") Checklist newChecklist) {
-        checklistService.createNewChecklist(newChecklist);
+        checklistService.saveChecklist(newChecklist);
         return "redirect:/myTrips";
     }
 

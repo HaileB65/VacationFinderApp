@@ -135,7 +135,7 @@ public class TripController {
         newChecklist.getChecklistItems().addAll((Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")));
         checklistService.saveChecklist(newChecklist);
         newTrip.setChecklist(newChecklist);
-        tripService.createNewTrip(newTrip);
+        tripService.saveTrip(newTrip);
 
         Trip trip = tripService.getById(newTrip.getId());
         Destination des = destinationService.getByName(destination.getName());

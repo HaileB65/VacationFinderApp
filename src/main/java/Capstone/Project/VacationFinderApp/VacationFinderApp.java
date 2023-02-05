@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,6 +19,7 @@ import java.util.Set;
 
 
 @SpringBootApplication
+@EnableCaching
 public class VacationFinderApp implements CommandLineRunner {
 
     @Autowired
@@ -83,9 +86,13 @@ public class VacationFinderApp implements CommandLineRunner {
                     .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(mongoliaTrip);
+            tripService.saveTrip(mongoliaTrip);
         }
 
+        /**
+         * Creates Bahamas Trip and destination. Includes prefilled itinerary and checklist.
+         *
+         */
         if (!tripRepository.existsByName("Bahamas Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("Red")
@@ -123,9 +130,13 @@ public class VacationFinderApp implements CommandLineRunner {
                     .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(bahamasTrip);
+            tripService.saveTrip(bahamasTrip);
         }
 
+        /**
+         * Creates Switzerland Trip and destination. Includes prefilled itinerary and checklist.
+         *
+         */
         if (!tripRepository.existsByName("Switzerland Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("431")
@@ -163,9 +174,13 @@ public class VacationFinderApp implements CommandLineRunner {
                     .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(switzerlandTrip);
+            tripService.saveTrip(switzerlandTrip);
         }
 
+        /**
+         * Creates Brazil Trip and destination. Includes prefilled itinerary and checklist.
+         *
+         */
         if (!tripRepository.existsByName("Brazil Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
@@ -203,9 +218,13 @@ public class VacationFinderApp implements CommandLineRunner {
                     .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(brazilTrip);
+            tripService.saveTrip(brazilTrip);
         }
 
+        /**
+         * Creates Peru Trip and destination. Includes prefilled itinerary and checklist.
+         *
+         */
         if (!tripRepository.existsByName("Peru Trip")) {
             Itinerary itinerary = Itinerary.builder()
                     .item1("JKLDF")
@@ -243,9 +262,13 @@ public class VacationFinderApp implements CommandLineRunner {
                     .destinations(destinations)
                     .build();
 
-            tripService.createNewTrip(peruTrip);
+            tripService.saveTrip(peruTrip);
         }
 
+        /**
+         * Creates default guest user.
+         *
+         */
         if (!userRepository.existsByUsername("Robin41")) {
             User guest = User.builder()
                     .id(1L)
@@ -262,6 +285,10 @@ public class VacationFinderApp implements CommandLineRunner {
             userService.createNewUser(guest);
         }
 
+        /**
+         * Creates default user.
+         *
+         */
         if (!userRepository.existsByUsername("Alex45")) {
             User user = User.builder()
                     .firstName("Alex")
@@ -278,6 +305,10 @@ public class VacationFinderApp implements CommandLineRunner {
             userService.createNewUser(user);
         }
 
+        /**
+         * Creates default admin user.
+         *
+         */
         if (!userRepository.existsByUsername("kyle")) {
             User admin = User.builder()
                     .firstName("Kyle")

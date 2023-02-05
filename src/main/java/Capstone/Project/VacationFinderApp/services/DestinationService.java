@@ -3,6 +3,8 @@ package Capstone.Project.VacationFinderApp.services;
 import Capstone.Project.VacationFinderApp.models.Destination;
 import Capstone.Project.VacationFinderApp.repositories.DestinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +15,26 @@ public class DestinationService {
     @Autowired
     DestinationRepository destinationRepository;
 
+    @Autowired
+    CacheManager cacheManager;
+
+    /**
+     * Gets all destinations from database.
+     *
+     * @return all destinations from database.
+     */
+    @Cacheable(value="destinations")
     public List<Destination> getAllDestinations() {
+        cacheManager.getCache("destinations");
         return destinationRepository.findAll();
     }
 
+    /**
+     * Creates a new destination.
+     *
+     * @param destination new destination to be saved.
+     * @return newly saved destination.
+     */
     public Destination createNewDestination(Destination destination) {
         destinationRepository.save(destination);
         return destination;

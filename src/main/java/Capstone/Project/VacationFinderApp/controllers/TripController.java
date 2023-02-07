@@ -170,7 +170,10 @@ public class TripController {
         Checklist checklistFromDB = checklistService.getChecklistById(trip.getChecklist().getId());
         checklistService.deleteChecklist(checklistFromDB);
 
-        List<Destination> destinations = trip.getDestinations().stream().toList();
+        List<Destination> destinations = new ArrayList<>();
+        for (Destination destination : trip.getDestinations()) {
+            destinations.add(destination);
+        }
         Destination des = destinations.get(0);
         Destination destinationFromDB = destinationService.getDestinationById(des.getId());
         destinationFromDB.getTrips().remove(trip);

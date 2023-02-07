@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Destination {
+public class Destination implements Serializable {
     @ManyToMany(mappedBy = "destinations")
     public Set<Trip> trips;
     @ManyToMany(mappedBy = "savedDestinations")

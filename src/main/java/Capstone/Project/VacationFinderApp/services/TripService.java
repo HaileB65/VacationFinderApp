@@ -29,6 +29,7 @@ public class TripService {
     @CachePut(value = "trips", key = "#trip.id")
     public Trip saveTrip(Trip trip) {
         tripRepository.save(trip);
+        cacheManager.getCache("trips");
         return trip;
     }
 

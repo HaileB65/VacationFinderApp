@@ -26,7 +26,7 @@
             <th>Activity 3</th>
             <th>Action</th>
         </tr>
-        <tr th:each="destination : ${searchedDestinations}">
+        <tr align="center" th:each="destination : ${searchedDestinations}">
             <td th:text="${destination.name}">Name</td>
             <td th:text="${destination.scenery}">Scenery</td>
             <td th:text="${destination.weather}">Weather</td>

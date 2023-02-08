@@ -125,20 +125,21 @@ public class TripController {
      */
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
+        Destination des = destinationService.getByName(destination.getName());
+        Trip template = tripService.getByName(des.getName() + " Trip");
+
         newTrip.setDestinations(new HashSet<>());
 
-        Itinerary newItinerary = new Itinerary();
-        itineraryService.saveItinerary(newItinerary);
-        newTrip.setItinerary(newItinerary);
+        newTrip.setItinerary(template.getItinerary());
 
         Checklist newChecklist = new Checklist();
         newChecklist.getChecklistItems().addAll((Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")));
         checklistService.saveChecklist(newChecklist);
         newTrip.setChecklist(newChecklist);
+
         tripService.saveTrip(newTrip);
 
         Trip trip = tripService.getById(newTrip.getId());
-        Destination des = destinationService.getByName(destination.getName());
         trip.getDestinations().add(des);
         trip.setName(des.getName() + " Trip");
         tripService.saveTrip(trip);

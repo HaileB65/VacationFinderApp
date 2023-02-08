@@ -95,9 +95,11 @@ public class VacationFinderApp implements CommandLineRunner {
          */
         if (!tripRepository.existsByName("Bahamas Trip")) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("Red")
-                    .item2("Orange")
-                    .item3("Blue")
+                    .item1("Weston Hotel")
+                    .item2("Atrium Event Center")
+                    .item3("The Axewell")
+                    .item4("The Arboretum")
+                    .item5("Flight Museum")
                     .build();
 
             Checklist checklist = Checklist.builder()
@@ -139,9 +141,11 @@ public class VacationFinderApp implements CommandLineRunner {
          */
         if (!tripRepository.existsByName("Switzerland Trip")) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("431")
-                    .item2("413")
-                    .item3("4134")
+                    .item1("Weston Hotel")
+                    .item2("Atrium Event Center")
+                    .item3("The Axewell")
+                    .item4("The Arboretum")
+                    .item5("Flight Museum")
                     .build();
 
             Checklist checklist = Checklist.builder()
@@ -183,9 +187,11 @@ public class VacationFinderApp implements CommandLineRunner {
          */
         if (!tripRepository.existsByName("Brazil Trip")) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("JKLDF")
-                    .item2("KLDFS")
-                    .item3("JKDFLS")
+                    .item1("Weston Hotel")
+                    .item2("Atrium Event Center")
+                    .item3("The Axewell")
+                    .item4("The Arboretum")
+                    .item5("Flight Museum")
                     .build();
 
             Checklist checklist = Checklist.builder()
@@ -227,9 +233,11 @@ public class VacationFinderApp implements CommandLineRunner {
          */
         if (!tripRepository.existsByName("Peru Trip")) {
             Itinerary itinerary = Itinerary.builder()
-                    .item1("JKLDF")
-                    .item2("KLDFS")
-                    .item3("JKDFLS")
+                    .item1("Weston Hotel")
+                    .item2("Atrium Event Center")
+                    .item3("The Axewell")
+                    .item4("The Arboretum")
+                    .item5("Flight Museum")
                     .build();
 
             Checklist checklist = Checklist.builder()

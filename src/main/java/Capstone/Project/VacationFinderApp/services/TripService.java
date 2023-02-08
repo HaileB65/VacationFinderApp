@@ -26,10 +26,14 @@ public class TripService {
         } else throw new Exception("Trip not found");
     }
 
+    public Trip getByName(String name) throws Exception {
+       Trip trip = tripRepository.findByName(name);
+       return trip;
+    }
+
     @CachePut(value = "trips", key = "#trip.id")
     public Trip saveTrip(Trip trip) {
         tripRepository.save(trip);
-        cacheManager.getCache("trips");
         return trip;
     }
 

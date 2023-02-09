@@ -41,4 +41,8 @@ public class Destination implements Serializable {
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
+
+    public Destination(String name) {
+        this.name = name;
+    }
 }

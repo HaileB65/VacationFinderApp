@@ -14,8 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/userHomePage}">
-                <img src="@{/images/navbarLogo.jpg}" width="30" height="30" class="d-inline-block align-top" alt="">
-                <img th:src="@{/images/navbarLogo.jpg}" height="200" width="200"/>
+                <img src="/images/navbarLogo2.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
                 Vacation Finder
             </a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -57,7 +56,10 @@
 <div th:fragment="guestNavigation">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/userHomePage}">Vacation Finder</a>
+            <a class="navbar-brand" th:href="@{/userHomePage}">
+                <img src="/images/navbarLogo2.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                Vacation Finder
+            </a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent"
                     data-bs-toggle="collapse" type="button">
@@ -92,7 +94,10 @@
 <div th:fragment="registerPageNavigation">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/userHomePage}">Vacation Finder</a>
+            <a class="navbar-brand" th:href="@{/userHomePage}">
+                <img src="/images/navbarLogo2.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                Vacation Finder
+            </a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent"
                     data-bs-toggle="collapse" type="button">
@@ -143,12 +148,5 @@
         © 2023 Vacation Finder
     </div>
 </footer>
-<!--<div class="footer text-center fixed-bottom" th:fragment="footer">-->
-<!--    <div class="container">-->
-<!--        <footer>-->
-<!--            <p>&copy; 2022 Vacation Finder</p>-->
-<!--        </footer>-->
-<!--    </div>-->
-<!--</div>-->
 </body>
 </html>

@@ -13,7 +13,11 @@
 <div th:fragment="navigation">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/userHomePage}">Vacation Finder</a>
+            <a class="navbar-brand" th:href="@{/userHomePage}">
+                <img src="/resources/images/navbarLogo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img th:src="@{/resources/images/navbarLogo.jpg}"/>
+                Vacation Finder
+            </a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent"
                     data-bs-toggle="collapse" type="button">

@@ -5,6 +5,7 @@ Vacation Finder App allows user to select a desired trip, view the destination a
 
 # Pictures:
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/images/Welcome%20page.PNG)
+![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/images/Login%20page.PNG)
 
 # Authors and acknowledgement:
 

@@ -75,7 +75,7 @@ public class TripController {
     /**
      * Shows a trip's home page.
      *
-     * @param tripId      ID of trip to be pulled from database.
+     * @param tripName      ID of trip to be pulled from database.
      * @param currentUser current user logged in.
      * @param model       adds itineraryId, checklistId, and destinations of trip to view. Adds trip to view.
      * @return displays trip-home-page.
@@ -114,23 +114,7 @@ public class TripController {
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
         Destination des = destinationService.getByName(destination.getName());
-        Trip template = tripService.getByName(des.getName() + " Trip");
-
-        newTrip.setDestinations(new HashSet<>());
-
-        newTrip.setItinerary(template.getItinerary());
-
-        Checklist newChecklist = new Checklist();
-        newChecklist.getChecklistItems().addAll((Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")));
-        checklistService.saveChecklist(newChecklist);
-        newTrip.setChecklist(newChecklist);
-
-        tripService.saveTrip(newTrip);
-
-        Trip trip = tripService.getById(newTrip.getId());
-        trip.getDestinations().add(des);
-        trip.setName(des.getName() + " Trip");
-        tripService.saveTrip(trip);
+        Trip trip = tripService.getByName(des.getName() + " Trip");
 
         User user = userService.getUserById(currentUser.getId());
         user.getTrips().add(trip);

@@ -81,18 +81,12 @@ public class TripController {
      * @return displays trip-home-page.
      * @throws Exception
      */
-    @GetMapping("/trip/{tripId}")
-    public String showTripHomePage(@PathVariable("tripId") long tripId, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    @GetMapping("/trip/{tripName}")
+    public String showTripHomePage(@PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
 
-        Trip trip = tripService.getById(tripId);
+        Trip trip = tripService.getByName(tripName);
         model.addAttribute("trip", trip);
 
-        if (trip.itinerary == null) {
-            Itinerary newItinerary = new Itinerary();
-            itineraryService.saveItinerary(newItinerary);
-            trip.setItinerary(newItinerary);
-            tripService.saveTrip(trip);
-        }
         model.addAttribute("itineraryId", trip.itinerary.getId());
 
         if (trip.checklist == null) {
@@ -103,12 +97,6 @@ public class TripController {
         }
         model.addAttribute("checklistId", trip.checklist.getId());
 
-
-        if (trip.destinations == null) {
-            Set<Destination> destinations = new HashSet();
-            trip.setDestinations(destinations);
-            tripService.saveTrip(trip);
-        }
         model.addAttribute("destinations", trip.destinations);
 
         return "trip-home-page";

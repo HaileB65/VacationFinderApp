@@ -18,8 +18,6 @@ import java.util.Set;
 public class Destination implements Serializable {
     @ManyToMany(mappedBy = "destinations")
     public Set<Trip> trips;
-    @ManyToMany(mappedBy = "savedDestinations")
-    public Set<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

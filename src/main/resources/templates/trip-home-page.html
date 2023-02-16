@@ -30,44 +30,45 @@
         </tr>
         <tr align="center">
             <th>Destination</th>
-            <td>Weston Hotel</td>
-            <td>Atrium Event Center</td>
-            <td>The Axewell</td>
-            <td>The Arboretum</td>
-            <td>Flight Museum</td>
+            <td th:text="${trip.itinerary.location1}"></td>
+            <td th:text="${trip.itinerary.location2}"></td>
+            <td th:text="${trip.itinerary.location3}"></td>
+            <td th:text="${trip.itinerary.location4}"></td>
+            <td th:text="${trip.itinerary.location5}"></td>
         </tr>
         <tr align="center">
-            <th>Eat</th>
-            <td>Ephesus Mediterranean Grill</td>
-            <td>True Food Kitchen</td>
-            <td>Hawkers Asian Cuisine</td>
-            <td>TJ's Seafood Market & Grill</td>
-            <td>Elm & Good</td>
+            <th>Meal</th>
+            <td th:text="${trip.itinerary.meal1}"></td>
+            <td th:text="${trip.itinerary.meal2}"></td>
+            <td th:text="${trip.itinerary.meal3}"></td>
+            <td th:text="${trip.itinerary.meal4}"></td>
+            <td th:text="${trip.itinerary.meal5}"></td>
         </tr>
         <tr align="center">
             <th>Leisure</th>
-            <td>Jazz Festival</td>
-            <td>Comedy Club</td>
-            <td>Soccer Game</td>
-            <td>Jack's Bar</td>
-            <td>Klyde Warren Park</td>
+            <td th:text="${trip.itinerary.leisure1}"></td>
+            <td th:text="${trip.itinerary.leisure2}"></td>
+            <td th:text="${trip.itinerary.leisure3}"></td>
+            <td th:text="${trip.itinerary.leisure4}"></td>
+            <td th:text="${trip.itinerary.leisure5}"></td>
         </tr>
         <tr align="center">
             <th>Transport</th>
-            <td>Hotel Cab</td>
-            <td>Hotel Cab</td>
-            <td>Hotel Cab</td>
-            <td>Hotel Cab</td>
-            <td>Hotel Cab</td>
+            <td th:text="${trip.itinerary.transport1}"></td>
+            <td th:text="${trip.itinerary.transport2}"></td>
+            <td th:text="${trip.itinerary.transport3}"></td>
+            <td th:text="${trip.itinerary.transport4}"></td>
+            <td th:text="${trip.itinerary.transport5}"></td>
         </tr>
-        <div sec:authorize="hasAuthority('ADMIN')">
-            <tr align="center">
-                <td colspan="6"><a th:href="@{/itinerary/__${itineraryId}__}">Edit</a></td>
-            </tr>
-        </div>
     </table>
+        <div sec:authorize="hasAuthority('ADMIN')">
+                    <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
+                        <input type="submit" value="Edit">
+                    </form>
+        </div>
 
     <br>
+
     <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr align="center">
             <th colspan="2">Checklist</th>
@@ -78,7 +79,7 @@
         </tr>
     </table>
 
-    <form action="#" method="get" th:action="@{/checklist/__${checklistId}__}">
+    <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
         <input type="submit" value="Edit">
     </form>
 

@@ -17,25 +17,53 @@
 <div align="center">
 
     <form action="#" method="post" th:action="@{'/editItinerary/' + ${itinerary.id}}" th:object="${itinerary}">
-                <table border="1" cellpadding="10" class="table table-hover">
-                    <tr>
-                        <th>Itinerary</th>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><input required th:field="*{item1}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 2</td>
-                        <td><input required th:field="*{item2}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 3</td>
-                        <td><input required th:field="*{item3}" type="text"/></td>
-                    </tr>
-                </table>
+        <table border="1" cellpadding="10" class="table table-striped table-hover">
+            <tr align="center">
+                <th colspan="6">Itinerary</th>
+            </tr>
+            <tr align="center">
+                <th>Days</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+            </tr>
+            <tr align="center">
+                <th>Destination</th>
+                <td><input required th:field="${itinerary.location1}" type="text"/></td>
+                <td><input required th:field="${itinerary.location2}" type="text"/></td>
+                <td><input required th:field="${itinerary.location3}" type="text"/></td>
+                <td><input required th:field="${itinerary.location4}" type="text"/></td>
+                <td><input required th:field="${itinerary.location5}" type="text"/></td>
+            </tr>
+            <tr align="center">
+                <th>Meal</th>
+                <td><input required th:field="${itinerary.meal1}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal2}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal3}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal4}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal5}" type="text"/></td>
+            </tr>
+            <tr align="center">
+                <th>Leisure</th>
+                <td><input required th:field="${itinerary.leisure1}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure2}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure3}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure4}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure5}" type="text"/></td>
+            </tr>
+            <tr align="center">
+                <th>Transport</th>
+                <td><input required th:field="${itinerary.transport1}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport2}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport3}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport4}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport5}" type="text"/></td>
+            </tr>
+        </table>
 
-        <input type="submit" value="Save"></input>
+        <input type="submit" value="Save">
     </form>
 
 </div>

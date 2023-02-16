@@ -36,7 +36,7 @@ public class ChecklistController {
      * @return displays edit-checklist page.
      * @throws Exception
      */
-    @GetMapping("/checklist/{checklistId}")
+    @GetMapping("/editChecklist/{checklistId}")
     public String editChecklistPage(@PathVariable("checklistId") long checklistId, Model model) throws Exception {
         Checklist checklist = checklistService.getChecklistById(checklistId);
         model.addAttribute("checklist", checklist);
@@ -70,18 +70,18 @@ public class ChecklistController {
     /**
      * Edits checklist based on user input from form.
      *
-     * @param checklist   newly updated checklist.
+     * @param viewChecklist   newly updated checklist.
      * @param checklistId used to pull existing checklist from database.
      * @return redirects to my trips page.
      * @throws Exception
      */
     @PostMapping("/editChecklist/{checklistId}")
-    public String editChecklist(@ModelAttribute("checklist") Checklist checklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
-        Checklist che = checklistService.getChecklistById(checklistId);
+    public String editChecklist(@ModelAttribute("checklist") Checklist viewChecklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
+        Checklist dbChecklist = checklistService.getChecklistById(checklistId);
 
-        che.setChecklistItems(checklist.getChecklistItems());
+        dbChecklist.setChecklistItems(viewChecklist.getChecklistItems());
 
-        checklistService.saveChecklist(che);
+        checklistService.saveChecklist(dbChecklist);
         return "redirect:/myTrips";
     }
 

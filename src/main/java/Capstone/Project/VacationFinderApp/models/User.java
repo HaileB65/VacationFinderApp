@@ -29,8 +29,6 @@ public class User implements UserDetails {
     public Timestamp timestamp;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Trip> trips;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Set<Destination> savedDestinations;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

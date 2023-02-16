@@ -15,11 +15,26 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 public class Itinerary implements Serializable {
-    String item1;
-    String item2;
-    String item3;
-    String item4;
-    String item5;
+    String location1;
+    String location2;
+    String location3;
+    String location4;
+    String location5;
+    String meal1;
+    String meal2;
+    String meal3;
+    String meal4;
+    String meal5;
+    String leisure1;
+    String leisure2;
+    String leisure3;
+    String leisure4;
+    String leisure5;
+    String transport1;
+    String transport2;
+    String transport3;
+    String transport4;
+    String transport5;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

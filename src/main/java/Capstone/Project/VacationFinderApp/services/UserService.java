@@ -40,7 +40,6 @@ public class UserService implements UserDetailsService {
 
     public User createNewUser(User user) {
         passwordEncoder.encodeUserPassword(user);
-        user.setRole(Role.USER);
         userRepository.saveAndFlush(user);
 
         return user;

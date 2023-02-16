@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
+import Capstone.Project.VacationFinderApp.models.Checklist;
 import Capstone.Project.VacationFinderApp.models.Itinerary;
 import Capstone.Project.VacationFinderApp.services.ItineraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,21 @@ public class ItineraryController {
     }
 
     /**
+     * Edits an existing itinerary.
+     *
+     * @param itineraryId ID of itinerary to be edited.
+     * @param model       displays itinerary from DB that was found using itineraryId param.
+     * @return displays edit-itinerary page.
+     * @throws Exception
+     */
+    @GetMapping("/editItinerary/{itineraryId}")
+    public String editItineraryPage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
+        Itinerary itinerary = itineraryService.getItineraryById(itineraryId);
+        model.addAttribute("itinerary", itinerary);
+        return "edit-itinerary";
+    }
+
+    /**
      * Saves a newly created itinerary.
      *
      * @param newItinerary itinerary to be saved.
@@ -43,20 +59,35 @@ public class ItineraryController {
     /**
      * Edits an existing itinerary.
      *
-     * @param itinerary   edited itinerary.
+     * @param viewItinerary   edited itinerary.
      * @param itineraryId ID of existing itinerary to be pulled from database.
      * @return redirects to myTrips page.
      * @throws Exception
      */
     @PostMapping("/editItinerary/{itineraryId}")
-    public String editItinerary(@ModelAttribute("itinerary") Itinerary itinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
-        Itinerary itn = itineraryService.getItineraryById(itineraryId);
+    public String editItinerary(@ModelAttribute("itinerary") Itinerary viewItinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
+        Itinerary dbItinerary = itineraryService.getItineraryById(itineraryId);
 
-        itn.setItem1(itinerary.getItem1());
-        itn.setItem2(itinerary.getItem2());
-        itn.setItem3(itinerary.getItem3());
+        dbItinerary.setLocation1(viewItinerary.getLocation1());
+        dbItinerary.setLocation2(viewItinerary.getLocation2());
+        dbItinerary.setLocation3(viewItinerary.getLocation3());
+        dbItinerary.setMeal1(viewItinerary.getMeal1());
+        dbItinerary.setMeal2(viewItinerary.getMeal2());
+        dbItinerary.setMeal3(viewItinerary.getMeal3());
+        dbItinerary.setMeal4(viewItinerary.getMeal4());
+        dbItinerary.setMeal5(viewItinerary.getMeal5());
+        dbItinerary.setLeisure1(viewItinerary.getLeisure1());
+        dbItinerary.setLeisure2(viewItinerary.getLeisure2());
+        dbItinerary.setLeisure3(viewItinerary.getLeisure3());
+        dbItinerary.setLeisure4(viewItinerary.getLeisure4());
+        dbItinerary.setLeisure5(viewItinerary.getLeisure5());
+        dbItinerary.setTransport1(viewItinerary.getTransport1());
+        dbItinerary.setTransport2(viewItinerary.getTransport2());
+        dbItinerary.setTransport3(viewItinerary.getTransport3());
+        dbItinerary.setTransport4(viewItinerary.getTransport4());
+        dbItinerary.setTransport5(viewItinerary.getTransport5());
 
-        itineraryService.saveItinerary(itn);
+        itineraryService.saveItinerary(dbItinerary);
         return "redirect:/myTrips";
     }
 

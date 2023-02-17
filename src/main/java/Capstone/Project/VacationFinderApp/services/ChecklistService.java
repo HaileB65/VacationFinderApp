@@ -26,6 +26,13 @@ public class ChecklistService {
         } else throw new Exception("Checklist not found");
     }
 
+    public Checklist getChecklistByName(String name) throws Exception {
+        Optional<Checklist> checklist = checklistRepository.findByName(name);
+        if (checklist.isPresent()) {
+            return checklist.get();
+        } else throw new Exception("Checklist name not found");
+    }
+
     /**
      * Saves a checklist.
      *

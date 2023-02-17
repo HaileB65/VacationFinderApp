@@ -23,6 +23,7 @@ public class Checklist implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    String name;
 
     @ElementCollection
     private List<String> checklistItems;

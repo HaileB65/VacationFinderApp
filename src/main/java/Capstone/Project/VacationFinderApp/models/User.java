@@ -12,6 +12,7 @@ import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,11 +25,14 @@ public class User implements UserDetails {
     @Transient
     @JsonIgnore
     public URI locationURI;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    public List<Checklist> checklists;
     @Column(name = "timestamp")
-    @CreationTimestamp
-    public Timestamp timestamp;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Trip> trips;
+    @CreationTimestamp
+    public Timestamp timestamp;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

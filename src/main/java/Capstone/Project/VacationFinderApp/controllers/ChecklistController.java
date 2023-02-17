@@ -1,8 +1,12 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.Checklist;
+import Capstone.Project.VacationFinderApp.models.User;
 import Capstone.Project.VacationFinderApp.services.ChecklistService;
+import Capstone.Project.VacationFinderApp.services.UserService;
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,22 +14,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Arrays;
+
 @Controller
 public class ChecklistController {
 
     @Autowired
     ChecklistService checklistService;
 
+    @Autowired
+    UserService userService;
+
     /**
-     * Creates a new checklist.
+     * Displays new checklist page with a prefilled checklist template.
      *
-     * @param model adds empty checklist to view.
+     * @param model adds prefilled checklist to view.
      * @return displays create-checklist page.
      */
-    @GetMapping("/createChecklist")
-    public String createNewChecklist(Model model) {
-        model.addAttribute("newChecklist", new Checklist());
-        return "create-checklist";
+    @GetMapping("/newChecklist/{tripName}")
+    public String newChecklistPage(@PathVariable("tripName") String tripName, Model model) {
+        Checklist checklist = new Checklist();
+        checklist.setName(tripName + " Checklist");
+        checklist.setChecklistItems(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
+        model.addAttribute("checklist", checklist);
+        return "new-checklist";
     }
 
     /**
@@ -56,14 +68,27 @@ public class ChecklistController {
     }
 
     /**
-     * Saves newly created checklist.
+     * Saves a checklist.
      *
-     * @param newChecklist newly created checklist.
+     * @param checklist checklist to be saved.
      * @return redirects to my trips page.
      */
     @PostMapping("/saveChecklist")
-    public String saveChecklist(@ModelAttribute("newChecklist") Checklist newChecklist) {
-        checklistService.saveChecklist(newChecklist);
+    public String saveChecklist(@ModelAttribute("checklist") Checklist checklist) {
+        checklistService.saveChecklist(checklist);
+        return "redirect:/myTrips";
+    }
+
+    /**
+     * Creates a new checklist and saves it to database.
+     *
+     * @param checklist newly created checklist.
+     * @return redirects to my trips page.
+     */
+    @PostMapping("/createChecklist")
+    public String createChecklist(@ModelAttribute("checklist") Checklist checklist, @AuthenticationPrincipal User currentUser) {
+        currentUser.getChecklists().add(checklist);
+        userService.saveUser(currentUser);
         return "redirect:/myTrips";
     }
 

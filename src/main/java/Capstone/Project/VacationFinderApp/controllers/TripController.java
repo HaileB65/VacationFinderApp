@@ -89,13 +89,22 @@ public class TripController {
 
         model.addAttribute("itineraryId", trip.itinerary.getId());
 
-        if (trip.checklist == null) {
-            Checklist newChecklist = new Checklist();
-            checklistService.saveChecklist(newChecklist);
-            trip.setChecklist(newChecklist);
-            tripService.saveTrip(trip);
+        boolean hasChecklist = false;
+
+        List<Checklist> userChecklists = currentUser.getChecklists();
+        for(Checklist checklist : userChecklists){
+            if(checklist.getName().equalsIgnoreCase(tripName + " Checklist")){
+                model.addAttribute("checklist", checklist);
+                hasChecklist = true;
+            }
         }
-        model.addAttribute("checklistId", trip.checklist.getId());
+
+        if(!hasChecklist){
+            Checklist checklist = new Checklist();
+            checklist.setName(tripName + " Checklist");
+            model.addAttribute("checklistName", checklist.getName());
+            model.addAttribute("checklist", checklist);
+        }
 
         model.addAttribute("destinations", trip.destinations);
 
@@ -140,7 +149,7 @@ public class TripController {
 
         Itinerary itineraryFromDB = itineraryService.getItineraryById(trip.getItinerary().getId());
         itineraryService.deleteItinerary(itineraryFromDB);
-        Checklist checklistFromDB = checklistService.getChecklistById(trip.getChecklist().getId());
+        Checklist checklistFromDB = checklistService.getChecklistByName(trip.getName());
         checklistService.deleteChecklist(checklistFromDB);
 
         List<Destination> destinations = new ArrayList<>();

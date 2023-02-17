@@ -73,13 +73,16 @@
         <tr align="center">
             <th colspan="2">Checklist</th>
         </tr>
-        <tr align="center" th:each="item : ${trip.checklist.checklistItems}">
+        <tr align="center" th:each="item : ${checklist.checklistItems}">
             <td><input type="checkbox"/></td>
             <td th:text="${item}">Item</td>
         </tr>
     </table>
 
-    <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
+    <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
+        <input type="submit" value="Create">
+    </form>
+    <form action="#" method="get" th:action="@{/editChecklist/__${checklistName}__}">
         <input type="submit" value="Edit">
     </form>
 

@@ -96,7 +96,6 @@ public class VacationFinderApp implements CommandLineRunner {
             Trip mongoliaTrip = Trip.builder()
                     .name("Mongolia Trip")
                     .itinerary(itinerary)
-                    .checklist(checklist)
                     .destinations(destinations)
                     .build();
 
@@ -157,7 +156,6 @@ public class VacationFinderApp implements CommandLineRunner {
             Trip bahamasTrip = Trip.builder()
                     .name("Bahamas Trip")
                     .itinerary(itinerary)
-                    .checklist(checklist)
                     .destinations(destinations)
                     .build();
 
@@ -218,7 +216,6 @@ public class VacationFinderApp implements CommandLineRunner {
             Trip switzerlandTrip = Trip.builder()
                     .name("Switzerland Trip")
                     .itinerary(itinerary)
-                    .checklist(checklist)
                     .destinations(destinations)
                     .build();
 
@@ -279,7 +276,6 @@ public class VacationFinderApp implements CommandLineRunner {
             Trip brazilTrip = Trip.builder()
                     .name("Brazil Trip")
                     .itinerary(itinerary)
-                    .checklist(checklist)
                     .destinations(destinations)
                     .build();
 
@@ -340,7 +336,6 @@ public class VacationFinderApp implements CommandLineRunner {
             Trip peruTrip = Trip.builder()
                     .name("Peru Trip")
                     .itinerary(itinerary)
-                    .checklist(checklist)
                     .destinations(destinations)
                     .build();
 

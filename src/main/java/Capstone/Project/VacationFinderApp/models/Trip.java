@@ -19,9 +19,7 @@ public class Trip implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
     public Itinerary itinerary;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "checklist_id")
-    public Checklist checklist;
+
     @Column(name = "timestamp")
     @CreationTimestamp
     public Timestamp timestamp;

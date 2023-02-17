@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Checklist</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<br>
+
+<h1 align="center">Create Checklist</h1>
+
+<br>
+
+<div align="center">
+
+    <form action="#" method="post" th:action="@{/createChecklist}" th:object="${checklist}">
+                <table border="1" cellpadding="10" class="table table-hover">
+                    <tr align="center">
+                        <th>Checklist</th>
+                    </tr>
+                    <tr align="center" th:each="item,counter : ${checklist.checklistItems}">
+                        <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
+                    </tr>
+                </table>
+
+        <input type="submit" value="Save">
+
+    </form>
+
+    <br>
+    <br>
+    <br>
+</div>
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

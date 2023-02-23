@@ -25,7 +25,7 @@ public class Checklist implements Serializable {
     private Long id;
     String name;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> checklistItems;
 
     @Column(name = "timestamp")

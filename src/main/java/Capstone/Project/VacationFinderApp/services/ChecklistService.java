@@ -27,6 +27,7 @@ public class ChecklistService {
     }
 
     public Checklist getChecklistByName(String name) throws Exception {
+
         Optional<Checklist> checklist = checklistRepository.findByName(name);
         if (checklist.isPresent()) {
             return checklist.get();
@@ -42,7 +43,6 @@ public class ChecklistService {
     public Checklist saveChecklist(Checklist checklist) {
 
         checklistRepository.save(checklist);
-
         return checklist;
     }
 

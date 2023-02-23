@@ -79,12 +79,23 @@
         </tr>
     </table>
 
-    <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
-        <input type="submit" value="Create">
-    </form>
-    <form action="#" method="get" th:action="@{/editChecklist/__${checklistName}__}">
-        <input type="submit" value="Edit">
-    </form>
+    <table>
+        <tr>
+        <td>
+            <div>
+            <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
+                <input type="submit" value="Create">
+            </form>
+            </div>
+
+            <div>
+            <form action="#" method="get" th:action="@{/editChecklist/__${checklist.id}__}">
+                <input type="submit" value="Edit">
+            </form>
+            </div>
+        </td>
+        </tr>
+    </table>
 
     <br>
     <br>

@@ -2,6 +2,7 @@ package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
 import Capstone.Project.VacationFinderApp.services.*;
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -91,7 +92,8 @@ public class TripController {
 
         boolean hasChecklist = false;
 
-        List<Checklist> userChecklists = currentUser.getChecklists();
+        User user = userService.getUserById(currentUser.getId());
+        List<Checklist> userChecklists = user.getChecklists();
         for(Checklist checklist : userChecklists){
             if(checklist.getName().equalsIgnoreCase(tripName + " Checklist")){
                 model.addAttribute("checklist", checklist);
@@ -101,8 +103,6 @@ public class TripController {
 
         if(!hasChecklist){
             Checklist checklist = new Checklist();
-            checklist.setName(tripName + " Checklist");
-            model.addAttribute("checklistName", checklist.getName());
             model.addAttribute("checklist", checklist);
         }
 
@@ -149,8 +149,14 @@ public class TripController {
 
         Itinerary itineraryFromDB = itineraryService.getItineraryById(trip.getItinerary().getId());
         itineraryService.deleteItinerary(itineraryFromDB);
-        Checklist checklistFromDB = checklistService.getChecklistByName(trip.getName());
-        checklistService.deleteChecklist(checklistFromDB);
+
+        List<Checklist> userChecklists = currentUser.getChecklists();
+        for(Checklist checklist : userChecklists){
+            if(checklist.getName().equalsIgnoreCase(trip.getName() + " Checklist")){
+                Checklist checklistFromDB = checklistService.getChecklistById(checklist.getId());
+                checklistService.deleteChecklist(checklistFromDB);
+            }
+        }
 
         List<Destination> destinations = new ArrayList<>();
         for (Destination destination : trip.getDestinations()) {

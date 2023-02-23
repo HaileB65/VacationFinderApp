@@ -117,12 +117,12 @@ public class ChecklistController {
 
     @PostMapping("/saveChecklist/{checklistId}")
     public String saveChecklistById(@ModelAttribute("checklist") Checklist viewChecklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
+
         Checklist dbChecklist = checklistService.getChecklistById(checklistId);
-
         dbChecklist.setChecklistItems(viewChecklist.getChecklistItems());
-
         checklistService.saveChecklist(dbChecklist);
         return "redirect:/myTrips";
+
     }
 
 }

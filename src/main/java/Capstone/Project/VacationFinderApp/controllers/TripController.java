@@ -150,7 +150,7 @@ public class TripController {
         Itinerary itineraryFromDB = itineraryService.getItineraryById(trip.getItinerary().getId());
         itineraryService.deleteItinerary(itineraryFromDB);
 
-        List<Checklist> userChecklists = currentUser.getChecklists();
+        List<Checklist> userChecklists = user.getChecklists();
         for(Checklist checklist : userChecklists){
             if(checklist.getName().equalsIgnoreCase(trip.getName() + " Checklist")){
                 Checklist checklistFromDB = checklistService.getChecklistById(checklist.getId());

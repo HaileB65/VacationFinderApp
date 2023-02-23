@@ -93,10 +93,12 @@ public class TripController {
         boolean hasChecklist = false;
 
         User user = userService.getUserById(currentUser.getId());
-        List<Checklist> userChecklists = user.getChecklists();
+        Set<Checklist> userChecklists = user.getChecklists();
         for(Checklist checklist : userChecklists){
             if(checklist.getName().equalsIgnoreCase(tripName + " Checklist")){
-                model.addAttribute("checklist", checklist);
+                Checklist dbChecklist = checklistService.getChecklistById(checklist.getId());
+                model.addAttribute("checklist", dbChecklist);
+                model.addAttribute("checklistId", dbChecklist.getId());
                 hasChecklist = true;
             }
         }
@@ -150,7 +152,7 @@ public class TripController {
         Itinerary itineraryFromDB = itineraryService.getItineraryById(trip.getItinerary().getId());
         itineraryService.deleteItinerary(itineraryFromDB);
 
-        List<Checklist> userChecklists = user.getChecklists();
+        Set<Checklist> userChecklists = user.getChecklists();
         for(Checklist checklist : userChecklists){
             if(checklist.getName().equalsIgnoreCase(trip.getName() + " Checklist")){
                 Checklist checklistFromDB = checklistService.getChecklistById(checklist.getId());

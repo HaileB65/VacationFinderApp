@@ -61,8 +61,9 @@ public class ChecklistController {
 
     @GetMapping("/editChecklist/{checklistId}")
     public String editChecklistPageByID(@PathVariable("checklistId") Long checklistId, Model model) throws Exception {
-        Checklist checklist = checklistService.getChecklistById(checklistId);
-        model.addAttribute("checklist", checklist);
+        Checklist dbChecklist = checklistService.getChecklistById(checklistId);
+        model.addAttribute("checklist", dbChecklist);
+        model.addAttribute("checklistId", dbChecklist.getId());
         return "edit-checklist";
     }
 
@@ -86,11 +87,9 @@ public class ChecklistController {
      */
     @PostMapping("/createChecklist/{tripName}")
     public String createChecklist(@ModelAttribute("checklist") Checklist checklist, @PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser) throws Exception {
-        User user = userService.getUserById(currentUser.getId());
-
         checklist.setName(tripName + " Checklist");
-        checklistService.saveChecklist(checklist);
 
+        User user = userService.getUserById(currentUser.getId());
         user.getChecklists().add(checklist);
         userService.saveUser(user);
 

@@ -27,7 +27,7 @@ public class User implements UserDetails {
     public URI locationURI;
 
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    public List<Checklist> checklists;
+    public Set<Checklist> checklists;
     @Column(name = "timestamp")
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Trip> trips;

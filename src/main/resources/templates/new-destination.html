@@ -14,39 +14,80 @@
 
 <br>
 
-<div align="center">
-    <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
+<div id="container">
 
+<div>
+    <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
         <table border="1" cellpadding="10" class="table table-hover">
             <tr>
-                <td>Name:</td>
-                <td><input required th:field="*{name}" type="text"/></td>
-            </tr>
-            <tr>
-                <td>Scenery:</td>
-                <td><input required th:field="*{scenery}" type="text"/></td>
-            </tr>
-            <tr>
-                <td>Weather:</td>
-                <td><input required th:field="*{weather}" type="text"></td>
-            </tr>
-            <tr>
-                <td>Activity 1:</td>
-                <td><input required th:field="*{activity1}" type="text"></td>
-            </tr>
-            <tr>
-                <td>Activity 2:</td>
-                <td><input required th:field="*{activity2}" type="text"></td>
-            </tr>
-            <tr>
-                <td>Activity 3:</td>
-                <td><input required th:field="*{activity3}" type="text"></td>
-            </tr>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="scenery" class="col-sm-2 col-form-label">Scenery</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="scenery" placeholder="Scenery" th:field="*{scenery}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="weather" class="col-sm-2 col-form-label">Weather</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="weather" placeholder="Weather"  th:field="*{weather}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="activity1" class="col-sm-2 col-form-label">Activity 1</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="activity1" placeholder="Activity 1"  th:field="*{activity1}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="activity2" class="col-sm-2 col-form-label">Activity 2</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="activity2" placeholder="Activity 2"  th:field="*{activity2}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="activity3" class="col-sm-2 col-form-label">Activity 3</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="activity3" placeholder="Activity 3"  th:field="*{activity3}">
+                    </div>
+                </div>
+
+
+<!--                <td>Name:</td>-->
+<!--                <td><input required th:field="*{name}" type="text"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Scenery:</td>-->
+<!--                <td><input required th:field="*{scenery}" type="text"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Weather:</td>-->
+<!--                <td><input required th:field="*{weather}" type="text"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Activity 1:</td>-->
+<!--                <td><input required th:field="*{activity1}" type="text"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Activity 2:</td>-->
+<!--                <td><input required th:field="*{activity2}" type="text"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Activity 3:</td>-->
+<!--                <td><input required th:field="*{activity3}" type="text"></td>-->
+<!--            </tr>-->
         </table>
 
         <input type="submit" value="Save"/>
 
     </form>
 </div>
+</div>
+
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>

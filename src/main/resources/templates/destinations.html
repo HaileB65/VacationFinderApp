@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Destination Page</title>
@@ -14,6 +14,7 @@
 
 <br>
 
+<div id="container">
 <div align="center">
     <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr align="center">
@@ -23,7 +24,7 @@
             <th>Activity 1</th>
             <th>Activity 2</th>
             <th>Activity 3</th>
-            <th>Action</th>
+            <th>Actions</th>
 
         </tr>
         <tr align="center" th:each="destination : ${destinationsTable}">
@@ -33,9 +34,24 @@
             <td th:text="${destination.activity1}">Activity 1</td>
             <td th:text="${destination.activity2}">Activity 2</td>
             <td th:text="${destination.activity3}">Activity 3</td>
-            <td><a th:href="@{/destination/__${destination.id}__}">View</a></td>
+            <td>
+                <a th:href="@{/destination/__${destination.id}__}">View</a>
+                <div sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>
+                </div>
+            </td>
         </tr>
     </table>
+
+    <br>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <form action="#" method="get" th:action="@{/newDestination}">
+            <input type="submit" value="Create New Destination">
+        </form>
+    </div>
+
+</div>
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

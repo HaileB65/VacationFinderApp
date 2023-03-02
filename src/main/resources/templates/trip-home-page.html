@@ -12,23 +12,23 @@
 
     <br>
 
-    <h1 align="center" th:text="${trip.name}" class="display-3"></h1>
+    <h1 align="center" class="display-3" th:text="${trip.name}"></h1>
 
     <br>
 
-    <table border="1" cellpadding="10" class="table table-striped table-hover">
-        <tr align="center">
+    <table class="table table-hover">
+        <tr>
             <th colspan="6">Itinerary</th>
         </tr>
-        <tr align="center">
-            <th>Days</th>
-            <th>Day 1</th>
-            <th>Day 2</th>
-            <th>Day 3</th>
-            <th>Day 4</th>
-            <th>Day 5</th>
+        <tr>
+            <th scope="col">Days</th>
+            <th scope="col">Day 1</th>
+            <th scope="col">Day 2</th>
+            <th scope="col">Day 3</th>
+            <th scope="col">Day 4</th>
+            <th scope="col">Day 5</th>
         </tr>
-        <tr align="center">
+        <tr>
             <th>Destination</th>
             <td th:text="${trip.itinerary.location1}"></td>
             <td th:text="${trip.itinerary.location2}"></td>
@@ -36,7 +36,7 @@
             <td th:text="${trip.itinerary.location4}"></td>
             <td th:text="${trip.itinerary.location5}"></td>
         </tr>
-        <tr align="center">
+        <tr>
             <th>Meal</th>
             <td th:text="${trip.itinerary.meal1}"></td>
             <td th:text="${trip.itinerary.meal2}"></td>
@@ -44,7 +44,7 @@
             <td th:text="${trip.itinerary.meal4}"></td>
             <td th:text="${trip.itinerary.meal5}"></td>
         </tr>
-        <tr align="center">
+        <tr>
             <th>Leisure</th>
             <td th:text="${trip.itinerary.leisure1}"></td>
             <td th:text="${trip.itinerary.leisure2}"></td>
@@ -52,7 +52,7 @@
             <td th:text="${trip.itinerary.leisure4}"></td>
             <td th:text="${trip.itinerary.leisure5}"></td>
         </tr>
-        <tr align="center">
+        <tr>
             <th>Transport</th>
             <td th:text="${trip.itinerary.transport1}"></td>
             <td th:text="${trip.itinerary.transport2}"></td>
@@ -63,18 +63,20 @@
     </table>
     <div sec:authorize="hasAuthority('ADMIN')">
         <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
-            <input type="submit" value="Edit">
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>
 
     <br>
 
-    <table border="1" cellpadding="10" class="table table-striped table-hover">
-        <tr align="center">
-            <th colspan="2">Checklist</th>
+    <table class="table table-hover">
+        <tr>
+            <th colspan="2" scope="col">Checklist</th>
         </tr>
-        <tr align="center" th:each="item : ${checklist.checklistItems}">
-            <td><input type="checkbox"/></td>
+        <tr th:each="item : ${checklist.checklistItems}">
+            <td>
+                <input type="checkbox"/>
+            </td>
             <td th:text="${item}">Item</td>
         </tr>
     </table>
@@ -84,13 +86,14 @@
             <td>
                 <div>
                     <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
-                        <input type="submit" value="Create">
+                        <button class="btn btn-primary" type="submit">Create</button>
                     </form>
                 </div>
-
+            </td>
+            <td>
                 <div>
                     <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
-                        <input type="submit" value="Edit">
+                        <button class="btn btn-primary" type="submit">Edit</button>
                     </form>
                 </div>
             </td>

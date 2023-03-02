@@ -12,24 +12,24 @@
 
     <br>
 
-    <h1 align="center" class="display-3>Edit Itinerary</h1>
+    <h1 align="center" class="display-3">Edit Itinerary</h1>
 
     <br>
 
     <form action="#" method="post" th:action="@{'/editItinerary/' + ${itinerary.id}}" th:object="${itinerary}">
-        <table border="1" cellpadding="10" class="table">
-            <tr align="center">
+        <table class="table">
+            <tr>
                 <th colspan="6">Itinerary</th>
             </tr>
-            <tr align="center">
-                <th>Days</th>
-                <th>Day 1</th>
-                <th>Day 2</th>
-                <th>Day 3</th>
-                <th>Day 4</th>
-                <th>Day 5</th>
+            <tr>
+                <th scope="col">Days</th>
+                <th scope="col">Day 1</th>
+                <th  scope="col">Day 2</th>
+                <th scope="col">Day 3</th>
+                <th scope="col">Day 4</th>
+                <th scope="col">Day 5</th>
             </tr>
-            <tr align="center">
+            <tr>
                 <th>Destination</th>
                 <td><input required th:field="${itinerary.location1}" type="text"/></td>
                 <td><input required th:field="${itinerary.location2}" type="text"/></td>
@@ -37,7 +37,7 @@
                 <td><input required th:field="${itinerary.location4}" type="text"/></td>
                 <td><input required th:field="${itinerary.location5}" type="text"/></td>
             </tr>
-            <tr align="center">
+            <tr>
                 <th>Meal</th>
                 <td><input required th:field="${itinerary.meal1}" type="text"/></td>
                 <td><input required th:field="${itinerary.meal2}" type="text"/></td>
@@ -45,7 +45,7 @@
                 <td><input required th:field="${itinerary.meal4}" type="text"/></td>
                 <td><input required th:field="${itinerary.meal5}" type="text"/></td>
             </tr>
-            <tr align="center">
+            <tr>
                 <th>Leisure</th>
                 <td><input required th:field="${itinerary.leisure1}" type="text"/></td>
                 <td><input required th:field="${itinerary.leisure2}" type="text"/></td>
@@ -53,7 +53,7 @@
                 <td><input required th:field="${itinerary.leisure4}" type="text"/></td>
                 <td><input required th:field="${itinerary.leisure5}" type="text"/></td>
             </tr>
-            <tr align="center">
+            <tr>
                 <th>Transport</th>
                 <td><input required th:field="${itinerary.transport1}" type="text"/></td>
                 <td><input required th:field="${itinerary.transport2}" type="text"/></td>
@@ -63,7 +63,7 @@
             </tr>
         </table>
 
-        <input type="submit" value="Save">
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
 
 </div>

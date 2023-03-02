@@ -12,24 +12,22 @@
 
     <br>
 
-    <h1 align="center" class="display-3>Create Checklist</h1>
+    <h1 align="center" class="display-3">Create Checklist</h1>
 
     <br>
 
-
+    <div id="form">
     <form action="#" method="post" th:action="@{/createChecklist/__${tripName}__}" th:object="${checklist}">
-        <table border="1" cellpadding="10" class="table table-hover">
-            <tr align="center">
-                <th>Checklist</th>
-            </tr>
-            <tr align="center" th:each="item,counter : ${checklist.checklistItems}">
+        <table class="table" align="center">
+            <tr th:each="item,counter : ${checklist.checklistItems}">
                 <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
             </tr>
         </table>
 
-        <input type="submit" value="Save">
+        <button class="btn btn-primary" type="submit">Save</button>
 
     </form>
+    </div>
 
     <br>
     <br>

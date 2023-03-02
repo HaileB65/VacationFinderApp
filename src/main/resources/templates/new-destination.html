@@ -4,60 +4,96 @@
     <meta charset="utf-8"/>
     <title>Create New Destination</title>
     <div th:replace="fragments :: header"/>
+    <style>
+    body {
+        background: url(https://img.freepik.com/premium-photo/blue-simple-plain-background-texture-smooth-light-gardient-blur-wallpaper_41691-2768.jpg) no-repeat center center fixed;
+        background-size: cover;
+         }
+
+    </style>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
 
 <br>
 
-<h1 align="center">Create New Destination</h1>
-
-<br>
-
 <div id="container">
-    <div style="width: 50%; height: 50%;">
-    <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
-        <table border="1" cellpadding="10" class="table table-hover">
-            <tr>
-                <div class="form-group">
-                    <label for="Name" align="left">Name:</label>
-                    <input required th:field="*{name}" type="text" class="form-control" id="Name" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="Scenery" align="left">Scenery:</label>
-                    <input required th:field="*{scenery}" type="text" class="form-control" id="Scenery" placeholder="Scenery">
-                </div>
+    <div style="width: 50%; margin: auto;">
+        <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
+            <table class="table table-bordered" style="background-color: white">
+                <tr>
+                    <td>
+                        <h1 align="center">Create New Destination</h1>
+                        <br>
 
-<!--                <td>Name:</td>-->
-<!--                <td><input required th:field="*{name}" type="text"/></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Scenery:</td>-->
-<!--                <td><input required th:field="*{scenery}" type="text"/></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Weather:</td>-->
-<!--                <td><input required th:field="*{weather}" type="text"></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Activity 1:</td>-->
-<!--                <td><input required th:field="*{activity1}" type="text"></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Activity 2:</td>-->
-<!--                <td><input required th:field="*{activity2}" type="text"></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Activity 3:</td>-->
-<!--                <td><input required th:field="*{activity3}" type="text"></td>-->
-<!--            </tr>-->
-        </table>
+                        <div class="form-group" style="width: 80%; margin: auto;">
+                            <label align="left" for="Name">Name</label>
+                            <input class="form-control" id="Name" placeholder="Name" required th:field="*{name}"
+                                   type="text">
+                        </div>
+                        <div class="form-group" style="width: 80%; margin: auto;">
+                            <label align="left" for="Scenery">Scenery</label>
+                            <input class="form-control" id="Scenery" placeholder="Scenery" required
+                                   th:field="*{scenery}"
+                                   type="text">
+                        </div>
+                        <button class="btn btn-primary" type="submit" align="center">save</button>
+                    </td>
+                </tr>
 
-        <input align="center" type="submit" value="Save"/>
+                <!--                <td>Name:</td>-->
+                <!--                <td><input required th:field="*{name}" type="text"/></td>-->
 
-    </form>
+                <!--                <td>Scenery:</td>-->
+                <!--                <td><input required th:field="*{scenery}" type="text"/></td>-->
+
+                <!--                <td>Weather:</td>-->
+                <!--                <td><input required th:field="*{weather}" type="text"></td>-->
+
+                <!--                <td>Activity 1:</td>-->
+                <!--                <td><input required th:field="*{activity1}" type="text"></td>-->
+                <!--                <td>Activity 2:</td>-->
+                <!--                <td><input required th:field="*{activity2}" type="text"></td>-->
+
+                <!--                <td>Activity 3:</td>-->
+                <!--                <td><input required th:field="*{activity3}" type="text"></td>-->
+
+                <!--                <input align="center" type="submit" value="Save"/>-->
+            </table>
+        </form>
     </div>
 </div>
+
+
+    <div class="div-center">
+
+
+        <div class="content">
+
+
+            <h3>Login</h3>
+            <hr />
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <hr />
+                <button type="button" class="btn btn-link">Signup</button>
+                <button type="button" class="btn btn-link">Reset Password</button>
+
+            </form>
+
+        </div>
+
+
+        </span>
+    </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>

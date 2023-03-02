@@ -23,7 +23,7 @@ public class DestinationService {
      *
      * @return all destinations from database.
      */
-    @Cacheable(value="destinations")
+    @Cacheable(value = "destinations")
     public List<Destination> getAllDestinations() {
         cacheManager.getCache("destinations");
         return destinationRepository.findAll();

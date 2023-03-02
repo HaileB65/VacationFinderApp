@@ -12,7 +12,6 @@ import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +25,7 @@ public class User implements UserDetails {
     @JsonIgnore
     public URI locationURI;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Checklist> checklists;
     @Column(name = "timestamp")
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

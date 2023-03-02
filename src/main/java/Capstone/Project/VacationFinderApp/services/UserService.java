@@ -1,6 +1,5 @@
 package Capstone.Project.VacationFinderApp.services;
 
-import Capstone.Project.VacationFinderApp.models.Role;
 import Capstone.Project.VacationFinderApp.models.User;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
 import Capstone.Project.VacationFinderApp.security.PasswordEncoder;

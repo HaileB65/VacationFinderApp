@@ -8,20 +8,21 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div id="container">
 
-<h1 align="center">Destination Finder</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3">Destination Finder</h1>
 
-<div  id="container"  align="center">
+    <br>
+
     <form action="#" method="post" th:action="@{/destinationFinderResults}" th:object="${questionnaire}">
-        <table border="1" cellpadding="10" class="table table-striped table-hover table-bordered">
-            <tr align="center">
-                <th>Scenery</th>
-                <th>Weather</th>
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Scenery</th>
+                <th scope="col">Weather</th>
             </tr>
-            <tr align="center">
+            <tr>
                 <td>
                     <select id="preferredScenery" name="preferredScenery" th:field="*{preferredScenery}">
                         <option value="">Select Scenery</option>
@@ -42,7 +43,10 @@
 
         <br>
 
-        <input type="submit" value="Submit">
+        <div align="center">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
     </form>
 </div>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

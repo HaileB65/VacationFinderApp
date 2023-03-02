@@ -1,9 +1,12 @@
 # Vacation Finder App
 
 # Description:
-Vacation Finder App allows user to select a desired trip, view the destination and itinerary, and create a checklist for the trip.
+
+Vacation Finder App allows user to select a desired trip, view the destination and itinerary, and create a checklist for
+the trip.
 
 # Pictures:
+
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Welcome%20page.PNG)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Login%20page.PNG)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/User%20home%20page.PNG)

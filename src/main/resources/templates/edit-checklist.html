@@ -8,23 +8,23 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center">Edit Checklist</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3>Edit Checklist</h1>
 
-<div id="container" align="center">
+    <br>
 
     <form action="#" method="post" th:action="@{'/saveChecklist/' + ${checklistId}}" th:object="${checklist}">
-                <table border="0" cellpadding="10" class="table">
-                    <tr align="center">
-                        <th>Checklist</th>
-                    </tr>
-                    <tr align="center" th:each="item,counter : ${checklist.checklistItems}">
-                        <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
-                    </tr>
-                </table>
+        <table border="0" cellpadding="10" class="table">
+            <tr align="center">
+                <th>Checklist</th>
+            </tr>
+            <tr align="center" th:each="item,counter : ${checklist.checklistItems}">
+                <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
+            </tr>
+        </table>
 
         <input type="submit" value="Save">
 

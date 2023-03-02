@@ -8,13 +8,13 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center">Edit Itinerary</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3>Edit Itinerary</h1>
 
-<div align="center">
+    <br>
 
     <form action="#" method="post" th:action="@{'/editItinerary/' + ${itinerary.id}}" th:object="${itinerary}">
         <table border="1" cellpadding="10" class="table">

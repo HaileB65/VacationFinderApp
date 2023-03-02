@@ -20,11 +20,10 @@ import java.util.List;
 @Builder
 public class Checklist implements Serializable {
 
+    String name;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String name;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> checklistItems;
 

@@ -8,34 +8,34 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div id="container">
 
-<h1 align="center">Create Itinerary</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3">Create Itinerary</h1>
 
-<div  id="container"  align="center">
+    <br>
 
     <form action="#" method="post" th:action="@{/saveItinerary}" th:object="${newItinerary}">
-                <table border="1" cellpadding="10" class="table table-hover">
-                    <tr>
-                        <th>Itinerary</th>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><input required th:field="*{item1}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 2</td>
-                        <td><input required th:field="*{item2}" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td>Item 3</td>
-                        <td><input required th:field="*{item3}" type="text"/></td>
-                    </tr>
-                </table>
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Itinerary</th>
+            </tr>
+            <tr>
+                <td>Item 1</td>
+                <td><input required th:field="*{item1}" type="text"/></td>
+            </tr>
+            <tr>
+                <td>Item 2</td>
+                <td><input required th:field="*{item2}" type="text"/></td>
+            </tr>
+            <tr>
+                <td>Item 3</td>
+                <td><input required th:field="*{item3}" type="text"/></td>
+            </tr>
+        </table>
 
-        <input type="submit" value="Save"/>
+        <button class="btn btn-primary" type="submit" value="Save"/>
 
     </form>
 

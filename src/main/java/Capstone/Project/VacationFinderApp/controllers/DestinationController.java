@@ -64,8 +64,8 @@ public class DestinationController {
     @GetMapping("/destination/{destinationId}/{weather}/{scenery}")
     public String viewDestinationFromDestinationResultsPage(
             @PathVariable("destinationId") long destinationId,
-            @PathVariable ("weather") String weather,
-            @PathVariable ("scenery") String scenery, Model model) throws Exception {
+            @PathVariable("weather") String weather,
+            @PathVariable("scenery") String scenery, Model model) throws Exception {
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
@@ -76,8 +76,8 @@ public class DestinationController {
         images.add(destination.getImage2());
         model.addAttribute("images", images);
 
-        model.addAttribute("weather",weather);
-        model.addAttribute("scenery",scenery);
+        model.addAttribute("weather", weather);
+        model.addAttribute("scenery", scenery);
 
         return "destination-from-results-page";
     }
@@ -119,7 +119,7 @@ public class DestinationController {
     }
 
     @GetMapping("/destinationFinderResults/{weather}/{scenery}")
-    public String returnToDestinationFinderResultsPage(@PathVariable String weather,@PathVariable String scenery, Model model) {
+    public String returnToDestinationFinderResultsPage(@PathVariable String weather, @PathVariable String scenery, Model model) {
 
         List<Destination> destinationsMatchingWeatherAndScenery = destinationService.getByWeatherAndScenery(weather, scenery);
         model.addAttribute("searchedDestinations", destinationsMatchingWeatherAndScenery);

@@ -8,13 +8,13 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center">Create New Trip</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3">Create New Trip</h1>
 
-<div align="center">
+    <br>
 
     <form action="#" method="post" th:action="@{/saveTrip}" th:object="${destination}">
         <table border="0" cellpadding="10">

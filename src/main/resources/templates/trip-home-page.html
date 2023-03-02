@@ -8,13 +8,13 @@
 <body>
 <div th:replace="fragments :: navigation"></div>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center" th:text="${trip.name}"></h1>
+    <br>
 
-<br>
+    <h1 align="center" th:text="${trip.name}" class="display-3"></h1>
 
-<div align="center">
+    <br>
 
     <table border="1" cellpadding="10" class="table table-striped table-hover">
         <tr align="center">
@@ -61,11 +61,11 @@
             <td th:text="${trip.itinerary.transport5}"></td>
         </tr>
     </table>
-        <div sec:authorize="hasAuthority('ADMIN')">
-                    <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
-                        <input type="submit" value="Edit">
-                    </form>
-        </div>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
+            <input type="submit" value="Edit">
+        </form>
+    </div>
 
     <br>
 
@@ -81,19 +81,19 @@
 
     <table>
         <tr>
-        <td>
-            <div>
-            <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
-                <input type="submit" value="Create">
-            </form>
-            </div>
+            <td>
+                <div>
+                    <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
+                        <input type="submit" value="Create">
+                    </form>
+                </div>
 
-            <div>
-            <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
-                <input type="submit" value="Edit">
-            </form>
-            </div>
-        </td>
+                <div>
+                    <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
+                        <input type="submit" value="Edit">
+                    </form>
+                </div>
+            </td>
         </tr>
     </table>
 

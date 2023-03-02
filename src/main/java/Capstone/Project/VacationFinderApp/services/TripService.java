@@ -27,8 +27,8 @@ public class TripService {
     }
 
     public Trip getByName(String name) throws Exception {
-       Trip trip = tripRepository.findByName(name);
-       return trip;
+        Trip trip = tripRepository.findByName(name);
+        return trip;
     }
 
     @CachePut(value = "trips", key = "#trip.id")

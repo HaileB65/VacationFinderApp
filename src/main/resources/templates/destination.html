@@ -26,35 +26,41 @@
   overflow-x:hidden;
   border: 1px solid black;
 }
+
+
+
+
     </style>
 </head>
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div id="container">
 
-<h1 align="center" th:text="${destinationName}"></h1>
+    <br>
 
-<br>
+    <h1 align="center" th:text="${destinationName}" class="display-3"></h1>
 
-<div  id="container"  align="center">
+    <br>
 
     <table border="0" cellpadding="0" class="t-table">
         <tbody class="t-body">
         <tr style="line-height: 8px; height: 8px;">
-            <td><img th:src="${destination.image1}" height="600" width="800"/>
+            <td><img height="600" th:src="${destination.image1}" width="800"/>
         </tr>
         <tr style="line-height: 8px; height: 8px;">
-            <td><img th:src="${destination.image2}" height="600" width="800"/></td>
+            <td><img height="600" th:src="${destination.image2}" width="800"/></td>
         </tr>
         </tbody>
     </table>
+
     <br>
-    <table border="1" cellpadding="10" class="table table-striped table-hover table-bordered">
-        <tr align="center">
+
+    <table class="table table-hover">
+        <tr>
             <th colspan="3">Activities</th>
         </tr>
-        <tr align="center">
+        <tr>
             <td th:text="${destination.activity1}"></td>
             <td th:text="${destination.activity2}"></td>
             <td th:text="${destination.activity3}"></td>

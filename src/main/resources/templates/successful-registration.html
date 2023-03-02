@@ -8,12 +8,13 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center">You have successfully registered!</h1>
+    <br>
 
-<br>
-<div align="center">
+    <h1 align="center" class="display-3">You have successfully registered!</h1>
+
+    <br>
 
     <div>
         <form method="get" name="userHomePage" th:action="@{/userHomePage}">

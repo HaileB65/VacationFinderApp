@@ -8,13 +8,14 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div align="center" id="container">
 
-<h1 align="center">Create New User</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3">Create New User</h1>
 
-<div align="center">
+    <br>
+
     <form action="#" method="post" th:action="@{/saveUser}" th:object="${newUser}">
 
         <table border="1" cellpadding="10" class="table table-hover">

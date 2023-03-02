@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * Encodes given password.
- *
  */
 @Service
 public class PasswordEncoder {

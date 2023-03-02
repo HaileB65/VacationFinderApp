@@ -4,7 +4,6 @@ import Capstone.Project.VacationFinderApp.models.Checklist;
 import Capstone.Project.VacationFinderApp.models.User;
 import Capstone.Project.VacationFinderApp.services.ChecklistService;
 import Capstone.Project.VacationFinderApp.services.UserService;
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,5 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
-import Capstone.Project.VacationFinderApp.models.Checklist;
 import Capstone.Project.VacationFinderApp.models.Itinerary;
 import Capstone.Project.VacationFinderApp.services.ItineraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +58,8 @@ public class ItineraryController {
     /**
      * Edits an existing itinerary.
      *
-     * @param viewItinerary   edited itinerary.
-     * @param itineraryId ID of existing itinerary to be pulled from database.
+     * @param viewItinerary edited itinerary.
+     * @param itineraryId   ID of existing itinerary to be pulled from database.
      * @return redirects to myTrips page.
      * @throws Exception
      */

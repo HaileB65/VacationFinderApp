@@ -8,20 +8,21 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<br>
+<div id="container">
 
-<h1 align="center">My Trips</h1>
+    <br>
 
-<br>
+    <h1 align="center" class="display-3">My Trips</h1>
 
-<div id="container" align="center">
-    <table border="1" cellpadding="10" class="table table-striped table-hover table-bordered">
-        <tr align="center">
-            <th>Name</th>
-            <th>Actions</th>
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
 
         </tr>
-        <tr align="center" th:each="trip : ${trips}">
+        <tr th:each="trip : ${trips}">
             <td th:text="${trip.name}">Name</td>
             <td>
                 <a th:href="@{/trip/__${trip.name}__}">View</a>
@@ -31,11 +32,11 @@
     </table>
 
     <br>
-
-    <form action="#" method="get" th:action="@{/newTrip}">
-        <input type="submit" value="Create New Trip">
-    </form>
-
+    <div align="center">
+        <form action="#" method="get" th:action="@{/newTrip}">
+            <button class="btn btn-primary" type="submit">Create New Trip</button>
+        </form>
+    </div>
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

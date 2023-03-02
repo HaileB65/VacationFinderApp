@@ -2,7 +2,6 @@ package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
 import Capstone.Project.VacationFinderApp.services.*;
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class TripController {
@@ -76,7 +77,7 @@ public class TripController {
     /**
      * Shows a trip's home page.
      *
-     * @param tripName      ID of trip to be pulled from database.
+     * @param tripName    ID of trip to be pulled from database.
      * @param currentUser current user logged in.
      * @param model       adds itineraryId, checklistId, and destinations of trip to view. Adds trip to view.
      * @return displays trip-home-page.
@@ -94,8 +95,8 @@ public class TripController {
 
         User user = userService.getUserById(currentUser.getId());
         Set<Checklist> userChecklists = user.getChecklists();
-        for(Checklist checklist : userChecklists){
-            if(checklist.getName().equalsIgnoreCase(tripName + " Checklist")){
+        for (Checklist checklist : userChecklists) {
+            if (checklist.getName().equalsIgnoreCase(tripName + " Checklist")) {
                 Checklist dbChecklist = checklistService.getChecklistById(checklist.getId());
                 model.addAttribute("checklist", dbChecklist);
                 model.addAttribute("checklistId", dbChecklist.getId());
@@ -103,7 +104,7 @@ public class TripController {
             }
         }
 
-        if(!hasChecklist){
+        if (!hasChecklist) {
             Checklist checklist = new Checklist();
             model.addAttribute("checklist", checklist);
         }
@@ -153,8 +154,8 @@ public class TripController {
         itineraryService.deleteItinerary(itineraryFromDB);
 
         Set<Checklist> userChecklists = user.getChecklists();
-        for(Checklist checklist : userChecklists){
-            if(checklist.getName().equalsIgnoreCase(trip.getName() + " Checklist")){
+        for (Checklist checklist : userChecklists) {
+            if (checklist.getName().equalsIgnoreCase(trip.getName() + " Checklist")) {
                 Checklist checklistFromDB = checklistService.getChecklistById(checklist.getId());
                 checklistService.deleteChecklist(checklistFromDB);
             }

@@ -79,17 +79,25 @@
                 <label for="city5">City 5</label>
                 <input class="form-control" id="city5" placeholder="City 5" required th:field="*{city5}" type="text">
             </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
 
-            <button class="btn btn-primary" type="submit">Login</button>
-            <hr/>
+            <br>
+
+            <div class="form-group" align="center">
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
 
         </form>
-
     </div>
-
 
     </span>
 </div>
 
+<br>
+<br>
+<br>
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>

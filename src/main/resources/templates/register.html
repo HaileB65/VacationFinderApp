@@ -18,8 +18,8 @@
 
     <form action="#" method="post" th:action="@{/process_register}" th:object="${newUser}">
 
-        <table border="1" cellpadding="10" class="table table-hover">
-            <tr align="center">
+        <table class="table table-hover">
+            <tr>
                 <td>First Name:</td>
                 <td>
                     <input required th:field="*{firstName}" type="text"/>
@@ -31,31 +31,31 @@
                 </div>
 
             </tr>
-            <tr align="center">
+            <tr>
                 <td>Last Name:</td>
                 <td>
                     <input required th:field="*{lastName}" type="text"/>
                 </td>
             </tr>
-            <tr align="center">
+            <tr>
                 <td>Email Address:</td>
                 <td>
                     <input required th:field="*{email}" type="email"/>
                 </td>
             </tr>
-            <tr align="center">
+            <tr>
                 <td>Phone Number:</td>
                 <td>
                     <input required th:field="*{phone}" type="text">
                 </td>
             </tr>
-            <tr align="center">
+            <tr>
                 <td>Username:</td>
                 <td>
                     <input required th:field="*{username}" type="text">
                 </td>
             </tr>
-            <tr align="center">
+            <tr>
                 <td>Password:</td>
                 <td>
                     <input required th:field="*{password}" type="text">

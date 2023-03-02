@@ -16,17 +16,22 @@
 
     <br>
 
-    <div id="form">
-    <form action="#" method="post" th:action="@{'/saveChecklist/' + ${checklistId}}" th:object="${checklist}">
-        <table class="table" align="center">
-            <tr th:each="item,counter : ${checklist.checklistItems}">
-                <td><input required th:field="*{checklistItems[__${counter.index}__]}" type="text"/></td>
-            </tr>
-        </table>
+    <div id="form" align="center">
+        <form action="#" method="post" th:action="@{'/saveChecklist/' + ${checklistId}}" th:object="${checklist}">
 
-        <button type="submit">Save</button>
+            <table class="table">
+                <tr th:each="item,counter : ${checklist.checklistItems}">
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" id="name" placeholder="Name" required th:field="*{checklistItems[__${counter.index}__]}" type="text">
+                        </div>
+                    </td>
+                </tr>
+            </table>
 
-    </form>
+            <button class="btn btn-primary" type="submit">Save</button>
+
+        </form>
     </div>
 
     <br>

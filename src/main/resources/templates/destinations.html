@@ -44,9 +44,9 @@
 
     <br>
 
-    <div sec:authorize="hasAuthority('ADMIN')">
+    <div sec:authorize="hasAuthority('ADMIN')" align="center">
         <form action="#" method="get" th:action="@{/newDestination}">
-            <input type="submit" value="Create New Destination">
+            <button class="btn btn-primary" type="submit">Create New Destination</button>
         </form>
     </div>
 

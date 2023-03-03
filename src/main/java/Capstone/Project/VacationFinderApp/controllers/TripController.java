@@ -33,7 +33,13 @@ public class TripController {
     @Autowired
     DestinationService destinationService;
 
+    @GetMapping("/trips")
+    public String showTripsPage(Model model) throws Exception {
+        List<Trip> tripsTable = tripService.getAllTrips();
+        model.addAttribute("tripsTable", tripsTable);
 
+        return "trips";
+    }
     /**
      * Shows all trips that a user has.
      *
@@ -72,6 +78,14 @@ public class TripController {
 
         model.addAttribute("destination", new Destination());
         return "new-trip";
+    }
+
+    @GetMapping("/newTemplate")
+    public String createTripTemplate(Model model) throws Exception {
+        model.addAttribute("newTemplate", new Trip());
+
+        model.addAttribute("destination", new Destination());
+        return "new-trip-template";
     }
 
     /**
@@ -125,6 +139,18 @@ public class TripController {
      */
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
+        Destination des = destinationService.getByName(destination.getName());
+        Trip trip = tripService.getByName(des.getName() + " Trip");
+
+        User user = userService.getUserById(currentUser.getId());
+        user.getTrips().add(trip);
+        userService.saveUser(user);
+
+        return "redirect:/myTrips";
+    }
+
+    @PostMapping("/saveTemplate")
+    public String saveTemplate(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
         Destination des = destinationService.getByName(destination.getName());
         Trip trip = tripService.getByName(des.getName() + " Trip");
 

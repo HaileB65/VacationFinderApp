@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Trip Template</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<div align="center" id="container">
+
+    <br>
+
+    <h1 align="center" class="display-3">Create Trip Template</h1>
+
+    <br>
+
+    <div id="form">
+
+        <hr/>
+
+        <form action="#" method="post" th:action="@{/saveTemplate}" th:object="${newTemplate}" th:object="${destination}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" placeholder="Name" required th:field="*{newTemplate.name}" type="text">
+            </div>
+            <div class="form-group">
+                <label for="destinationName">Destination</label>
+                <select id="destinationName" name="destinationName" th:field="*{destination.name}">
+                    <option value="">Select Destination</option>
+                    <option th:text="Peru" value="Peru"></option>
+                    <option th:text="Switzerland" value="Switzerland"></option>
+                    <option th:text="Mongolia" value="Mongolia"></option>
+                    <option th:text="Bahamas" value="Bahamas"></option>
+                    <option th:text="Brazil" value="Brazil"></option>
+                </select>
+            </div>
+
+            <br>
+
+            <div align="center" class="form-group">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+</div>
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

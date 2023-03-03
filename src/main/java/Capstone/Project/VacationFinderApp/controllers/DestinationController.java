@@ -25,13 +25,12 @@ public class DestinationController {
     /**
      * Shows all destinations.
      *
-     * @param currentUser current user signed in.
      * @param model       adds a list of all destinations to view.
      * @return displays destinations page.
      * @throws Exception
      */
     @GetMapping("/destinations")
-    public String showDestinationsPage(@AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String showDestinationsPage(Model model) throws Exception {
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
@@ -86,7 +85,7 @@ public class DestinationController {
      * Creates a new destination.
      *
      * @param model adds an empty destination object to view.
-     * @return displays new-destination pagee.
+     * @return displays new-destination page.
      */
     @GetMapping("/newDestination")
     public String ShowNewDestinationPage(Model model) {

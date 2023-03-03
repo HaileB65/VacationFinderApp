@@ -81,7 +81,7 @@ public class TripController {
     }
 
     @GetMapping("/newTemplate")
-    public String createTripTemplate(Model model) throws Exception {
+    public String createTemplate(Model model) throws Exception {
         model.addAttribute("newTemplate", new Trip());
 
         model.addAttribute("destination", new Destination());

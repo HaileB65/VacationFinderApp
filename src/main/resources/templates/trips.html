@@ -12,7 +12,7 @@
 
     <br>
 
-    <h1 align="center" class="display-3">Trips</h1>
+    <h1 align="center" class="display-3">Trip Templates</h1>
 
     <br>
 
@@ -24,7 +24,7 @@
         <tr th:each="trip : ${tripsTable}">
             <td th:text="${trip.name}">Name</td>
             <td>
-<!--                <a th:href="@{/editTrip/__${trip.id}__}">Edit</a>-->
+                <a th:href="@{/editTemplate/__${trip.id}__}">Edit</a>
             </td>
         </tr>
     </table>
@@ -32,8 +32,8 @@
     <br>
 
     <div sec:authorize="hasAuthority('ADMIN')" align="center">
-        <form action="#" method="get" th:action="@{/newTripTemplate}">
-            <button class="btn btn-primary" type="submit">Create New Trip</button>
+        <form action="#" method="get" th:action="@{/newTemplate}">
+            <button class="btn btn-primary" type="submit">Create New Template</button>
         </form>
     </div>
 

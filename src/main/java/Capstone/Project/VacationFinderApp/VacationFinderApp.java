@@ -68,10 +68,6 @@ public class VacationFinderApp implements CommandLineRunner {
                     .transport5("Hotel Cab")
                     .build();
 
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("adf", "hgdg", "glil", "jfdak;sji"))
-                    .build();
-
             Destination mongolia = Destination.builder()
                     .name("Mongolia")
                     .weather("Cold")
@@ -127,10 +123,6 @@ public class VacationFinderApp implements CommandLineRunner {
                     .transport3("Hotel Cab")
                     .transport4("Hotel Cab")
                     .transport5("Hotel Cab")
-                    .build();
-
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("fdsafda", "4568"))
                     .build();
 
             Destination bahamas = Destination.builder()
@@ -189,10 +181,6 @@ public class VacationFinderApp implements CommandLineRunner {
                     .transport5("Hotel Cab")
                     .build();
 
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("876", "45JKHI68"))
-                    .build();
-
             Destination switzerland = Destination.builder()
                     .name("Switzerland")
                     .weather("Cold")
@@ -249,10 +237,6 @@ public class VacationFinderApp implements CommandLineRunner {
                     .transport5("Hotel Cab")
                     .build();
 
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(List.of("699", "45JKHI68"))
-                    .build();
-
             Destination brazil = Destination.builder()
                     .name("Brazil")
                     .weather("Warm")
@@ -307,10 +291,6 @@ public class VacationFinderApp implements CommandLineRunner {
                     .transport3("Hotel Cab")
                     .transport4("Hotel Cab")
                     .transport5("Hotel Cab")
-                    .build();
-
-            Checklist checklist = Checklist.builder()
-                    .checklistItems(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
                     .build();
 
             Destination peru = Destination.builder()

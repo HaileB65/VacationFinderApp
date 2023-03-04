@@ -95,24 +95,6 @@ public class ChecklistController {
         return "redirect:/myTrips";
     }
 
-//    /**
-//     * Saves checklist based on user input from form.
-//     *
-//     * @param viewChecklist   newly updated checklist.
-//     * @param checklistName used to pull existing checklist from database.
-//     * @return redirects to my trips page.
-//     * @throws Exception
-//     */
-//    @PostMapping("/saveChecklist/{checklistName}")
-//    public String saveChecklistByName(@ModelAttribute("checklist") Checklist viewChecklist, @PathVariable(name = "checklistName") String checklistName) throws Exception {
-//        Checklist dbChecklist = checklistService.getChecklistByName(checklistName);
-//
-//        dbChecklist.setChecklistItems(viewChecklist.getChecklistItems());
-//
-//        checklistService.saveChecklist(dbChecklist);
-//        return "redirect:/myTrips";
-//    }
-
     @PostMapping("/saveChecklist/{checklistId}")
     public String saveChecklistById(@ModelAttribute("checklist") Checklist viewChecklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
 

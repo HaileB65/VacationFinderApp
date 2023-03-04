@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
+import Capstone.Project.VacationFinderApp.models.Checklist;
 import Capstone.Project.VacationFinderApp.models.Destination;
 import Capstone.Project.VacationFinderApp.models.Questionnaire;
 import Capstone.Project.VacationFinderApp.models.User;
@@ -130,6 +131,14 @@ public class DestinationController {
         model.addAttribute("remainingDestinations", remainingDestinations);
 
         return "destination-finder-results";
+    }
+
+    @GetMapping("/editDestination/{destinationId}")
+    public String editDestination(@PathVariable("destinationId") Long destinationId, Model model) throws Exception {
+        Destination dbDestination = destinationService.getDestinationById(destinationId);
+        model.addAttribute("destination", dbDestination);
+        model.addAttribute("destinationId", dbDestination.getId());
+        return "edit-destination";
     }
 
     /**

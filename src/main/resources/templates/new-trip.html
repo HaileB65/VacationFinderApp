@@ -19,6 +19,9 @@
     <form action="#" method="post" th:action="@{/saveTrip}" th:object="${destination}">
         <table class="table">
             <tr>
+                <th scope="col">Destination</th>
+            </tr>
+            <tr>
                 <td>
                     <select id="destinationName" name="destinationName" th:field="*{name}">
                         <option value="">Select Destination</option>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip Home Page</title>
+    <div th:replace="fragments :: header"></div>
+</head>
+<body>
+<div th:replace="fragments :: navigation"></div>
+
+<div align="center" id="container">
+
+    <br>
+
+    <h1 align="center" class="display-3" th:text="${trip.name} + ' Template'"></h1>
+
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th colspan="6">Itinerary</th>
+        </tr>
+        <tr>
+            <th scope="col">Days</th>
+            <th scope="col">Day 1</th>
+            <th scope="col">Day 2</th>
+            <th scope="col">Day 3</th>
+            <th scope="col">Day 4</th>
+            <th scope="col">Day 5</th>
+        </tr>
+        <tr>
+            <th>Destination</th>
+            <td th:text="${trip.itinerary.location1}"></td>
+            <td th:text="${trip.itinerary.location2}"></td>
+            <td th:text="${trip.itinerary.location3}"></td>
+            <td th:text="${trip.itinerary.location4}"></td>
+            <td th:text="${trip.itinerary.location5}"></td>
+        </tr>
+        <tr>
+            <th>Meal</th>
+            <td th:text="${trip.itinerary.meal1}"></td>
+            <td th:text="${trip.itinerary.meal2}"></td>
+            <td th:text="${trip.itinerary.meal3}"></td>
+            <td th:text="${trip.itinerary.meal4}"></td>
+            <td th:text="${trip.itinerary.meal5}"></td>
+        </tr>
+        <tr>
+            <th>Leisure</th>
+            <td th:text="${trip.itinerary.leisure1}"></td>
+            <td th:text="${trip.itinerary.leisure2}"></td>
+            <td th:text="${trip.itinerary.leisure3}"></td>
+            <td th:text="${trip.itinerary.leisure4}"></td>
+            <td th:text="${trip.itinerary.leisure5}"></td>
+        </tr>
+        <tr>
+            <th>Transport</th>
+            <td th:text="${trip.itinerary.transport1}"></td>
+            <td th:text="${trip.itinerary.transport2}"></td>
+            <td th:text="${trip.itinerary.transport3}"></td>
+            <td th:text="${trip.itinerary.transport4}"></td>
+            <td th:text="${trip.itinerary.transport5}"></td>
+        </tr>
+    </table>
+
+    <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
+        <button class="btn btn-primary" type="submit">Edit</button>
+    </form>
+
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th colspan="7">Destinations</th>
+        </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Scenery</th>
+            <th scope="col">Weather</th>
+            <th scope="col">Activity 1</th>
+            <th scope="col">Activity 2</th>
+            <th scope="col">Activity 3</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <tr th:each="destination : ${destinations}">
+            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.scenery}">Scenery</td>
+            <td th:text="${destination.weather}">Weather</td>
+            <td th:text="${destination.activity1}">Activity 1</td>
+            <td th:text="${destination.activity2}">Activity 2</td>
+            <td th:text="${destination.activity3}">Activity 3</td>
+            <td>
+                <a th:href="@{/destination/__${destination.id}__}">View</a>
+                <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <form action="#" method="get" th:action="@{/newChecklist/__${trip.name}__}">
+                        <button class="btn btn-primary" type="submit">Create</button>
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <form action="#" method="get" th:action="@{/editChecklist/__${checklistId}__}">
+                        <button class="btn btn-primary" type="submit">Edit</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+</div>
+
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

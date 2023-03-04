@@ -33,13 +33,7 @@ public class TripController {
     @Autowired
     DestinationService destinationService;
 
-    @GetMapping("/trips")
-    public String showTripsPage(Model model) throws Exception {
-        List<Trip> tripsTable = tripService.getAllTrips();
-        model.addAttribute("tripsTable", tripsTable);
 
-        return "trips";
-    }
     /**
      * Shows all trips that a user has.
      *
@@ -74,18 +68,8 @@ public class TripController {
      */
     @GetMapping("/newTrip")
     public String createTrip(Model model) throws Exception {
-        model.addAttribute("newTrip", new Trip());
-
         model.addAttribute("destination", new Destination());
         return "new-trip";
-    }
-
-    @GetMapping("/newTemplate")
-    public String createTemplate(Model model) throws Exception {
-        model.addAttribute("newTemplate", new Trip());
-
-        model.addAttribute("destination", new Destination());
-        return "new-trip-template";
     }
 
     /**
@@ -123,22 +107,51 @@ public class TripController {
             model.addAttribute("checklist", checklist);
         }
 
+        return "trip-home-page";
+    }
+
+    @GetMapping("/newTemplate")
+    public String createTemplate(Model model) throws Exception {
+
+        model.addAttribute("trip", new Trip());
+
+        return "new-template";
+    }
+
+    @GetMapping("/templates")
+    public String showTemplatesPage(Model model) throws Exception {
+
+        List<Trip> tripsTable = tripService.getAllTrips();
+
+        model.addAttribute("templates", tripsTable);
+
+        return "templates";
+    }
+
+    @GetMapping("/template/{tripName}")
+    public String showTemplate(@PathVariable("tripName") String tripName, Model model) throws Exception {
+
+        Trip trip = tripService.getByName(tripName);
+        model.addAttribute("trip", trip);
+
+        model.addAttribute("itineraryId", trip.itinerary.getId());
+
         model.addAttribute("destinations", trip.destinations);
 
-        return "trip-home-page";
+        return "template-page";
     }
 
     /**
      * Saves a new trip.
      *
-     * @param newTrip     new trip to be saved.
      * @param destination destination selected for trip.
      * @param currentUser current user logged in.
      * @return redirects to myTrips page.
      * @throws Exception
      */
     @PostMapping("/saveTrip")
-    public String saveTrip(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
+    public String saveTrip(@ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
+
         Destination des = destinationService.getByName(destination.getName());
         Trip trip = tripService.getByName(des.getName() + " Trip");
 
@@ -150,15 +163,13 @@ public class TripController {
     }
 
     @PostMapping("/saveTemplate")
-    public String saveTemplate(@ModelAttribute("newTrip") Trip newTrip, @ModelAttribute("destination") Destination destination, @AuthenticationPrincipal User currentUser) throws Exception {
-        Destination des = destinationService.getByName(destination.getName());
-        Trip trip = tripService.getByName(des.getName() + " Trip");
+    public String saveTemplate(@ModelAttribute("trip") Trip newTrip) throws Exception {
 
-        User user = userService.getUserById(currentUser.getId());
-        user.getTrips().add(trip);
-        userService.saveUser(user);
+        newTrip.setItinerary(new Itinerary());
 
-        return "redirect:/myTrips";
+        tripService.saveTrip(newTrip);
+
+        return "redirect:/templates";
     }
 
     /**

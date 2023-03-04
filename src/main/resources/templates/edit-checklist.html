@@ -26,7 +26,7 @@
                 <tr th:each="item,counter : ${checklist.checklistItems}">
                     <td>
                         <div class="form-group">
-                            <input class="form-control" id="item1" required th:field="*{checklistItems[__${counter.index}__]}" type="text">
+                            <input class="form-control" required th:field="*{checklistItems[__${counter.index}__]}" type="text">
                         </div>
                     </td>
                 </tr>

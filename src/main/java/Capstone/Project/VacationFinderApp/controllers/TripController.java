@@ -64,10 +64,9 @@ public class TripController {
      *
      * @param model adds an empty trip and empty destination to view.
      * @return displays new-trip page.
-     * @throws Exception
      */
     @GetMapping("/newTrip")
-    public String createTrip(Model model) throws Exception {
+    public String createTrip(Model model){
         model.addAttribute("destination", new Destination());
         return "new-trip";
     }

@@ -33,12 +33,18 @@ public class ChecklistController {
     @GetMapping("/newChecklist/{tripName}")
     public String newChecklistPage(@PathVariable("tripName") String tripName, Model model) {
         Checklist checklist = new Checklist();
-//        checklist.setName(tripName + " Checklist");
-        checklist.setChecklistItems(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
-//        checklistService.saveChecklist(checklist);
+        checklist.setItem1("1");
+        checklist.setItem2("2");
+        checklist.setItem3("3");
+        checklist.setItem4("4");
+        checklist.setItem5("5");
+        checklist.setItem6("6");
+        checklist.setItem7("7");
+        checklist.setItem8("8");
+        checklist.setItem9("9");
+        checklist.setItem10("10");
 
         model.addAttribute("checklist", checklist);
-//        model.addAttribute("checklistId", checklist.getId());
         model.addAttribute("tripName", tripName);
         return "new-checklist";
     }
@@ -99,7 +105,17 @@ public class ChecklistController {
     public String saveChecklistById(@ModelAttribute("checklist") Checklist viewChecklist, @PathVariable(name = "checklistId") Long checklistId) throws Exception {
 
         Checklist dbChecklist = checklistService.getChecklistById(checklistId);
-        dbChecklist.setChecklistItems(viewChecklist.getChecklistItems());
+        dbChecklist.setItem1(viewChecklist.getItem1());
+        dbChecklist.setItem2(viewChecklist.getItem2());
+        dbChecklist.setItem3(viewChecklist.getItem3());
+        dbChecklist.setItem4(viewChecklist.getItem4());
+        dbChecklist.setItem5(viewChecklist.getItem5());
+        dbChecklist.setItem6(viewChecklist.getItem6());
+        dbChecklist.setItem7(viewChecklist.getItem7());
+        dbChecklist.setItem8(viewChecklist.getItem8());
+        dbChecklist.setItem9(viewChecklist.getItem9());
+        dbChecklist.setItem10(viewChecklist.getItem10());
+
         checklistService.saveChecklist(dbChecklist);
         return "redirect:/myTrips";
 

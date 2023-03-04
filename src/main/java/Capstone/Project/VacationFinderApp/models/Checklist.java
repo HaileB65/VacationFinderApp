@@ -1,9 +1,6 @@
 package Capstone.Project.VacationFinderApp.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -18,20 +15,26 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class Checklist implements Serializable {
-
-    String name;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> checklistItems;
+
+    String name;
+    String item1;
+    String item2;
+    String item3;
+    String item4;
+    String item5;
+    String item6;
+    String item7;
+    String item8;
+    String item9;
+    String item10;
 
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
 
-    public Checklist() {
-        checklistItems = new ArrayList<>();
-    }
 }

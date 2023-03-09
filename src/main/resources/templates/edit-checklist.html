@@ -23,10 +23,73 @@
         <form action="#" method="post" th:action="@{'/saveChecklist/' + ${checklistId}}" th:object="${checklist}">
 
             <table class="table">
-                <tr th:each="item,counter : ${checklist.checklistItems}">
+                <tr>
                     <td>
                         <div class="form-group">
-                            <input class="form-control" required th:field="*{checklistItems[__${counter.index}__]}" type="text">
+                            <input class="form-control" required th:field="*{item1}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item2}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item3}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item4}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item5}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item6}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item7}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item8}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item9}" type="text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" required th:field="*{item10}" type="text"/>
                         </div>
                     </td>
                 </tr>

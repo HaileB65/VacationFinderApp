@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Destination Page</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<div id="container">
+
+    <br>
+
+    <h1 align="center" class="display-3">Destinations</h1>
+
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Scenery</th>
+            <th scope="col">Weather</th>
+            <th scope="col">Activity 1</th>
+            <th scope="col">Activity 2</th>
+            <th scope="col">Activity 3</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <tr th:each="destination : ${destinationsTable}">
+            <td th:text="${destination.name}">Name</td>
+            <td th:text="${destination.scenery}">Scenery</td>
+            <td th:text="${destination.weather}">Weather</td>
+            <td th:text="${destination.activity1}">Activity 1</td>
+            <td th:text="${destination.activity2}">Activity 2</td>
+            <td th:text="${destination.activity3}">Activity 3</td>
+            <td>
+                <a th:href="@{/destination/__${destination.id}__}">View</a>
+                <div sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/addDestination/__${destination.id}__/__${trip.id}__}">Add</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

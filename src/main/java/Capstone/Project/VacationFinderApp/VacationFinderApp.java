@@ -44,7 +44,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates Mongolia Trip and destination. Includes prefilled itinerary and checklist.
          *
          */
-        if (!tripRepository.existsByName("Mongolia Trip")) {
+        if (!tripRepository.existsByName("Mongolia")) {
             Itinerary itinerary = Itinerary.builder()
                     .location1("Weston Hotel")
                     .location2("Atrium Event Center")
@@ -89,7 +89,7 @@ public class VacationFinderApp implements CommandLineRunner {
             destinations.add(mongolia);
 
             Trip mongoliaTrip = Trip.builder()
-                    .name("Mongolia Trip")
+                    .name("Mongolia")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -101,7 +101,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates Bahamas Trip and destination. Includes prefilled itinerary and checklist.
          *
          */
-        if (!tripRepository.existsByName("Bahamas Trip")) {
+        if (!tripRepository.existsByName("Bahamas")) {
             Itinerary itinerary = Itinerary.builder()
                     .location1("Weston Hotel")
                     .location2("Atrium Event Center")
@@ -145,7 +145,7 @@ public class VacationFinderApp implements CommandLineRunner {
             destinations.add(bahamas);
 
             Trip bahamasTrip = Trip.builder()
-                    .name("Bahamas Trip")
+                    .name("Bahamas")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -157,7 +157,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates Switzerland Trip and destination. Includes prefilled itinerary and checklist.
          *
          */
-        if (!tripRepository.existsByName("Switzerland Trip")) {
+        if (!tripRepository.existsByName("Switzerland")) {
             Itinerary itinerary = Itinerary.builder()
                     .location1("Weston Hotel")
                     .location2("Atrium Event Center")
@@ -201,7 +201,7 @@ public class VacationFinderApp implements CommandLineRunner {
             destinations.add(switzerland);
 
             Trip switzerlandTrip = Trip.builder()
-                    .name("Switzerland Trip")
+                    .name("Switzerland")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -213,7 +213,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates Brazil Trip and destination. Includes prefilled itinerary and checklist.
          *
          */
-        if (!tripRepository.existsByName("Brazil Trip")) {
+        if (!tripRepository.existsByName("Brazil")) {
             Itinerary itinerary = Itinerary.builder()
                     .location1("Weston Hotel")
                     .location2("Atrium Event Center")
@@ -257,7 +257,7 @@ public class VacationFinderApp implements CommandLineRunner {
             destinations.add(brazil);
 
             Trip brazilTrip = Trip.builder()
-                    .name("Brazil Trip")
+                    .name("Brazil")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -269,7 +269,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates Peru Trip and destination. Includes prefilled itinerary and checklist.
          *
          */
-        if (!tripRepository.existsByName("Peru Trip")) {
+        if (!tripRepository.existsByName("Peru")) {
             Itinerary itinerary = Itinerary.builder()
                     .location1("Weston Hotel")
                     .location2("Atrium Event Center")
@@ -313,7 +313,7 @@ public class VacationFinderApp implements CommandLineRunner {
             destinations.add(peru);
 
             Trip peruTrip = Trip.builder()
-                    .name("Peru Trip")
+                    .name("Peru")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();

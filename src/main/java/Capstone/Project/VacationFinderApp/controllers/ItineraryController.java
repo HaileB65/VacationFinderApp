@@ -36,11 +36,18 @@ public class ItineraryController {
      * @return displays edit-itinerary page.
      * @throws Exception
      */
-    @GetMapping("/editItinerary/{itineraryId}")
-    public String editItineraryPage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
+    @GetMapping("/editItineraryFromUserTripPage/{itineraryId}")
+    public String editItineraryFromUserTripPage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
         Itinerary itinerary = itineraryService.getItineraryById(itineraryId);
         model.addAttribute("itinerary", itinerary);
-        return "edit-itinerary";
+        return "edit-itinerary-from-user-trip-page";
+    }
+
+    @GetMapping("/editItineraryFromTripHomePage/{itineraryId}")
+    public String editItineraryFromTripHomePage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
+        Itinerary itinerary = itineraryService.getItineraryById(itineraryId);
+        model.addAttribute("itinerary", itinerary);
+        return "edit-itinerary-from-trip-home-page";
     }
 
     /**
@@ -63,13 +70,15 @@ public class ItineraryController {
      * @return redirects to myTrips page.
      * @throws Exception
      */
-    @PostMapping("/editItinerary/{itineraryId}")
-    public String editItinerary(@ModelAttribute("itinerary") Itinerary viewItinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
+    @PostMapping("/editItineraryFromUserTripPage/{itineraryId}")
+    public String editItineraryFromUserTripPage(@ModelAttribute("itinerary") Itinerary viewItinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
         Itinerary dbItinerary = itineraryService.getItineraryById(itineraryId);
 
         dbItinerary.setLocation1(viewItinerary.getLocation1());
         dbItinerary.setLocation2(viewItinerary.getLocation2());
         dbItinerary.setLocation3(viewItinerary.getLocation3());
+        dbItinerary.setLocation4(viewItinerary.getLocation4());
+        dbItinerary.setLocation5(viewItinerary.getLocation5());
         dbItinerary.setMeal1(viewItinerary.getMeal1());
         dbItinerary.setMeal2(viewItinerary.getMeal2());
         dbItinerary.setMeal3(viewItinerary.getMeal3());
@@ -88,6 +97,35 @@ public class ItineraryController {
 
         itineraryService.saveItinerary(dbItinerary);
         return "redirect:/myTrips";
+    }
+
+    @PostMapping("/editItineraryFromTripHomePage/{itineraryId}")
+    public String editItineraryFromTripHomePage(@ModelAttribute("itinerary") Itinerary viewItinerary, @PathVariable(name = "itineraryId") Long itineraryId) throws Exception {
+        Itinerary dbItinerary = itineraryService.getItineraryById(itineraryId);
+
+        dbItinerary.setLocation1(viewItinerary.getLocation1());
+        dbItinerary.setLocation2(viewItinerary.getLocation2());
+        dbItinerary.setLocation3(viewItinerary.getLocation3());
+        dbItinerary.setLocation4(viewItinerary.getLocation4());
+        dbItinerary.setLocation5(viewItinerary.getLocation5());
+        dbItinerary.setMeal1(viewItinerary.getMeal1());
+        dbItinerary.setMeal2(viewItinerary.getMeal2());
+        dbItinerary.setMeal3(viewItinerary.getMeal3());
+        dbItinerary.setMeal4(viewItinerary.getMeal4());
+        dbItinerary.setMeal5(viewItinerary.getMeal5());
+        dbItinerary.setLeisure1(viewItinerary.getLeisure1());
+        dbItinerary.setLeisure2(viewItinerary.getLeisure2());
+        dbItinerary.setLeisure3(viewItinerary.getLeisure3());
+        dbItinerary.setLeisure4(viewItinerary.getLeisure4());
+        dbItinerary.setLeisure5(viewItinerary.getLeisure5());
+        dbItinerary.setTransport1(viewItinerary.getTransport1());
+        dbItinerary.setTransport2(viewItinerary.getTransport2());
+        dbItinerary.setTransport3(viewItinerary.getTransport3());
+        dbItinerary.setTransport4(viewItinerary.getTransport4());
+        dbItinerary.setTransport5(viewItinerary.getTransport5());
+
+        itineraryService.saveItinerary(dbItinerary);
+        return "redirect:/trips";
     }
 
 }

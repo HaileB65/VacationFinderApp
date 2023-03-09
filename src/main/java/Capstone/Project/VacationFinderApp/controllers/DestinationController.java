@@ -1,12 +1,9 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
-import Capstone.Project.VacationFinderApp.models.Checklist;
-import Capstone.Project.VacationFinderApp.models.Destination;
-import Capstone.Project.VacationFinderApp.models.Questionnaire;
-import Capstone.Project.VacationFinderApp.models.User;
+import Capstone.Project.VacationFinderApp.models.*;
 import Capstone.Project.VacationFinderApp.services.DestinationService;
+import Capstone.Project.VacationFinderApp.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +20,9 @@ public class DestinationController {
     @Autowired
     DestinationService destinationService;
 
+    @Autowired
+    TripService tripService;
+
     /**
      * Shows all destinations.
      *
@@ -31,11 +31,24 @@ public class DestinationController {
      * @throws Exception
      */
     @GetMapping("/destinations")
-    public String showDestinationsPage(Model model) throws Exception {
+    public String showDestinationsPage(Model model){
+
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
 
         return "destinations";
+    }
+
+    @GetMapping("/destinations/{tripId}")
+    public String showDestinationsToAddToTrip(@PathVariable("tripId") Long tripId, Model model) throws Exception {
+
+        List<Destination> destinationsTable = destinationService.getAllDestinations();
+        model.addAttribute("destinationsTable", destinationsTable);
+
+        Trip trip = tripService.getById(tripId);
+        model.addAttribute("trip",trip);
+
+        return "add-destination-page";
     }
 
     /**
@@ -65,7 +78,8 @@ public class DestinationController {
     public String viewDestinationFromDestinationResultsPage(
             @PathVariable("destinationId") long destinationId,
             @PathVariable("weather") String weather,
-            @PathVariable("scenery") String scenery, Model model) throws Exception {
+            @PathVariable("scenery") String scenery, Model model)
+            throws Exception {
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
@@ -103,19 +117,14 @@ public class DestinationController {
     @GetMapping("/destinationFinder")
     public String showDestinationFinderPage(Model model) {
         model.addAttribute("questionnaire", new Questionnaire());
-        return "destination-finder";
-    }
 
-    /**
-     * Saves a new destination.
-     *
-     * @param destination destination to be saved.
-     * @return redirects to destinations page.
-     */
-    @PostMapping("/saveDestination")
-    public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
-        destinationService.createNewDestination(destination);
-        return "redirect:/destinations";
+        List<String> sceneryList = destinationService.getAvailableSceneries();
+        model.addAttribute("sceneryList", sceneryList);
+
+        List<String> weatherList = destinationService.getAvailableWeather();
+        model.addAttribute("weatherList", weatherList);
+
+        return "destination-finder";
     }
 
     @GetMapping("/destinationFinderResults/{weather}/{scenery}")
@@ -163,6 +172,24 @@ public class DestinationController {
         model.addAttribute("scenery", questionnaire.getPreferredScenery());
 
         return "destination-finder-results";
+    }
+
+    /**
+     * Saves a new destination.
+     *
+     * @param destination destination to be saved.
+     * @return redirects to destinations page.
+     */
+    @PostMapping("/saveDestination")
+    public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
+        destinationService.createNewDestination(destination);
+        return "redirect:/destinations";
+    }
+
+    @PostMapping("/saveDestination/{destinationId}")
+    public String saveDestination(@ModelAttribute("destination") Destination destination,@PathVariable("destinationid") Long destinationId) {
+        destinationService.saveDestination(destination);
+        return "redirect:/destinations";
     }
 
 }

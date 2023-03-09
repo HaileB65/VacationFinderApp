@@ -17,7 +17,7 @@
     <br>
 
     <form action="#" method="post" th:action="@{/destinationFinderResults}" th:object="${questionnaire}">
-        <table class="table table-hover">
+        <table class="table">
             <tr>
                 <th scope="col">Scenery</th>
                 <th scope="col">Weather</th>
@@ -26,16 +26,15 @@
                 <td>
                     <select id="preferredScenery" name="preferredScenery" th:field="*{preferredScenery}">
                         <option value="">Select Scenery</option>
-                        <option th:text="Beach" value="Beach"></option>
-                        <option th:text="Mountains" value="Mountains"></option>
-                        <option th:text="Snow" value="Snow"></option>
+                        <option th:each="scenery : ${sceneryList}"
+                                th:text="${scenery}" th:value="${scenery}"></option>
                     </select>
                 </td>
                 <td>
                     <select id="preferredWeather" name="preferredWeather" th:field="*{preferredWeather}">
                         <option value="">Select Weather</option>
-                        <option th:text="Warm" value="Warm"></option>
-                        <option th:text="Cold" value="Cold"></option>
+                        <option th:each="weather : ${weatherList}"
+                                th:text="${weather}" th:value="${weather}"></option>
                     </select>
                 </td>
             </tr>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Itinerary</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<div align="center" id="container">
+
+    <br>
+
+    <h1 align="center" class="display-3">Edit Itinerary</h1>
+
+    <br>
+
+    <form action="#" method="post" th:action="@{'/editItineraryFromUserTripPage/' + ${itinerary.id}}" th:object="${itinerary}">
+        <table class="table">
+            <tr>
+                <th colspan="6">Itinerary</th>
+            </tr>
+            <tr>
+                <th scope="col">Days</th>
+                <th scope="col">Day 1</th>
+                <th  scope="col">Day 2</th>
+                <th scope="col">Day 3</th>
+                <th scope="col">Day 4</th>
+                <th scope="col">Day 5</th>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td><input required th:field="${itinerary.location1}" type="text"/></td>
+                <td><input required th:field="${itinerary.location2}" type="text"/></td>
+                <td><input required th:field="${itinerary.location3}" type="text"/></td>
+                <td><input required th:field="${itinerary.location4}" type="text"/></td>
+                <td><input required th:field="${itinerary.location5}" type="text"/></td>
+            </tr>
+            <tr>
+                <th>Meal</th>
+                <td><input required th:field="${itinerary.meal1}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal2}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal3}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal4}" type="text"/></td>
+                <td><input required th:field="${itinerary.meal5}" type="text"/></td>
+            </tr>
+            <tr>
+                <th>Leisure</th>
+                <td><input required th:field="${itinerary.leisure1}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure2}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure3}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure4}" type="text"/></td>
+                <td><input required th:field="${itinerary.leisure5}" type="text"/></td>
+            </tr>
+            <tr>
+                <th>Transport</th>
+                <td><input required th:field="${itinerary.transport1}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport2}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport3}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport4}" type="text"/></td>
+                <td><input required th:field="${itinerary.transport5}" type="text"/></td>
+            </tr>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+</div>
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

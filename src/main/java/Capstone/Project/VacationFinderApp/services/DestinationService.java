@@ -4,6 +4,7 @@ import Capstone.Project.VacationFinderApp.models.Destination;
 import Capstone.Project.VacationFinderApp.repositories.DestinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,13 @@ public class DestinationService {
      * @param destination new destination to be saved.
      * @return newly saved destination.
      */
+    @CacheEvict(value = "destinations", allEntries = true)
     public Destination createNewDestination(Destination destination) {
+        destinationRepository.save(destination);
+        return destination;
+    }
+
+    public Destination saveDestination(Destination destination) {
         destinationRepository.save(destination);
         return destination;
     }
@@ -57,5 +64,13 @@ public class DestinationService {
         if (destination.isPresent()) {
             return destination.get();
         } else throw new Exception("Destination not found");
+    }
+
+    public List<String> getAvailableSceneries() {
+        return destinationRepository.findAvailableSceneries();
+    }
+
+    public List<String> getAvailableWeather() {
+        return destinationRepository.findAvailableWeather();
     }
 }

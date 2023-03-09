@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Trip Home Page</title>
@@ -12,7 +12,7 @@
 
     <br>
 
-    <h1 align="center" class="display-3" th:text="${trip.name} + ' Template'"></h1>
+    <h1 align="center" class="display-3" th:text="${trip.name} + ' Trip'"></h1>
 
     <br>
 
@@ -61,37 +61,77 @@
             <td th:text="${trip.itinerary.transport5}"></td>
         </tr>
     </table>
-
-    <form action="#" method="get" th:action="@{/editItinerary/__${itineraryId}__}">
-        <button class="btn btn-primary" type="submit">Edit</button>
-    </form>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <form action="#" method="get" th:action="@{/editItineraryFromUserTripPage/__${itineraryId}__}">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+    </div>
 
     <br>
 
     <table class="table table-hover">
         <tr>
-            <th colspan="7">Destinations</th>
+            <th colspan="2" scope="col">Checklist</th>
         </tr>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Scenery</th>
-            <th scope="col">Weather</th>
-            <th scope="col">Activity 1</th>
-            <th scope="col">Activity 2</th>
-            <th scope="col">Activity 3</th>
-            <th scope="col">Actions</th>
-        </tr>
-        <tr th:each="destination : ${destinations}">
-            <td th:text="${destination.name}">Name</td>
-            <td th:text="${destination.scenery}">Scenery</td>
-            <td th:text="${destination.weather}">Weather</td>
-            <td th:text="${destination.activity1}">Activity 1</td>
-            <td th:text="${destination.activity2}">Activity 2</td>
-            <td th:text="${destination.activity3}">Activity 3</td>
             <td>
-                <a th:href="@{/destination/__${destination.id}__}">View</a>
-                <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>
+                <input type="checkbox"/>
             </td>
+            <td th:text="${checklist.item1}">Item 1</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item2}">Item 2</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item3}">Item 1</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item4}">Item 2</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item5}">Item 1</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item6}">Item 2</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item7}">Item 1</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item8}">Item 2</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item9}">Item 1</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td th:text="${checklist.item10}">Item 2</td>
         </tr>
     </table>
 

@@ -63,7 +63,7 @@
     </table>
     <div sec:authorize="hasAuthority('ADMIN')">
         <form action="#" method="get" th:action="@{/editItineraryFromUserTripPage/__${itineraryId}__}">
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <button class="btn btn-primary" type="submit">Edit</button>
         </form>
     </div>
 
@@ -74,10 +74,19 @@
             <th colspan="2" scope="col">Checklist</th>
         </tr>
         <tr>
-            <td>
-                <input type="checkbox"/>
-            </td>
-            <td th:text="${checklist.item1}">Item 1</td>
+            <div>
+                <td>
+                    <div th:if="${checklist.checkbox1 == 'false'}">
+
+                        <input type="checkbox" value="${checklist.checkbox1}"/>
+
+                    </div>
+                    <div th:if="${checklist.checkbox1 == 'true'}">
+                        <input type="checkbox" checked/>
+                    </div>
+                </td>
+                <td th:text="${checklist.item1}">Item 1</td>
+            </div>
         </tr>
         <tr>
             <td>

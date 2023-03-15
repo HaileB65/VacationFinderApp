@@ -103,16 +103,31 @@ public class TripController {
                 Checklist dbChecklist = checklistService.getChecklistById(checklist.getId());
                 model.addAttribute("checklist", dbChecklist);
                 model.addAttribute("checklistId", dbChecklist.getId());
+
                 hasChecklist = true;
             }
         }
 
         if (!hasChecklist) {
-            Checklist checklist = new Checklist();
+            Checklist checklist = Checklist.builder()
+                    .id(1L)
+                    .name("")
+                    .item1("")
+                    .item2("")
+                    .item3("")
+                    .item4("")
+                    .item5("")
+                    .item6("")
+                    .item7("")
+                    .item8("")
+                    .item9("")
+                    .item10("")
+                    .checkbox1("false")
+                    .build();
             model.addAttribute("checklist", checklist);
         }
 
-        return "user-trip-page";
+        return "trip-page";
     }
 
     @GetMapping("/newTrip")
@@ -134,7 +149,7 @@ public class TripController {
     }
 
     @GetMapping("/trips/{tripName}")
-    public String tripHomePage(@PathVariable("tripName") String tripName, Model model) throws Exception {
+    public String editTripPage(@PathVariable("tripName") String tripName, Model model) throws Exception {
 
         Trip trip = tripService.getByName(tripName);
         model.addAttribute("trip", trip);
@@ -143,7 +158,7 @@ public class TripController {
 
         model.addAttribute("destinations", trip.destinations);
 
-        return "trip-home-page";
+        return "edit-trip-page";
     }
 
     @GetMapping("/dropTrip/{tripId}")

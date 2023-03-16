@@ -33,6 +33,9 @@ public class TripController {
     @Autowired
     DestinationService destinationService;
 
+    @Autowired
+    WeatherAPI weatherAPI;
+
 
     /**
      * Shows all trips that a user has.
@@ -126,6 +129,15 @@ public class TripController {
                     .build();
             model.addAttribute("checklist", checklist);
         }
+
+        ArrayList<String> cities = new ArrayList<>();
+        for(Destination destination : trip.getDestinations()){
+            cities.add(destination.getCity1());
+        }
+
+        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getName()));
+
+        System.out.println("test");
 
         return "trip-page";
     }

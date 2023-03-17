@@ -19,4 +19,4 @@ The Vacation Finder app allows users to select a desired trip, view the itinerar
 
 # Authors and acknowledgement:
 
-Developed by Haile with guidance from Ryan Desmond and Jared Larsen from CodingNomads.
+Developed by Haile Brendon with guidance from Ryan Desmond and Jared Larsen from CodingNomads.

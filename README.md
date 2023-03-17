@@ -2,8 +2,7 @@
 
 # Description:
 
-Vacation Finder App allows user to select a desired trip, view the destination and itinerary, and create a checklist for
-the trip.
+The Vacation Finder app allows users to select a desired trip, view the itinerary, and create a personal checklist for the trip. Application administrators have the ability to create and edit trips along with their destinations.
 
 # Pictures:
 

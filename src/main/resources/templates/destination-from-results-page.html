@@ -29,6 +29,9 @@
 
 
 
+
+
+
     </style>
 </head>
 <body>
@@ -43,16 +46,16 @@
     <br>
 
     <div align="center">
-    <table border="0" cellpadding="0" class="t-table">
-        <tbody class="t-body">
-        <tr style="line-height: 8px; height: 8px;">
-            <td><img height="600" th:src="${destination.image1}" width="800"/></td>
-        </tr>
-        <tr style="line-height: 8px; height: 8px;">
-            <td><img height="600" th:src="${destination.image2}" width="800"/></td>
-        </tr>
-        </tbody>
-    </table>
+        <table border="0" cellpadding="0" class="t-table">
+            <tbody class="t-body">
+            <tr style="line-height: 8px; height: 8px;">
+                <td><img height="600" th:src="${destination.image1}" width="800"/></td>
+            </tr>
+            <tr style="line-height: 8px; height: 8px;">
+                <td><img height="600" th:src="${destination.image2}" width="800"/></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <br>
@@ -69,9 +72,9 @@
     </table>
 
     <div align="center">
-    <form action="#" method="get" th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
-        <button class="btn btn-primary" type="submit">Return</button>
-    </form>
+        <form action="#" method="get" th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
+            <button class="btn btn-primary" type="submit">Return</button>
+        </form>
     </div>
 
 </div>

@@ -10,13 +10,13 @@
 
 <div align="center" id="container">
 
-<br>
+    <br>
 
     <br>
     <br>
     <br>
     <br>
-    <h1  class="display-3" th:text="'Welcome ' + ${#authentication.getPrincipal().getFirstName()} + '!' "></h1>
+    <h1 class="display-3" th:text="'Welcome ' + ${#authentication.getPrincipal().getFirstName()} + '!' "></h1>
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

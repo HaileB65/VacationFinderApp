@@ -18,10 +18,10 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     Destination findByName(String name);
 
-    @Query(value="select distinct scenery from destination", nativeQuery=true)
+    @Query(value = "select distinct scenery from destination", nativeQuery = true)
     List<String> findAvailableSceneries();
 
-    @Query(value="select distinct weather from destination", nativeQuery=true)
+    @Query(value = "select distinct weather from destination", nativeQuery = true)
     List<String> findAvailableWeather();
 
 }

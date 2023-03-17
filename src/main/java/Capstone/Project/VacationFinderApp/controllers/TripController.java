@@ -70,7 +70,7 @@ public class TripController {
      * @return displays new-trip page.
      */
     @GetMapping("/selectTrip")
-    public String selectTrip(Model model){
+    public String selectTrip(Model model) {
         model.addAttribute("trip", new Trip());
 
         List<Trip> tripsList = tripService.getAllTrips();
@@ -131,7 +131,7 @@ public class TripController {
         }
 
         ArrayList<String> cities = new ArrayList<>();
-        for(Destination destination : trip.getDestinations()){
+        for (Destination destination : trip.getDestinations()) {
             cities.add(destination.getCity1());
         }
 
@@ -143,7 +143,7 @@ public class TripController {
     }
 
     @GetMapping("/newTrip")
-    public String createTrip(Model model){
+    public String createTrip(Model model) {
 
         model.addAttribute("trip", new Trip());
 
@@ -151,7 +151,7 @@ public class TripController {
     }
 
     @GetMapping("/trips")
-    public String showTripsPage(Model model){
+    public String showTripsPage(Model model) {
 
         List<Trip> tripsTable = tripService.getAllTrips();
 
@@ -227,7 +227,7 @@ public class TripController {
     }
 
     @PostMapping("/saveTrip")
-    public String saveTrip(@ModelAttribute("trip") Trip newTrip){
+    public String saveTrip(@ModelAttribute("trip") Trip newTrip) {
 
         newTrip.setItinerary(new Itinerary());
 

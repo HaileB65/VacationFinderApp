@@ -16,7 +16,8 @@
 
     <br>
 
-    <form action="#" method="post" th:action="@{'/editItineraryFromTripHomePage/' + ${itinerary.id}}" th:object="${itinerary}">
+    <form action="#" method="post" th:action="@{'/editItineraryFromTripHomePage/' + ${itinerary.id}}"
+          th:object="${itinerary}">
         <table class="table">
             <tr>
                 <th colspan="6">Itinerary</th>
@@ -24,7 +25,7 @@
             <tr>
                 <th scope="col">Days</th>
                 <th scope="col">Day 1</th>
-                <th  scope="col">Day 2</th>
+                <th scope="col">Day 2</th>
                 <th scope="col">Day 3</th>
                 <th scope="col">Day 4</th>
                 <th scope="col">Day 5</th>

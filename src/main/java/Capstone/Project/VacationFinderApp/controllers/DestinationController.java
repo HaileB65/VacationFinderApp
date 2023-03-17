@@ -1,6 +1,8 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
-import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.Destination;
+import Capstone.Project.VacationFinderApp.models.Questionnaire;
+import Capstone.Project.VacationFinderApp.models.Trip;
 import Capstone.Project.VacationFinderApp.services.DestinationService;
 import Capstone.Project.VacationFinderApp.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +28,12 @@ public class DestinationController {
     /**
      * Shows all destinations.
      *
-     * @param model       adds a list of all destinations to view.
+     * @param model adds a list of all destinations to view.
      * @return displays destinations page.
      * @throws Exception
      */
     @GetMapping("/destinations")
-    public String showDestinationsPage(Model model){
+    public String showDestinationsPage(Model model) {
 
         List<Destination> destinationsTable = destinationService.getAllDestinations();
         model.addAttribute("destinationsTable", destinationsTable);
@@ -46,7 +48,7 @@ public class DestinationController {
         model.addAttribute("destinationsTable", destinationsTable);
 
         Trip trip = tripService.getById(tripId);
-        model.addAttribute("trip",trip);
+        model.addAttribute("trip", trip);
 
         return "add-destination-page";
     }
@@ -187,7 +189,7 @@ public class DestinationController {
     }
 
     @PostMapping("/saveDestination/{destinationId}")
-    public String saveDestination(@ModelAttribute("destination") Destination destination,@PathVariable("destinationid") Long destinationId) {
+    public String saveDestination(@ModelAttribute("destination") Destination destination, @PathVariable("destinationid") Long destinationId) {
         destinationService.saveDestination(destination);
         return "redirect:/destinations";
     }

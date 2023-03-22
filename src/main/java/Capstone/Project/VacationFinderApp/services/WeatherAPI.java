@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import java.util.Map;
 
 
@@ -18,7 +17,7 @@ public class WeatherAPI {
     @Autowired
     RestTemplate restTemplate;
 
-    @PostConstruct
+    //    @PostConstruct
     public String postNewForecast(String city, String country) {
 
         HttpHeaders headers = new HttpHeaders();
@@ -30,7 +29,7 @@ public class WeatherAPI {
 
         HttpEntity<WeatherLocation> request = new HttpEntity<>(weatherLocation, headers);
 
-        ResponseEntity<Map> response = restTemplate.postForEntity("${url}", request, Map.class);
+        ResponseEntity<Map> response = restTemplate.postForEntity("https://weather-embed.p.rapidapi.com/forecast/create", request, Map.class);
 
         if (response.getStatusCodeValue() == 200) {
             System.out.println("test");

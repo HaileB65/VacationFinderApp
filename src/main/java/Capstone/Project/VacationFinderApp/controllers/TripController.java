@@ -135,9 +135,9 @@ public class TripController {
             cities.add(destination.getCity1());
         }
 
-        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getName()));
+//        model.addAttribute("weatherURL", weatherAPI.postNewForecast("Rome", "Italy"));
 
-        System.out.println("test");
+//        System.out.println("test");
 
         return "trip-page";
     }
@@ -169,7 +169,6 @@ public class TripController {
         model.addAttribute("itineraryId", trip.itinerary.getId());
 
         model.addAttribute("destinations", trip.destinations);
-
         return "edit-trip-page";
     }
 

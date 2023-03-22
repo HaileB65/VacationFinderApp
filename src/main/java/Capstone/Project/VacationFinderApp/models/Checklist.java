@@ -15,10 +15,6 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 public class Checklist implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     String name;
     String item1;
     String item2;
@@ -30,9 +26,10 @@ public class Checklist implements Serializable {
     String item8;
     String item9;
     String item10;
-
     String checkbox1 = "false";
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;

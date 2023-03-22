@@ -15,16 +15,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class Trip implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
-    String name;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
     public Itinerary itinerary;
-
     @Column(name = "timestamp")
     @CreationTimestamp
     public Timestamp timestamp;
@@ -32,6 +25,10 @@ public class Trip implements Serializable {
     public Set<User> users;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Destination> destinations;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String name;
 
 
 }

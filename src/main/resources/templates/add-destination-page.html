@@ -26,7 +26,7 @@
             <th scope="col">Activity 3</th>
             <th scope="col">Actions</th>
         </tr>
-        <tr th:each="destination : ${destinationsTable}">
+        <tr th:each="destination : ${destinationsList}">
             <td th:text="${destination.name}">Name</td>
             <td th:text="${destination.scenery}">Scenery</td>
             <td th:text="${destination.weather}">Weather</td>

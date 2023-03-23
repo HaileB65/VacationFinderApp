@@ -18,17 +18,17 @@
     <br>
     <h1 class="display-3" th:text="'Welcome ' + ${#authentication.getPrincipal().getFirstName()} + '!' "></h1>
 
-    <div>
+    <div align="left">
 
         <a>
-            To get started head over to the destinations' page to see what trips are available.
+            To get started head over to the destinations' page and see what trips are available.
             If you would like to search for a trip with a specific destination, you can use the destination finder to see if that
             trip is available.
             Once you have picked a destination you like, head over to the "My Trips" page and join your desired trip.
-            On the trip page you can view the itinerary and start a personal checklist.
+            On the trip home page you can view the itinerary and start a personal checklist.
         </a>
 
-        <div sec:authorize="hasAuthority('ADMIN')">
+        <div align="left" sec:authorize="hasAuthority('ADMIN')">
             As an administrator you have the ability to edit trips, itineraries, and destinations.
             To get started making edits to a trip, head over to the "Trips" page.
             From there you can see all the trips available and select the trip you would like to edit.

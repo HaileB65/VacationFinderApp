@@ -200,6 +200,18 @@ public class DestinationController {
         return "redirect:/trips";
     }
 
+    @GetMapping("/removeDestination/{destinationId}/{tripId}")
+    public String removeDestinationFromTrip(@ModelAttribute("destinationId") Long destinationId, @ModelAttribute("tripId") Long tripId) throws Exception {
+        Destination dbDestination = destinationService.getDestinationById(destinationId);
+        Trip dbTrip = tripService.getById(tripId);
+
+        dbTrip.getDestinations().remove(dbDestination);
+
+        tripService.saveTrip(dbTrip);
+
+        return "redirect:/trips";
+    }
+
     /**
      * Saves a new destination.
      *

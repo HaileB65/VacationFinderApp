@@ -135,7 +135,7 @@ public class TripController {
             cities.add(destination.getCity1());
         }
 
-        model.addAttribute("weatherURL", weatherAPI.postNewForecast());
+        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
         System.out.println("test");
 

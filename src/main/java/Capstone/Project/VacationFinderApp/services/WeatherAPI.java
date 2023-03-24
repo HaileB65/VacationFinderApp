@@ -8,9 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import java.util.Map;
-
 
 @Service
 public class WeatherAPI {
@@ -18,14 +16,14 @@ public class WeatherAPI {
     @Autowired
     RestTemplate restTemplate;
 
-    public String postNewForecast() {
+    public String postNewForecast(String city, String country) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-rapidapi-forward-key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
         headers.add("X-RapidAPI-Host", "weather-embed.p.rapidapi.com");
 
-        WeatherLocation weatherLocation = new WeatherLocation("Vancouver", "CA");
+        WeatherLocation weatherLocation = new WeatherLocation(city, country);
 
         HttpEntity<WeatherLocation> request = new HttpEntity<>(weatherLocation, headers);
 

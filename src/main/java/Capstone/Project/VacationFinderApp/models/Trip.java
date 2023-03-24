@@ -29,6 +29,8 @@ public class Trip implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    String country;
+    String city;
 
 
 }

@@ -1,6 +1,8 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
-import Capstone.Project.VacationFinderApp.models.skyscanner.pollsearchresponse.PollASearchResponse;
+import Capstone.Project.VacationFinderApp.models.WeatherLocation;
+import Capstone.Project.VacationFinderApp.models.skyscanner.CreateSearchResponse;
+import Capstone.Project.VacationFinderApp.models.skyscanner.pollsearchresponse.PollSearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,13 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @RestController
 public class TestController {
 
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("/skyscanner/pollSearch")
+    @GetMapping("/skyscanner/pollASearch")
     public void pollASearch(){
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
@@ -30,23 +34,31 @@ public class TestController {
 
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<PollASearchResponse> responseObj = restTemplate.exchange(url, HttpMethod.GET,entity, PollASearchResponse.class);
+        ResponseEntity<PollSearchResponse> responseObj = restTemplate.exchange(url, HttpMethod.GET,entity, PollSearchResponse.class);
 
-        PollASearchResponse resObj = responseObj.getBody();
+        PollSearchResponse resObj = responseObj.getBody();
 
         System.out.println("test");
 
     }
 
-    @PostMapping("/skyscanner/createSearch")
+    @PostMapping("/skyscanner/createASearch")
     public void createSearch(){
+        //TODO finish creating 'createSearch' endpoint to get session token from Skyscanner API.
+
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Rapidapi-Host","skyscanner-api.p.rapidapi.com");
         headers.add("X-Rapidapi-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
 
-        HttpEntity entity = new HttpEntity("parameters", headers);
+        HttpEntity<String> entity = new HttpEntity<>("parameters",headers);
 
         String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/create";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<CreateSearchResponse> responseObj = restTemplate.exchange(url, HttpMethod.POST,entity, CreateSearchResponse.class);
+
+        CreateSearchResponse resObj = responseObj.getBody();
+        System.out.println("test");
 
     }
 

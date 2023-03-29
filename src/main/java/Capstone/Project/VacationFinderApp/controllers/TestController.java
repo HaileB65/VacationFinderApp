@@ -21,7 +21,7 @@ public class TestController {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("/skyscanner/pollASearch")
+    @GetMapping("/skyscanner/pollSearch")
     public void pollASearch(){
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
@@ -42,7 +42,7 @@ public class TestController {
 
     }
 
-    @PostMapping("/skyscanner/createASearch")
+    @PostMapping("/skyscanner/createSearch")
     public void createSearch(){
         //TODO finish creating 'createSearch' endpoint to get session token from Skyscanner API.
 
@@ -58,6 +58,7 @@ public class TestController {
         ResponseEntity<CreateSearchResponse> responseObj = restTemplate.exchange(url, HttpMethod.POST,entity, CreateSearchResponse.class);
 
         CreateSearchResponse resObj = responseObj.getBody();
+
         System.out.println("test");
 
     }

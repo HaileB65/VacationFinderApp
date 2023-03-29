@@ -1,6 +1,8 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerItinerary;
+import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerResponse;
 import Capstone.Project.VacationFinderApp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -140,7 +142,13 @@ public class TripController {
 
         model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
-        flightPricesAPI.pollSearch();
+        //TODO get prices and deeplinks from createSearchResponse and pollSearchResponse
+
+        SkyscannerResponse createSearchResponse = flightPricesAPI.createNewSearch();
+        createSearchResponse.getContent().getResults().getItineraries();
+
+        SkyscannerResponse pollSearchResponse = flightPricesAPI.pollSearch(createSearchResponse.getSessionToken());
+//        List<SkyscannerItinerary> itineraries = pollSearchResponse.getContent().getResults().getItineraries();
 
         System.out.println("test");
 

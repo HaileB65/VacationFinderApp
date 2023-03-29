@@ -21,10 +21,6 @@ public class FightPricesAPI {
     @Autowired
     RestTemplate restTemplate;
 
-    //TODO turn postman request into createNewSearch method below
-    // turn JSON object into java object.
-
-    @PostConstruct
     public SkyscannerResponse createNewSearch() throws JsonProcessingException {
 
         HttpHeaders headers = new HttpHeaders();
@@ -79,7 +75,7 @@ public class FightPricesAPI {
         } else return null;
     }
 
-    public SkyscannerResponse pollSearch() {
+    public SkyscannerResponse pollSearch(String sessionToken) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
@@ -87,7 +83,7 @@ public class FightPricesAPI {
 
         HttpEntity<String> request = new HttpEntity<>("parameters", headers);
 
-        String token = "Wrn8UAfxKPZ8aY79uIdlxZopyBslL2z40cuwKLxbrOAX9aziRBC0cW6it4rh7WwaTq1i86TeM21nY6ssXtPK6XfYGhNk8irPeWOyy0UWHsspmSpMdg8UT_aCKsSj5VNTGv7nEzb716bD1wh9Pe5ffaRJjTBxxe60KEjO1eKsAA_QxvqqaJYzD47lX0l8NsaZpDvkB6X9_6k1SBUmZHy4aMJOFhCZdZDT8lntodFc54copULK4frfhEnrZnyPoBikdqeJ22LugBeRp_XhpD9r2x22r5Dpb4xjYZUQBroBWDGu4zkYgPMYGKAo4ED4vix_lNP5YZkqp-q7FTLUt2TQAv5LikbvmC0fpyPydutq-3REaRO0Dyfjg7n-AJXuJulQX7DQqhcgalxSIqGbGmB_KABITtjZ1AQVmrF7mBXTRNt4nvbn6YKW6h5kyRzzr5htQjyK_SrukjgIaNE5gae1fObaFRpc0nmhVg5KIQdboQcStbjO_KSsMCXnLetBLi7cmhew61QOWgnvps_NchSHMQ";
+        String token = sessionToken;
         String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/poll/" + token;
 
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);

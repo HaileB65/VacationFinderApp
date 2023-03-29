@@ -16,23 +16,25 @@ import javax.annotation.PostConstruct;
 
 
 @Service
-public class FightPricesAPI {
+public class SkyscannerAPIService {
 
     @Autowired
     RestTemplate restTemplate;
 
-    public SkyscannerResponse createNewSearch() throws JsonProcessingException {
+    public SkyscannerResponse createNewSearch(String originId, String destinationId) throws JsonProcessingException {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
         headers.add("X-RapidAPI-Host", "skyscanner-api.p.rapidapi.com");
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        OriginPlaceID originPlaceID = new OriginPlaceID();
-        originPlaceID.setIata("LHR");
+        OriginPlaceID originPlaceId = new OriginPlaceID();
+        originPlaceId.setIata(originId);
+//        originId.setIata("DFW");
 
         DestinationPlaceId destinationPlaceId = new DestinationPlaceId();
-        destinationPlaceId.setIata("DXB");
+        destinationPlaceId.setIata(destinationId);
+//        destinationId.setIata("DUB");
 
         Date date = new Date();
         date.setYear(2023);
@@ -40,7 +42,7 @@ public class FightPricesAPI {
         date.setDay(20);
 
         QueryLeg queryLeg = new QueryLeg();
-        queryLeg.setOriginPlaceId(originPlaceID);
+        queryLeg.setOriginPlaceId(originPlaceId);
         queryLeg.setDestinationPlaceId(destinationPlaceId);
         queryLeg.setDate(date);
 
@@ -58,7 +60,6 @@ public class FightPricesAPI {
                 
         ObjectMapper objectMapper = new ObjectMapper();
         String flightSearchJsonStrObject = objectMapper.writeValueAsString(flightSearch);
-        System.out.println(flightSearchJsonStrObject);
 
         String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/create";
 

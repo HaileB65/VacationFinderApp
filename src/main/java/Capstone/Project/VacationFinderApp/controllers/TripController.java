@@ -40,7 +40,7 @@ public class TripController {
     WeatherAPI weatherAPI;
 
     @Autowired
-    FightPricesAPI flightPricesAPI;
+    SkyscannerAPIService skyscannerAPIService;
 
 
     /**
@@ -143,9 +143,8 @@ public class TripController {
 
         model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
-        //TODO get prices and deeplinks from createSearchResponse and pollSearchResponse
 
-        SkyscannerResponse createSearchResponse = flightPricesAPI.createNewSearch();
+        SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(originPlaceId, destinationPlaceId);
 
         //map
         Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
@@ -166,11 +165,9 @@ public class TripController {
         model.addAttribute("carrier", carrier);
 
 
-        SkyscannerResponse pollSearchResponse = flightPricesAPI.pollSearch(createSearchResponse.getSessionToken());
+        SkyscannerResponse pollSearchResponse = skyscannerAPIService.pollSearch(createSearchResponse.getSessionToken());
         ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());
         ArrayList<SkyscannerItinerary> valueList1 = new ArrayList<>(itineraryHashMap.values());
-
-        System.out.println("test");
 
         return "trip-page";
     }

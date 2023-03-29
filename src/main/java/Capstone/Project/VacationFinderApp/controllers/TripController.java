@@ -36,6 +36,9 @@ public class TripController {
     @Autowired
     WeatherAPI weatherAPI;
 
+    @Autowired
+    FightPricesAPI flightPricesAPI;
+
 
     /**
      * Shows all trips that a user has.
@@ -136,6 +139,8 @@ public class TripController {
         }
 
         model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+
+        flightPricesAPI.pollSearch();
 
         System.out.println("test");
 

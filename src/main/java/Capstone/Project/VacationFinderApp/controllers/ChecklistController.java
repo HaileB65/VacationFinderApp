@@ -47,21 +47,6 @@ public class ChecklistController {
         return "new-checklist";
     }
 
-//    /**
-//     * Edits an existing checklist.
-//     *
-//     * @param checklistName Name of checklist to be edited.
-//     * @param model       displays checklist from DB that was found using checklistName parameter.
-//     * @return displays edit-checklist page.
-//     * @throws Exception
-//     */
-//    @GetMapping("/editChecklist/{checklistName}")
-//    public String editChecklistPage(@PathVariable("checklistName") String checklistName, Model model) throws Exception {
-//        Checklist checklist = checklistService.getChecklistByName(checklistName);
-//        model.addAttribute("checklist", checklist);
-//        return "edit-checklist";
-//    }
-
     @GetMapping("/editChecklist/{checklistId}")
     public String editChecklistPageByID(@PathVariable("checklistId") Long checklistId, Model model) throws Exception {
         Checklist dbChecklist = checklistService.getChecklistById(checklistId);

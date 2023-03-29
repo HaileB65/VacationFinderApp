@@ -17,7 +17,7 @@
     <br>
 
     <div>
-        <table align="center" bgcolor="grey">
+        <table bgcolor="grey" align="center">
             <tr>
                 <td>
                     <img th:src="${weatherURL}"/>
@@ -176,11 +176,13 @@
     </table>
 
     <br>
+    <br>
+    <br>
 
-    <form class="row g-3"  action="#" method="post" th:action="@{'/searchFlightPrices/' + ${originPlaceID} + ${destinationPlaceId}" th:object="${query}">
+    <form class="row g-3"  action="" method="post" th:action="@{'/searchFlightPrices/' + ${originPlaceId} + ${destinationPlaceId}}">
         <div class="col-auto">
             <label for="Origin Airport" class="visually-hidden">Origin Airport</label>
-            <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code)">
+            <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code">
         </div>
         <div class="col-auto">
             <label for="Destination Airport" class="visually-hidden">Destination Airport</label>
@@ -196,27 +198,36 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title" th:text="${carrier}">Special title treatment</h5>
+                    <p class="card-text" th:text=" '$' +${price}">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="${deepLink}" class="btn btn-primary">Book Flight</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Carrier</h5>
+                    <p class="card-text" >Price</p>
+                    <a href="" class="btn btn-primary">Book Flight</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Carrier</h5>
+                    <p class="card-text" >Price</p>
+                    <a href="" class="btn btn-primary">Book Flight</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Carrier</h5>
+                    <p class="card-text" >Price</p>
+                    <a href="" class="btn btn-primary">Book Flight</a>
                 </div>
             </div>
         </div>

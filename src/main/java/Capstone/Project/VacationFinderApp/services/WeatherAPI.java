@@ -29,11 +29,7 @@ public class WeatherAPI {
 
         ResponseEntity<Map> response = restTemplate.postForEntity("https://weather-embed.p.rapidapi.com/forecast/create", request, Map.class);
 
-        if (response.getStatusCodeValue() == 200) {
-            System.out.println((String) response.getBody().get("url"));
-            System.out.println("test");
-            return (String) response.getBody().get("url");
-        } else return null;
+        return (String) response.getBody().get("url");
     }
 
 }

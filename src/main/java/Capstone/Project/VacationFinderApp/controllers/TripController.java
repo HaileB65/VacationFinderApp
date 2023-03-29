@@ -144,11 +144,16 @@ public class TripController {
         model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
 
-        SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(originPlaceId, destinationPlaceId);
+        SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch();
 
         //map
         Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
         ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
+
+        //carrier
+        ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
+        String carrier = keyList.get(0);
+        model.addAttribute("carrier", carrier);
 
         //price
         SkyscannerItinerary itinerary = valueList.get(0);
@@ -156,14 +161,8 @@ public class TripController {
         model.addAttribute("price", price);
 
         //deeplink
-        String deeplink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
-        model.addAttribute("link", deeplink);
-
-        //carrier
-        ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
-        String carrier = keyList.get(0);
-        model.addAttribute("carrier", carrier);
-
+        String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
+        model.addAttribute("deepLink", deepLink);
 
         SkyscannerResponse pollSearchResponse = skyscannerAPIService.pollSearch(createSearchResponse.getSessionToken());
         ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());

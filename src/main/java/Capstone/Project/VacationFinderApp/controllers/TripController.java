@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -145,10 +146,26 @@ public class TripController {
         //TODO get prices and deeplinks from createSearchResponse and pollSearchResponse
 
         SkyscannerResponse createSearchResponse = flightPricesAPI.createNewSearch();
-        createSearchResponse.getContent().getResults().getItineraries();
+
+        //map
+        Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
+        ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
+
+        //price
+        SkyscannerItinerary itinerary = valueList.get(0);
+        Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
+
+        //deeplink
+        String deeplink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
+
+        //carrier
+        ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
+        String carrier = keyList.get(0);
+
 
         SkyscannerResponse pollSearchResponse = flightPricesAPI.pollSearch(createSearchResponse.getSessionToken());
-//        List<SkyscannerItinerary> itineraries = pollSearchResponse.getContent().getResults().getItineraries();
+        ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());
+        ArrayList<SkyscannerItinerary> valueList1 = new ArrayList<>(itineraryHashMap.values());
 
         System.out.println("test");
 

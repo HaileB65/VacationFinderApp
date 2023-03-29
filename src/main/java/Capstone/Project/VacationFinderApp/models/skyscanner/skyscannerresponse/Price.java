@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Price {
-    String amount;
+    float amount;
     String unit;
     String updateStatus;
 }

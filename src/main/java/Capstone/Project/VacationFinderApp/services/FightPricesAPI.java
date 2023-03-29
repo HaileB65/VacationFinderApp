@@ -65,14 +65,7 @@ public class FightPricesAPI {
         HttpEntity<String> request = new HttpEntity<>(flightSearchJsonStrObject, headers);
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
 
-        if (response.getStatusCodeValue() == 200) {
-
-            System.out.println(response.getBody());
-
-            System.out.println("test");
-
-            return response.getBody();
-        } else return null;
+        return response.getBody();
     }
 
     public SkyscannerResponse pollSearch(String sessionToken) {
@@ -88,16 +81,7 @@ public class FightPricesAPI {
 
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
 
-        if (response.getStatusCodeValue() == 200) {
-
-            System.out.println(response.getBody());
-
-            System.out.println("test");
-
-            return response.getBody();
-        } else
-
-            return null;
+        return response.getBody();
     }
 
 }

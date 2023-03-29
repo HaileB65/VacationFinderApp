@@ -154,13 +154,16 @@ public class TripController {
         //price
         SkyscannerItinerary itinerary = valueList.get(0);
         Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
+        model.addAttribute("price", price);
 
         //deeplink
         String deeplink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
+        model.addAttribute("link", deeplink);
 
         //carrier
         ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
         String carrier = keyList.get(0);
+        model.addAttribute("carrier", carrier);
 
 
         SkyscannerResponse pollSearchResponse = flightPricesAPI.pollSearch(createSearchResponse.getSessionToken());

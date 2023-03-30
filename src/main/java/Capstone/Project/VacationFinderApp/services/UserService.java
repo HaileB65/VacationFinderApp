@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinderApp.services;
 
+import Capstone.Project.VacationFinderApp.models.Role;
 import Capstone.Project.VacationFinderApp.models.User;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
 import Capstone.Project.VacationFinderApp.security.PasswordEncoder;
@@ -41,6 +42,7 @@ public class UserService implements UserDetailsService {
     public User createNewUser(User user) {
 
         passwordEncoder.encodeUserPassword(user);
+        user.setRole(Role.USER);
         userRepository.saveAndFlush(user);
         return user;
     }

@@ -1,13 +1,13 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.User;
-import Capstone.Project.VacationFinderApp.models.UserForm;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -46,19 +46,21 @@ public class LoginController {
      * @return displays register page.
      */
     @GetMapping("/register")
-    public String register(UserForm userForm, Model model) {
+    public String register(Model model) {
 
         model.addAttribute("newUser", new User());
 
         return "register";
     }
 
+    @ExceptionHandler
     @PostMapping("/register")
     public String addUser(@Valid User user, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
             return "register";
         }
+
         userService.createNewUser(user);
         return "successful-registration";
     }

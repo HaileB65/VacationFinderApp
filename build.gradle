@@ -33,15 +33,9 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.2'
 
-    // https://mvnrepository.com/artifact/javax.validation/validation-api
-    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
-    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
-    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.13.Final'
 
-
-
-
-
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.6.6'
 
 }
 

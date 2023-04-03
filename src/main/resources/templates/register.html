@@ -17,16 +17,14 @@
     <br>
 
     <form action="#" method="post" th:action="@{/register}" th:object="${newUser}">
-<!--        /process_register-->
 
         <table class="table table-hover">
             <tr>
                 <td>First Name:</td>
                 <td>
                     <input required th:field="*{firstName}" type="text"/>
+                    <p th:if="${#fields.hasErrors('firstName')}">Invalid First Name</p>
                 </td>
-
-                <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>
 
             </tr>
             <tr>

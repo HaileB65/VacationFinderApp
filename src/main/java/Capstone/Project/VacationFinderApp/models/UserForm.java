@@ -12,23 +12,18 @@ public class UserForm {
     @Size(min=2, max=30)
     private String firstName;
 
-    @NotNull
-    @Size(min=2, max=30)
+    @NotNull(message = "Name is mandatory")
     private String lastName;
 
     @NotNull
-    @Size(min=2, max=30)
     private String email;
 
     @NotNull
-    @Size(min=9, max=15)
     private String phone;
 
     @NotNull
-    @Size(min=2, max=30)
     private String username;
 
     @NotNull
-    @Size(min=2, max=30)
     private String password;
 }

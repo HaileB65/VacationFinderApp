@@ -8,6 +8,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -21,33 +24,54 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class User implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @NotNull
+    @Size(min=2, max=30, message = "Age should not be less than 18")
+    String firstName;
+
+    @NotNull(message = "Name is mandatory")
+    String lastName;
+
+    @NotNull
+    String email;
+
+    @NotNull
+    String phone;
+
+    @NotNull
+    String username;
+
+    @NotNull
+    String password;
+
+    @CreationTimestamp
+    public Timestamp timestamp;
+
     @Transient
     @JsonIgnore
     public URI locationURI;
 
+    @Enumerated(EnumType.STRING)
+    Role role;
+
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Checklist> checklists;
+
     @Column(name = "timestamp")
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Trip> trips;
-    @CreationTimestamp
-    public Timestamp timestamp;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String firstName;
-    String lastName;
-    String email;
-    String phone;
-    String username;
-    String password;
-    @Enumerated(EnumType.STRING)
-    Role role;
+
     @Builder.Default
     boolean locked = false;
 
     @Builder.Default
     boolean enabled = true;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

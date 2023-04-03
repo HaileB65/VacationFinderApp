@@ -30,36 +30,43 @@
                     <p> already exists</p>
                 </div>
 
+                <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>
+
             </tr>
             <tr>
                 <td>Last Name:</td>
                 <td>
                     <input required th:field="*{lastName}" type="text"/>
                 </td>
+                <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td>
             </tr>
             <tr>
                 <td>Email Address:</td>
                 <td>
                     <input required th:field="*{email}" type="email"/>
                 </td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
             </tr>
             <tr>
                 <td>Phone Number:</td>
                 <td>
                     <input required th:field="*{phone}" type="text">
                 </td>
+                <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
             </tr>
             <tr>
                 <td>Username:</td>
                 <td>
                     <input required th:field="*{username}" type="text">
                 </td>
+                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td>
                     <input required th:field="*{password}" type="text">
                 </td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
             </tr>
         </table>
 

@@ -1,12 +1,16 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.User;
+import Capstone.Project.VacationFinderApp.models.UserForm;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class LoginController {
@@ -30,7 +34,7 @@ public class LoginController {
      */
     @GetMapping("/login")
     public String login() {
-        return "login2";
+        return "login";
     }
 
     /**
@@ -40,11 +44,21 @@ public class LoginController {
      * @return displays register page.
      */
     @GetMapping("/register")
-    public String register(Model model) {
+    public String register(UserForm userForm, Model model) {
 
         model.addAttribute("newUser", new User());
 
         return "register";
+    }
+
+    @PostMapping("/register")
+    public String checkUserInfo(@Valid UserForm userFrom, BindingResult bindingResult){
+
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        return "successful-registration";
     }
 
     /**

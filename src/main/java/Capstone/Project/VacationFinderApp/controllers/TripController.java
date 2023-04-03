@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,25 +146,28 @@ public class TripController {
         //map
         Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
         ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
-
-        //carrier
         ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
-        String carrier = keyList.get(0);
-        model.addAttribute("carrier", carrier);
 
-        //price
-        SkyscannerItinerary itinerary = valueList.get(0);
-        Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
-        model.addAttribute("price", price);
+        if(!(valueList.isEmpty() & keyList.isEmpty())) {
 
-        //deeplink
-        String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
-        model.addAttribute("deepLink", deepLink);
+            //carrier
+            String carrier = keyList.get(0);
+            model.addAttribute("carrier", carrier);
 
-        SkyscannerResponse pollSearchResponse = skyscannerAPIService.pollSearch(createSearchResponse.getSessionToken());
-        ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());
-        ArrayList<SkyscannerItinerary> valueList1 = new ArrayList<>(itineraryHashMap.values());
+            //price
+            SkyscannerItinerary itinerary = valueList.get(0);
+            Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
+            model.addAttribute("price", price);
 
+            //deeplink
+            String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
+            model.addAttribute("deepLink", deepLink);
+
+            SkyscannerResponse pollSearchResponse = skyscannerAPIService.pollSearch(createSearchResponse.getSessionToken());
+            ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());
+            ArrayList<SkyscannerItinerary> valueList1 = new ArrayList<>(itineraryHashMap.values());
+
+        }
         return "trip-page";
     }
 
@@ -246,6 +246,18 @@ public class TripController {
     public String joinTrip(@ModelAttribute("trip") Trip trip, @AuthenticationPrincipal User currentUser) throws Exception {
 
         Trip dbTrip = tripService.getByName(trip.getName());
+
+        User user = userService.getUserById(currentUser.getId());
+        user.getTrips().add(dbTrip);
+        userService.saveUser(user);
+
+        return "redirect:/myTrips";
+    }
+
+    @PostMapping("/joinTrip/{destination}")
+    public String joinTrip(@AuthenticationPrincipal User currentUser, @PathVariable("destination") String destination) throws Exception {
+
+        Trip dbTrip = tripService.getByName(destination);
 
         User user = userService.getUserById(currentUser.getId());
         user.getTrips().add(dbTrip);

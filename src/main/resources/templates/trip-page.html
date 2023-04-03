@@ -179,7 +179,8 @@
     <br>
     <br>
 
-    <form class="row g-3"  action="" method="post" th:action="@{'/searchFlightPrices/' + ${originPlaceId} + ${destinationPlaceId}}">
+    <div align="center">
+    <form class="row g-3"  action="#" method="post" th:action="@{'/searchFlightPrices/' + ${originPlaceId} + ${destinationPlaceId}}" >
         <div class="col-auto">
             <label for="Origin Airport" class="visually-hidden">Origin Airport</label>
             <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code">
@@ -192,6 +193,7 @@
             <button type="submit" class="btn btn-primary mb-3">Get Flight prices</button>
         </div>
     </form>
+    </div>
 
     <br>
     <div class="row">
@@ -200,34 +202,7 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${carrier}">Special title treatment</h5>
                     <p class="card-text" th:text=" '$' +${price}">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="${deepLink}" class="btn btn-primary">Book Flight</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Carrier</h5>
-                    <p class="card-text" >Price</p>
-                    <a href="" class="btn btn-primary">Book Flight</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Carrier</h5>
-                    <p class="card-text" >Price</p>
-                    <a href="" class="btn btn-primary">Book Flight</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Carrier</h5>
-                    <p class="card-text" >Price</p>
-                    <a href="" class="btn btn-primary">Book Flight</a>
+                    <a th:href="${deepLink}" class="btn btn-primary">Book Flight</a>
                 </div>
             </div>
         </div>

@@ -28,23 +28,18 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotEmpty(message = "User's first name cannot be empty.")
-    @Size(min=2, max=30, message = "First name should be between 2-30 characters long.")
+    @NotEmpty(message = "User's name cannot be empty.")
+    @Size(min = 5, max = 250)
     String firstName;
 
-    @NotEmpty(message = "Name is mandatory")
     String lastName;
 
-    @NotEmpty
     String email;
 
-    @NotEmpty
     String phone;
 
-    @NotEmpty
     String username;
 
-    @NotEmpty
     String password;
 
     @CreationTimestamp

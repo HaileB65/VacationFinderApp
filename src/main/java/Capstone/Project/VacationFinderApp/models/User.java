@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.net.URI;
@@ -29,7 +30,7 @@ public class User implements UserDetails {
     Long id;
 
     @NotEmpty(message = "User's name cannot be empty.")
-    @Size(min = 5, max = 250)
+    @Size(min = 2, max = 3, message = "First name must be between 2-25 characters long.")
     String firstName;
 
     String lastName;

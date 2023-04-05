@@ -16,14 +16,23 @@
 
     <br>
 
-    <form action="#" method="post" th:action="@{/register}" th:object="${user}" modelAttribute="user">
+    <form action="#" method="post" th:action="@{/register}" th:object="${user}" th:modelAttribute="user">
 
         <table class="table table-hover">
             <tr>
                 <td>First Name:</td>
                 <td>
-                    <input required th:field="*{firstName}" type="text"/>
-                    <p th:if="${#fields.hasErrors('firstName')}">Invalid Age</p>
+                    <div>
+                        <input required th:field="*{firstName}" type="text"/>
+                        <ul>
+                            <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" class="error" />
+                        </ul>
+                    </div>
+                    <p th:if="${#fields.hasErrors('firstName')}">Invalid first name</p>
+<!--                    <div class="alert alert-error" th:if="${user.hasErrors('firstName')}">-->
+<!--                        Invalid username and password.-->
+<!--                    </div>-->
+                    <p class="error" th:errors="${user.firstName}"></p>
                 </td>
 
             </tr>

@@ -34,9 +34,10 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.2'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.7.3'
-    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
-    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+//    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+//    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
 
 }
 

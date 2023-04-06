@@ -54,6 +54,8 @@ public class DestinationController {
 
         Destination destination = destinationService.getDestinationById(destinationId);
         model.addAttribute("destinationName", destination.getName());
+        Trip trip = tripService.getByName(destination.getName());
+        model.addAttribute("trip", trip);
         model.addAttribute("destination", destination);
 
         ArrayList<String> images = new ArrayList<>();

@@ -180,14 +180,14 @@
     <br>
 
     <div align="center">
-    <form class="row g-3"  action="#" method="post" th:action="@{'/searchFlightPrices/' + ${originPlaceId} + ${destinationPlaceId}}" >
+    <form class="row g-3"  action="#" method="get" th:action="@{/trip/__${trip.name}__}" th:object="${queryLeg}">
         <div class="col-auto">
             <label for="Origin Airport" class="visually-hidden">Origin Airport</label>
-            <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code">
+            <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code" th:field="*{originPlaceId.iata}">
         </div>
         <div class="col-auto">
             <label for="Destination Airport" class="visually-hidden">Destination Airport</label>
-            <input type="text" class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code">
+            <input type="text" class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code" th:field="*{destinationPlaceId.iata}">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Get Flight prices</button>
@@ -196,6 +196,11 @@
     </div>
 
     <br>
+
+    <table>
+        <tr th:each="destination : ${destinationsTable}">
+            <td></td>
+        </tr>
     <div class="row">
         <div class="col-sm-6">
             <div class="card">

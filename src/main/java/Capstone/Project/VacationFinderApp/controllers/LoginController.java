@@ -7,17 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 
 
 @Controller
-@Validated
 public class LoginController {
     @Autowired
     UserService userService;
@@ -57,7 +54,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String addUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
+    public String addUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model){
 
         if (bindingResult.hasErrors()) {
             return "register";
@@ -65,12 +62,6 @@ public class LoginController {
 
         userService.createNewUser(user);
         return "successful-registration";
-    }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ConstraintViolationException handleValidationExceptions(ConstraintViolationException ex){
-        return ex;
     }
 
     /**

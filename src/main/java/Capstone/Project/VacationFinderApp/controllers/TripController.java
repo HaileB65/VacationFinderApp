@@ -1,14 +1,19 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.QueryLeg;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerItinerary;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerResponse;
 import Capstone.Project.VacationFinderApp.services.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +98,7 @@ public class TripController {
      * @throws Exception
      */
     @GetMapping("/trip/{tripName}")
-    public String userTripPage(@PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser, Model model) throws Exception {
+    public String userTripPage(@PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser,@ModelAttribute("queryLeg") QueryLeg userQueryLeg1, Model model) throws Exception {
 
         Trip trip = tripService.getByName(tripName);
         model.addAttribute("trip", trip);
@@ -140,35 +145,44 @@ public class TripController {
 
         model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
+        QueryLeg queryLeg = new QueryLeg();
+        model.addAttribute("queryLeg", queryLeg);
 
-        SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch();
+        if (userQueryLeg1.getOriginPlaceId() != null) {
 
-        //map
-        Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
-        ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
-        ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
+            SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(),userQueryLeg1.getDestinationPlaceId().getIata());
 
-        if(!(valueList.isEmpty() & keyList.isEmpty())) {
+            //map
+            Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
+            ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
+            ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
 
-            //carrier
-            String carrier = keyList.get(0);
-            model.addAttribute("carrier", carrier);
+            if (!(valueList.isEmpty() & keyList.isEmpty())) {
+                //carrier
+                String carrier = keyList.get(0);
+                model.addAttribute("carrier", carrier);
 
-            //price
-            SkyscannerItinerary itinerary = valueList.get(0);
-            Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
-            model.addAttribute("price", price);
+                //price
+                SkyscannerItinerary itinerary = valueList.get(0);
+                Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
+                model.addAttribute("price", price);
 
-            //deeplink
-            String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
-            model.addAttribute("deepLink", deepLink);
+                //deeplink
+                String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
+                model.addAttribute("deepLink", deepLink);
 
-            SkyscannerResponse pollSearchResponse = skyscannerAPIService.pollSearch(createSearchResponse.getSessionToken());
-            ArrayList<String> keyList1 = new ArrayList<>(itineraryHashMap.keySet());
-            ArrayList<SkyscannerItinerary> valueList1 = new ArrayList<>(itineraryHashMap.values());
-
+            }
         }
+
         return "trip-page";
+    }
+
+    @PostMapping("/searchFlightPrices")
+    public SkyscannerResponse searchFlightPrices(@ModelAttribute("queryLeg") QueryLeg queryLeg) throws JsonProcessingException {
+
+        SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(queryLeg.getOriginPlaceId().getIata(), queryLeg.getDestinationPlaceId().getIata());
+
+        return createSearchResponse;
     }
 
     @GetMapping("/newTrip")

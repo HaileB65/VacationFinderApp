@@ -21,18 +21,18 @@ public class SkyscannerAPIService {
     @Autowired
     RestTemplate restTemplate;
 
-    public SkyscannerResponse createNewSearch() throws JsonProcessingException {
+    public SkyscannerResponse createNewSearch(String originPlaceId, String destinationPlaceId) throws JsonProcessingException {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
         headers.add("X-RapidAPI-Host", "skyscanner-api.p.rapidapi.com");
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        OriginPlaceID originPlaceId = new OriginPlaceID();
-        originPlaceId.setIata("DFW");
+        OriginPlaceID origin = new OriginPlaceID();
+        origin.setIata(originPlaceId);
 
-        DestinationPlaceId destinationPlaceId = new DestinationPlaceId();
-        destinationPlaceId.setIata("DUB");
+        DestinationPlaceId destination = new DestinationPlaceId();
+        destination.setIata(destinationPlaceId);
 
         Date date = new Date();
         date.setYear(2023);
@@ -40,8 +40,8 @@ public class SkyscannerAPIService {
         date.setDay(20);
 
         QueryLeg queryLeg = new QueryLeg();
-        queryLeg.setOriginPlaceId(originPlaceId);
-        queryLeg.setDestinationPlaceId(destinationPlaceId);
+        queryLeg.setOriginPlaceId(origin);
+        queryLeg.setDestinationPlaceId(destination);
         queryLeg.setDate(date);
 
         Query query = new Query();

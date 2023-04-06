@@ -8,9 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.net.URI;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -29,18 +30,28 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotEmpty(message = "User's name cannot be empty.")
-    @Size(min = 2, max = 3, message = "First name must be between 2-25 characters long.")
+    @NotEmpty(message = "First name cannot be empty.")
+    @Size(min = 2, max = 25, message = "First name must be between 2-25 characters long.")
     String firstName;
 
+    @NotEmpty(message = "Last name cannot be empty.")
+    @Size(min = 2, max = 25, message = "Last name must be between 2-25 characters long.")
     String lastName;
 
+    @NotEmpty(message = "Email cannot be empty")
+    @Email
     String email;
 
+    @NotEmpty
+    @Max(10)
     String phone;
 
+    @NotEmpty
+    @Size(min = 8, max = 30, message = "Username must be between 8-25 characters long.")
     String username;
 
+    @NotEmpty
+    @Size(min = 8, max = 30, message = "Password must be between 8-25 characters long.")
     String password;
 
     @CreationTimestamp

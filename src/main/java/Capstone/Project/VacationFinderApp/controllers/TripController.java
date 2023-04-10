@@ -2,6 +2,7 @@ package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
 import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.QueryLeg;
+import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.FlightId;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerItinerary;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerResponse;
 import Capstone.Project.VacationFinderApp.services.*;
@@ -152,10 +153,34 @@ public class TripController {
 
             SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(),userQueryLeg1.getDestinationPlaceId().getIata());
 
+            List<FlightId> cheapestFlightsList = createSearchResponse.getContent().getSortingOptions().getCheapest();
+            ArrayList<FlightId> topSixCheapestFlightIds = new ArrayList<>();
+
+            for(int i=0; i < 6; i++){
+                topSixCheapestFlightIds.add(cheapestFlightsList.get(i));
+            }
+
             //map
             Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
             ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
             ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
+
+            ArrayList<Flight> topSixCheapestFlights = new ArrayList<>();
+
+            for(FlightId flightId : topSixCheapestFlightIds){
+
+                Flight flight = new Flight();
+                SkyscannerItinerary itinerary = valueList.get(keyList.indexOf(flightId.getItineraryId()));
+
+                flight.setCarrier(flightId.getItineraryId());
+                flight.setPrice(itinerary.getPricingOptions().get(0).getPrice().getAmount());
+                flight.setDeepLink(itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink());
+
+                topSixCheapestFlights.add(flight);
+
+            }
+            System.out.println(topSixCheapestFlights);
+            model.addAttribute("topSixCheapestFlights", topSixCheapestFlights);
 
             if (!(valueList.isEmpty() & keyList.isEmpty())) {
                 //carrier

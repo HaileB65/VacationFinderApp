@@ -36,18 +36,11 @@ public class ItineraryController {
      * @return displays edit-itinerary page.
      * @throws Exception
      */
-    @GetMapping("/editItineraryFromUserTripPage/{itineraryId}")
-    public String editItineraryFromUserTripPage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
-        Itinerary itinerary = itineraryService.getItineraryById(itineraryId);
-        model.addAttribute("itinerary", itinerary);
-        return "edit-itinerary-from-user-trip-page";
-    }
-
-    @GetMapping("/editItineraryFromTripHomePage/{itineraryId}")
+    @GetMapping("/editItinerary/{itineraryId}")
     public String editItineraryFromTripHomePage(@PathVariable("itineraryId") long itineraryId, Model model) throws Exception {
         Itinerary itinerary = itineraryService.getItineraryById(itineraryId);
         model.addAttribute("itinerary", itinerary);
-        return "edit-itinerary-from-trip-home-page";
+        return "edit-itinerary-page";
     }
 
     /**

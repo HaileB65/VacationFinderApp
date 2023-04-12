@@ -16,15 +16,13 @@
 
     <br>
 
-    <div>
-        <table bgcolor="grey">
-            <tr>
-                <td align="center">
-                    <img th:src="${weatherURL}"/>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <table bgcolor="grey">
+        <tr>
+            <td>
+                <!--                    <img th:src="${weatherURL}"/>-->
+            </td>
+        </tr>
+    </table>
 
     <br>
 
@@ -73,11 +71,6 @@
             <td th:text="${trip.itinerary.transport5}"></td>
         </tr>
     </table>
-    <div sec:authorize="hasAuthority('ADMIN')">
-        <form action="#" method="get" th:action="@{/editItineraryFromUserTripPage/__${itineraryId}__}">
-            <button class="btn btn-primary" type="submit">Edit</button>
-        </form>
-    </div>
 
     <br>
 
@@ -216,7 +209,7 @@
         </div>
     </div>
 
-    <div th:unless="${flightsFound}">
+    <div th:if="${noFlightsFound}">
         <a>No Flights found.</a>
     </div>
 

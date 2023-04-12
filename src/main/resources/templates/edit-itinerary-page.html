@@ -8,7 +8,7 @@
 <body>
 <div th:replace="fragments :: navigation"/>
 
-<div align="center" id="container">
+<div align="center" id="container2">
 
     <br>
 
@@ -17,6 +17,7 @@
     <br>
 
     <form action="#" method="post" th:action="@{'/editItineraryFromTripHomePage/' + ${itinerary.id}}" th:object="${itinerary}">
+
         <table class="table">
             <tr>
                 <th colspan="6">Itinerary</th>
@@ -64,9 +65,11 @@
         </table>
 
         <button class="btn btn-primary" type="submit">Save</button>
+
     </form>
 
 </div>
+
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
 </body>
 </html>

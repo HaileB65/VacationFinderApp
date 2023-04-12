@@ -144,7 +144,7 @@ public class TripController {
             cities.add(destination.getCity1());
         }
 
-        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+//        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
         QueryLeg queryLeg = new QueryLeg();
         model.addAttribute("queryLeg", queryLeg);
@@ -155,7 +155,7 @@ public class TripController {
 
             List<FlightId> cheapestFlightsList = createSearchResponse.getContent().getSortingOptions().getCheapest();
             ArrayList<FlightId> topSixCheapestFlightIds = new ArrayList<>();
-            boolean flightsFound;
+            boolean noFlightsFound;
 
             if (!cheapestFlightsList.isEmpty()) {
 
@@ -185,9 +185,11 @@ public class TripController {
                 System.out.println(topSixCheapestFlights);
                 model.addAttribute("topSixCheapestFlights", topSixCheapestFlights);
 
-                flightsFound = false;
-                model.addAttribute("flightsFound", flightsFound);
+
             }
+
+            noFlightsFound = true;
+            model.addAttribute("noFlightsFound", noFlightsFound);
 
         }
 

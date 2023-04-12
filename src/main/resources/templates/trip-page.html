@@ -17,9 +17,9 @@
     <br>
 
     <div>
-        <table bgcolor="grey" align="center">
+        <table bgcolor="grey">
             <tr>
-                <td>
+                <td align="center">
                     <img th:src="${weatherURL}"/>
                 </td>
             </tr>
@@ -179,35 +179,47 @@
     <br>
     <br>
 
+    <h1 align="center" class="display-5" th:text="'Find Flights to ' + ${trip.name}"></h1>
+    <hr/>
     <div align="center">
-    <form class="row g-3"  action="#" method="get" th:action="@{/trip/__${trip.name}__}" th:object="${queryLeg}">
-        <div class="col-auto">
-            <label for="Origin Airport" class="visually-hidden">Origin Airport</label>
-            <input type="text" class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code" th:field="*{originPlaceId.iata}">
-        </div>
-        <div class="col-auto">
-            <label for="Destination Airport" class="visually-hidden">Destination Airport</label>
-            <input type="text" class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code" th:field="*{destinationPlaceId.iata}">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Get Flight prices</button>
-        </div>
-    </form>
+        <form action="#" class="row g-3" method="get" th:action="@{/trip/__${trip.name}__}" th:object="${queryLeg}">
+            <div class="col-auto">
+                <label class="visually-hidden" for="Origin Airport">Origin Airport</label>
+                <input class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code"
+                       th:field="*{originPlaceId.iata}"
+                       type="text">
+            </div>
+            <div class="col-auto">
+                <label class="visually-hidden" for="Destination Airport">Destination Airport</label>
+                <input class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code"
+                       th:field="*{destinationPlaceId.iata}" type="text">
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
+            </div>
+        </form>
     </div>
 
     <br>
 
-    <div class="row">
+    <div align="center" th:each="flight : ${topSixCheapestFlights}">
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${carrier}">Special title treatment</h5>
-                    <p class="card-text" th:text=" '$' +${price}">With supporting text below as a natural lead-in to additional content.</p>
-                    <a th:href="${deepLink}" class="btn btn-primary">Book Flight</a>
+                    <h5 class="card-title" th:text="${flight.carrier}">Special title treatment</h5>
+                    <p class="card-text" th:text=" '$' +${flight.price}">With supporting text below as a
+                        natural
+                        lead-in to additional content.</p>
+                    <a class="btn btn-primary" th:href="${flight.deepLink}">Book Flight</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div th:unless="${flightsFound}">
+        <a>No Flights found.</a>
+    </div>
+
 
     <br>
     <br>

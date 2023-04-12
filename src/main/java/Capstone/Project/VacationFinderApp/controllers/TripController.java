@@ -99,7 +99,7 @@ public class TripController {
      * @throws Exception
      */
     @GetMapping("/trip/{tripName}")
-    public String userTripPage(@PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser,@ModelAttribute("queryLeg") QueryLeg userQueryLeg1, Model model) throws Exception {
+    public String userTripPage(@PathVariable("tripName") String tripName, @AuthenticationPrincipal User currentUser, @ModelAttribute("queryLeg") QueryLeg userQueryLeg1, Model model) throws Exception {
 
         Trip trip = tripService.getByName(tripName);
         model.addAttribute("trip", trip);
@@ -151,52 +151,44 @@ public class TripController {
 
         if (userQueryLeg1.getOriginPlaceId() != null) {
 
-            SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(),userQueryLeg1.getDestinationPlaceId().getIata());
+            SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(), userQueryLeg1.getDestinationPlaceId().getIata());
 
             List<FlightId> cheapestFlightsList = createSearchResponse.getContent().getSortingOptions().getCheapest();
             ArrayList<FlightId> topSixCheapestFlightIds = new ArrayList<>();
+            boolean flightsFound;
 
-            for(int i=0; i < 6; i++){
-                topSixCheapestFlightIds.add(cheapestFlightsList.get(i));
+            if (!cheapestFlightsList.isEmpty()) {
+
+                for (int i = 0; i < 6; i++) {
+                    topSixCheapestFlightIds.add(cheapestFlightsList.get(i));
+                }
+
+                Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
+                ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
+                ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
+
+                ArrayList<Flight> topSixCheapestFlights = new ArrayList<>();
+
+                for (FlightId flightId : topSixCheapestFlightIds) {
+
+                    Flight flight = new Flight();
+                    SkyscannerItinerary itinerary = valueList.get(keyList.indexOf(flightId.getItineraryId()));
+
+                    flight.setCarrier(flightId.getItineraryId());
+                    flight.setPrice(itinerary.getPricingOptions().get(0).getPrice().getAmount());
+                    flight.setDeepLink(itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink());
+
+                    topSixCheapestFlights.add(flight);
+
+                }
+
+                System.out.println(topSixCheapestFlights);
+                model.addAttribute("topSixCheapestFlights", topSixCheapestFlights);
+
+                flightsFound = false;
+                model.addAttribute("flightsFound", flightsFound);
             }
 
-            //map
-            Map<String, SkyscannerItinerary> itineraryHashMap = createSearchResponse.getContent().getResults().getItineraries();
-            ArrayList<SkyscannerItinerary> valueList = new ArrayList<>(itineraryHashMap.values());
-            ArrayList<String> keyList = new ArrayList<>(itineraryHashMap.keySet());
-
-            ArrayList<Flight> topSixCheapestFlights = new ArrayList<>();
-
-            for(FlightId flightId : topSixCheapestFlightIds){
-
-                Flight flight = new Flight();
-                SkyscannerItinerary itinerary = valueList.get(keyList.indexOf(flightId.getItineraryId()));
-
-                flight.setCarrier(flightId.getItineraryId());
-                flight.setPrice(itinerary.getPricingOptions().get(0).getPrice().getAmount());
-                flight.setDeepLink(itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink());
-
-                topSixCheapestFlights.add(flight);
-
-            }
-            System.out.println(topSixCheapestFlights);
-            model.addAttribute("topSixCheapestFlights", topSixCheapestFlights);
-
-            if (!(valueList.isEmpty() & keyList.isEmpty())) {
-                //carrier
-                String carrier = keyList.get(0);
-                model.addAttribute("carrier", carrier);
-
-                //price
-                SkyscannerItinerary itinerary = valueList.get(0);
-                Float price = itinerary.getPricingOptions().get(0).getPrice().getAmount();
-                model.addAttribute("price", price);
-
-                //deeplink
-                String deepLink = itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink();
-                model.addAttribute("deepLink", deepLink);
-
-            }
         }
 
         return "trip-page";

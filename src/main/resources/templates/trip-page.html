@@ -174,7 +174,7 @@
 
     <h1 align="center" class="display-5" th:text="'Find Flights to ' + ${trip.name}"></h1>
     <hr/>
-    <div align="center">
+
         <form action="#" class="row g-3" method="get" th:action="@{/trip/__${trip.name}__}" th:object="${queryLeg}">
             <div class="col-auto">
                 <label class="visually-hidden" for="Origin Airport">Origin Airport</label>
@@ -191,7 +191,7 @@
                 <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
             </div>
         </form>
-    </div>
+
 
     <br>
 

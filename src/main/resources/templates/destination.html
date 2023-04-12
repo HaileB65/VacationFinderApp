@@ -29,10 +29,13 @@
 
 
 
+
+
+
     </style>
 </head>
 <body>
-<div th:replace="fragments :: navigation"/>
+<div th:replace="fragments :: navigation"></div>
 
 <div id="container">
 
@@ -40,6 +43,20 @@
 
     <h1 align="center" class="display-3" th:text="${destinationName}"></h1>
 
+    <br>
+
+    <table class="table">
+        <tr>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+                <a align="center" th:text="${destination.description}"></a>
+            </td>
+        </tr>
+    </table>
+
+    <br>
     <br>
 
     <table class="table table-hover">
@@ -89,48 +106,57 @@
     </table>
 
     <br>
+    <br>
 
-    <table>
-        <tr>
-            <td>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <img height="300" th:src="${destination.image1}" width="300"/>
+    <div align="center">
+        <table class="table">
+            <tr>
+                <th>Gallery</th>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image1}" width="400" border="10px solid black;"/>
+                            </div>
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image2}" width="400" border="10px solid black;"/>
+                            </div>
                         </div>
-                        <div class="col-sm">
-                            <img height="300" th:src="${destination.image2}" width="300"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image3}" width="400" border="10px solid black;"/>
+                            </div>
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image4}" width="400" border="10px solid black;"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <img height="300" th:src="${destination.image1}" width="300"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image5}" width="400" border="10px solid black;"/>
+                            </div>
+                            <div class="col-sm">
+                                <img height="300" th:src="${destination.image6}" width="400" border="10px solid black;"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                        <img height="300" th:src="${destination.image2}" width="300"/>
-                    </div>
-                </div>
-            </div>
-        </tr>
-    </table>
-
-<!--    <div align="center">-->
-<!--        <table border="0" cellpadding="0" class="t-table">-->
-<!--            <tbody class="t-body">-->
-<!--            <tr style="line-height: 8px; height: 8px;">-->
-<!--                <td><img height="600" th:src="${destination.image1}" width="800"/>-->
-<!--            </tr>-->
-<!--            <tr style="line-height: 8px; height: 8px;">-->
-<!--                <td><img height="600" th:src="${destination.image2}" width="800"/></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <br>
 

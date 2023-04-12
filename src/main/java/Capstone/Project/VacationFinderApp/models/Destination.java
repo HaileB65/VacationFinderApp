@@ -2,6 +2,7 @@ package Capstone.Project.VacationFinderApp.models;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.w3c.dom.Text;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class Destination implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    String description;
     String scenery;
     String weather;
     String activity1;
@@ -30,6 +32,10 @@ public class Destination implements Serializable {
     String activity3;
     String image1;
     String image2;
+    String image3;
+    String image4;
+    String image5;
+    String image6;
     String city1;
     String city2;
     String city3;

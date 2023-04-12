@@ -68,6 +68,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination mongolia = Destination.builder()
                     .name("Mongolia")
+                    .description("There is so much to see and do in Mongolia, from the stunning scenery and wildlife of mountains and deserts to the emerging luxury hotels and restaurants in the capital, Ulaanbaatar.")
                     .weather("Cold")
                     .scenery("Mountains")
                     .activity1("Mountain Tours")
@@ -80,6 +81,10 @@ public class VacationFinderApp implements CommandLineRunner {
                     .city5("Dalanzadgad")
                     .image1("https://www.worldtravelguide.net/wp-content/uploads/2012/05/shu-Mongolia-600892928-1440x823.jpg")
                     .image2("https://www.mappr.co/wp-content/uploads/2021/11/mongolia-map-1024x586.jpg")
+                    .image3("https://media.istockphoto.com/id/1037562994/photo/ger.jpg?s=612x612&w=0&k=20&c=jZPWKOIaoOXqDxQNHQRiWfu6UzPDeOf_Ml2_HdulGIM=")
+                    .image4("https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRWPQAtSzOcsO_01QTgAjor8wcsuPpjTnceixJxqPVkky5DHzK8p21xJqhEWJA9DuiYL806ejzA5uxOWuh2-YMDGr7iFw")
+                    .image5("https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS5o6XkKgvqzZBJ_ANjo7umg45RIbB-UUL9PpVLjguAvxXh1GO9g__9q7K2OK5nGuZlwNe8Mjo1DJMV3HBXS795C4LMVw")
+                    .image6("https://lh5.googleusercontent.com/p/AF1QipPwH4sKxf5Dk1wWj6ysMNNJJkfZpZ7D_cbgyHw4=w548-h318-n-k-no")
                     .trips(new HashSet<>())
                     .build();
 
@@ -125,6 +130,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
+                    .description("Come enjoy the sun and have fun at the sea at this beach destination.")
                     .weather("Warm")
                     .scenery("Beach")
                     .activity1("Scuba Diving")
@@ -137,6 +143,10 @@ public class VacationFinderApp implements CommandLineRunner {
                     .city5("Alice Town")
                     .image1("https://cdn.britannica.com/14/94514-050-461B9A6D/Palm-trees-ocean-Bahamas-New-Providence-Island.jpg")
                     .image2("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Taino_Beach%2C_Grand_Bahama_Island%2C_Bahamas.jpg/1280px-Taino_Beach%2C_Grand_Bahama_Island%2C_Bahamas.jpg")
+                    .image3("https://www.sandals.com/blog/content/images/2020/01/Blue-Lagoon-Bahamas.jpg")
+                    .image4("https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dGhlJTIwYmFoYW1hc3xlbnwwfHwwfHw%3D&w=1000&q=80")
+                    .image5("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH0WG1PvfbpmQtzno8K_dbou8hfrXyBa4tbA&usqp=CAU")
+                    .image6("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgCVx3X-wSuHtOTll9zr3U4kD_kkZfjeiu0Q&usqp=CAU")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -181,6 +191,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination switzerland = Destination.builder()
                     .name("Switzerland")
+                    .description("Come see beautiful landscapes and enjoy great food. Winter is a create time a to come learn to ski or snowboard in the mountain skyline of Switzerland. ")
                     .weather("Cold")
                     .scenery("Snow")
                     .activity1("Christmas Markets")
@@ -329,8 +340,8 @@ public class VacationFinderApp implements CommandLineRunner {
                     .firstName("Robin")
                     .lastName("Smith")
                     .email("smithrobin@gmail.com")
-                    .phone("1245684578")
-                    .username("Robin41")
+                    .phone("124568457")
+                    .username("Robin411")
                     .password("password")
                     .role(Role.GUEST)
                     .trips(new HashSet<>())
@@ -349,7 +360,7 @@ public class VacationFinderApp implements CommandLineRunner {
                     .lastName("Walker")
                     .email("alexwalker@yahoo.com")
                     .phone("1245874568")
-                    .username("Alex45")
+                    .username("Alex4555")
                     .password("password")
                     .role(Role.USER)
                     .enabled(true)
@@ -369,7 +380,7 @@ public class VacationFinderApp implements CommandLineRunner {
                     .lastName("Jackson")
                     .email("kylejackson@yahoo.com")
                     .phone("8567487596")
-                    .username("kyle")
+                    .username("kyle5555")
                     .password("password")
                     .role(Role.ADMIN)
                     .enabled(true)

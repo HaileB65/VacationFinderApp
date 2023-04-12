@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
 import java.net.URI;
@@ -43,15 +42,15 @@ public class User implements UserDetails {
     String email;
 
     @NotEmpty
-    @Max(10)
+    @Size(max =10)
     String phone;
 
     @NotEmpty
-    @Size(min = 8, max = 30, message = "Username must be between 8-25 characters long.")
+    @Size(min = 8, max = 25, message = "Username must be between 8-25 characters long.")
     String username;
 
-    @NotEmpty
-    @Size(min = 8, max = 30, message = "Password must be between 8-25 characters long.")
+//    @NotEmpty
+//    @Size(max = 25, message = "Password must be between 8-25 characters long.")
     String password;
 
     @CreationTimestamp

@@ -85,7 +85,6 @@ public class SkyscannerAPIService {
         return response.getBody();
     }
 
-    @PostConstruct
     public CarrierResponse checkIataCodes(){
 
         HttpHeaders headers = new HttpHeaders();

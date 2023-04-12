@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinderApp.services;
 
+import Capstone.Project.VacationFinderApp.models.skyscanner.carrierresponse.CarrierResponse;
 import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.*;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -72,6 +73,7 @@ public class SkyscannerAPIService {
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-RapidAPI-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
         headers.add("X-RapidAPI-Host", "skyscanner-api.p.rapidapi.com");
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<String> request = new HttpEntity<>("parameters", headers);
 
@@ -79,6 +81,22 @@ public class SkyscannerAPIService {
         String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/poll/" + token;
 
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
+
+        return response.getBody();
+    }
+
+    @PostConstruct
+    public CarrierResponse checkIataCodes(){
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Rapidapi-Key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
+        headers.add("X-Rapidapi-Host", "skyscanner-api.p.rapidapi.com");
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/carriers";
+
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        ResponseEntity<CarrierResponse> response = restTemplate.getForEntity(url, CarrierResponse.class, request);
 
         return response.getBody();
     }

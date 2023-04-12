@@ -151,13 +151,16 @@ public class TripController {
 
         if (userQueryLeg1.getOriginPlaceId() != null) {
 
+            boolean noFlightsFound = true;
+
             SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(), userQueryLeg1.getDestinationPlaceId().getIata());
 
             List<FlightId> cheapestFlightsList = createSearchResponse.getContent().getSortingOptions().getCheapest();
             ArrayList<FlightId> topSixCheapestFlightIds = new ArrayList<>();
-            boolean noFlightsFound;
 
             if (!cheapestFlightsList.isEmpty()) {
+
+                noFlightsFound = false;
 
                 for (int i = 0; i < 6; i++) {
                     topSixCheapestFlightIds.add(cheapestFlightsList.get(i));
@@ -188,7 +191,6 @@ public class TripController {
 
             }
 
-            noFlightsFound = true;
             model.addAttribute("noFlightsFound", noFlightsFound);
 
         }

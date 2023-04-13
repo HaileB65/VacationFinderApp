@@ -1,6 +1,7 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.skyscanner.carrierresponse.CarrierResponse;
 import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.QueryLeg;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.FlightId;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerItinerary;
@@ -145,7 +146,7 @@ public class TripController {
             cities.add(destination.getCity1());
         }
 
-//        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
         QueryLeg queryLeg = new QueryLeg();
         model.addAttribute("queryLeg", queryLeg);
@@ -154,7 +155,14 @@ public class TripController {
 
             boolean noFlightsFound = true;
 
-            SkyscannerResponse createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(), userQueryLeg1.getDestinationPlaceId().getIata());
+            SkyscannerResponse createSearchResponse;
+
+            try {
+                createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(), userQueryLeg1.getDestinationPlaceId().getIata());
+            }catch(Exception ex){
+                model.addAttribute("iataCodeError", "Iata code not found");
+                return "trip-page";
+            }
 
             List<FlightId> cheapestFlightsList = createSearchResponse.getContent().getSortingOptions().getCheapest();
             ArrayList<FlightId> topSixCheapestFlightIds = new ArrayList<>();
@@ -173,12 +181,18 @@ public class TripController {
 
                 ArrayList<Flight> topSixCheapestFlights = new ArrayList<>();
 
+                CarrierResponse carriers = skyscannerAPIService.getIataCodes();
+
                 for (FlightId flightId : topSixCheapestFlightIds) {
 
                     Flight flight = new Flight();
                     SkyscannerItinerary itinerary = valueList.get(keyList.indexOf(flightId.getItineraryId()));
 
-                    flight.setCarrier(flightId.getItineraryId());
+                    String carrierId = flightId.getItineraryId().substring(17,23);
+
+                    String carrierName = carriers.getCarriers().get(carrierId).getName();
+
+                    flight.setCarrier(carrierName);
                     flight.setPrice(itinerary.getPricingOptions().get(0).getPrice().getAmount());
                     flight.setDeepLink(itinerary.getPricingOptions().get(0).getItems().get(0).getDeepLink());
 
@@ -188,7 +202,6 @@ public class TripController {
 
                 System.out.println(topSixCheapestFlights);
                 model.addAttribute("topSixCheapestFlights", topSixCheapestFlights);
-
 
             }
 

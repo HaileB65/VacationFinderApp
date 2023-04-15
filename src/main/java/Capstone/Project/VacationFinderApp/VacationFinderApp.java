@@ -68,7 +68,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination mongolia = Destination.builder()
                     .name("Mongolia")
-                    .description("There is so much to see and do in Mongolia, from the stunning scenery and wildlife of mountains and deserts to the emerging luxury hotels and restaurants in the capital, Ulaanbaatar.")
+                    .description("Mongolia's Gobi desert is a must see for its iconic natural formations, dinosaur fossils, wildlife, birds and camel herding nomads. Mongolia is a unique place were you can experience vast, untouched landscapes and learn about nomadic culture.")
                     .weather("Cold")
                     .scenery("Mountains")
                     .activity1("Mountain Tours")
@@ -130,7 +130,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
-                    .description("Come enjoy the sun and have fun at the sea at this beach destination.")
+                    .description("The Bahamas is home to beautiful hotels, a vibrant culture, pristine beaches, and watersport activities. Amazing diving and delicious food are just two of all the things to do at this natural paradise.")
                     .weather("Warm")
                     .scenery("Beach")
                     .activity1("Scuba Diving")
@@ -191,7 +191,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination switzerland = Destination.builder()
                     .name("Switzerland")
-                    .description("Come see beautiful landscapes and enjoy great food. Winter is a create time a to come learn to ski or snowboard in the mountain skyline of Switzerland. ")
+                    .description("Switzerland has stunning nature, rich culture, exceptional architecture from medieval buildings, top-notch museums, and delicious cuisine. Winter is a great time to witness Switzerland's beautiful landscape and to learn to ski.")
                     .weather("Cold")
                     .scenery("Snow")
                     .activity1("Christmas Markets")
@@ -248,6 +248,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination brazil = Destination.builder()
                     .name("Brazil")
+                    .description("Brazil is filled with adventure from dazzling beaches, tropical islands and picturesque colonial towns. Its verdant rainforests boast an astounding array of wildlife, while its wildly energetic cities are home to great cuisine.")
                     .weather("Warm")
                     .scenery("Beach")
                     .activity1("Swimming")
@@ -304,6 +305,7 @@ public class VacationFinderApp implements CommandLineRunner {
 
             Destination peru = Destination.builder()
                     .name("Peru")
+                    .description("Peru is a veritable treasure trove of unforgettable places to visit and things to do from Vertiginous Andean mountain peaks, breath-taking Incan archaeological sites like Machu Picchu, lush jungle national parks, and colorful indigenous communities.")
                     .weather("Cold")
                     .scenery("Mountains")
                     .activity1("Mountain Tours")

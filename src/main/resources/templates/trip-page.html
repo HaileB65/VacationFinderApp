@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Trip Home Page</title>
@@ -19,7 +19,7 @@
     <table bgcolor="grey">
         <tr>
             <td>
-                <img th:src="${weatherURL}"/>
+                <!--                <img th:src="${weatherURL}"/>-->
             </td>
         </tr>
     </table>
@@ -175,22 +175,57 @@
     <h1 align="center" class="display-5" th:text="'Find Flights to ' + ${trip.name}"></h1>
     <hr/>
 
-        <form action="#" class="row g-3" method="get" th:action="@{/trip/__${trip.name}__}" th:object="${queryLeg}">
-            <div class="col-auto">
-                <label class="visually-hidden" for="Origin Airport">Origin Airport</label>
-                <input class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code"
-                       th:field="*{originPlaceId.iata}"
-                       type="text">
-            </div>
-            <div class="col-auto">
-                <label class="visually-hidden" for="Destination Airport">Destination Airport</label>
-                <input class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code"
-                       th:field="*{destinationPlaceId.iata}" type="text">
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
-            </div>
-        </form>
+    <table class="table">
+        <tr>
+            <td>
+                <form action="#" class="row g-3" method="get" th:action="@{/trip/__${trip.name}__}"
+                      th:object="${queryLeg}">
+                    <div class="row" align="center">
+                        <div class="col-auto">
+                            <label class="visually-hidden" for="Origin Airport">Origin Airport</label>
+                            <input class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code"
+                                   th:field="*{originPlaceId.iata}"
+                                   type="text">
+                        </div>
+                        <div class="col-auto">
+                            <label class="visually-hidden" for="Destination Airport">Destination Airport</label>
+                            <input class="form-control" id="Destination Airport"
+                                   placeholder="Destination Airport Iata code"
+                                   th:field="*{destinationPlaceId.iata}" type="text">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm" align="center">
+                                <div class="col-auto">
+                                    <label class="visually-hidden" for="Origin Airport2">Origin Airport</label>
+                                    <input class="form-control" id="Origin Airport2" placeholder="Origin Airport Iata code"
+                                           th:field="*{originPlaceId.iata}"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm" align="center">
+                                <div class="col-auto">
+                                    <label class="visually-hidden" for="Destination Airport2">Destination Airport</label>
+                                    <input class="form-control" id="Destination Airport2"
+                                           placeholder="Destination Airport Iata code"
+                                           th:field="*{destinationPlaceId.iata}" type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="col-auto" align="center">
+                                    <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
 
     <div>
         <a th:text="${iataCodeError}"></a>

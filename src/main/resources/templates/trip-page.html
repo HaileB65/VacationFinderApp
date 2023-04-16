@@ -19,7 +19,7 @@
     <table bgcolor="grey">
         <tr>
             <td>
-                <!--                <img th:src="${weatherURL}"/>-->
+<!--                                <img th:src="${weatherURL}"/>-->
             </td>
         </tr>
     </table>
@@ -197,39 +197,14 @@
                             <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm" align="center">
-                                <div class="col-auto">
-                                    <label class="visually-hidden" for="Origin Airport2">Origin Airport</label>
-                                    <input class="form-control" id="Origin Airport2" placeholder="Origin Airport Iata code"
-                                           th:field="*{originPlaceId.iata}"
-                                           type="text">
-                                </div>
-                            </div>
-                            <div class="col-sm" align="center">
-                                <div class="col-auto">
-                                    <label class="visually-hidden" for="Destination Airport2">Destination Airport</label>
-                                    <input class="form-control" id="Destination Airport2"
-                                           placeholder="Destination Airport Iata code"
-                                           th:field="*{destinationPlaceId.iata}" type="text">
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="col-auto" align="center">
-                                    <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </td>
         </tr>
     </table>
 
-    <div>
-        <a th:text="${iataCodeError}"></a>
-    </div>
+<!--    <div>-->
+<!--        <a th:text="${iataCodeError}"></a>-->
+<!--    </div>-->
 
     <br>
 

@@ -336,7 +336,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates default guest user.
          *
          */
-        if (!userRepository.existsByUsername("Robin41")) {
+        if (!userRepository.existsByUsername("Robin411")) {
             User guest = User.builder()
                     .id(1L)
                     .firstName("Robin")
@@ -356,7 +356,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates default user.
          *
          */
-        if (!userRepository.existsByUsername("Alex45")) {
+        if (!userRepository.existsByUsername("Alex4555")) {
             User user = User.builder()
                     .firstName("Alex")
                     .lastName("Walker")
@@ -376,7 +376,7 @@ public class VacationFinderApp implements CommandLineRunner {
          * Creates default admin user.
          *
          */
-        if (!userRepository.existsByUsername("kyle")) {
+        if (!userRepository.existsByUsername("kyle5555")) {
             User admin = User.builder()
                     .firstName("Kyle")
                     .lastName("Jackson")

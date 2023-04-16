@@ -8,8 +8,8 @@ the trip. Application administrators have the ability to create and edit trips a
 # Pictures:
 
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Welcome%20page.PNG)
-![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Login%20page.PNG)
-![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/User%20home%20page.PNG)
+![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Login%20page.jpg)
+![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/User%20home%20page.jpg)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Destination%20Finder.PNG)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Destination%20Finder%20results.PNG)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/MyTrips%20page.PNG)

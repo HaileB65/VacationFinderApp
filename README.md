@@ -17,7 +17,7 @@ the trip. Application administrators have the ability to create and edit trips a
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Trip%20page%2022.png)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Trip%20page%204.png)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Destinations%20page.PNG)
-![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Mongolia%20Trip%20page.PNG)
+![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Mongolia%20Trip%20page.png)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Mongolia%20Trip%20page%202.PNG)
 ![alt text](https://github.com/HaileB65/VacationFinderApp/blob/master/src/main/resources/static/images/Mongolia%20Trip%20page%203.png)
 

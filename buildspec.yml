@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - ./mvnw clean package
+      - ./gradlew clean build
   post_build:
     commands:
       - echo Build completed on `date`

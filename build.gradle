@@ -50,3 +50,7 @@ test {
 tasks.named('bootJar') {
     launchScript()
 }
+
+bootWar {
+    archiveName 'ROOT.war'
+}

@@ -4,6 +4,8 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
+apply plugin: 'war'
+
 group = 'Capstone.Project'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -36,8 +38,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-//    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
-//    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 }
 

@@ -16,6 +16,6 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/ROOT.war
+    - build/libs/ROOT.war
     - appspec.yml
 

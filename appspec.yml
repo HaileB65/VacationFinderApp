@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: target/ROOT.war
+  - source: build/libs/ROOT.war
     destination: /var/lib/tomcat9/webapps
 permissions:
   - object: /

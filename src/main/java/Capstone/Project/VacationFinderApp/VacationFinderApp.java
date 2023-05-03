@@ -1,10 +1,12 @@
 package Capstone.Project.VacationFinderApp;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.repositories.TripRepository;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
 import Capstone.Project.VacationFinderApp.services.TripService;
 import Capstone.Project.VacationFinderApp.services.UserService;
+import Capstone.Project.VacationFinderApp.services.WeatherAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +14,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -31,6 +36,9 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    WeatherAPI weatherAPI;
 
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApp.class, args);
@@ -94,6 +102,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Trip mongoliaTrip = Trip.builder()
                     .name("Mongolia")
+                    .city(mongolia.getCity1())
+                    .country("Mongolia")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -155,6 +165,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Trip bahamasTrip = Trip.builder()
                     .name("Bahamas")
+                    .city(bahamas.getCity1())
+                    .country("Bahamas")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -213,6 +225,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Trip switzerlandTrip = Trip.builder()
                     .name("Switzerland")
+                    .city(switzerland.getCity1())
+                    .country("Switzerland")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -270,6 +284,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Trip brazilTrip = Trip.builder()
                     .name("Brazil")
+                    .city(brazil.getCity1())
+                    .country("Brazil")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -327,6 +343,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Trip peruTrip = Trip.builder()
                     .name("Peru")
+                    .city(peru.getCity1())
+                    .country("Peru")
                     .itinerary(itinerary)
                     .destinations(destinations)
                     .build();
@@ -393,6 +411,11 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             userService.createNewUser(admin);
         }
-    }
 
+        //TODO
+        // Create getAllWeatherForecasts method
+        // if(weather forecast timestamp does not equal todays date)
+        // List<WeatherForecast> weatherForecastList = weatherAPI.getAllWeatherForcasts();
+
+    }
 }

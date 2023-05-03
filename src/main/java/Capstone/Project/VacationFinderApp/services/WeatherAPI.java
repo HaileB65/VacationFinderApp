@@ -1,6 +1,8 @@
 package Capstone.Project.VacationFinderApp.services;
 
-import Capstone.Project.VacationFinderApp.models.WeatherLocation;
+import Capstone.Project.VacationFinderApp.models.Trip;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherLocation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -8,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -32,4 +37,18 @@ public class WeatherAPI {
         return (String) response.getBody().get("url");
     }
 
+//    public void getAllWeatherForecasts(){
+//
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        System.out.println(dtf.format(now));
+//
+//        if("if date is not today's date run method"){
+//        List<Trip> trips = tripService.getAllTrips();
+//
+//            for(Trip trip : trips){
+////                trip.setWeatherForecastUrl(weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+//            }
+//        }
+//    }
 }

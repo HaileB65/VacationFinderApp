@@ -27,13 +27,6 @@
   border: 1px solid black;
 }
 
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -74,18 +67,20 @@
     </table>
 
     <table>
-        <tr>
+        <tr align="center">
             <td>
-                <div align="center">
+                    <div>
                     <form action="#" method="get"
                           th:action="@{/destinationFinderResults/__${weather}__/__${scenery}__}">
                         <button class="btn btn-primary" type="submit">Return</button>
                     </form>
-                    <div>
-                        <form action="#" method="post" th:action="@{/joinTrip/__${destination.name}__}">
-                            <button class="btn btn-primary" type="submit">Join Trip</button>
-                        </form>
                     </div>
+            </td>
+            <td>
+                <div>
+                    <form action="#" method="post" th:action="@{/joinTrip/__${destination.name}__}">
+                        <button class="btn btn-primary" type="submit">Join Trip</button>
+                    </form>
                 </div>
             </td>
         </tr>

@@ -141,12 +141,7 @@ public class TripController {
             model.addAttribute("checklist", checklist);
         }
 
-        ArrayList<String> cities = new ArrayList<>();
-        for (Destination destination : trip.getDestinations()) {
-            cities.add(destination.getCity1());
-        }
-
-        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+//        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
 
         QueryLeg queryLeg = new QueryLeg();
         model.addAttribute("queryLeg", queryLeg);

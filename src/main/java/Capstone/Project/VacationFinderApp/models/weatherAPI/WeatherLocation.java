@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinderApp.models;
+package Capstone.Project.VacationFinderApp.models.weatherAPI;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

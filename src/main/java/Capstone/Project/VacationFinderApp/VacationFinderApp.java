@@ -413,9 +413,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
         }
 
         //TODO
-        // Create getAllWeatherForecasts method
-        // if(weather forecast timestamp does not equal todays date)
-        // List<WeatherForecast> weatherForecastList = weatherAPI.getAllWeatherForcasts();
+        // Check if weather forecasts have been updated for the day.
 
     }
 }

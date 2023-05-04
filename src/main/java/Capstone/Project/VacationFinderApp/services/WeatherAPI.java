@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,9 @@ public class WeatherAPI {
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    TripService tripService;
 
     public String postNewForecast(String city, String country) {
 
@@ -37,18 +41,19 @@ public class WeatherAPI {
         return (String) response.getBody().get("url");
     }
 
-//    public void getAllWeatherForecasts(){
-//
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        System.out.println(dtf.format(now));
-//
-//        if("if date is not today's date run method"){
-//        List<Trip> trips = tripService.getAllTrips();
-//
-//            for(Trip trip : trips){
-////                trip.setWeatherForecastUrl(weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
-//            }
-//        }
-//    }
-}
+    public void getAllWeatherForecasts(){
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime date = LocalDateTime.now();
+        System.out.println(dtf.format(date));
+
+        //if date is not today's date run method
+        //
+        List<Trip> trips = tripService.getAllTrips();
+
+            for(Trip trip : trips){
+//                WeatherForecast forecast = trip.getWeatherForecasts().;
+//                trip.setWeatherForecastUrl(weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+            }
+        }
+    }

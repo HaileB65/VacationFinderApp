@@ -49,8 +49,6 @@ public class User implements UserDetails {
     @Size(min = 8, max = 25, message = "Username must be between 8-25 characters long.")
     String username;
 
-//    @NotEmpty
-//    @Size(max = 25, message = "Password must be between 8-25 characters long.")
     String password;
 
     @CreationTimestamp
@@ -62,7 +60,6 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     Role role;
-
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Checklist> checklists;

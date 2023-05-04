@@ -1,6 +1,7 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.skyscanner.Flight;
 import Capstone.Project.VacationFinderApp.models.skyscanner.carrierresponse.CarrierResponse;
 import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.QueryLeg;
 import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.FlightId;
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 public class TripController {

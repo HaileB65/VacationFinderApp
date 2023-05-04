@@ -1,5 +1,6 @@
 package Capstone.Project.VacationFinderApp.models;
 
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -37,4 +38,5 @@ public class Trip implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Destination> destinations;
+
 }

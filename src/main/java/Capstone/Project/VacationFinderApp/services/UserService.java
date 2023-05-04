@@ -28,27 +28,22 @@ public class UserService implements UserDetailsService {
         } else throw new Exception("User not found");
     }
 
-
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         return userRepository.findByUsername(username);
     }
 
     public User createNewUser(User user) {
-
         passwordEncoder.encodeUserPassword(user);
-        user.setRole(Role.USER);
         userRepository.saveAndFlush(user);
         return user;
     }
 
     public User saveUser(User user) {
-
         userRepository.save(user);
         return user;
     }

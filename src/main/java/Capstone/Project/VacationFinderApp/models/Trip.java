@@ -23,11 +23,14 @@ public class Trip implements Serializable {
     String name;
     String country;
     String city;
-    String weatherForecastUrl;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
     public Itinerary itinerary;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "weatherForecast_id")
+    public WeatherForecast weatherForecast;
 
     @Column(name = "timestamp")
     @CreationTimestamp

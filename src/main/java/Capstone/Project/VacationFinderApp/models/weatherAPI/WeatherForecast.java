@@ -1,12 +1,10 @@
 package Capstone.Project.VacationFinderApp.models.weatherAPI;
 
-import Capstone.Project.VacationFinderApp.models.Trip;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -19,7 +17,8 @@ public class WeatherForecast {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    String trip;
+    String city;
+    String country;
     String forecastImageUrl;
 
     @Column(name = "timestamp")

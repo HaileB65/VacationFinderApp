@@ -7,30 +7,30 @@ import org.springframework.web.bind.annotation.*;
 public class RyanUserController {
 
     @GetMapping
-    public User getUser(){
+    public User getUser() {
 
         return new User();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") String id){
+    public User getUserById(@PathVariable("id") String id) {
 
         return new User();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUserById(@PathVariable("id") String id){
+    public void deleteUserById(@PathVariable("id") String id) {
 
     }
 
     @PostMapping
-    public User createUser(){
+    public User createUser() {
 
         return new User();
     }
 
     @DeleteMapping
-    public void deleteUser(){
+    public void deleteUser() {
 
     }
 }

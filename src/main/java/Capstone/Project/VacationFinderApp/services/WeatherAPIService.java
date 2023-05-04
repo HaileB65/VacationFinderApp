@@ -1,8 +1,10 @@
 package Capstone.Project.VacationFinderApp.services;
 
+import Capstone.Project.VacationFinderApp.models.Itinerary;
 import Capstone.Project.VacationFinderApp.models.Trip;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherLocation;
+import Capstone.Project.VacationFinderApp.repositories.WeatherForecastRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,18 +14,20 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 @Service
-public class WeatherAPI {
+public class WeatherAPIService {
 
     @Autowired
     RestTemplate restTemplate;
 
     @Autowired
     TripService tripService;
+
+    @Autowired
+    WeatherForecastRepository weatherForecastRepository;
 
     public String postNewForecast(String city, String country) {
 
@@ -41,7 +45,9 @@ public class WeatherAPI {
         return (String) response.getBody().get("url");
     }
 
-    public void getAllWeatherForecasts(){
+    //TODO
+    // Create getAllWeatherForecasts method
+    public void getAllWeatherForecasts() {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
@@ -51,9 +57,16 @@ public class WeatherAPI {
         //
         List<Trip> trips = tripService.getAllTrips();
 
-            for(Trip trip : trips){
+        for (Trip trip : trips) {
 //                WeatherForecast forecast = trip.getWeatherForecasts().;
 //                trip.setWeatherForecastUrl(weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
-            }
         }
     }
+
+    public WeatherForecast saveWeatherForecast(WeatherForecast weatherForecast) {
+
+        weatherForecastRepository.save(weatherForecast);
+
+        return weatherForecast;
+    }
+}

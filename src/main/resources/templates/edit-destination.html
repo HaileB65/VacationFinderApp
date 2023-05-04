@@ -19,7 +19,8 @@
 
         <h3>Edit Destination</h3>
         <hr/>
-        <form action="#" method="post" th:action="@{'/saveDestination/' + ${destination.id}}" th:object="${destination}">
+        <form action="#" method="post" th:action="@{'/saveDestination/' + ${destination.id}}"
+              th:object="${destination}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input class="form-control" id="name" placeholder="Name" required th:field="*{name}"

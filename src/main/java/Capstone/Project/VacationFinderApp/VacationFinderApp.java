@@ -6,7 +6,7 @@ import Capstone.Project.VacationFinderApp.repositories.TripRepository;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
 import Capstone.Project.VacationFinderApp.services.TripService;
 import Capstone.Project.VacationFinderApp.services.UserService;
-import Capstone.Project.VacationFinderApp.services.WeatherAPI;
+import Capstone.Project.VacationFinderApp.services.WeatherAPIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,10 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -38,7 +35,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
     UserService userService;
 
     @Autowired
-    WeatherAPI weatherAPI;
+    WeatherAPIService weatherAPIService;
 
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApp.class, args);
@@ -340,6 +337,12 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Set<Destination> destinations = new HashSet();
             destinations.add(peru);
+
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("jfdasfas")
+                    .build();
+
+            weatherAPIService.saveWeatherForecast(forecast);
 
             Trip peruTrip = Trip.builder()
                     .name("Peru")

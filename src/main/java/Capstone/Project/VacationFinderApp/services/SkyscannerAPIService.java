@@ -56,10 +56,10 @@ public class SkyscannerAPIService {
         query.setCabinClass("CABIN_CLASS_ECONOMY");
         query.setAdults(2);
         query.setChildrenAges(new int[]{3, 9});
-        
+
         FlightSearch flightSearch = new FlightSearch();
         flightSearch.setQuery(query);
-                
+
         ObjectMapper objectMapper = new ObjectMapper();
         String flightSearchJsonStrObject = objectMapper.writeValueAsString(flightSearch);
 
@@ -68,7 +68,7 @@ public class SkyscannerAPIService {
         HttpEntity<String> request = new HttpEntity<>(flightSearchJsonStrObject, headers);
 
 //        try {
-            ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
+        ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
 //        }catch(Exception ex){
 //
 //
@@ -95,7 +95,7 @@ public class SkyscannerAPIService {
     }
 
     @PostConstruct
-    public CarrierResponse getIataCodes(){
+    public CarrierResponse getIataCodes() {
 
         String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/carriers?rapidapi-key=" + skyscannerApiKey;
 

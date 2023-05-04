@@ -2,7 +2,6 @@ package Capstone.Project.VacationFinderApp.models;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.w3c.dom.Text;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,12 +16,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class Destination implements Serializable {
-    @ManyToMany(mappedBy = "destinations")
-    public Set<Trip> trips;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     String name;
     String description;
     String scenery;
@@ -45,6 +42,9 @@ public class Destination implements Serializable {
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
+
+    @ManyToMany(mappedBy = "destinations")
+    public Set<Trip> trips;
 
     public Destination(String name) {
         this.name = name;

@@ -42,7 +42,7 @@ public class TripController {
     DestinationService destinationService;
 
     @Autowired
-    WeatherAPI weatherAPI;
+    WeatherAPIService weatherAPI;
 
     @Autowired
     SkyscannerAPIService skyscannerAPIService;
@@ -156,7 +156,7 @@ public class TripController {
 
             try {
                 createSearchResponse = skyscannerAPIService.createNewSearch(userQueryLeg1.getOriginPlaceId().getIata(), userQueryLeg1.getDestinationPlaceId().getIata());
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 model.addAttribute("iataCodeError", "Iata code not found");
                 return "trip-page";
             }
@@ -185,7 +185,7 @@ public class TripController {
                     Flight flight = new Flight();
                     SkyscannerItinerary itinerary = valueList.get(keyList.indexOf(flightId.getItineraryId()));
 
-                    String carrierId = flightId.getItineraryId().substring(17,23);
+                    String carrierId = flightId.getItineraryId().substring(17, 23);
 
                     String carrierName = carriers.getCarriers().get(carrierId).getName();
 

@@ -15,6 +15,10 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 public class Itinerary implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     String location1;
     String location2;
     String location3;
@@ -35,11 +39,8 @@ public class Itinerary implements Serializable {
     String transport3;
     String transport4;
     String transport5;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     @Column(name = "timestamp")
     @CreationTimestamp
     private Timestamp timestamp;
-
 }

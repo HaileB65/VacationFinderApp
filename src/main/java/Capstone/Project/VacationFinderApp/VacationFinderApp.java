@@ -97,12 +97,17 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             Set<Destination> destinations = new HashSet();
             destinations.add(mongolia);
 
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("yuturuy")
+                    .build();
+
             Trip mongoliaTrip = Trip.builder()
                     .name("Mongolia")
                     .city(mongolia.getCity1())
                     .country("Mongolia")
                     .itinerary(itinerary)
                     .destinations(destinations)
+                    .weatherForecast(forecast)
                     .build();
 
             tripService.saveTrip(mongoliaTrip);
@@ -160,12 +165,17 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             Set<Destination> destinations = new HashSet();
             destinations.add(bahamas);
 
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("yuturuy")
+                    .build();
+
             Trip bahamasTrip = Trip.builder()
                     .name("Bahamas")
                     .city(bahamas.getCity1())
                     .country("Bahamas")
                     .itinerary(itinerary)
                     .destinations(destinations)
+                    .weatherForecast(forecast)
                     .build();
 
             tripService.saveTrip(bahamasTrip);
@@ -220,12 +230,17 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             Set<Destination> destinations = new HashSet();
             destinations.add(switzerland);
 
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("yuturuy")
+                    .build();
+
             Trip switzerlandTrip = Trip.builder()
                     .name("Switzerland")
                     .city(switzerland.getCity1())
                     .country("Switzerland")
                     .itinerary(itinerary)
                     .destinations(destinations)
+                    .weatherForecast(forecast)
                     .build();
 
             tripService.saveTrip(switzerlandTrip);
@@ -279,12 +294,17 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             Set<Destination> destinations = new HashSet();
             destinations.add(brazil);
 
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("yuturuy")
+                    .build();
+
             Trip brazilTrip = Trip.builder()
                     .name("Brazil")
                     .city(brazil.getCity1())
                     .country("Brazil")
                     .itinerary(itinerary)
                     .destinations(destinations)
+                    .weatherForecast(forecast)
                     .build();
 
             tripService.saveTrip(brazilTrip);

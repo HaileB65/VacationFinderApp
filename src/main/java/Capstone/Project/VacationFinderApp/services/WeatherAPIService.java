@@ -11,8 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -44,32 +46,25 @@ public class WeatherAPIService {
         return (String) response.getBody().get("url");
     }
 
-    //TODO
-    // Create getAllWeatherForecasts method
     public void getAllWeatherForecasts() throws Exception {
 
         LocalDate date = LocalDate.now();
-//
-        Trip peruTrip = tripService.getByName("Peru");
-        LocalDateTime localDateTime = peruTrip.weatherForecast.timestamp.toLocalDateTime();
-        LocalDate forecastTimestamp = localDateTime.toLocalDate();
 
-//        if(forecastTimestamp.compareTo(findPrevDay(date)) < 0) {
-//            peruTrip.getWeatherForecast().setForecastImageUrl("1235465");
-//        weatherAPIService.getForecastImageUrl(peruTrip.getCity(), peruTrip.getCountry())
-//            tripService.saveTrip(peruTrip);
-//        }
+        List<Trip> trips = tripService.getAllTrips();
+        for (Trip trip : trips) {
+            LocalDateTime localDateTime = trip.weatherForecast.timestamp.toLocalDateTime();
+            LocalDate forecastTimestamp = localDateTime.toLocalDate();
 
-//        List<Trip> trips = tripService.getAllTrips();
-//        for (Trip trip : trips) {
-//            LocalDateTime localDateTime1 = trip.weatherForecast.timestamp.toLocalDateTime();
-//            LocalDate forecastDate = localDateTime1.toLocalDate();
-//
-//            if(forecastDate.compareTo(findPrevDay(date)) < 0) {
-//                trip.getWeatherForecast().setForecastImageUrl(weatherAPIService.getForecastImageUrl(trip.getCity(), trip.getCountry()));
-//                tripService.saveTrip(trip);
-//            }
-//        }
+            if (forecastTimestamp.compareTo(findPrevDay(date)) < 0) {
+                trip.getWeatherForecast().setForecastImageUrl(getForecastImageUrl(trip.getCity(), trip.getCountry()));
+
+                Date date1 = new Date();
+                Timestamp todaysDate = new Timestamp(date1.getTime());
+                trip.getWeatherForecast().setTimestamp(todaysDate);
+
+                tripService.saveTrip(trip);
+            }
+        }
     }
 
     public WeatherForecast saveWeatherForecast(WeatherForecast weatherForecast) {
@@ -79,8 +74,7 @@ public class WeatherAPIService {
         return weatherForecast;
     }
 
-    private static LocalDate findPrevDay(LocalDate localdate)
-    {
+    private static LocalDate findPrevDay(LocalDate localdate) {
         return localdate.minusDays(1);
     }
 }

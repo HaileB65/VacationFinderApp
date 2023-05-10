@@ -339,10 +339,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             destinations.add(peru);
 
             WeatherForecast forecast = WeatherForecast.builder()
-                    .forecastImageUrl("jfdasfas")
+                    .forecastImageUrl("yuturuy")
                     .build();
-
-            weatherAPIService.saveWeatherForecast(forecast);
 
             Trip peruTrip = Trip.builder()
                     .name("Peru")
@@ -350,10 +348,14 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .country("Peru")
                     .itinerary(itinerary)
                     .destinations(destinations)
+                    .weatherForecast(forecast)
                     .build();
 
             tripService.saveTrip(peruTrip);
+
         }
+
+        weatherAPIService.getAllWeatherForecasts();
 
         /**
          * Creates default guest user.

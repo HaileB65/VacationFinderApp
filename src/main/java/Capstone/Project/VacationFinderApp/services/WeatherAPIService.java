@@ -1,6 +1,5 @@
 package Capstone.Project.VacationFinderApp.services;
 
-import Capstone.Project.VacationFinderApp.models.Itinerary;
 import Capstone.Project.VacationFinderApp.models.Trip;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherLocation;
@@ -12,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public class WeatherAPIService {
     @Autowired
     WeatherForecastRepository weatherForecastRepository;
 
-    public String postNewForecast(String city, String country) {
+    public String getForecastImageUrl(String city, String country) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-rapidapi-forward-key", "b61a5a7435msh866977d946919afp1c7620jsn64158120fd4f");
@@ -47,20 +46,30 @@ public class WeatherAPIService {
 
     //TODO
     // Create getAllWeatherForecasts method
-    public void getAllWeatherForecasts() {
+    public void getAllWeatherForecasts() throws Exception {
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
-        System.out.println(dtf.format(date));
+        LocalDate date = LocalDate.now();
+//
+        Trip peruTrip = tripService.getByName("Peru");
+        LocalDateTime localDateTime = peruTrip.weatherForecast.timestamp.toLocalDateTime();
+        LocalDate forecastTimestamp = localDateTime.toLocalDate();
 
-        //if date is not today's date run method
-        //
-        List<Trip> trips = tripService.getAllTrips();
+//        if(forecastTimestamp.compareTo(findPrevDay(date)) < 0) {
+//            peruTrip.getWeatherForecast().setForecastImageUrl("1235465");
+//        weatherAPIService.getForecastImageUrl(peruTrip.getCity(), peruTrip.getCountry())
+//            tripService.saveTrip(peruTrip);
+//        }
 
-        for (Trip trip : trips) {
-//                WeatherForecast forecast = trip.getWeatherForecasts().;
-//                trip.setWeatherForecastUrl(weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
-        }
+//        List<Trip> trips = tripService.getAllTrips();
+//        for (Trip trip : trips) {
+//            LocalDateTime localDateTime1 = trip.weatherForecast.timestamp.toLocalDateTime();
+//            LocalDate forecastDate = localDateTime1.toLocalDate();
+//
+//            if(forecastDate.compareTo(findPrevDay(date)) < 0) {
+//                trip.getWeatherForecast().setForecastImageUrl(weatherAPIService.getForecastImageUrl(trip.getCity(), trip.getCountry()));
+//                tripService.saveTrip(trip);
+//            }
+//        }
     }
 
     public WeatherForecast saveWeatherForecast(WeatherForecast weatherForecast) {
@@ -68,5 +77,10 @@ public class WeatherAPIService {
         weatherForecastRepository.save(weatherForecast);
 
         return weatherForecast;
+    }
+
+    private static LocalDate findPrevDay(LocalDate localdate)
+    {
+        return localdate.minusDays(1);
     }
 }

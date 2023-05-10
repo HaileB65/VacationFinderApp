@@ -4,6 +4,7 @@ import Capstone.Project.VacationFinderApp.models.*;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.repositories.TripRepository;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
+import Capstone.Project.VacationFinderApp.services.CountryFactsAPIService;
 import Capstone.Project.VacationFinderApp.services.TripService;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import Capstone.Project.VacationFinderApp.services.WeatherAPIService;
@@ -36,6 +37,9 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
     @Autowired
     WeatherAPIService weatherAPIService;
+
+    @Autowired
+    CountryFactsAPIService countryFactsAPIService;
 
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApp.class, args);
@@ -90,7 +94,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .image3("https://media.istockphoto.com/id/1037562994/photo/ger.jpg?s=612x612&w=0&k=20&c=jZPWKOIaoOXqDxQNHQRiWfu6UzPDeOf_Ml2_HdulGIM=")
                     .image4("https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRWPQAtSzOcsO_01QTgAjor8wcsuPpjTnceixJxqPVkky5DHzK8p21xJqhEWJA9DuiYL806ejzA5uxOWuh2-YMDGr7iFw")
                     .image5("https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS5o6XkKgvqzZBJ_ANjo7umg45RIbB-UUL9PpVLjguAvxXh1GO9g__9q7K2OK5nGuZlwNe8Mjo1DJMV3HBXS795C4LMVw")
-                    .image6("https://lh5.googleusercontent.com/p/AF1QipPwH4sKxf5Dk1wWj6ysMNNJJkfZpZ7D_cbgyHw4=w548-h318-n-k-no")
+                    .image6("https://www.toursmongolia.com/uploads/Mongolia_Ulaanbaatar_city_tours.jpg")
                     .trips(new HashSet<>())
                     .build();
 
@@ -375,8 +379,6 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
         }
 
-        weatherAPIService.getAllWeatherForecasts();
-
         /**
          * Creates default guest user.
          *
@@ -436,5 +438,10 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             userService.createNewUser(admin);
         }
+
+        weatherAPIService.getAllWeatherForecasts();
+
+//        countryFactsAPIService.getCountryFacts();
+//        System.out.println("test");
     }
 }

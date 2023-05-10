@@ -42,9 +42,6 @@ public class TripController {
     DestinationService destinationService;
 
     @Autowired
-    WeatherAPIService weatherAPI;
-
-    @Autowired
     SkyscannerAPIService skyscannerAPIService;
 
 

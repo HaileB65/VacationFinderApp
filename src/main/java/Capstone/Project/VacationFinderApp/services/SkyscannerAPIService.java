@@ -67,12 +67,7 @@ public class SkyscannerAPIService {
 
         HttpEntity<String> request = new HttpEntity<>(flightSearchJsonStrObject, headers);
 
-//        try {
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
-//        }catch(Exception ex){
-//
-//
-//        }
 
         return response.getBody();
     }

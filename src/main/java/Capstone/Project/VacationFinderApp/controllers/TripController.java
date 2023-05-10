@@ -141,9 +141,7 @@ public class TripController {
             model.addAttribute("checklist", checklist);
         }
 
-        //TODO
-        // Retrieve trip weather forecast from database.
-//        model.addAttribute("weatherURL", weatherAPI.postNewForecast(trip.getCity(), trip.getCountry()));
+        model.addAttribute("weatherURL", trip.getWeatherForecast().getForecastImageUrl());
 
         QueryLeg queryLeg = new QueryLeg();
         model.addAttribute("queryLeg", queryLeg);

@@ -436,9 +436,5 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             userService.createNewUser(admin);
         }
-
-        //TODO
-        // Check if weather forecasts have been updated for the day.
-
     }
 }

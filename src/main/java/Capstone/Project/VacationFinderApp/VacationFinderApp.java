@@ -442,6 +442,6 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
         weatherAPIService.getAllWeatherForecasts();
 
 //        countryFactsAPIService.getCountryFacts();
-//        System.out.println("test");
+        System.out.println("test");
     }
 }

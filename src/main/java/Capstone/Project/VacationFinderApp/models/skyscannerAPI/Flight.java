@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinderApp.models.skyscanner;
+package Capstone.Project.VacationFinderApp.models.skyscannerAPI;
 
 import lombok.Data;
 

@@ -1,25 +1,28 @@
 package Capstone.Project.VacationFinderApp.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import Capstone.Project.VacationFinderApp.models.countryAPI.CountryAPIResponse;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherLocation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class CountryFactsAPIService {
 
-    public void getCountryFacts() throws IOException {
-        URL url = new URL("https://api.api-ninjas.com/v1/country?name=United States");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestProperty("X-Api-Key", "z0OKSRFSKCVkJe38WWPxGA==WF3dSUDfg23VTqva");
-        connection.setRequestProperty("accept", "application/json");
-        InputStream responseStream = connection.getInputStream();
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(responseStream);
-        System.out.println(root.path("fact").asText());
-    }
+    @Autowired
+    RestTemplate restTemplate;
+
+//    public CountryAPIResponse getCountryFacts() {
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("X-Api-Key", "z0OKSRFSKCVkJe38WWPxGA==WF3dSUDfg23VTqva");
+//        HttpEntity<String> request = new HttpEntity<>( headers);
+//
+//        ResponseEntity<CountryAPIResponse> response = restTemplate.postForEntity("https://api.api-ninjas.com/v1/country?name=France", headers, CountryAPIResponse.class);
+//
+//        return response.getBody();
+//    }
 }

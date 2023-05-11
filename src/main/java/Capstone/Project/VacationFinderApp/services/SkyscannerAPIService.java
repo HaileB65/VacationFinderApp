@@ -1,8 +1,8 @@
 package Capstone.Project.VacationFinderApp.services;
 
-import Capstone.Project.VacationFinderApp.models.skyscanner.carrierresponse.CarrierResponse;
-import Capstone.Project.VacationFinderApp.models.skyscanner.flightsearch.*;
-import Capstone.Project.VacationFinderApp.models.skyscanner.skyscannerresponse.SkyscannerResponse;
+import Capstone.Project.VacationFinderApp.models.skyscannerAPI.carrierresponse.CarrierResponse;
+import Capstone.Project.VacationFinderApp.models.skyscannerAPI.flightsearch.*;
+import Capstone.Project.VacationFinderApp.models.skyscannerAPI.skyscannerresponse.SkyscannerResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

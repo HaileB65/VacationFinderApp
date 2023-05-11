@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinderApp.models.skyscanner.carrierresponse;
+package Capstone.Project.VacationFinderApp.models.skyscannerAPI.carrierresponse;
 
 import lombok.Data;
 

@@ -3,6 +3,8 @@ package Capstone.Project.VacationFinderApp.controllers;
 import Capstone.Project.VacationFinderApp.models.Destination;
 import Capstone.Project.VacationFinderApp.models.Questionnaire;
 import Capstone.Project.VacationFinderApp.models.Trip;
+import Capstone.Project.VacationFinderApp.models.countryAPI.Country;
+import Capstone.Project.VacationFinderApp.services.CountryFactsAPIService;
 import Capstone.Project.VacationFinderApp.services.DestinationService;
 import Capstone.Project.VacationFinderApp.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class DestinationController {
 
     @Autowired
     TripService tripService;
+
+    @Autowired
+    CountryFactsAPIService countryFactsAPIService;
 
     /**
      * Shows all destinations.
@@ -62,6 +67,16 @@ public class DestinationController {
         images.add(destination.getImage1());
         images.add(destination.getImage2());
         model.addAttribute("images", images);
+
+        Country[] countryArray = countryFactsAPIService.getCountryFacts("United States");
+        Country country = countryArray[0];
+        Float countryPopulation = country.getPopulation();
+        String popInMillions = countryFactsAPIService.getPopulationInMillions(countryPopulation);
+
+        model.addAttribute("country", country);
+        model.addAttribute("popInMillions", popInMillions);
+
+        System.out.println("test");
 
         return "destination";
     }

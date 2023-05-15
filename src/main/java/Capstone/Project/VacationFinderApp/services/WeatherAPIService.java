@@ -46,6 +46,13 @@ public class WeatherAPIService {
         return (String) response.getBody().get("url");
     }
 
+    /**
+     * Checks to see if all forecasts are up-to-date. If forecast is more than one day old
+     * an updated forecast is requested from the Weather Embedded API. The Weather Embedded API
+     * can be found at https://rapidapi.com/random-shapes-random-shapes-default/api/weather-embed.
+     *
+     * @throws Exception
+     */
     public void getAllWeatherForecasts() throws Exception {
 
         LocalDate date = LocalDate.now();

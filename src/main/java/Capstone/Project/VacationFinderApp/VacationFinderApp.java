@@ -1,6 +1,7 @@
 package Capstone.Project.VacationFinderApp;
 
 import Capstone.Project.VacationFinderApp.models.*;
+import Capstone.Project.VacationFinderApp.models.countryAPI.Country;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.repositories.TripRepository;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
@@ -441,7 +442,5 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
         weatherAPIService.getAllWeatherForecasts();
 
-//        countryFactsAPIService.getCountryFacts();
-        System.out.println("test");
     }
 }

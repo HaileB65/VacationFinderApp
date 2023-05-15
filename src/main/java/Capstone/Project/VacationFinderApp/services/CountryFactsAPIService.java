@@ -19,18 +19,35 @@ public class CountryFactsAPIService {
     @Autowired
     RestTemplate restTemplate;
 
-    @PostConstruct
-    public Country[] getCountryFacts() {
+    /**
+     * Gets facts about a country by searching the Country API from API Ninjas. The Country API can be found at
+     * https://api-ninjas.com/api/country. Surface Area is in Km^2,
+     *
+     * @return returns an array of countries. Each country object contains facts about itself.
+     */
+    public Country[] getCountryFacts(String countryName) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Api-Key", "z0OKSRFSKCVkJe38WWPxGA==WF3dSUDfg23VTqva");
 
         HttpEntity<Void> request = new HttpEntity<>(headers);
 
-        String url = "https://api.api-ninjas.com/v1/country?name=France";
+        String url = "https://api.api-ninjas.com/v1/country?name=" + countryName;
 
         ResponseEntity<Country[]> response = restTemplate.exchange(url, HttpMethod.GET, request, Country[].class);
+        System.out.println("test");
 
         return response.getBody();
+    }
+
+    public String getPopulationInMillions(Float countryPopulation) {
+        String popInMillions = countryPopulation.toString();
+        if(popInMillions.length() != 0) {
+            for(int i = 0; i <= 4; i++) {
+                popInMillions = popInMillions.substring(0, popInMillions.length() - 1);
+            }
+        }
+
+        return popInMillions;
     }
 }

@@ -26,13 +26,6 @@
   overflow-x:hidden;
   border: 1px solid black;
 }
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -148,6 +141,30 @@
             </tr>
         </table>
     </div>
+
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th colspan="5" scope="col">Country Facts</th>
+        </tr>
+        <tr>
+            <th>Capital</th>
+            <th>Currency</th>
+            <th>Population</th>
+            <th>Surface Area</th>
+            <th>Forest Area</th>
+
+        </tr>
+        <tr>
+            <td th:text="${country.capital}"></td>
+            <td th:text="${country.currency.name}"></td>
+            <td th:text="${popInMillions} + 'M'"></td>
+            <td th:text="${country.surface_area} + ' sq. km'"></td>
+            <td th:text="${country.forested_area} + '%'"></td>
+        </tr>
+
+    </table>
 
     <br>
 

@@ -35,7 +35,7 @@
 
     <br>
 
-    <h1 align="center" class="display-3" th:text="${destinationName}"></h1>
+    <h1 align="center" class="display-3" th:text="${destination.name}"></h1>
 
     <br>
 
@@ -154,12 +154,11 @@
             <th>Population</th>
             <th>Surface Area</th>
             <th>Forest Area</th>
-
         </tr>
         <tr>
             <td th:text="${country.capital}"></td>
             <td th:text="${country.currency.name}"></td>
-            <td th:text="${popInMillions} + 'M'"></td>
+            <td th:text="${countryPopulation}"></td>
             <td th:text="${country.surface_area} + ' sq. km'"></td>
             <td th:text="${country.forested_area} + '%'"></td>
         </tr>

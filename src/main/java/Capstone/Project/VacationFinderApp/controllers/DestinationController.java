@@ -58,25 +58,24 @@ public class DestinationController {
     public String showDestinationHomePage(@PathVariable("destinationId") long destinationId, Model model) throws Exception {
 
         Destination destination = destinationService.getDestinationById(destinationId);
-        model.addAttribute("destinationName", destination.getName());
-        Trip trip = tripService.getByName(destination.getName());
-        model.addAttribute("trip", trip);
         model.addAttribute("destination", destination);
 
-        ArrayList<String> images = new ArrayList<>();
-        images.add(destination.getImage1());
-        images.add(destination.getImage2());
-        model.addAttribute("images", images);
+        Trip trip = tripService.getByName(destination.getName());
+        model.addAttribute("trip", trip);
 
-        Country[] countryArray = countryFactsAPIService.getCountryFacts("United States");
+        Country[] countryArray = countryFactsAPIService.getCountryFacts(destination.getName());
         Country country = countryArray[0];
-        Float countryPopulation = country.getPopulation();
-        String popInMillions = countryFactsAPIService.getPopulationInMillions(countryPopulation);
-
         model.addAttribute("country", country);
-        model.addAttribute("popInMillions", popInMillions);
 
-        System.out.println("test");
+        Float countryPopulation = country.getPopulation();
+        if(countryPopulation.toString().length() >= 6) {
+            String popInMillions = countryFactsAPIService.getPopulationInMillions(countryPopulation);
+            model.addAttribute("countryPopulation", popInMillions);
+        }
+        if(countryPopulation.toString().length() <= 5) {
+            String popInHundredThousands = countryFactsAPIService.getPopulationInThousands(countryPopulation);
+            model.addAttribute("countryPopulation", popInHundredThousands);
+        }
 
         return "destination";
     }

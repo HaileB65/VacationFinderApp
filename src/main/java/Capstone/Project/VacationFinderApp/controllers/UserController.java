@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -49,5 +51,14 @@ public class UserController {
     public String showUserHomePage() throws Exception {
 
         return "user-home-page";
+    }
+
+    @GetMapping("/users")
+    public String showUsersTable(Model model){
+
+        List<User> usersList = userService.getAllUsers();
+        model.addAttribute("usersList", usersList);
+
+        return "users";
     }
 }

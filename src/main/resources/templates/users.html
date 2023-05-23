@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Destination Page</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+
+<div id="container">
+
+    <br>
+
+    <h1 align="center" class="display-3">Users</h1>
+
+    <br>
+
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Role</th>
+            <th scope="col">Locked</th>
+        </tr>
+        <tr th:each="user : ${usersList}">
+            <td th:text="${user.username}">Name</td>
+            <td th:text="${user.firstName}">First Name</td>
+            <td th:text="${user.lastName}">Last Name</td>
+            <td th:text="${user.email}">Email</td>
+            <td th:text="${user.phone}">Phone</td>
+            <td th:text="${user.role}">Role</td>
+            <td th:text="${user.locked}">Locked</td>
+<!--            <td>-->
+<!--                <a th:href="@{/destination/__${destination.id}__}">View</a>-->
+<!--                <div sec:authorize="hasAuthority('ADMIN')">-->
+<!--                    <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>-->
+<!--                </div>-->
+<!--            </td>-->
+        </tr>
+    </table>
+
+    <br>
+
+<!--    <div align="center" sec:authorize="hasAuthority('ADMIN')">-->
+<!--        <form action="#" method="get" th:action="@{/newDestination}">-->
+<!--            <button class="btn btn-primary" type="submit">Create New Destination</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+</div>
+
+<div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+</body>
+</html>

@@ -18,18 +18,18 @@
 
     <table class="table table-hover">
         <tr>
-            <th scope="col">Username</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">Role</th>
             <th scope="col">Locked</th>
         </tr>
         <tr th:each="user : ${usersList}">
-            <td th:text="${user.username}">Name</td>
             <td th:text="${user.firstName}">First Name</td>
             <td th:text="${user.lastName}">Last Name</td>
+            <td th:text="${user.username}">Name</td>
             <td th:text="${user.email}">Email</td>
             <td th:text="${user.phone}">Phone</td>
             <td th:text="${user.role}">Role</td>

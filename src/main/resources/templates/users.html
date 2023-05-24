@@ -16,15 +16,16 @@
 
     <br>
 
-    <table class="table table-hover">
-        <tr>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
+    <table class="table table-hover" style="width:100%">
+        <tr align="center">
+            <th scope="col" style="width:100%">First Name</th>
+            <th scope="col" style="width:100%">Last Name</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">Role</th>
             <th scope="col">Locked</th>
+            <th scope="col">Actions</th>
         </tr>
         <tr th:each="user : ${usersList}">
             <td th:text="${user.firstName}">First Name</td>
@@ -34,22 +35,21 @@
             <td th:text="${user.phone}">Phone</td>
             <td th:text="${user.role}">Role</td>
             <td th:text="${user.locked}">Locked</td>
-<!--            <td>-->
-<!--                <a th:href="@{/destination/__${destination.id}__}">View</a>-->
-<!--                <div sec:authorize="hasAuthority('ADMIN')">-->
-<!--                    <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>-->
-<!--                </div>-->
-<!--            </td>-->
+            <td>
+                <a th:href="@{/unlockUser/__${user.id}__}">Unlock</a>
+                <a th:href="@{/lockUser/__${user.id}__}">Lock</a>
+                <a th:href="@{/deleteUser/__${user.id}__}">Delete</a>
+            </td>
         </tr>
     </table>
 
     <br>
 
-<!--    <div align="center" sec:authorize="hasAuthority('ADMIN')">-->
-<!--        <form action="#" method="get" th:action="@{/newDestination}">-->
-<!--            <button class="btn btn-primary" type="submit">Create New Destination</button>-->
-<!--        </form>-->
-<!--    </div>-->
+    <div align="center">
+        <form action="#" method="get" th:action="@{/register}">
+            <button class="btn btn-primary" type="submit">Create New User</button>
+        </form>
+    </div>
 
 </div>
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -29,6 +30,14 @@ public class UserController {
         return "new-user";
     }
 
+    @GetMapping("/deleteUser/{userId}")
+    public String deleteUser(@PathVariable("userId") long userId) throws Exception {
+        User user = userService.getUserById(userId);
+        userService.deleteUser(user);
+        System.out.println("User deleted");
+        return "redirect:/users";
+    }
+
     /**
      * Saves newly created user.
      *
@@ -38,7 +47,7 @@ public class UserController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("newUser") User newUser) {
         userService.createNewUser(newUser);
-        return "redirect:/users";
+        return "redirect:/welcome";
     }
 
     /**
@@ -60,5 +69,23 @@ public class UserController {
         model.addAttribute("usersList", usersList);
 
         return "users";
+    }
+
+    @GetMapping("/unlockUser/{userId}")
+    public String unlockUser(@PathVariable("userId") long userId) throws Exception {
+        User user = userService.getUserById(userId);
+        user.setLocked(false);
+        userService.saveUser(user);
+
+        return "redirect:/users";
+    }
+
+    @GetMapping("/lockUser/{userId}")
+    public String lockUser(@PathVariable("userId") long userId) throws Exception {
+        User user = userService.getUserById(userId);
+        user.setLocked(true);
+        userService.saveUser(user);
+
+        return "redirect:/users";
     }
 }

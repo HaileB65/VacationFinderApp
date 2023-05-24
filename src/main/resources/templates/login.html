@@ -5,14 +5,16 @@
     <title>Login</title>
     <div th:replace="fragments :: header"></div>
     <style>
-            a {
-                color: grey;
-            }
-            a:link {
-                color: grey;
-                text-decoration: none;
-            }
-
+        a {
+            color: grey;
+        }
+        a:link {
+            color: grey;
+            text-decoration: none;
+        }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -40,14 +42,14 @@
                         <div class="alert alert-success" th:if="${param.logout}">
                             You have been logged out.
                         </div>
-                        <label for="username">Username</label>
-                        <input id="username" name="username" type="text"/>
+                            <label for="username">Username</label>
+                            <input required id="username" name="username" type="text"/>
                     </td>
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
                         <label for="password">Password</label>
-                        <input id="password" name="password" type="text"/>
+                        <input required id="password" name="password" type="text"/>
                     </td>
                 </tr>
                 <tr>

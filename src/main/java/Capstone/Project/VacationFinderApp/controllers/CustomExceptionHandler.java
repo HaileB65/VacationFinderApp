@@ -14,4 +14,9 @@ public class CustomExceptionHandler
         return "error";
     }
 
+    @ExceptionHandler(InternalAuthenticationServiceException.class)
+    public String handleUsernameNotFoundExceptions(Exception ex, Model model) {
+        model.addAttribute("error", ex.getMessage());
+        return "error";
+    }
 }

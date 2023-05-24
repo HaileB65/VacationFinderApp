@@ -229,13 +229,36 @@ public class DestinationController {
     }
 
     /**
-     * Saves a new destination.
+     * Saves a destination.
      *
-     * @param destination destination to be saved.
+     * @param viewDestination destination to be saved.
      * @return redirects to destinations page.
      */
-    @PostMapping("/saveDestination")
-    public String saveDestination(@ModelAttribute("newDestination") Destination destination) {
+    @PostMapping("/saveDestination/{destinationId}")
+    public String saveDestination(@ModelAttribute("destination") Destination viewDestination,
+                                  @PathVariable("destinationId") long viewDestinationId) throws Exception {
+        Destination dbDestination = destinationService.getDestinationById(viewDestinationId);
+
+        dbDestination.setName(viewDestination.getName());
+        dbDestination.setScenery(viewDestination.getScenery());
+        dbDestination.setWeather(viewDestination.getWeather());
+        dbDestination.setActivity1(viewDestination.getActivity1());
+        dbDestination.setActivity2(viewDestination.getActivity1());
+        dbDestination.setActivity3(viewDestination.getActivity3());
+        dbDestination.setImage1(viewDestination.getImage1());
+        dbDestination.setImage2(viewDestination.getImage2());
+        dbDestination.setImage3(viewDestination.getImage3());
+        dbDestination.setImage4(viewDestination.getImage4());
+        dbDestination.setImage5(viewDestination.getImage5());
+        dbDestination.setImage6(viewDestination.getImage6());
+        dbDestination.setCity1(viewDestination.getCity1());
+
+        destinationService.saveDestination(dbDestination);
+        return "redirect:/destinations";
+    }
+
+    @PostMapping("/saveNewDestination")
+    public String saveNewDestination(@ModelAttribute("destination") Destination destination) {
         destinationService.createNewDestination(destination);
         return "redirect:/destinations";
     }

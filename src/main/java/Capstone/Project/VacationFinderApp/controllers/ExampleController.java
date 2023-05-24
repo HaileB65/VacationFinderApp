@@ -4,7 +4,7 @@ import Capstone.Project.VacationFinderApp.models.User;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/user2")
-public class RyanUserController {
+public class ExampleController {
 
     @GetMapping
     public User getUser() {

@@ -42,6 +42,7 @@ public class DestinationService {
         return destination;
     }
 
+    @CacheEvict(value = "destinations", allEntries = true)
     public Destination saveDestination(Destination destination) {
         destinationRepository.save(destination);
         return destination;

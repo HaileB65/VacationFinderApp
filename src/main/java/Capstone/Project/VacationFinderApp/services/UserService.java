@@ -54,8 +54,8 @@ public class UserService implements UserDetailsService {
         userRepository.delete(user);
     }
 
-//    @ExceptionHandler(InternalAuthenticationServiceException.class)
-//    public void handleUserNotFoundException(Exception ex) {
-//        System.out.println(ex.getMessage());
-//    }
+    @ExceptionHandler(InternalAuthenticationServiceException.class)
+    public void handleUserNotFoundException(Exception ex) {
+        System.out.println(ex.getMessage());
+    }
 }

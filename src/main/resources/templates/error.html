@@ -2,25 +2,42 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Error Page</title>
-    <div th:replace="fragments :: header"/>
+    <title>Login</title>
+    <div th:replace="fragments :: header"></div>
+    <style>
+        a {
+            color: grey;
+        }
+        a:link {
+            color: grey;
+            text-decoration: none;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div th:replace="fragments :: navigation"/>
+<div th:replace="fragments :: navigation"></div>
 
-<div id="container"></div>
+<div align="center" id="container">
 
-<br>
+    <br>
 
-<h1 align="center" class="display-3">Ops!</h1>
+    <img align="center" src="/images/Logo.jpg"/>
 
-<br>
-<div align="center">
-    <a th:text="${error}"></a>
+    <br>
+
+    <h1 align="center" class="display-3">Page Not Found</h1>
+
+    <br>
+
+    <a>Unfortunately, this page does not exist. Please check your url or return to the home page.</a>
+
+
 </div>
 
-
-
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>
+
 </body>
 </html>

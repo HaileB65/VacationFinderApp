@@ -12,17 +12,12 @@
             color: grey;
             text-decoration: none;
         }
-        .error {
-            color: red;
-        }
     </style>
 </head>
 <body>
 <div th:replace="fragments :: navigation"></div>
 
 <div align="center" id="container">
-
-    <br>
 
     <img align="center" src="/images/error_image.jpg"/>
 <!--    <h1 class="display-3">Ops!</h1>-->
@@ -31,6 +26,7 @@
     <br>
 
     <a>Please try again or return to the home page.</a>
+    <a class="btn btn-link" th:href="@{/userHomePage}">home page</a>
 
 
 </div>

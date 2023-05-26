@@ -1,7 +1,6 @@
 package Capstone.Project.VacationFinderApp;
 
 import Capstone.Project.VacationFinderApp.models.*;
-import Capstone.Project.VacationFinderApp.models.countryAPI.Country;
 import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.repositories.TripRepository;
 import Capstone.Project.VacationFinderApp.repositories.UserRepository;
@@ -394,6 +393,10 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .username("Robin411")
                     .password("password")
                     .role(Role.GUEST)
+                    .enabled(true)
+                    .accountNonExpired(true)
+                    .credentialsNonExpired(true)
+                    .accountNonLocked(true)
                     .trips(new HashSet<>())
                     .build();
 
@@ -414,7 +417,9 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .password("password")
                     .role(Role.USER)
                     .enabled(true)
-                    .locked(false)
+                    .accountNonExpired(true)
+                    .credentialsNonExpired(true)
+                    .accountNonLocked(true)
                     .build();
 
             userService.createNewUser(user);
@@ -434,7 +439,9 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .password("password")
                     .role(Role.ADMIN)
                     .enabled(true)
-                    .locked(false)
+                    .accountNonExpired(true)
+                    .credentialsNonExpired(true)
+                    .accountNonLocked(true)
                     .build();
 
             userService.createNewUser(admin);

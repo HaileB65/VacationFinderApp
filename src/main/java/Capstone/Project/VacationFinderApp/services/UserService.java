@@ -41,6 +41,10 @@ public class UserService implements UserDetailsService {
 
     public User createNewUser(User user) {
         passwordEncoder.encodeUserPassword(user);
+        user.setEnabled(true);
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
         userRepository.saveAndFlush(user);
         return user;
     }
@@ -52,10 +56,5 @@ public class UserService implements UserDetailsService {
 
     public void deleteUser(User user) {
         userRepository.delete(user);
-    }
-
-    @ExceptionHandler(InternalAuthenticationServiceException.class)
-    public void handleUserNotFoundException(Exception ex) {
-        System.out.println(ex.getMessage());
     }
 }

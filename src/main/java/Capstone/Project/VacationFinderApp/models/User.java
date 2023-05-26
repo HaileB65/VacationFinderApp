@@ -68,47 +68,18 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<Trip> trips;
 
-    @Builder.Default
-    boolean locked = false;
+//    @Builder.Default
+//    boolean locked = false;
+    boolean enabled;
 
-    @Builder.Default
-    boolean enabled = true;
-
+    boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 
 }

@@ -18,19 +18,19 @@ public class CustomExceptionHandler
 
     @ExceptionHandler(Exception.class)
     public String handleAllExceptions(Exception ex, Model model) {
-        model.addAttribute("error", ex.getMessage());
+        System.out.println(ex);
         return "error";
     }
 
     @ExceptionHandler(InternalAuthenticationServiceException.class)
     public String handleUsernameNotFoundExceptions(Exception ex, Model model) {
-        model.addAttribute("error", ex.getMessage());
+        System.out.println(ex);
         return "error";
     }
 
     @ExceptionHandler(HttpServerErrorException.InternalServerError.class)
     public String handlePageNotFoundException(Exception ex, Model model) {
-        model.addAttribute("error", ex.getMessage());
+        System.out.println(ex);
         return "page-not-found-error";
     }
 }

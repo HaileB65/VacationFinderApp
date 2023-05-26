@@ -74,7 +74,10 @@ public class UserController {
     @GetMapping("/unlockUser/{userId}")
     public String unlockUser(@PathVariable("userId") long userId) throws Exception {
         User user = userService.getUserById(userId);
-        user.setLocked(false);
+        user.setEnabled(true);
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
         userService.saveUser(user);
 
         return "redirect:/users";
@@ -83,7 +86,10 @@ public class UserController {
     @GetMapping("/lockUser/{userId}")
     public String lockUser(@PathVariable("userId") long userId) throws Exception {
         User user = userService.getUserById(userId);
-        user.setLocked(true);
+        user.setEnabled(false);
+        user.setAccountNonExpired(false);
+        user.setAccountNonLocked(false);
+        user.setCredentialsNonExpired(false);
         userService.saveUser(user);
 
         return "redirect:/users";

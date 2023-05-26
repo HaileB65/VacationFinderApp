@@ -34,7 +34,7 @@
             <td th:text="${user.email}">Email</td>
             <td th:text="${user.phone}">Phone</td>
             <td th:text="${user.role}">Role</td>
-            <td th:text="${user.locked}">Locked</td>
+            <td th:text="${user.enabled}">Locked</td>
             <td>
                 <a th:href="@{/unlockUser/__${user.id}__}">Unlock</a>
                 <a th:href="@{/lockUser/__${user.id}__}">Lock</a>

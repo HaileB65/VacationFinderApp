@@ -239,6 +239,10 @@ public class TripController {
         model.addAttribute("itineraryId", trip.itinerary.getId());
 
         model.addAttribute("destinations", trip.destinations);
+
+        Object[] usersOnTripList = trip.getUsers().toArray();
+        model.addAttribute("usersOnTripList", usersOnTripList);
+
         return "edit-trip-page";
     }
 

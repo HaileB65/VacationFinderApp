@@ -108,6 +108,24 @@
     </table>
 
     <br>
+
+    <table class="table table-hover" style="width:100%">
+        <tr>
+            <th colspan="3">Passengers</th>
+        </tr>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <tr th:each="user : ${usersOnTripList}">
+            <td th:text="${user.username}">UserName</td>
+            <td>
+                <a th:href="@{/removeUser/__${user.id}__}">Remove</a>
+            </td>
+        </tr>
+    </table>
+
+    <br>
     <br>
     <br>
 </div>

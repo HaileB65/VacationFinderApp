@@ -380,11 +380,11 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
         }
 
         /**
-         * Creates default guest user.
+         * Creates default user.
          *
          */
         if (!userRepository.existsByUsername("Robin411")) {
-            User guest = User.builder()
+            User user = User.builder()
                     .id(1L)
                     .firstName("Robin")
                     .lastName("Smith")
@@ -392,7 +392,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .phone("124568457")
                     .username("Robin411")
                     .password("password")
-                    .role(Role.GUEST)
+                    .role(Role.USER)
                     .enabled(true)
                     .accountNonExpired(true)
                     .credentialsNonExpired(true)
@@ -400,7 +400,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .trips(new HashSet<>())
                     .build();
 
-            userService.createNewUser(guest);
+            userService.createNewUser(user);
         }
 
         /**

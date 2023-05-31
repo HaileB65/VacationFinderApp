@@ -51,6 +51,53 @@
         </form>
     </div>
 
+    <br>
+
+    <h1 align="center" class="display-5">Find trips connected to a user.</h1>
+    <hr/>
+    <table class="table">
+        <tr>
+            <td>
+                <form action="#" class="row g-3" method="get" th:action="@{/users}"
+                      th:object="${user}">
+                    <div class="row" align="center">
+                        <div class="col-auto">
+                            <label class="visually-hidden" for="username">Username</label>
+                            <input class="form-control" id="username" placeholder="Username"
+                                   th:field="*{username}"
+                                   type="text">
+                        </div>
+                        <div class="col-auto">
+                            <label class="visually-hidden" for="email">Email</label>
+                            <input class="form-control" id="email"
+                                   placeholder="Email"
+                                   th:field="*{email}" type="text">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary mb-3" type="submit">Find Trips</button>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+<!--    <table class="table table-hover">-->
+<!--        <tr>-->
+<!--            <th colspan="3">Passengers</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th scope="col">Username</th>-->
+<!--            <th scope="col">Actions</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="user : ${usersOnTripList}">-->
+<!--            <td th:text="${user.username}">UserName</td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/removeUser/__${user.id}__}">Remove</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
 </div>
 
 <div align="center" th:replace="fragments :: footer">&copy; 2022 Vacation Finder</div>

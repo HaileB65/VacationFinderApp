@@ -1,6 +1,7 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.User;
+import Capstone.Project.VacationFinderApp.models.skyscannerAPI.flightsearch.QueryLeg;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,10 +64,19 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String showUsersTable(Model model){
+    public String showUsersTable(@ModelAttribute("user") User user1, Model model){
 
         List<User> usersList = userService.getAllUsers();
         model.addAttribute("usersList", usersList);
+
+        User user = new User();
+        model.addAttribute("user", user);
+
+        if (user1.getUsername() != null) {
+            User dbUser = (User) userService.loadUserByUsername(user1.getUsername());
+            Object[] trips = dbUser.getTrips().toArray();
+            model.addAttribute("userTrips" , trips);
+        }
 
         return "users";
     }

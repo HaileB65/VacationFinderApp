@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Destination Page</title>
@@ -56,43 +56,37 @@
     <h1 align="center" class="display-5">Find trips connected to a user.</h1>
     <hr/>
     <table class="table">
-        <tr>
+        <tr align="center">
             <td>
-                <form action="#" class="row g-3" method="get" th:action="@{/users}"
-                      th:object="${user}">
-                    <div class="row" align="center">
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="username">Username</label>
-                            <input class="form-control" id="username" placeholder="Username" th:field="*{username}" type="text">
-                        </div>
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="email">Email</label>
-                            <input class="form-control" id="email" placeholder="Email" th:field="*{email}" type="text">
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn btn-primary mb-3" type="submit">Find Trips</button>
-                        </div>
-                    </div>
+                <form action="#" class="row g-3" method="get" th:action="@{/users}" th:object="${user}">
+                    <label class="visually-hidden" for="username" align="center">Username</label>
+                    <input class="form-control" id="username" placeholder="Username" th:field="*{username}" type="text">
                 </form>
+            </td>
+            <td>
+                <button class="btn btn-primary mb-3" type="submit">Find Trips</button>
+            </td>
+        </tr>
+        <tr>
+            <td scope="col">Name</td>
+            <td scope="col">Actions</td>
+        </tr>
+        <tr th:each="trip : ${userTrips}">
+            <td th:text="${trip.name}">Name</td>
+            <td>
+                <a th:href="@{/trips/__${trip.name}__}">View</a>
+            </td>
+            <td>
+                <a th:href="@{/removeUser/__${user.id}__/__${trip.name}__}">Remove User From Trip</a>
             </td>
         </tr>
     </table>
 
-<!--    <table class="table table-hover">-->
-<!--        <tr>-->
-<!--            <th colspan="3">Passengers</th>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th scope="col">Username</th>-->
-<!--            <th scope="col">Actions</th>-->
-<!--        </tr>-->
-<!--        <tr th:each="user : ${usersOnTripList}">-->
-<!--            <td th:text="${user.username}">UserName</td>-->
-<!--            <td>-->
-<!--                <a th:href="@{/removeUser/__${user.id}__}">Remove</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
+<!--    <div th:if="${userTrips}">-->
+        <table class="table table-hover">
+
+        </table>
+<!--    </div>-->
 
 </div>
 

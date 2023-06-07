@@ -1,7 +1,6 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.User;
-import Capstone.Project.VacationFinderApp.models.skyscannerAPI.flightsearch.QueryLeg;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,17 +38,6 @@ public class UserController {
         return "redirect:/users";
     }
 
-    /**
-     * Saves newly created user.
-     *
-     * @param newUser new user to be saved.
-     * @return redirects to users page.
-     */
-    @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("newUser") User newUser) {
-        userService.createNewUser(newUser);
-        return "redirect:/welcome";
-    }
 
     /**
      * Shows user's home page.
@@ -73,9 +61,10 @@ public class UserController {
         model.addAttribute("user", user);
 
         if (user1.getUsername() != null) {
-            User dbUser = (User) userService.loadUserByUsername(user1.getUsername());
-            Object[] trips = dbUser.getTrips().toArray();
-            model.addAttribute("userTrips" , trips);
+//            User dbUser = userService.getByUserName(user1.getUsername());
+//            Object[] trips = dbUser.getTrips().toArray();
+//            model.addAttribute("userTrips" , trips);
+            System.out.println("test");
         }
 
         return "users";
@@ -103,5 +92,17 @@ public class UserController {
         userService.saveUser(user);
 
         return "redirect:/users";
+    }
+
+    /**
+     * Saves newly created user.
+     *
+     * @param newUser new user to be saved.
+     * @return redirects to users page.
+     */
+    @PostMapping("/saveUser")
+    public String saveUser(@ModelAttribute("newUser") User newUser) {
+        userService.createNewUser(newUser);
+        return "redirect:/welcome";
     }
 }

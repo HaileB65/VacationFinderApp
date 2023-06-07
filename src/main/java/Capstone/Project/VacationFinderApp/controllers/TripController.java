@@ -365,6 +365,21 @@ public class TripController {
         return "redirect:/myTrips";
     }
 
+    @GetMapping("/removeUser/{tripName}/{userId}")
+    public String removeUser(@PathVariable("tripName") String tripName,@PathVariable("userId") long userId) throws Exception {
+        Trip dbTrip = tripService.getByName(tripName);
+        User dbUser = userService.getUserById(userId);
+
+        dbTrip.getUsers().remove(dbUser);
+        tripService.saveTrip(dbTrip);
+
+        dbUser.getTrips().remove(dbTrip);
+        userService.saveUser(dbUser);
+
+        System.out.println("test");
+
+        return "redirect:/trips";
+    }
 
 }
 

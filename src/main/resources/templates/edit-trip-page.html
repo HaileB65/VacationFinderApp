@@ -120,7 +120,7 @@
         <tr th:each="user : ${usersOnTripList}">
             <td th:text="${user.username}">UserName</td>
             <td>
-                <a th:href="@{/removeUser/__${user.id}__}">Remove</a>
+                <a th:href="@{/removeUser/__${trip.name}__/__${user.id}__}">Remove</a>
             </td>
         </tr>
     </table>

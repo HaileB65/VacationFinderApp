@@ -182,15 +182,11 @@
                     <div class="row" align="center">
                         <div class="col-auto">
                             <label class="visually-hidden" for="Origin Airport">Origin Airport</label>
-                            <input class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code"
-                                   th:field="*{originPlaceId.iata}"
-                                   type="text">
+                            <input class="form-control" id="Origin Airport" placeholder="Origin Airport Iata code" th:field="*{originPlaceId.iata}" type="text">
                         </div>
                         <div class="col-auto">
                             <label class="visually-hidden" for="Destination Airport">Destination Airport</label>
-                            <input class="form-control" id="Destination Airport"
-                                   placeholder="Destination Airport Iata code"
-                                   th:field="*{destinationPlaceId.iata}" type="text">
+                            <input class="form-control" id="Destination Airport" placeholder="Destination Airport Iata code" th:field="*{destinationPlaceId.iata}" type="text">
                         </div>
                         <div class="col-auto">
                             <button class="btn btn-primary mb-3" type="submit">Get Flight prices</button>

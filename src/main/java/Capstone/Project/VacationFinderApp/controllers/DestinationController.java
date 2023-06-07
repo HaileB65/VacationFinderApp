@@ -1,9 +1,11 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
 import Capstone.Project.VacationFinderApp.models.Destination;
+import Capstone.Project.VacationFinderApp.models.Itinerary;
 import Capstone.Project.VacationFinderApp.models.Questionnaire;
 import Capstone.Project.VacationFinderApp.models.Trip;
 import Capstone.Project.VacationFinderApp.models.countryAPI.Country;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.services.CountryFactsAPIService;
 import Capstone.Project.VacationFinderApp.services.DestinationService;
 import Capstone.Project.VacationFinderApp.services.TripService;
@@ -240,6 +242,7 @@ public class DestinationController {
         Destination dbDestination = destinationService.getDestinationById(viewDestinationId);
 
         dbDestination.setName(viewDestination.getName());
+        dbDestination.setDescription(viewDestination.getDescription());
         dbDestination.setScenery(viewDestination.getScenery());
         dbDestination.setWeather(viewDestination.getWeather());
         dbDestination.setActivity1(viewDestination.getActivity1());
@@ -258,8 +261,16 @@ public class DestinationController {
     }
 
     @PostMapping("/saveNewDestination")
-    public String saveNewDestination(@ModelAttribute("destination") Destination destination) {
+    public String saveNewDestination(@ModelAttribute("newDestination") Destination destination) {
+        Trip newTrip = new Trip();
+        newTrip.setName(destination.getName());
+        newTrip.setItinerary(new Itinerary());
+        newTrip.setWeatherForecast(new WeatherForecast());
+
+        tripService.saveTrip(newTrip);
+
         destinationService.createNewDestination(destination);
+
         return "redirect:/destinations";
     }
 

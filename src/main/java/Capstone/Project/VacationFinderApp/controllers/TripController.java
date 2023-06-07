@@ -7,6 +7,7 @@ import Capstone.Project.VacationFinderApp.models.skyscannerAPI.flightsearch.Quer
 import Capstone.Project.VacationFinderApp.models.skyscannerAPI.skyscannerresponse.FlightId;
 import Capstone.Project.VacationFinderApp.models.skyscannerAPI.skyscannerresponse.SkyscannerItinerary;
 import Capstone.Project.VacationFinderApp.models.skyscannerAPI.skyscannerresponse.SkyscannerResponse;
+import Capstone.Project.VacationFinderApp.models.weatherAPI.WeatherForecast;
 import Capstone.Project.VacationFinderApp.services.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -280,41 +281,11 @@ public class TripController {
         return "redirect:/trips";
     }
 
-    /**
-     * Adds a user to a trip.
-     *
-     * @param currentUser current user logged in.
-     * @return redirects to myTrips page.
-     * @throws Exception
-     */
-    @PostMapping("/joinTrip")
-    public String joinTrip(@ModelAttribute("trip") Trip trip, @AuthenticationPrincipal User currentUser) throws Exception {
-
-        Trip dbTrip = tripService.getByName(trip.getName());
-
-        User user = userService.getUserById(currentUser.getId());
-        user.getTrips().add(dbTrip);
-        userService.saveUser(user);
-
-        return "redirect:/myTrips";
-    }
-
-    @PostMapping("/joinTrip/{destination}")
-    public String joinTrip(@AuthenticationPrincipal User currentUser, @PathVariable("destination") String destination) throws Exception {
-
-        Trip dbTrip = tripService.getByName(destination);
-
-        User user = userService.getUserById(currentUser.getId());
-        user.getTrips().add(dbTrip);
-        userService.saveUser(user);
-
-        return "redirect:/myTrips";
-    }
-
     @PostMapping("/saveTrip")
     public String saveTrip(@ModelAttribute("trip") Trip newTrip) {
 
         newTrip.setItinerary(new Itinerary());
+        newTrip.setWeatherForecast(new WeatherForecast());
 
         tripService.saveTrip(newTrip);
 
@@ -360,6 +331,37 @@ public class TripController {
 
         user.getTrips().remove(trip);
         tripService.deleteTrip(trip);
+        userService.saveUser(user);
+
+        return "redirect:/myTrips";
+    }
+
+    /**
+     * Adds a user to a trip.
+     *
+     * @param currentUser current user logged in.
+     * @return redirects to myTrips page.
+     * @throws Exception
+     */
+    @PostMapping("/joinTrip")
+    public String joinTrip(@ModelAttribute("trip") Trip trip, @AuthenticationPrincipal User currentUser) throws Exception {
+
+        Trip dbTrip = tripService.getByName(trip.getName());
+
+        User user = userService.getUserById(currentUser.getId());
+        user.getTrips().add(dbTrip);
+        userService.saveUser(user);
+
+        return "redirect:/myTrips";
+    }
+
+    @PostMapping("/joinTrip/{destination}")
+    public String joinTrip(@AuthenticationPrincipal User currentUser, @PathVariable("destination") String destination) throws Exception {
+
+        Trip dbTrip = tripService.getByName(destination);
+
+        User user = userService.getUserById(currentUser.getId());
+        user.getTrips().add(dbTrip);
         userService.saveUser(user);
 
         return "redirect:/myTrips";

@@ -18,36 +18,30 @@
 
         <h3>Create New Destination</h3>
         <hr/>
-        <form action="#" method="post" th:action="@{/saveDestination}" th:object="${newDestination}">
+        <form action="#" method="post" th:action="@{/saveNewDestination}" th:object="${newDestination}">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input class="form-control" id="name" placeholder="Name" required th:field="*{name}"
-                       type="text">
+                <input class="form-control" id="name" placeholder="Name" required th:field="*{name}" type="text">
             </div>
             <div class="form-group">
                 <label for="scenery">Scenery</label>
-                <input class="form-control" id="scenery" placeholder="Scenery" required th:field="*{scenery}"
-                       type="text">
+                <input class="form-control" id="scenery" placeholder="Scenery" required th:field="*{scenery}" type="text">
             </div>
             <div class="form-group">
                 <label for="weather">Weather</label>
-                <input class="form-control" id="weather" placeholder="Weather" required th:field="*{weather}"
-                       type="text">
+                <input class="form-control" id="weather" placeholder="Weather" required th:field="*{weather}" type="text">
             </div>
             <div class="form-group">
                 <label for="activity1">Activity 1</label>
-                <input class="form-control" id="activity1" placeholder="Activity 1" required th:field="*{activity1}"
-                       type="text">
+                <input class="form-control" id="activity1" placeholder="Activity 1" required th:field="*{activity1}" type="text">
             </div>
             <div class="form-group">
                 <label for="activity2">Activity 2</label>
-                <input class="form-control" id="activity2" placeholder="Activity 2" required th:field="*{activity2}"
-                       type="text">
+                <input class="form-control" id="activity2" placeholder="Activity 2" required th:field="*{activity2}" type="text">
             </div>
             <div class="form-group">
                 <label for="activity3">Activity 3</label>
-                <input class="form-control" id="activity3" placeholder="Activity 3" required th:field="*{activity3}"
-                       type="text">
+                <input class="form-control" id="activity3" placeholder="Activity 3" required th:field="*{activity3}" type="text">
             </div>
             <div class="form-group">
                 <label for="image1">Image 1</label>
@@ -58,15 +52,15 @@
                 <input class="form-control" id="image2" placeholder="Image 2" required th:field="*{image2}" type="text">
             </div>
             <div class="form-group">
-                <label for="image6">Image 6</label>
+                <label for="image6">Image 3</label>
                 <input class="form-control" id="image3" placeholder="Image 3" required th:field="*{image3}" type="text">
             </div>
             <div class="form-group">
-                <label for="image6">Image 6</label>
+                <label for="image6">Image 4</label>
                 <input class="form-control" id="image4" placeholder="Image 4" required th:field="*{image4}" type="text">
             </div>
             <div class="form-group">
-                <label for="image6">Image 6</label>
+                <label for="image6">Image 5</label>
                 <input class="form-control" id="image5" placeholder="Image 5" required th:field="*{image5}" type="text">
             </div>
             <div class="form-group">
@@ -74,8 +68,12 @@
                 <input class="form-control" id="image6" placeholder="Image 6" required th:field="*{image6}" type="text">
             </div>
             <div class="form-group">
-                <label for="city1">City 1</label>
+                <label for="city1">Capital</label>
                 <input class="form-control" id="city1" placeholder="City 1" required th:field="*{city1}" type="text">
+            </div>
+            <div class="form-group">
+                <label for="city1">Description</label>
+                <input class="form-control" id="description" placeholder="Description" required th:field="*{description}" type="text">
             </div>
 
             <br>

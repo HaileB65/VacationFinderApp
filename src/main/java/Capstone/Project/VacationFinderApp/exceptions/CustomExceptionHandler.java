@@ -1,4 +1,4 @@
-package Capstone.Project.VacationFinderApp.controllers;
+package Capstone.Project.VacationFinderApp.exceptions;
 
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.ui.Model;

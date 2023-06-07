@@ -59,17 +59,19 @@ public class WeatherAPIService {
 
         List<Trip> trips = tripService.getAllTrips();
         for (Trip trip : trips) {
-            LocalDateTime localDateTime = trip.weatherForecast.timestamp.toLocalDateTime();
-            LocalDate forecastTimestamp = localDateTime.toLocalDate();
+            if (trip.weatherForecast != null) {
+                LocalDateTime localDateTime = trip.weatherForecast.timestamp.toLocalDateTime();
+                LocalDate forecastTimestamp = localDateTime.toLocalDate();
 
-            if (forecastTimestamp.compareTo(findPrevDay(date)) < 0) {
-                trip.getWeatherForecast().setForecastImageUrl(getForecastImageUrl(trip.getCity(), trip.getCountry()));
+                if (forecastTimestamp.compareTo(findPrevDay(date)) < 0) {
+                    trip.getWeatherForecast().setForecastImageUrl(getForecastImageUrl(trip.getCity(), trip.getCountry()));
 
-                Date date1 = new Date();
-                Timestamp todaysDate = new Timestamp(date1.getTime());
-                trip.getWeatherForecast().setTimestamp(todaysDate);
+                    Date date1 = new Date();
+                    Timestamp todaysDate = new Timestamp(date1.getTime());
+                    trip.getWeatherForecast().setTimestamp(todaysDate);
 
-                tripService.saveTrip(trip);
+                    tripService.saveTrip(trip);
+                }
             }
         }
     }

@@ -24,6 +24,10 @@ public class Trip implements Serializable {
     String country;
     String city;
 
+    @Column(name = "timestamp")
+    @CreationTimestamp
+    public Timestamp timestamp;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itinerary_id")
     public Itinerary itinerary;
@@ -31,10 +35,6 @@ public class Trip implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "weatherForecast_id")
     public WeatherForecast weatherForecast;
-
-    @Column(name = "timestamp")
-    @CreationTimestamp
-    public Timestamp timestamp;
 
     @ManyToMany(mappedBy = "trips")
     public Set<User> users;

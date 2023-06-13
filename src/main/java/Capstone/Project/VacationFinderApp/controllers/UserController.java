@@ -3,6 +3,7 @@ package Capstone.Project.VacationFinderApp.controllers;
 import Capstone.Project.VacationFinderApp.models.User;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,9 +62,9 @@ public class UserController {
         model.addAttribute("user", user);
 
         if (user1.getUsername() != null) {
-//            User dbUser = userService.getByUserName(user1.getUsername());
-//            Object[] trips = dbUser.getTrips().toArray();
-//            model.addAttribute("userTrips" , trips);
+            User dbUser = (User) userService.getByUsername(user1.getUsername());
+            Object[] trips = dbUser.getTrips().toArray();
+            model.addAttribute("userTrips" , trips);
             System.out.println("test");
         }
 

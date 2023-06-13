@@ -1,6 +1,8 @@
 package Capstone.Project.VacationFinderApp.controllers;
 
+import Capstone.Project.VacationFinderApp.models.Trip;
 import Capstone.Project.VacationFinderApp.models.User;
+import Capstone.Project.VacationFinderApp.services.TripService;
 import Capstone.Project.VacationFinderApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +20,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    TripService tripService;
 
     /**
      * Creates a new user.
@@ -63,6 +68,8 @@ public class UserController {
 
         if (user1.getUsername() != null) {
             User dbUser = (User) userService.getByUsername(user1.getUsername());
+            model.addAttribute("username", dbUser.getUsername());
+            model.addAttribute("userId", dbUser.getId());
             Object[] trips = dbUser.getTrips().toArray();
             model.addAttribute("userTrips" , trips);
             System.out.println("test");
@@ -91,6 +98,20 @@ public class UserController {
         user.setAccountNonLocked(false);
         user.setCredentialsNonExpired(false);
         userService.saveUser(user);
+
+        return "redirect:/users";
+    }
+
+    @GetMapping("/removeUser/{userId}/{tripName}")
+    public String removeUser(@PathVariable("userId") long userId, @PathVariable("tripName") String tripName) throws Exception {
+        Trip dbTrip = tripService.getByName(tripName);
+        User dbUser = userService.getUserById(userId);
+
+        dbTrip.getUsers().remove(dbUser);
+        tripService.saveTrip(dbTrip);
+
+        dbUser.getTrips().remove(dbTrip);
+        userService.saveUser(dbUser);
 
         return "redirect:/users";
     }

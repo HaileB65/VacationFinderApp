@@ -360,7 +360,11 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .city4("Ayacucho")
                     .city5("Iquitos")
                     .image1("https://www.planetware.com/wpimages/2019/12/peru-in-pictures-best-places-to-photograph-machu-picchu-llama.jpg")
-                    .image2("https://www.tripsavvy.com/thmb/uEReEir7LcDkySAMkkl4gqMMUPk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-498613571-eb1b37fc20ad4152892951bb8ea3f3e1.jpg")
+                    .image2("https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVydXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80")
+                    .image3("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4TpvjAwKzb0poMAlsqQDJXplOGLVWw-JdJQ&usqp=CAU")
+                    .image4("https://tourscanner.com/blog/wp-content/uploads/2022/05/things-to-do-in-Cusco-Peru.jpg")
+                    .image5("https://www.kids-world-travel-guide.com/images/peru_cusco.jpg")
+                    .image6("https://www.andbeyond.com/wp-content/uploads/sites/5/Peru-capital-city-Lima-Colonial.jpg")
                     .build();
 
             Set<Destination> destinations = new HashSet();

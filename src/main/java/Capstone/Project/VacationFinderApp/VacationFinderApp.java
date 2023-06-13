@@ -379,6 +379,71 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
         }
 
+        if (!tripRepository.existsByName("Italy")) {
+            Itinerary itinerary = Itinerary.builder()
+                    .location1("Weston Hotel")
+                    .location2("Atrium Event Center")
+                    .location3("The Axewell")
+                    .location4("The Arboretum")
+                    .location5("Flight Museum")
+                    .meal1("Ephesus Mediterranean Grill")
+                    .meal2("True Food Kitchen")
+                    .meal3("Hawkers Asian Cuisine")
+                    .meal4("TJ's Seafood Market & Grill")
+                    .meal5("Elm & Good")
+                    .leisure1("Jazz Festival")
+                    .leisure2("Comedy Club")
+                    .leisure3("Soccer Game")
+                    .leisure4("Jack's Bar")
+                    .leisure5("Klyde Warren Park")
+                    .transport1("Hotel Cab")
+                    .transport2("Hotel Cab")
+                    .transport3("Hotel Cab")
+                    .transport4("Hotel Cab")
+                    .transport5("Hotel Cab")
+                    .build();
+
+            Destination italy = Destination.builder()
+                    .name("Italy")
+                    .description("Italy has a vast wealth of culture, architecture and ancient sites. It has modern cities that embody contemporary Italy, and don't forget Italy's gifts to the world's taste buds, its wonderful cuisine and wines.")
+                    .weather("Warm")
+                    .scenery("Sunny")
+                    .activity1("Cultural Tours")
+                    .activity2("Churches & Cathedrals")
+                    .activity3("Wine Tastings")
+                    .city1("Rome")
+                    .city2("")
+                    .city3("")
+                    .city4("")
+                    .city5("")
+                    .image1("https://www.thecolosseum.org/wp-content/uploads/2017/09/Colosseum-optimized.jpg")
+                    .image2("https://fullsuitcase.com/wp-content/uploads/2022/01/Best-views-and-viewpoints-in-Rome-Italy.jpg.webp")
+                    .image3("https://lp-cms-production.imgix.net/2021-03/500pxRF_77415821.jpg")
+                    .image4("https://www.thediaryofanomad.com/wp-content/uploads/2020/11/rome-for-3-days-in-rome-itinerary-vatican-dome-view.jpg")
+                    .image5("https://www.travelandleisure.com/thmb/QDUywna6SQbiQte-ZmrJmXcywp0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/rome-italy-lead-ROMETG0521-7bd455d3c2b545219498215df7143e0d.jpg")
+                    .image6("https://media.cntraveler.com/photos/5a903dd660543c4ae96c2e74/16:9/w_2560%2Cc_limit/GettyImages-497268617.jpg")
+                    .build();
+
+            Set<Destination> destinations = new HashSet();
+            destinations.add(italy);
+
+            WeatherForecast forecast = WeatherForecast.builder()
+                    .forecastImageUrl("yuturuy")
+                    .build();
+
+            Trip italyTrip = Trip.builder()
+                    .name("Italy")
+                    .city(italy.getCity1())
+                    .country("Italy")
+                    .itinerary(itinerary)
+                    .destinations(destinations)
+                    .weatherForecast(forecast)
+                    .build();
+
+            tripService.saveTrip(italyTrip);
+
+        }
+
         /**
          * Creates default user.
          *

@@ -293,6 +293,10 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .city5("Foz do Iguaçu")
                     .image1("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-botafogo-bay.jpg")
                     .image2("https://www.planetware.com/wpimages/2020/02/brazil-in-pictures-beautiful-places-to-photograph-sugarloaf-mountain.jpg")
+                    .image3("https://media.nomadicmatt.com/2022/brazilsafe.jpeg")
+                    .image4("https://www.travelbeginsat40.com/wp-content/uploads/2019/02/rio-carnival.jpg")
+                    .image5("https://media.worldnomads.com/explore/brazil/belem-do-para-amazon-brazil-gettyimages-felipefrazao.jpg")
+                    .image6("https://mldvwwasb8tu.i.optimole.com/cb:esbD~6200b/w:1100/h:733/q:90/http://travelaway.me/wp-content/uploads/2018/06/salvador-bahia-brazil.jpg")
                     .build();
 
             Set<Destination> destinations = new HashSet();

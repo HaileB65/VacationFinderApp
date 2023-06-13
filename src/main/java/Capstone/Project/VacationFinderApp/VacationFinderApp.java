@@ -224,8 +224,11 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .city4("Interlaken")
                     .city5("Zermatt")
                     .image1("https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg")
-                    .image2("https://c8.alamy.com/comp/JF64PT/alps-switzerland-zurich-swiss-map-atlas-map-of-the-world-bern-rhine-JF64PT.jpg")
+                    .image2("https://images.pexels.com/photos/2779863/pexels-photo-2779863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
                     .image3("https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3dpdHplcmxhbmR8ZW58MHx8MHx8&w=1000&q=80")
+                    .image4("https://media.istockphoto.com/id/945092130/photo/thun-cityspace-with-alps-mountain-and-lake-in-switzerland.jpg?s=612x612&w=0&k=20&c=OV0ApBGo4w936DgRp-UejZ3HTYDWHP05b1HcQOWH7Jg=")
+                    .image5("https://media.istockphoto.com/id/486574518/photo/zermatt-village-with-view-of-matterhorn-in-the-swiss-alps.jpg?s=612x612&w=0&k=20&c=jWlKIdaao-6rnbjTyOQ9a14wK6VIsJYy8qy88IrLnvQ=")
+                    .image6("https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQvuBvDbBmzrkWOiL95FRvkizPt4p2hVt92HBaaNbpufY73koodFpISdNvKS__pRuT6")
                     .build();
 
             Set<Destination> destinations = new HashSet();

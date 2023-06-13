@@ -38,9 +38,6 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
     @Autowired
     WeatherAPIService weatherAPIService;
 
-    @Autowired
-    CountryFactsAPIService countryFactsAPIService;
-
     public static void main(String[] args) {
         SpringApplication.run(VacationFinderApp.class, args);
     }
@@ -381,25 +378,25 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
         if (!tripRepository.existsByName("Italy")) {
             Itinerary itinerary = Itinerary.builder()
-                    .location1("Weston Hotel")
-                    .location2("Atrium Event Center")
-                    .location3("The Axewell")
-                    .location4("The Arboretum")
-                    .location5("Flight Museum")
-                    .meal1("Ephesus Mediterranean Grill")
-                    .meal2("True Food Kitchen")
-                    .meal3("Hawkers Asian Cuisine")
-                    .meal4("TJ's Seafood Market & Grill")
-                    .meal5("Elm & Good")
-                    .leisure1("Jazz Festival")
-                    .leisure2("Comedy Club")
-                    .leisure3("Soccer Game")
-                    .leisure4("Jack's Bar")
-                    .leisure5("Klyde Warren Park")
+                    .location1("Gran Paradiso National Park")
+                    .location2("Colosseum")
+                    .location3("Duomo di Milano")
+                    .location4("St. Peter's Basilica")
+                    .location5("Stelvio National Park")
+                    .meal1("Kochi")
+                    .meal2("Crown Shy")
+                    .meal3("Dhamaka")
+                    .meal4("Gage & Tollner")
+                    .meal5("Gramercy Tavern")
+                    .leisure1("Uffizi Gallery")
+                    .leisure2("Rio Bar")
+                    .leisure3("Accademia Gallery")
+                    .leisure4("Wine Bar 5000")
+                    .leisure5("Teatro alla Scala")
                     .transport1("Hotel Cab")
-                    .transport2("Hotel Cab")
+                    .transport2("Public Transport")
                     .transport3("Hotel Cab")
-                    .transport4("Hotel Cab")
+                    .transport4("Public Transport")
                     .transport5("Hotel Cab")
                     .build();
 

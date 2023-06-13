@@ -70,12 +70,14 @@
         </tr>
     </table>
 
+    <br>
+
     <div align="center" th:if="${userTrips}">
         <table class="table">
             <tr>
-                <th scope="col">User</th>
-                <th scope="col">Trip</th>
-                <th scope="col">Actions</th>
+                <td scope="col">User</td>
+                <td scope="col">Trip</td>
+                <td scope="col">Actions</td>
             </tr>
             <tr th:each="trip : ${userTrips}">
                 <td th:text="${username}"></td>

@@ -21,6 +21,8 @@ public class Destination implements Serializable {
     Long id;
 
     String name;
+    String country;
+    String region;
     String description;
     String scenery;
     String weather;

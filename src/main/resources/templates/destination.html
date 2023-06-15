@@ -26,6 +26,7 @@
   overflow-x:hidden;
   border: 1px solid black;
 }
+
     </style>
 </head>
 <body>
@@ -106,11 +107,13 @@
             <th>Forest Area</th>
         </tr>
         <tr>
-            <td th:text="${country.capital}"></td>
-            <td th:text="${country.currency.name}"></td>
-            <td th:text="${countryPopulation}"></td>
-            <td th:text="${country.surface_area} + ' sq. km'"></td>
-            <td th:text="${country.forested_area} + '%'"></td>
+            <div th:if="${country}">
+                <td th:text="${country.capital}"></td>
+                <td th:text="${country.currency.name}"></td>
+                <td th:text="${countryPopulation}"></td>
+                <td th:text="${country.surface_area} + ' sq. km'"></td>
+                <td th:text="${country.forested_area} + '%'"></td>
+            </div>
         </tr>
 
     </table>

@@ -65,18 +65,22 @@ public class DestinationController {
         Trip trip = tripService.getByName(destination.getName());
         model.addAttribute("trip", trip);
 
-        Country[] countryArray = countryFactsAPIService.getCountryFacts(destination.getName());
-        Country country = countryArray[0];
-        model.addAttribute("country", country);
+        if (destination.getCountry() != null) {
+            Country[] countryArray = countryFactsAPIService.getCountryFacts(destination.getCountry());
+            if (countryArray.length > 0) {
+                Country country = countryArray[0];
+                model.addAttribute("country", country);
 
-        Float countryPopulation = country.getPopulation();
-        if(countryPopulation.toString().length() >= 6) {
-            String popInMillions = countryFactsAPIService.getPopulationInMillions(countryPopulation);
-            model.addAttribute("countryPopulation", popInMillions);
-        }
-        if(countryPopulation.toString().length() <= 5) {
-            String popInHundredThousands = countryFactsAPIService.getPopulationInThousands(countryPopulation);
-            model.addAttribute("countryPopulation", popInHundredThousands);
+                Float countryPopulation = country.getPopulation();
+                if (countryPopulation.toString().length() >= 6) {
+                    String popInMillions = countryFactsAPIService.getPopulationInMillions(countryPopulation);
+                    model.addAttribute("countryPopulation", popInMillions);
+                }
+                if (countryPopulation.toString().length() <= 5) {
+                    String popInHundredThousands = countryFactsAPIService.getPopulationInThousands(countryPopulation);
+                    model.addAttribute("countryPopulation", popInHundredThousands);
+                }
+            }
         }
 
         return "destination";
@@ -242,6 +246,8 @@ public class DestinationController {
         Destination dbDestination = destinationService.getDestinationById(viewDestinationId);
 
         dbDestination.setName(viewDestination.getName());
+        dbDestination.setCountry(viewDestination.getCountry());
+        dbDestination.setRegion(viewDestination.getRegion());
         dbDestination.setDescription(viewDestination.getDescription());
         dbDestination.setScenery(viewDestination.getScenery());
         dbDestination.setWeather(viewDestination.getWeather());

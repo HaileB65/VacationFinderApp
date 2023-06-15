@@ -75,6 +75,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination mongolia = Destination.builder()
                     .name("Mongolia")
+                    .country("Mongolia")
                     .description("Mongolia's Gobi desert is a must see for its iconic natural formations, dinosaur fossils, wildlife, birds and camel herding nomads. Mongolia is a unique place were you can experience vast, untouched landscapes and learn about nomadic culture.")
                     .weather("Cold")
                     .scenery("Mountains")
@@ -90,7 +91,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .image2("https://www.toursmongolia.com/uploads/Why_Mongolia_Is_Simply_Awesome.jpg")
                     .image3("https://worldexpeditions.com/croppedImages/Asia/Mongolia/camel-crossing-Mongolia-988307-500px.jpg")
                     .image4("https://www.toursmongolia.com/uploads/ulaanbaatar_mongolia.JPG")
-                    .image5("https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS5o6XkKgvqzZBJ_ANjo7umg45RIbB-UUL9PpVLjguAvxXh1GO9g__9q7K2OK5nGuZlwNe8Mjo1DJMV3HBXS795C4LMVw")
+                    .image5("https://www.worldatlas.com/r/w1200/upload/a2/10/28/ulaanbaatar-mongolia-capital.jpg")
                     .image6("https://www.toursmongolia.com/uploads/Mongolia_Ulaanbaatar_city_tours.jpg")
                     .trips(new HashSet<>())
                     .build();
@@ -144,6 +145,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination bahamas = Destination.builder()
                     .name("Bahamas")
+                    .country("Bahamas")
                     .description("The Bahamas is home to beautiful hotels, a vibrant culture, pristine beaches, and watersport activities. Amazing diving and delicious food are just two of all the things to do at this natural paradise.")
                     .weather("Warm")
                     .scenery("Beach")
@@ -160,7 +162,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .image3("https://www.sandals.com/blog/content/images/2020/01/Blue-Lagoon-Bahamas.jpg")
                     .image4("https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dGhlJTIwYmFoYW1hc3xlbnwwfHwwfHw%3D&w=1000&q=80")
                     .image5("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH0WG1PvfbpmQtzno8K_dbou8hfrXyBa4tbA&usqp=CAU")
-                    .image6("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgCVx3X-wSuHtOTll9zr3U4kD_kkZfjeiu0Q&usqp=CAU")
+                    .image6("https://a.cdn-hotels.com/gdcs/production107/d1657/ce115d52-5bd1-4f78-8a2a-6f1ec518d239.jpg")
                     .build();
 
             Set<Destination> destinations = new HashSet();
@@ -212,6 +214,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination switzerland = Destination.builder()
                     .name("Switzerland")
+                    .country("Switzerland")
                     .description("Switzerland has stunning nature, rich culture, exceptional architecture from medieval buildings, top-notch museums, and delicious cuisine. Winter is a great time to witness Switzerland's beautiful landscape and to learn to ski.")
                     .weather("Cold")
                     .scenery("Snow")
@@ -280,6 +283,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination brazil = Destination.builder()
                     .name("Brazil")
+                    .country("Brazil")
                     .description("Brazil is filled with adventure from dazzling beaches, tropical islands and picturesque colonial towns. Its verdant rainforests boast an astounding array of wildlife, while its wildly energetic cities are home to great cuisine.")
                     .weather("Warm")
                     .scenery("Beach")
@@ -348,6 +352,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination peru = Destination.builder()
                     .name("Peru")
+                    .country("Peru")
                     .description("Peru is a veritable treasure trove of unforgettable places to visit and things to do from Vertiginous Andean mountain peaks, breath-taking Incan archaeological sites like Machu Picchu, lush jungle national parks, and colorful indigenous communities.")
                     .weather("Cold")
                     .scenery("Mountains")
@@ -361,7 +366,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
                     .city5("Iquitos")
                     .image1("https://www.planetware.com/wpimages/2019/12/peru-in-pictures-best-places-to-photograph-machu-picchu-llama.jpg")
                     .image2("https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVydXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80")
-                    .image3("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4TpvjAwKzb0poMAlsqQDJXplOGLVWw-JdJQ&usqp=CAU")
+                    .image3("https://www.usatoday.com/gcdn/presto/2023/01/24/USAT/3430524a-8c76-42c3-bc7d-3ebc22d322e7-GettyImages-1229409136.jpeg?width=1200&disable=upscale&format=pjpg&auto=webp")
                     .image4("https://tourscanner.com/blog/wp-content/uploads/2022/05/things-to-do-in-Cusco-Peru.jpg")
                     .image5("https://www.kids-world-travel-guide.com/images/peru_cusco.jpg")
                     .image6("https://www.andbeyond.com/wp-content/uploads/sites/5/Peru-capital-city-Lima-Colonial.jpg")
@@ -413,6 +418,7 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
 
             Destination italy = Destination.builder()
                     .name("Italy")
+                    .country("Italy")
                     .description("Italy has a vast wealth of culture, architecture and ancient sites. It has modern cities that embody contemporary Italy, and don't forget Italy's gifts to the world's taste buds, its wonderful cuisine and wines.")
                     .weather("Warm")
                     .scenery("Sunny")

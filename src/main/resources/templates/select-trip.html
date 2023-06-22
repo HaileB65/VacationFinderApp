@@ -25,8 +25,9 @@
                 <td>
                     <select id="tripName" name="tripName" th:field="*{name}">
                         <option value="">Select Trip</option>
-                        <option th:each="trip : ${tripsList}"
-                                th:text="${trip.name}" th:value="${trip.name}"></option>
+                        <option th:each="trip : ${tripsList}" th:text="${trip.name}" th:value="${trip.name}">
+
+                        </option>
                     </select>
                 </td>
             </tr>

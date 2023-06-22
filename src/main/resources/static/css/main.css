@@ -1,19 +1,19 @@
 #container {
-    width:50%;
-    margin:auto;
-    padding: 80px 0;
+  width:50%;
+  margin:auto;
+  padding: 80px 0;
  }
 
- #container2 {
-     width:90%;
-     margin:auto;
-     padding: 80px 0;
-  }
+#container2 {
+  width:90%;
+  margin:auto;
+  padding: 80px 0;
+}
 
 #form {
-     width:300px;
-     margin auto;
-  }
+  width:300px;
+  margin auto;
+}
 
 .back {
   background: #e2e2e2;

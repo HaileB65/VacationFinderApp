@@ -103,19 +103,20 @@
         </div>
 
         <div>
-            <form>
+            <form method="POST" action="/spring-mvc-xml/uploadFile" enctype="multipart/form-data">
                 <fieldset class="upload_dropZone text-center mb-3 p-4">
                     <legend class="visually-hidden">Image uploader</legend>
                     <svg class="upload_svg" width="60" height="60" aria-hidden="true">
                         <use href="#icon-imageUpload"></use>
                     </svg>
                     <p class="small my-2">Drag &amp; Drop destination image(s) inside dashed region<br><i>or</i></p>
-                    <input id="upload_image_background" data-post-name="image_background"
-                           data-post-url="https://someplace.com/image/uploads/backgrounds/"
-                           class="position-absolute invisible" type="file" multiple
-                           accept="image/jpeg, image/png, image/svg+xml"/>
+                    <input id="upload_image_background" data-post-name="image_background" data-post-url="https://someplace.com/image/uploads/backgrounds/"
+                           class="position-absolute invisible" type="file" multiple accept="image/jpeg, image/png, image/svg+xml"/>
                     <label class="btn btn-upload mb-3" for="upload_image_background">Choose file(s)</label>
                     <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
                 </fieldset>
             </form>
             <svg style="display:none">
@@ -125,6 +126,19 @@
                     </symbol>
                 </defs>
             </svg>
+
+            <form:form method="POST" action="/spring-mvc-xml/uploadFile" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><form:label path="file">Select a file to upload</form:label></td>
+                        <td><input type="file" name="file" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit" /></td>
+                    </tr>
+                </table>
+            </form>
+
 
             <!--            <div class="form-group">-->
             <!--                <label for="image1">Image 1</label>-->

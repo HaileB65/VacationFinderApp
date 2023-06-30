@@ -12,11 +12,16 @@ import Capstone.Project.VacationFinderApp.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -267,13 +272,28 @@ public class DestinationController {
     }
 
     @PostMapping("/saveNewDestination")
-    public String saveNewDestination(@ModelAttribute("newDestination") Destination destination) {
+    public String saveNewDestination(@ModelAttribute("newDestination") Destination destination, @RequestParam("file") MultipartFile file) throws Exception {
         Trip newTrip = new Trip();
         newTrip.setName(destination.getName());
         newTrip.setItinerary(new Itinerary());
         newTrip.setWeatherForecast(new WeatherForecast());
-
         tripService.saveTrip(newTrip);
+
+        try {
+            if (file.isEmpty()) {
+                throw new Exception("Failed to store empty file.");
+            }
+
+            Path destinationFile = Paths.get(file.getOriginalFilename()).normalize().toAbsolutePath();
+
+            try (InputStream inputStream = file.getInputStream()) {
+                Files.copy(inputStream, destinationFile,
+                        StandardCopyOption.REPLACE_EXISTING);
+            }
+        }
+        catch (Exception e) {
+            throw new Exception("Failed to store file.", e);
+        }
 
         destinationService.createNewDestination(destination);
 

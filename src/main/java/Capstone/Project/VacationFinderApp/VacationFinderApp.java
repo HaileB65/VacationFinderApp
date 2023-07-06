@@ -526,7 +526,8 @@ public class VacationFinderApp extends SpringBootServletInitializer implements C
             userService.createNewUser(admin);
         }
 
-        weatherAPIService.getAllWeatherForecasts();
+        //TODO Fix getALLWeatherForecasts method
+//        weatherAPIService.getAllWeatherForecasts();
 
     }
 }

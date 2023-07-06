@@ -30,7 +30,7 @@ public class WebSecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests()
-                .antMatchers("/", "/register", "/process_register", "/images/**", "/css/**").permitAll()
+                .antMatchers("/", "/register", "/process_register", "/images/**", "/css/**","/uploadSingleFile","/download/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

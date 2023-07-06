@@ -4,26 +4,27 @@ import Capstone.Project.VacationFinderApp.models.DatabaseFile;
 import Capstone.Project.VacationFinderApp.models.FileResponse;
 import Capstone.Project.VacationFinderApp.repositories.DatabaseFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/images")
 public class HandleMultipartDataController {
 
     @Autowired
     DatabaseFileRepository fileRepository;
 
-    @PostMapping()
+    @PostMapping("/uploadSingleFile")
     public ResponseEntity<?> uploadFile(@RequestBody MultipartFile file) {
 
         String fileName;
@@ -48,7 +49,7 @@ public class HandleMultipartDataController {
 
             // create the download URI
             savedFile.setDownloadUrl(ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/images/")
+                    .path("/download/")
                     .path(String.valueOf(savedFile.getId()))
                     .toUriString());
 
@@ -65,5 +66,28 @@ public class HandleMultipartDataController {
             return ResponseEntity.badRequest().body(
                     new IllegalStateException("Sorry could not store file " + fileName + "Try again!", ex));
         }
+    }
+
+    @GetMapping("/download/{id}")
+    public ResponseEntity<?> downloadFileById(@PathVariable(name = "id") Long fileId) {
+
+        final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
+
+        if (optional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found with id: " + fileId);
+        }
+
+        DatabaseFile databaseFile = optional.get();
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(databaseFile.getFileType()))
+                // display the file inline
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
+                // download file, without setting file name
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment")
+                // download file, and specify file name
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        String.format("attachment; filename=\"%s\"", databaseFile.getFileName()))
+                .body(new ByteArrayResource(databaseFile.getData()));
     }
 }

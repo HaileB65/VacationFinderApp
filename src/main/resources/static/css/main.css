@@ -43,3 +43,34 @@ div.content {
   display: table-cell;
   vertical-align: middle;
 }
+
+.row {
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container3{
+   margin: auto;
+}
+
+.card {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.image {
+ height:100%;
+ width:100%;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

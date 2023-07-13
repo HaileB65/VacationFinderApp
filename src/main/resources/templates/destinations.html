@@ -16,55 +16,43 @@
 
     <br>
 
-    <table class="table table-hover">
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Scenery</th>
-            <th scope="col">Weather</th>
-            <th scope="col">Activity 1</th>
-            <th scope="col">Activity 2</th>
-            <th scope="col">Activity 3</th>
-            <th scope="col">Actions</th>
-        </tr>
-        <tr th:each="destination : ${destinationsTable}">
-            <td th:text="${destination.name}">Name</td>
-            <td th:text="${destination.scenery}">Scenery</td>
-            <td th:text="${destination.weather}">Weather</td>
-            <td th:text="${destination.activity1}">Activity 1</td>
-            <td th:text="${destination.activity2}">Activity 2</td>
-            <td th:text="${destination.activity3}">Activity 3</td>
-            <td>
-                <a th:href="@{/destination/__${destination.id}__}">View</a>
-                <div sec:authorize="hasAuthority('ADMIN')">
-                    <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <div align="center" th:each="destination : ${destinationsTable}">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${destination.name}">Name</h5>
-                    <p class="card-text" th:text="destination.description">Description</p>
-                    <a class="btn btn-primary" th:href="${destination.country}">Country</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <table class="table table-hover">-->
+<!--        <tr>-->
+<!--            <th scope="col">Name</th>-->
+<!--            <th scope="col">Scenery</th>-->
+<!--            <th scope="col">Weather</th>-->
+<!--            <th scope="col">Activity 1</th>-->
+<!--            <th scope="col">Activity 2</th>-->
+<!--            <th scope="col">Activity 3</th>-->
+<!--            <th scope="col">Actions</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="destination : ${destinationsTable}">-->
+<!--            <td th:text="${destination.name}">Name</td>-->
+<!--            <td th:text="${destination.scenery}">Scenery</td>-->
+<!--            <td th:text="${destination.weather}">Weather</td>-->
+<!--            <td th:text="${destination.activity1}">Activity 1</td>-->
+<!--            <td th:text="${destination.activity2}">Activity 2</td>-->
+<!--            <td th:text="${destination.activity3}">Activity 3</td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/destination/__${destination.id}__}">View</a>-->
+<!--                <div sec:authorize="hasAuthority('ADMIN')">-->
+<!--                    <a th:href="@{/editDestination/__${destination.id}__}">Edit</a>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
 
     <div class="d-flex flex-row container3" th:each="destination : ${destinationsTable}">
-        <div class="p-2 card">
+        <div class="p-2">
             <img class="image" th:src="${destination.image3}"/>
-            <div class="centered" th:text="${destination.name}"></div>
+            <div class="centered">
+                <a th:href="@{/destination/__${destination.id}__}" class="text-decoration-none link" th:text="${destination.name}"></a>
+            </div>
         </div>
-        <div class="p-2 card">
-            <img class="image" th:src="${destination.image3}"/>
-            <div class="centered" th:text="${destination.name}"></div>
+        <div class="p-2">
+            <img class="image" th:src="${destination.image4}"/>
         </div>
     </div>
-
     <br>
 
     <div align="center" sec:authorize="hasAuthority('ADMIN')">
@@ -72,6 +60,7 @@
             <button class="btn btn-primary" type="submit">Create New Destination</button>
         </form>
     </div>
+
 
 </div>
 

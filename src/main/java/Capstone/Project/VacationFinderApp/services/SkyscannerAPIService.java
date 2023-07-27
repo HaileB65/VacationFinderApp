@@ -63,9 +63,9 @@ public class SkyscannerAPIService {
         ObjectMapper objectMapper = new ObjectMapper();
         String flightSearchJsonStrObject = objectMapper.writeValueAsString(flightSearch);
 
-        String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/create";
-
         HttpEntity<String> request = new HttpEntity<>(flightSearchJsonStrObject, headers);
+
+        String url = "https://skyscanner-api.p.rapidapi.com/v3/flights/live/search/create";
 
         ResponseEntity<SkyscannerResponse> response = restTemplate.postForEntity(url, request, SkyscannerResponse.class);
 

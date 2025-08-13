@@ -21,7 +21,7 @@ import javax.annotation.PostConstruct;
 public class SkyscannerAPIService {
     @Value("${rapidapi.skyscanner.api-key}")
     String skyscannerApiKey;
-
+    //TODO Find a new API to use for this SkyscannerAPi b/c it doesn't exist anymore.
     @Autowired
     RestTemplate restTemplate;
 

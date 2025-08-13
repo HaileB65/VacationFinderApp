@@ -30,7 +30,7 @@ public class Checklist implements Serializable {
     String item8;
     String item9;
     String item10;
-    String checkbox1 = "false";
+    final String checkbox1 = "false";
 
     @Column(name = "timestamp")
     @CreationTimestamp
